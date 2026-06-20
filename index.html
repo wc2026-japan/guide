@@ -849,6 +849,94 @@
     .opp-rank { font-family: var(--font-mono); font-size: 12px; color: var(--gold-dim); margin-bottom: 5px; }
     .opp-desc { font-size: 14px; color: var(--text-primary); line-height: 1.6; }
 
+    /* ===== チームプロフィールカード ===== */
+    .jp-profile-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; overflow: hidden; margin-bottom: 14px;
+    }
+    .jp-profile-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-bottom: 1px solid var(--line-white);
+      background: rgba(59,122,240,0.07);
+    }
+    .jp-profile-header-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; color: var(--sky-blue); font-weight: 700; }
+    .jp-profile-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .jp-profile-item {
+      padding: 11px 14px; border-bottom: 1px solid var(--line-white); border-right: 1px solid var(--line-white);
+    }
+    .jp-profile-item:nth-child(even) { border-right: none; }
+    .jp-profile-item:nth-last-child(-n+2) { border-bottom: none; }
+    .jp-profile-item.full { grid-column: 1 / -1; border-right: none; }
+    .jp-profile-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+    .jp-profile-value { font-size: 14px; font-weight: 800; color: var(--text-primary); line-height: 1.3; }
+    .jp-profile-value .rank-badge {
+      display: inline-block; background: linear-gradient(135deg, var(--gold), #e8b800);
+      color: #000; font-family: var(--font-mono); font-size: 13px; font-weight: 900;
+      padding: 2px 9px; border-radius: 6px;
+    }
+    .jp-profile-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; font-weight: 400; }
+    /* ===== 監督カード ===== */
+    .jp-coach-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 13px 14px; margin-bottom: 14px;
+      display: flex; gap: 13px; align-items: flex-start;
+    }
+    .jp-coach-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59,122,240,0.3), rgba(30,79,216,0.15));
+      border: 2px solid rgba(59,122,240,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .jp-coach-body { flex: 1; min-width: 0; }
+    .jp-coach-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; color: var(--sky-blue); margin-bottom: 2px; }
+    .jp-coach-name { font-size: 17px; font-weight: 900; margin-bottom: 5px; }
+    .jp-coach-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+    .jp-coach-tag {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      background: rgba(212,255,63,0.1); border: 1px solid rgba(212,255,63,0.25);
+      color: var(--gold); border-radius: 4px; padding: 2px 7px;
+    }
+    .jp-coach-desc { font-size: 13px; color: var(--text-primary); line-height: 1.65; }
+    /* ===== 強化版対戦相手カード ===== */
+    .opp-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; margin-bottom: 10px; }
+    .opp-card-header { display: flex; align-items: center; gap: 12px; padding: 12px 14px 10px; border-bottom: 1px solid var(--line-white); }
+    .opp-card-flag { width: 44px; height: 31px; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.35); flex-shrink: 0; }
+    .opp-card-header-info { flex: 1; min-width: 0; }
+    .opp-card-name { font-size: 17px; font-weight: 900; margin-bottom: 1px; }
+    .opp-card-rank { font-family: var(--font-mono); font-size: 11px; color: var(--gold-dim); }
+    .opp-match-badge {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      border-radius: 5px; padding: 3px 8px; flex-shrink: 0; border: 1px solid; text-align: center;
+    }
+    .opp-match-badge.played { background: rgba(130,130,130,0.12); border-color: rgba(130,130,130,0.3); color: var(--text-muted); }
+    .opp-match-badge.next   { background: rgba(212,255,63,0.12); border-color: rgba(212,255,63,0.3); color: var(--gold); }
+    .opp-card-body { padding: 11px 14px; display: flex; flex-direction: column; gap: 10px; }
+    .h2h-row { display: flex; flex-direction: column; gap: 5px; }
+    .h2h-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--text-muted); }
+    .h2h-bar-wrap { display: flex; align-items: center; gap: 6px; }
+    .h2h-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; display: flex; }
+    .h2h-bar-win  { background: var(--sky-blue); }
+    .h2h-bar-draw { background: var(--gold); }
+    .h2h-bar-loss { background: var(--japan-red); }
+    .h2h-stat { font-family: var(--font-mono); font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .h2h-stat .w { color: var(--sky-blue); } .h2h-stat .d { color: var(--gold); } .h2h-stat .l { color: var(--japan-red); }
+    .opp-result-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 10px; }
+    .opp-result-label { font-size: 11px; color: var(--text-muted); }
+    .opp-result-score { font-family: var(--font-mono); font-size: 14px; font-weight: 800; }
+    .opp-result-badge { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+    .opp-result-badge.draw { background: rgba(212,255,63,0.15); color: var(--gold); }
+    .opp-result-badge.win  { background: rgba(91,198,107,0.15); color: #5bc66b; }
+    .opp-result-badge.loss { background: rgba(255,77,46,0.15); color: var(--japan-red); }
+    .opp-danger-row { display: flex; flex-direction: column; gap: 4px; }
+    .opp-danger-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--japan-red); margin-bottom: 2px; }
+    .opp-danger-player { display: flex; align-items: flex-start; gap: 8px; background: rgba(255,77,46,0.05); border: 1px solid rgba(255,77,46,0.18); border-radius: 8px; padding: 8px 10px; }
+    .opp-danger-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .opp-danger-info { flex: 1; }
+    .opp-danger-name { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+    .opp-danger-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .opp-note { font-size: 13px; color: var(--text-primary); line-height: 1.65; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 8px 10px; }
+
     .jpteam-squad { display: flex; flex-direction: column; gap: 14px; }
     .squad-group { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; }
     .squad-pos-label { font-family: var(--font-mono); font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--gold); padding: 8px 14px; background: rgba(212,255,63,0.07); border-bottom: 1px solid var(--line-white); }
@@ -2892,7 +2980,7 @@
           </div>
           <div class="match-vs">vs<span class="mv-venue">📍 ダラス</span></div>
           <div class="team" onclick="openTeamModal('se')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMCBzdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
+            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
             <div class="team-name">スウェーデン</div>
           </div>
         </div>
@@ -2982,7 +3070,7 @@
       <div class="match-header">
         <span class="match-group">準決勝</span>
         <div class="match-date-time">
-          <div class="match-date">7/14〜7/15</div>
+          <div class="match-date">7/15〜7/16</div>
           <div class="match-time">TBD</div>
         </div>
       </div>
@@ -3006,7 +3094,7 @@
       <div class="match-header">
         <span class="match-group" style="color:var(--gold)">🏆 決勝</span>
         <div class="match-date-time">
-          <div class="match-date">7月19日（日）</div>
+          <div class="match-date">7月20日（月）</div>
           <div class="match-time">TBD</div>
         </div>
       </div>
@@ -3031,101 +3119,281 @@
   <!-- ===== JAPAN TEAM TAB ===== -->
   <div id="section-jpteam" class="section">
     <div class="section-label">🔵 JAPAN · SAMURAI BLUE</div>
+
     <!-- Hero -->
     <div class="jpteam-hero">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="jpteam-hero-flag">
       <div class="jpteam-hero-text">
         <div class="jpteam-eyebrow">JAPAN · SAMURAI BLUE</div>
         <div class="jpteam-title">日本代表</div>
-        <div class="jpteam-meta">8大会連続出場 · グループF · FIFA 17位</div>
+        <div class="jpteam-meta">8大会連続出場 · グループF · FIFA 18位</div>
       </div>
     </div>
 
-    <!-- Summary -->
-    <div class="jpteam-summary">
-      冨安健洋・田中碧ら欧州組が揃い、板倉滉が新主将としてチームを牽引。遠藤航は6/12に負傷離脱・代表引退を表明。グループFのオランダ（6位）・スウェーデン（22位）・チュニジア（29位）との同組でベスト8進出を狙う。
+    <!-- チームプロフィール -->
+    <div class="section-label">📋 チームプロフィール</div>
+    <div class="jp-profile-card">
+      <div class="jp-profile-header">
+        <span class="jp-profile-header-title">TEAM PROFILE · BASIC INFO</span>
+      </div>
+      <div class="jp-profile-grid">
+        <div class="jp-profile-item">
+          <div class="jp-profile-label">FIFAランキング</div>
+          <div class="jp-profile-value"><span class="rank-badge">18位</span></div>
+          <div class="jp-profile-sub">アジア最上位（6/11付）</div>
+        </div>
+        <div class="jp-profile-item">
+          <div class="jp-profile-label">W杯出場</div>
+          <div class="jp-profile-value">8大会連続</div>
+          <div class="jp-profile-sub">通算7回目の出場</div>
+        </div>
+        <div class="jp-profile-item">
+          <div class="jp-profile-label">過去最高成績</div>
+          <div class="jp-profile-value">ベスト16</div>
+          <div class="jp-profile-sub">アジア勢最多4回GS突破</div>
+        </div>
+        <div class="jp-profile-item">
+          <div class="jp-profile-label">今大会の目標</div>
+          <div class="jp-profile-value">ベスト8</div>
+          <div class="jp-profile-sub">悲願の"壁"突破へ</div>
+        </div>
+        <div class="jp-profile-item full">
+          <div class="jp-profile-label">グループ / 開催地</div>
+          <div class="jp-profile-value">グループF｜ダラス・モンテレイ</div>
+          <div class="jp-profile-sub">オランダ・チュニジア・スウェーデンと同組</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Matches -->
+    <!-- 監督 -->
+    <div class="section-label">👨‍💼 監督</div>
+    <div class="jp-coach-card">
+      <div class="jp-coach-avatar">🎌</div>
+      <div class="jp-coach-body">
+        <div class="jp-coach-eyebrow">HEAD COACH</div>
+        <div class="jp-coach-name">森保 一</div>
+        <div class="jp-coach-tags">
+          <span class="jp-coach-tag">4-2-3-1</span>
+          <span class="jp-coach-tag">3-4-2-1</span>
+          <span class="jp-coach-tag">勝率 約70%</span>
+        </div>
+        <div class="jp-coach-desc">2018年就任。100試合超を率いて勝率約70%という歴代最高クラスの実績を誇る。カタール大会でドイツ・スペインを撃破したブロック守備＋速攻スタイルを継承。4バックと3バックを状況に応じて使い分ける柔軟な戦術が武器。チーム全員が「W杯優勝」という高い目標を共有しているのが今大会の最大の強み。</div>
+      </div>
+    </div>
+
+    <!-- グループステージ日本戦 -->
     <div class="section-label">グループステージ 3試合</div>
 
     <div class="match-row jp-match">
-      <div class="mr-time">05:00</div>
+      <div class="mr-time"><span class="mr-time-label">日本時間</span>05:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell" data-cc="nl" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="mr-flag-img"><span class="mr-team-name">オランダ</span></span><span class="mr-vs-sep"> </span><span class="mr-score-inline">2 - 2</span><span class="mr-vs-sep"> </span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="nl" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="mr-flag-img"><span class="mr-team-name">オランダ</span></span><span class="mr-score-inline">2 - 2</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
         <div class="mr-meta">6/15（月）· グループF · ダラス</div>
-        <div class="mr-tags"><span class="mr-tag nhk">NHK</span><span class="mr-tag free">無料</span><span class="mr-tag dazn">DAZN</span></div>
+        <div class="mr-tags"><span class="mr-tag nhk">NHK</span><span class="mr-tag dazn-free">DAZN無料</span><span class="mr-tag bsp4k">BSP4K</span></div>
       </div>
     </div>
 
     <div class="match-row jp-match">
-      <div class="mr-time">13:00</div>
+      <div class="mr-time"><span class="mr-time-label">日本時間</span>13:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell" data-cc="tn" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="mr-flag-img"><span class="mr-team-name">チュニジア</span></span><span class="mr-vs-sep"> </span><span class="mr-vs-sep">vs</span><span class="mr-vs-sep"> </span><span class="mr-team-cell"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="tn" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="mr-flag-img"><span class="mr-team-name">チュニジア</span></span><span class="mr-vs-sep">vs</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
         <div class="mr-meta">6/21（日）· グループF · モンテレイ</div>
-        <div class="mr-tags"><span class="mr-tag nhk">NHK</span><span class="mr-tag free">無料</span><span class="mr-tag ntv">日テレ</span></div>
+        <div class="mr-tags"><span class="mr-tag dazn-free">DAZN無料</span><span class="mr-tag ntv">日テレ</span><span class="mr-tag nhkbs">NHK BS</span><span class="mr-tag bsp4k">BSP4K</span></div>
       </div>
     </div>
 
     <div class="match-row jp-match">
-      <div class="mr-time">08:00</div>
+      <div class="mr-time"><span class="mr-time-label">日本時間</span>08:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span><span class="mr-vs-sep"> </span><span class="mr-vs-sep">vs</span><span class="mr-vs-sep"> </span><span class="mr-team-cell"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="mr-flag-img"><span class="mr-team-name">スウェーデン</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span><span class="mr-vs-sep">vs</span><span class="mr-team-cell" data-cc="se" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="mr-flag-img"><span class="mr-team-name">スウェーデン</span></span></div>
         <div class="mr-meta">6/26（金）· グループF · ダラス</div>
-        <div class="mr-tags"><span class="mr-tag nhk">NHK</span><span class="mr-tag free">無料</span><span class="mr-tag dazn">DAZN</span></div>
+        <div class="mr-tags"><span class="mr-tag dazn-free">DAZN無料</span><span class="mr-tag nhk">NHK</span><span class="mr-tag bsp4k">BSP4K</span></div>
       </div>
     </div>
 
-        <!-- Group F Standings -->
+    <!-- グループF順位表 -->
     <div class="section-label">グループF 順位表</div>
     <div class="jpteam-group-flags">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ">
       <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア">
     </div>
     <div class="standings-card" style="margin-bottom:16px">
-    <table class="standings-table">
-      <thead><tr><th>Team</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GD</th><th class="th-pts">Pts</th></tr></thead>
-      <tbody>
-        <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>1</td><td>1</td><td>0</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts leader">3</td></tr>
-        <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
-        <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
-        <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>1</td><td>0</td><td>0</td><td>1</td><td class="td-gd-neg">-4</td><td class="td-pts">0</td></tr>
-      </tbody>
-    </table>
+      <table class="standings-table">
+        <thead><tr><th>Team</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GD</th><th class="th-pts">Pts</th></tr></thead>
+        <tbody>
+          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>1</td><td>1</td><td>0</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts leader">3</td></tr>
+          <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
+          <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
+          <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>1</td><td>0</td><td>0</td><td>1</td><td class="td-gd-neg">-4</td><td class="td-pts">0</td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- Opponents -->
-    <div class="section-label">対戦相手</div>
-    <div class="jpteam-opponents">
-      <div class="jpteam-opp">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="opp-flag">
-        <div class="opp-info">
-          <div class="opp-name">オランダ</div>
-          <div class="opp-rank">FIFA 6位</div>
-          <div class="opp-desc">準優勝3回の名門。ファン・ダイクを中心とした守備とシャビ・シモンズら攻撃陣が揃う強豪。</div>
+    <!-- 強化版対戦相手カード -->
+    <div class="section-label">⚠️ グループF 対戦相手</div>
+
+    <!-- オランダ -->
+    <div class="opp-card">
+      <div class="opp-card-header">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="opp-card-flag">
+        <div class="opp-card-header-info">
+          <div class="opp-card-name">🇳🇱 オランダ</div>
+          <div class="opp-card-rank">FIFA 8位 · グループF第1節</div>
         </div>
+        <div class="opp-match-badge played">6/15 終了<br>2-2</div>
       </div>
-      <div class="jpteam-opp" onclick="openTeamModal('tn')" style="cursor:pointer">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="opp-flag">
-        <div class="opp-info">
-          <div class="opp-name">チュニジア</div>
-          <div class="opp-rank">FIFA 29位</div>
-          <div class="opp-desc">組織守備と粘り強さが武器。前回大会でフランスを撃破した実績を持つ北アフリカ勢。</div>
+      <div class="opp-card-body">
+        <div class="h2h-row">
+          <div class="h2h-label">🏆 日本 vs オランダ 通算成績（今大会含む）</div>
+          <div class="h2h-bar-wrap">
+            <div class="h2h-bar">
+              <div class="h2h-bar-win"  style="width:0%"></div>
+              <div class="h2h-bar-draw" style="width:50%"></div>
+              <div class="h2h-bar-loss" style="width:50%"></div>
+            </div>
+            <div class="h2h-stat"><span class="w">0勝</span> <span class="d">2分</span> <span class="l">2敗</span></div>
+          </div>
         </div>
-      </div>
-      <div class="jpteam-opp" onclick="openTeamModal('se')" style="cursor:pointer">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="opp-flag">
-        <div class="opp-info">
-          <div class="opp-name">スウェーデン</div>
-          <div class="opp-rank">FIFA 22位</div>
-          <div class="opp-desc">堅守と高さが武器。イサク・クルゼフスキら前線の質も高く、侮れない欧州の実力国。</div>
+        <div class="opp-result-row">
+          <div>
+            <div class="opp-result-label">🗓 6/15 グループF第1節</div>
+            <div class="opp-result-label" style="margin-top:2px">ダラス・ATTスタジアム</div>
+          </div>
+          <div style="text-align:right">
+            <div class="opp-result-score">2 - 2</div>
+            <span class="opp-result-badge draw">引き分け</span>
+          </div>
         </div>
+        <div class="opp-danger-row">
+          <div class="opp-danger-label">🚨 要注意プレイヤー</div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">⚡</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">シャビ・シモンズ（MF）</div>
+              <div class="opp-danger-desc">RBライプツィヒ所属。縦への突破と得点力が高く、第1節でも存在感を発揮。日本守備陣にとって最大の脅威。</div>
+            </div>
+          </div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">🛡</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">ファン・ダイク（DF/CB）</div>
+              <div class="opp-danger-desc">リバプールのキャプテン。セットプレーの得点力も高く、空中戦では日本に高さのミスマッチを生む。</div>
+            </div>
+          </div>
+        </div>
+        <div class="opp-note">準優勝3回の名門。第1節を2-2で終えており、グループ突破に向けて日本の勝ち点争いの最大のライバル。</div>
       </div>
     </div>
 
-    <!-- Squad -->
+    <!-- チュニジア -->
+    <div class="opp-card">
+      <div class="opp-card-header">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="opp-card-flag">
+        <div class="opp-card-header-info">
+          <div class="opp-card-name">🇹🇳 チュニジア</div>
+          <div class="opp-card-rank">FIFA 54位 · グループF第2節</div>
+        </div>
+        <div class="opp-match-badge next">6/21（日）<br>13:00</div>
+      </div>
+      <div class="opp-card-body">
+        <div class="h2h-row">
+          <div class="h2h-label">🏆 日本 vs チュニジア 通算成績</div>
+          <div class="h2h-bar-wrap">
+            <div class="h2h-bar">
+              <div class="h2h-bar-win"  style="width:33%"></div>
+              <div class="h2h-bar-draw" style="width:0%"></div>
+              <div class="h2h-bar-loss" style="width:67%"></div>
+            </div>
+            <div class="h2h-stat"><span class="w">1勝</span> <span class="d">0分</span> <span class="l">2敗</span></div>
+          </div>
+        </div>
+        <div class="opp-result-row">
+          <div>
+            <div class="opp-result-label">📊 第1節（参考）vs スウェーデン</div>
+            <div class="opp-result-label" style="margin-top:2px">モンテレイ（6/15）</div>
+          </div>
+          <div style="text-align:right">
+            <div class="opp-result-score">1 - 5</div>
+            <span class="opp-result-badge loss">大敗</span>
+          </div>
+        </div>
+        <div class="opp-danger-row">
+          <div class="opp-danger-label">🚨 要注意プレイヤー</div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">⚡</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">ハンニバル・メジブリ（MF）</div>
+              <div class="opp-danger-desc">マンチェスター・ユナイテッド所属の若き司令塔。中盤でゲームを作りカウンターの起点となる。チュニジア最大のクオリティ。</div>
+            </div>
+          </div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">🎯</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">セットプレー全般</div>
+              <div class="opp-danger-desc">組織的なセットプレーが得点源。スウェーデン戦でもセットプレーから1点を返している。フリーキック・コーナーの場面は要集中。</div>
+            </div>
+          </div>
+        </div>
+        <div class="opp-note">スウェーデンに1-5と大敗し背水の陣。日本にとって勝ち点3が欲しい絶好のチャンスだが、崖っぷちのチームは危険。守備を固めカウンターに徹してくる可能性が高い。</div>
+      </div>
+    </div>
+
+    <!-- スウェーデン -->
+    <div class="opp-card">
+      <div class="opp-card-header">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="opp-card-flag">
+        <div class="opp-card-header-info">
+          <div class="opp-card-name">🇸🇪 スウェーデン</div>
+          <div class="opp-card-rank">FIFA 38位 · グループF第3節</div>
+        </div>
+        <div class="opp-match-badge next">6/26（金）<br>08:00</div>
+      </div>
+      <div class="opp-card-body">
+        <div class="h2h-row">
+          <div class="h2h-label">🏆 日本 vs スウェーデン 通算成績</div>
+          <div class="h2h-bar-wrap">
+            <div class="h2h-bar">
+              <div class="h2h-bar-win"  style="width:50%"></div>
+              <div class="h2h-bar-draw" style="width:17%"></div>
+              <div class="h2h-bar-loss" style="width:33%"></div>
+            </div>
+            <div class="h2h-stat"><span class="w">3勝</span> <span class="d">1分</span> <span class="l">2敗</span></div>
+          </div>
+        </div>
+        <div class="opp-result-row">
+          <div>
+            <div class="opp-result-label">📊 第1節 vs チュニジア</div>
+            <div class="opp-result-label" style="margin-top:2px">モンテレイ（6/15）</div>
+          </div>
+          <div style="text-align:right">
+            <div class="opp-result-score">5 - 1</div>
+            <span class="opp-result-badge win">快勝</span>
+          </div>
+        </div>
+        <div class="opp-danger-row">
+          <div class="opp-danger-label">🚨 要注意プレイヤー</div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">🔥</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">アレクサンデル・イサク（FW）</div>
+              <div class="opp-danger-desc">ニューカッスル所属・プレミアリーグ屈指のストライカー。第1節でも得点。スピードと技術でDF裏を狙い、一瞬のスキを見逃さない。</div>
+            </div>
+          </div>
+          <div class="opp-danger-player">
+            <div class="opp-danger-icon">💪</div>
+            <div class="opp-danger-info">
+              <div class="opp-danger-name">ビクトル・ギェケレシュ（FW）</div>
+              <div class="opp-danger-desc">スポルティング（ポルトガル）の得点王。チュニジア戦でも得点し、イサクとの強力2トップが日本守備陣最大の課題。</div>
+            </div>
+          </div>
+        </div>
+        <div class="opp-note">グループ首位で迎える最終節。第3節はオランダ戦と同時刻キックオフ。UEFA予選では最下位からプレーオフで這い上がってきた粘り強さがあり、油断は禁物。</div>
+      </div>
+    </div>
+
+    <!-- 代表メンバー -->
     <div class="section-label">代表メンバー 26名</div>
     <div class="jpteam-squad">
       <div class="squad-group">
@@ -3170,6 +3438,7 @@
     </div>
   </div>
 
+
   <!-- ===== SCHEDULE TAB ===== -->
   <div id="section-schedule" class="section">
     <!-- フィルター①：放送局 -->
@@ -3210,7 +3479,7 @@
   <div id="section-standings" class="section">
     <div class="section-label">グループリーグ 順位表</div>
     <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節終了（6/20 12:00時点）</div>
+    <div class="standings-meta" id="standingsMeta">第1節終了 / 第2節進行中（6/20時点）</div>
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
@@ -3282,7 +3551,7 @@
             <div class="pmc-name">チュニジア</div>
             <div class="pmc-date">6/21（日）13:00</div>
           </div>
-          <div class="pmc-rank">FIFA 29位</div>
+          <div class="pmc-rank">FIFA 54位</div>
         </div>
         <div class="pmc-bar-wrap">
           <div class="pmc-label-row"><span>日本</span><span>チュニジア</span></div>
@@ -3290,7 +3559,7 @@
           <div class="pmc-sublabel">日本有利 62% ｜ 相手 38%</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>第1節で0-5大敗。守備崩壊あり</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>第1節でスウェーデンに1-5大敗。守備崩壊あり</div>
           <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>前W杯でフランスに勝利した実績</div>
           <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は勝利狙いで主力フル起用へ</div>
         </div>
@@ -3305,7 +3574,7 @@
             <div class="pmc-name">スウェーデン</div>
             <div class="pmc-date">6/26（金）08:00</div>
           </div>
-          <div class="pmc-rank">FIFA 22位</div>
+          <div class="pmc-rank">FIFA 38位</div>
         </div>
         <div class="pmc-bar-wrap">
           <div class="pmc-label-row"><span>日本</span><span>スウェーデン</span></div>
@@ -3313,7 +3582,7 @@
           <div class="pmc-sublabel">ほぼ互角 48% ｜ 相手 52%</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第1節5-0大勝で首位。勢いあり</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第1節5-1大勝で首位。勢いあり</div>
           <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>イサク・クルゼフスキら強力FW</div>
           <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は状況次第で勝点1狙いも</div>
         </div>
@@ -3697,7 +3966,7 @@ Android：メニュー→ホーム画面に追加
     },
     nl: {
       flag:'🇳🇱', name:'オランダ代表', color:'#ff6600',
-      alert:'監督：ロナルド・クーマン。FIFAランク6位・チーム力87。⚠️ ユリエン・ティンバーが負傷離脱→ルトシャレル・ヘールトライダを追加招集。日本戦(6/14)は2-2ドロー。出典：KNVB公式・JLuggage。',
+      alert:'監督：ロナルド・クーマン。FIFAランク8位・チーム力87。⚠️ ユリエン・ティンバーが負傷離脱→ルトシャレル・ヘールトライダを追加招集。日本戦(6/14)は2-2ドロー。出典：KNVB公式・JLuggage。',
       players:[
         { num:1,  pos:'GK', name:'フェルブルッヘン', club:'ブライトン（英）',        age:24, ovr:78, start:85, star:false, img:null, radar:[70,72,72,78,80] },
         { num:13, pos:'GK', name:'ルーフス',         club:'サンダーランド（英）',     age:24, ovr:68, start:10, star:false, img:null, radar:[65,67,65,70,72] },
@@ -3761,7 +4030,7 @@ Android：メニュー→ホーム画面に追加
     },
     tn: {
       flag:'🇹🇳', name:'チュニジア代表', color:'#E70013',
-      alert:'愛称：カルタゴの鷲。FIFAランク30位。監督：サブリ・ラムシ。初戦でスウェーデンに0-5で敗戦。守備の粘りと組織力が武器。日本戦は6/21（モンテレイ）。出典：JLuggage・スタメン速報。',
+      alert:'愛称：カルタゴの鷲。FIFAランク54位。監督：エルヴェ・ルナール（初戦後にラムシから交代）。初戦でスウェーデンに1-5で大敗。守備の粘りと組織力が武器。日本戦は6/21（モンテレイ）。出典：JLuggage・スタメン速報。',
       players:[
         { num:16, pos:'GK', name:'ダーメン',         club:'CSスファクシアン（チュニジア）', age:30, ovr:72, start:85, star:false, img:null, radar:[68,68,65,72,74] },
         { num:1,  pos:'GK', name:'シャマフ',         club:'クラブ・アフリカン（チュニジア）', age:26, ovr:69, start:35, star:false, img:null, radar:[65,65,62,70,72] },
@@ -4325,10 +4594,10 @@ Android：メニュー→ホーム画面に追加
     {date:'6/19',dow:'金',time:'04:00',home:{n:'スイス',cc:'ch'},         away:{n:'ボスニア',cc:'ba'},    group:'B',venue:'ロサンゼルス',    score:'4-1',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'07:00',home:{n:'カナダ',cc:'ca'},         away:{n:'カタール',cc:'qa'},    group:'B',venue:'バンクーバー',    score:'6-0',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'10:00',home:{n:'メキシコ',cc:'mx'},       away:{n:'韓国',cc:'kr'},        group:'A',venue:'グアダラハラ',    score:'1-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:false},
     {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
     {date:'6/21',dow:'日',time:'05:00',home:{n:'ドイツ',cc:'de'},         away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'トロント',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
     {date:'6/21',dow:'日',time:'09:00',home:{n:'エクアドル',cc:'ec'},     away:{n:'キュラソー',cc:'cw'},  group:'E',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
@@ -4369,43 +4638,13 @@ Android：メニュー→ホーム画面に追加
     {date:'6/28',dow:'日',time:'08:30b',home:{n:'DRコンゴ',cc:'cd'},      away:{n:'ウズベキスタン',cc:'uz'},group:'K',venue:'アトランタ',    score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/28',dow:'日',time:'11:00a',home:{n:'アルジェリア',cc:'dz'},  away:{n:'オーストリア',cc:'at'},group:'J',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/28',dow:'日',time:'11:00b',home:{n:'ヨルダン',cc:'jo'},      away:{n:'アルゼンチン',cc:'ar'},group:'J',venue:'ダラス',          score:'',   broad:['dazn','nhk'],   jp:false,free:false},
-    // ===== 決勝T 1回戦（ラウンド32）=====
-    {date:'6/29',dow:'日',time:'04:00',home:{n:'A組2位',cc:''},away:{n:'B組2位',cc:''},      group:'決勝T',venue:'ロサンゼルス',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'6/30',dow:'月',time:'02:00',home:{n:'C組1位',cc:''},away:{n:'F組2位',cc:''},      group:'決勝T',venue:'ヒューストン',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'6/30',dow:'月',time:'05:30',home:{n:'E組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'ボストン',        score:'',broad:['dazn'],jp:false,free:false},
-    {date:'6/30',dow:'月',time:'10:00',home:{n:'F組1位',cc:''},away:{n:'C組2位',cc:''},      group:'決勝T',venue:'モンテレイ',      score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/1', dow:'火',time:'02:00',home:{n:'E組2位',cc:''},away:{n:'I組2位',cc:''},      group:'決勝T',venue:'ダラス',          score:'',broad:['dazn','ntv'],jp:false,free:false},
-    {date:'7/1', dow:'火',time:'06:00',home:{n:'I組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'ニューヨーク',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/1', dow:'火',time:'10:00',home:{n:'A組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'メキシコシティ',  score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/2', dow:'水',time:'01:00',home:{n:'L組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'アトランタ',      score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/2', dow:'水',time:'05:00',home:{n:'G組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'シアトル',        score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/2', dow:'水',time:'09:00',home:{n:'D組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'サンフランシスコ',score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/3', dow:'木',time:'04:00',home:{n:'H組1位',cc:''},away:{n:'J組2位',cc:''},      group:'決勝T',venue:'ロサンゼルス',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/3', dow:'木',time:'08:00',home:{n:'K組2位',cc:''},away:{n:'L組2位',cc:''},      group:'決勝T',venue:'トロント',        score:'',broad:['dazn','ntv'],jp:false,free:false},
-    {date:'7/3', dow:'木',time:'12:00',home:{n:'B組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'バンクーバー',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/4', dow:'金',time:'03:00',home:{n:'D組2位',cc:''},away:{n:'G組2位',cc:''},      group:'決勝T',venue:'ダラス',          score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/4', dow:'金',time:'07:00',home:{n:'J組1位',cc:''},away:{n:'H組2位',cc:''},      group:'決勝T',venue:'マイアミ',        score:'',broad:['dazn','ntv'],jp:false,free:false},
-    {date:'7/4', dow:'金',time:'10:30',home:{n:'K組1位',cc:''},away:{n:'3位枠',cc:''},       group:'決勝T',venue:'カンザスシティ',  score:'',broad:['dazn'],jp:false,free:false},
-    // ===== 決勝T 2回戦（ラウンド16）=====
-    {date:'7/5', dow:'土',time:'02:00',home:{n:'R32-①勝者',cc:''},away:{n:'R32-④勝者',cc:''},group:'R16',venue:'ヒューストン',   score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/5', dow:'土',time:'06:00',home:{n:'R32-③勝者',cc:''},away:{n:'R32-⑥勝者',cc:''},group:'R16',venue:'フィラデルフィア',score:'',broad:['dazn','ntv'],jp:false,free:false},
-    {date:'7/6', dow:'日',time:'05:00',home:{n:'R32-②勝者',cc:''},away:{n:'R32-⑤勝者',cc:''},group:'R16',venue:'ニューヨーク',   score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/6', dow:'日',time:'09:00',home:{n:'R32-⑦勝者',cc:''},away:{n:'R32-⑧勝者',cc:''},group:'R16',venue:'メキシコシティ', score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/7', dow:'月',time:'04:00',home:{n:'R32-⑫勝者',cc:''},away:{n:'R32-⑪勝者',cc:''},group:'R16',venue:'ダラス',         score:'',broad:['dazn','ntv'],jp:false,free:false},
-    {date:'7/7', dow:'月',time:'09:00',home:{n:'R32-⑩勝者',cc:''},away:{n:'R32-⑨勝者',cc:''},group:'R16',venue:'シアトル',       score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/8', dow:'火',time:'01:00',home:{n:'R32-⑮勝者',cc:''},away:{n:'R32-⑭勝者',cc:''},group:'R16',venue:'アトランタ',     score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/8', dow:'火',time:'05:00',home:{n:'R32-⑬勝者',cc:''},away:{n:'R32-⑯勝者',cc:''},group:'R16',venue:'バンクーバー',   score:'',broad:['dazn'],jp:false,free:false},
-    // ===== 準々決勝 =====
-    {date:'7/10',dow:'金',time:'05:00',home:{n:'QF-b勝者',cc:''},away:{n:'QF-a勝者',cc:''},  group:'準々決勝',venue:'ボストン',        score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/11',dow:'土',time:'04:00',home:{n:'QF-e勝者',cc:''},away:{n:'QF-f勝者',cc:''},  group:'準々決勝',venue:'ロサンゼルス',    score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/12',dow:'日',time:'06:00',home:{n:'QF-c勝者',cc:''},away:{n:'QF-d勝者',cc:''},  group:'準々決勝',venue:'マイアミ',        score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/12',dow:'日',time:'10:00',home:{n:'QF-g勝者',cc:''},away:{n:'QF-h勝者',cc:''},  group:'準々決勝',venue:'カンザスシティ',  score:'',broad:['dazn'],jp:false,free:false},
-    // ===== 準決勝 =====
-    {date:'7/15',dow:'水',time:'04:00',home:{n:'🏆 準決勝1',cc:''},away:null,group:'準決勝',venue:'ダラス',   score:'',broad:['dazn-free'],jp:false,free:true},
-    {date:'7/16',dow:'木',time:'04:00',home:{n:'🏆 準決勝2',cc:''},away:null,group:'準決勝',venue:'アトランタ',score:'',broad:['dazn-free'],jp:false,free:true},
-    // ===== 3位決定戦・決勝 =====
-    {date:'7/19',dow:'日',time:'06:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',      score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
-    {date:'7/20',dow:'月',time:'04:00',home:{n:'🏆 決勝',cc:''},      away:null,group:'決勝',    venue:'ニューヨーク',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
+    {date:'6/28〜7/3',dow:'',time:'決勝T',home:{n:'ラウンド32（計16試合）',cc:''},away:null,group:'決勝T',venue:'各会場',score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/4〜7/7', dow:'',time:'決勝T',home:{n:'ラウンド16（計8試合）',cc:''},away:null,group:'決勝T',venue:'各会場',score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/9〜7/11',dow:'',time:'準々決勝',home:{n:'準々決勝（計4試合）',cc:''},away:null,group:'準々決勝',venue:'各会場',score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/14',dow:'火',time:'04:00',home:{n:'🏆 準決勝1',cc:''},away:null,group:'準決勝',venue:'ダラス',score:'',broad:['dazn','free'],jp:false,free:true},
+    {date:'7/15',dow:'水',time:'04:00',home:{n:'🏆 準決勝2',cc:''},away:null,group:'準決勝',venue:'アトランタ',score:'',broad:['dazn','free'],jp:false,free:true},
+    {date:'7/18',dow:'土',time:'04:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
+    {date:'7/19',dow:'日',time:'06:00',home:{n:'🏆 決勝',cc:''},away:null,group:'決勝',venue:'ニューヨーク',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
   ];
 
   // ===== スケジュールフィルター状態 =====
