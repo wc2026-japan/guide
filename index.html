@@ -2119,13 +2119,13 @@
     .tm-header {
       position: relative;
       padding: 20px 20px 16px;
-      overflow: hidden;
     }
     .tm-header::before {
       content: '';
       position: absolute;
       inset: 0;
       opacity: 0.18;
+      pointer-events: none;
     }
     .tm-drag-handle {
       width: 36px; height: 4px;
@@ -2137,15 +2137,23 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
-      color: rgba(255,255,255,0.7);
-      background: none;
-      border: none;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
       cursor: pointer;
       font-family: inherit;
       margin-bottom: 14px;
-      padding: 0;
+      padding: 8px 16px;
+      position: relative;
+      z-index: 10;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.1);
+      touch-action: manipulation;
+    }
+    .tm-back-btn:active {
+      background: rgba(255,255,255,0.18);
     }
     .tm-hero {
       display: flex;
@@ -2549,6 +2557,101 @@
       border-color: var(--card-border);
     }
 
+    /* ===== 敗退後 日本の軌跡 ===== */
+    .japan-over-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(255,77,46,0.15), rgba(10,18,40,0.95));
+      border: 1px solid rgba(255,77,46,0.4);
+      border-radius: 14px;
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .japan-over-banner.show { display: block; }
+    .job-emoji { font-size: 36px; margin-bottom: 8px; }
+    .job-title { font-size: 18px; font-weight: 900; color: var(--text-primary); margin-bottom: 6px; }
+    .job-sub { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .job-result-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px 0 0;
+      flex-wrap: wrap;
+    }
+    .job-result-pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .job-result-pill.draw { border-color: rgba(212,255,63,0.4); color: var(--gold); }
+    .job-result-pill.win  { border-color: rgba(52,217,165,0.5); color: #34d9a5; }
+    .job-result-pill.loss { border-color: rgba(255,77,46,0.4);  color: var(--japan-red); }
+
+    /* ===== 優勝予想 ===== */
+    .champion-pick-section { margin-top: 8px; }
+    .champion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .champion-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 4px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .champion-btn:active { background: rgba(255,255,255,0.1); }
+    .champion-btn.selected {
+      border-color: var(--gold);
+      background: rgba(212,255,63,0.1);
+    }
+    .cb-flag { font-size: 22px; line-height: 1; }
+    .cb-name { font-size: 10px; font-weight: 700; color: var(--text-muted); text-align: center; line-height: 1.2; }
+    .champion-btn.selected .cb-name { color: var(--gold); }
+    .champion-result-card {
+      display: none;
+      background: linear-gradient(135deg, rgba(212,255,63,0.12), rgba(10,18,40,0.9));
+      border: 1px solid rgba(212,255,63,0.4);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .champion-result-card.show { display: block; }
+    .crc-label { font-size: 11px; color: var(--gold-dim); font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+    .crc-pick { font-size: 28px; font-weight: 900; color: var(--text-primary); margin-bottom: 12px; }
+    .crc-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      touch-action: manipulation;
+    }
+    .crc-share-btn:active { opacity: 0.8; }
+    .crc-reset { font-size: 12px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: inherit; margin-top: 10px; display: block; width: 100%; touch-action: manipulation; }
+
   </style>
 </head>
 <body>
@@ -2611,6 +2714,14 @@
 
   <!-- ===== JAPAN TAB ===== -->
   <div id="section-japan" class="section active">
+
+    <!-- 敗退後バナー（JAPAN_STATUS='eliminated'時に表示） -->
+    <div class="japan-over-banner" id="japanOverBanner">
+      <div class="job-emoji">🇯🇵</div>
+      <div class="job-title" id="japanOverTitle">グループリーグ敗退</div>
+      <div class="job-sub" id="japanOverSub">2026 FIFAワールドカップ グループF<br>ご声援ありがとうございました</div>
+      <div class="job-result-row" id="japanOverResults"></div>
+    </div>
 
     <!-- ===== 速報欄 ===== -->
     <div class="section-label japan-section">🇯🇵 日本代表 速報</div>
@@ -3111,6 +3222,18 @@
   <!-- ===== PREDICT TAB ===== -->
   <div id="section-predict" class="section">
 
+    <!-- ===== 優勝予想 ===== -->
+    <div class="section-label">🏆 あなたの優勝予想</div>
+    <div class="champion-pick-section">
+      <div class="champion-result-card" id="championResultCard">
+        <div class="crc-label">YOUR PICK</div>
+        <div class="crc-pick" id="championPickDisplay"></div>
+        <button class="crc-share-btn" onclick="shareChampionPick()">𝕏 Xでシェア</button>
+        <button class="crc-reset" onclick="resetChampionPick()">選び直す</button>
+      </div>
+      <div id="championGrid" class="champion-grid"></div>
+    </div>
+
     <!-- 突破条件 -->
     <div class="section-label">🎯 グループF 突破条件</div>
     <div class="predict-status-card">
@@ -3321,6 +3444,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- ===== MEMBERS TAB ===== -->
@@ -3887,6 +4011,7 @@ Android：メニュー→ホーム画面に追加
     if (id === 'standings') renderStandings();
     if (id === 'members') showMembersContent();
     if (id === 'quiz') renderQuiz();
+    if (id === 'predict') renderChampionGrid();
   }
 
   function showMembersContent() {
@@ -3902,7 +4027,126 @@ Android：メニュー→ホーム画面に追加
     }
   }
 
-  // ===== STANDINGS DATA (第2節途中 6/20時点) =====
+  // ===== JAPAN STATUS =====
+  // 'active'      : グループリーグ戦中（通常表示）
+  // 'advancing'   : 決勝T進出確定
+  // 'eliminated'  : グループリーグ敗退
+  // 'knockout'    : 決勝T中
+  const JAPAN_STATUS = 'active';
+
+  // 優勝予想機能のリリースフラグ（ラウンド16開始時にtrueに変更）
+  const CHAMPION_RELEASED = false;
+
+  // 敗退後の結果サマリー（JAPAN_STATUS='eliminated'時に使用）
+  const JAPAN_RESULTS = [
+    { label: 'オランダ 2-2 日本', type: 'draw' },
+    { label: 'チュニジア ? - ? 日本', type: 'draw' },
+    { label: '日本 ? - ? スウェーデン', type: 'draw' },
+  ];
+
+  function initJapanStatus() {
+    if (JAPAN_STATUS === 'eliminated') {
+      // 敗退バナーを表示
+      document.getElementById('japanOverBanner').classList.add('show');
+      // 結果ピル生成
+      const row = document.getElementById('japanOverResults');
+      JAPAN_RESULTS.forEach(r => {
+        const el = document.createElement('span');
+        el.className = 'job-result-pill ' + r.type;
+        el.textContent = r.label;
+        row.appendChild(el);
+      });
+      // 速報・カウントダウンを非表示
+      const sokCard = document.getElementById('sokuhōCard');
+      const cdCard  = document.getElementById('countdownCard');
+      const sokLabel = document.querySelector('.section-label.japan-section');
+      if (sokCard)  sokCard.style.display = 'none';
+      if (cdCard)   cdCard.style.display  = 'none';
+      if (sokLabel) sokLabel.style.display = 'none';
+      // タブラベルを変更
+      const tab = document.querySelector('[data-tab-id="japan"]');
+      if (tab) tab.textContent = '🇯🇵 日本の軌跡';
+      // セクションラベルを変更
+      const grpLabel = document.querySelector('.section-label.japan-section:not(#sokuhōCard *)');
+      // ヘッダーのサブタイトルを更新
+      const sub = document.querySelector('.header-text p');
+      if (sub) sub.textContent = '日本の軌跡 · 全試合結果 · 優勝予想';
+    }
+  }
+
+  // ===== 優勝予想 =====
+  const CHAMPION_TEAMS = [
+    { flag:'🇦🇷', name:'アルゼンチン' },
+    { flag:'🇫🇷', name:'フランス'     },
+    { flag:'🇧🇷', name:'ブラジル'     },
+    { flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'イングランド' },
+    { flag:'🇩🇪', name:'ドイツ'       },
+    { flag:'🇪🇸', name:'スペイン'     },
+    { flag:'🇵🇹', name:'ポルトガル'   },
+    { flag:'🇳🇱', name:'オランダ'     },
+    { flag:'🇺🇸', name:'アメリカ'     },
+    { flag:'🇲🇽', name:'メキシコ'     },
+    { flag:'🇯🇵', name:'日本'         },
+    { flag:'🇰🇷', name:'韓国'         },
+    { flag:'🇲🇦', name:'モロッコ'     },
+    { flag:'🇸🇪', name:'スウェーデン' },
+    { flag:'🇺🇾', name:'ウルグアイ'   },
+    { flag:'🇨🇴', name:'コロンビア'   },
+  ];
+
+  let _championPick = localStorage.getItem('championPick2026') || null;
+
+  function renderChampionGrid() {
+    const section = document.querySelector('.champion-pick-section');
+    const label   = section ? section.previousElementSibling : null;
+    if (!CHAMPION_RELEASED) {
+      if (section) section.style.display = 'none';
+      if (label)   label.style.display   = 'none';
+      return;
+    }
+    const grid = document.getElementById('championGrid');
+    if (!grid) return;
+    const resultCard = document.getElementById('championResultCard');
+    if (_championPick) {
+      grid.style.display = 'none';
+      resultCard.classList.add('show');
+      document.getElementById('championPickDisplay').textContent = _championPick;
+    } else {
+      grid.style.display = 'grid';
+      resultCard.classList.remove('show');
+      grid.innerHTML = CHAMPION_TEAMS.map(t =>
+        `<button class="champion-btn" onclick="selectChampion('${t.flag} ${t.name}')" ontouchstart="">
+          <span class="cb-flag">${t.flag}</span>
+          <span class="cb-name">${t.name}</span>
+        </button>`
+      ).join('');
+    }
+  }
+
+  function selectChampion(pick) {
+    _championPick = pick;
+    localStorage.setItem('championPick2026', pick);
+    renderChampionGrid();
+  }
+
+  function resetChampionPick() {
+    _championPick = null;
+    localStorage.removeItem('championPick2026');
+    renderChampionGrid();
+  }
+
+  function shareChampionPick() {
+    if (!_championPick) return;
+    const text = `私の #W杯2026 優勝予想は ${_championPick}！🏆\n#北中米W杯 #サッカーW杯\nhttps://wc2026-japan.github.io/guide/`;
+    const url = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener');
+  }
+
+  // 初期化
+  document.addEventListener('DOMContentLoaded', function() {
+    initJapanStatus();
+    renderChampionGrid();
+  });
   const STANDINGS = {
     F: { jp:true, recap:'第1節：🇳🇱オランダ 2-2 🇯🇵日本　🇸🇪スウェーデン 5-1 🇹🇳チュニジア', teams:[
       { flag:'🇸🇪', name:'スウェーデン', gp:1, w:1, d:0, l:0, gf:5, ga:1, jp:false },
@@ -4599,10 +4843,15 @@ Android：メニュー→ホーム画面に追加
 
   const BROAD_LABEL_TM = { dazn:'DAZN', 'dazn-free':'DAZN無料', nhk:'NHK', nhkbs:'NHK BS', bsp4k:'BSP4K', ntv:'日テレ', fuji:'フジ', free:'無料' };
 
+  let _teamModalFromSection = null; // モーダルを開いた遷移元セクションID
+
   function openTeamModal(cc) {
     const flags = getFlags();
     const info = TEAM_INFO[cc];
     if (!info) return;
+    // 遷移元のアクティブセクションを記憶
+    const active = document.querySelector('.section.active');
+    _teamModalFromSection = active ? active.id.replace('section-', '') : 'japan';
 
     const groupColors = {A:'#1a5c2a',B:'#1a3a5c',C:'#3d1a1a',D:'#1a1a3d',
                          E:'#3d2b1a',F:'#1a2d55',G:'#2b1a3d',H:'#3d1a2d',
@@ -4695,8 +4944,12 @@ Android：メニュー→ホーム画面に追加
     if (e.target === document.getElementById('teamModalOverlay')) closeTeamModalDirect();
   }
   function closeTeamModalDirect() {
-    document.getElementById('teamModalOverlay').classList.remove('open');
+    const overlay = document.getElementById('teamModalOverlay');
+    overlay.classList.remove('open');
     document.body.style.overflow = '';
+    const dest = _teamModalFromSection || 'japan';
+    _teamModalFromSection = null;
+    showSection(dest);
   }
 
 </script>
@@ -4707,7 +4960,7 @@ Android：メニュー→ホーム画面に追加
     <div class="team-modal-card" id="teamModalCard" onclick="event.stopPropagation()">
       <div class="tm-header" id="tmHeader">
         <div class="tm-drag-handle"></div>
-        <button class="tm-back-btn" onclick="closeTeamModalDirect()">＜ 戻る</button>
+        <button class="tm-back-btn" onclick="event.stopPropagation();closeTeamModalDirect()" ontouchstart="">＜ 戻る</button>
         <div class="tm-hero">
           <div class="tm-flag-circle"><img id="tmFlagImg" src="" alt=""></div>
           <div>
