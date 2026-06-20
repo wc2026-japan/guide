@@ -4845,6 +4845,14 @@ Android：メニュー→ホーム画面に追加
 
   let _teamModalFromSection = null; // モーダルを開いた遷移元セクションID
 
+  // ブラウザバックでモーダルを閉じる
+  window.addEventListener('popstate', function(e) {
+    const overlay = document.getElementById('teamModalOverlay');
+    if (overlay && overlay.classList.contains('open')) {
+      closeTeamModalDirect(true); // historyは既に戻っているのでpushしない
+    }
+  });
+
   function openTeamModal(cc) {
     const flags = getFlags();
     const info = TEAM_INFO[cc];
@@ -4852,6 +4860,8 @@ Android：メニュー→ホーム画面に追加
     // 遷移元のアクティブセクションを記憶
     const active = document.querySelector('.section.active');
     _teamModalFromSection = active ? active.id.replace('section-', '') : 'japan';
+    // ブラウザ履歴にダミーエントリを追加（バックボタン対策）
+    history.pushState({ modal: 'team', cc: cc }, '', '');
 
     const groupColors = {A:'#1a5c2a',B:'#1a3a5c',C:'#3d1a1a',D:'#1a1a3d',
                          E:'#3d2b1a',F:'#1a2d55',G:'#2b1a3d',H:'#3d1a2d',
@@ -4943,10 +4953,13 @@ Android：メニュー→ホーム画面に追加
   function closeTeamModal(e) {
     if (e.target === document.getElementById('teamModalOverlay')) closeTeamModalDirect();
   }
-  function closeTeamModalDirect() {
+  function closeTeamModalDirect(fromPopstate) {
     const overlay = document.getElementById('teamModalOverlay');
+    if (!overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    // ボタン・オーバーレイタップで閉じた場合はhistoryを1つ戻す
+    if (!fromPopstate) history.back();
     const dest = _teamModalFromSection || 'japan';
     _teamModalFromSection = null;
     showSection(dest);
