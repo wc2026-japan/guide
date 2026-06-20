@@ -2,15 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJT7X6C035"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VJT7X6C035');
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0a1228">
   <meta name="mobile-web-app-capable" content="true">
@@ -256,6 +247,27 @@
       padding: 4px;
       font-family: inherit;
     }
+
+    /* 視聴診断リンク */
+    .watch-diag-btn {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; text-align: left;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 13px 14px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .watch-diag-btn:active { background: rgba(255,255,255,0.08); }
+    .watch-diag-icon { font-size: 24px; flex-shrink: 0; }
+    .watch-diag-text { flex: 1; min-width: 0; }
+    .watch-diag-title { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .watch-diag-sub { font-size: 12px; color: var(--sky-blue); }
+    .watch-diag-arrow { font-size: 22px; color: var(--text-muted); flex-shrink: 0; }
 
     /* ===== SECTION LABELS ===== */
     .section-label {
@@ -2594,27 +2606,100 @@
       margin-top: 10px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
     .scorer-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 13px;
       color: var(--text-muted);
-      padding: 3px 0;
+      padding: 4px 6px;
+      border-radius: 6px;
     }
-    .scorer-row.jp { color: var(--text-primary); }
+    .scorer-row.jp {
+      color: var(--text-primary);
+      background: rgba(188,0,45,0.07);
+    }
     .scorer-min {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       color: var(--gold);
-      min-width: 30px;
+      min-width: 32px;
+      flex-shrink: 0;
+    }
+    .scorer-flag {
+      font-size: 15px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .scorer-name { flex: 1; }
+    .scorer-og-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(255,200,0,0.15);
+      border: 1px solid rgba(255,200,0,0.3);
+      color: var(--gold);
+      border-radius: 4px;
+      padding: 1px 5px;
+      flex-shrink: 0;
     }
 
-    /* X速報リンク */
-    .sokuhō-x-section {
+    /* ===== 速報管理フォーム ===== */
+    .sokuhō-admin {
+      background: rgba(30,40,70,0.6);
+      border: 1px dashed rgba(212,255,63,0.25);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 8px;
+      margin-bottom: 14px;
+    }
+    .sokuhō-admin-title {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+      color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+    }
+    .adm-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; flex-wrap: wrap; }
+    .adm-label { font-size: 11px; color: var(--text-muted); min-width: 52px; flex-shrink: 0; }
+    .adm-select, .adm-input {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text-primary); border-radius: 7px; padding: 6px 10px;
+      font-size: 13px; font-family: inherit; outline: none; flex: 1; min-width: 0;
+    }
+    .adm-select:focus, .adm-input:focus { border-color: var(--sky-blue); }
+    .adm-input-min { max-width: 64px; flex: none; font-family: var(--font-mono); font-weight: 700; }
+    .adm-btn {
+      background: var(--sky-blue); color: #fff; border: none; border-radius: 7px;
+      padding: 7px 14px; font-size: 13px; font-weight: 700; cursor: pointer; flex-shrink: 0;
+    }
+    .adm-btn:active { opacity: 0.8; }
+    .adm-btn.danger { background: rgba(255,77,46,0.7); }
+    .adm-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 10px 0; }
+    .adm-goal-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+    .adm-goal-item {
+      display: flex; align-items: center; gap: 6px; font-size: 12px;
+      background: rgba(255,255,255,0.04); border-radius: 6px; padding: 5px 8px;
+    }
+    .adm-goal-del {
+      background: rgba(255,77,46,0.25); border: none; color: var(--japan-red);
+      border-radius: 4px; padding: 1px 7px; font-size: 12px; cursor: pointer; margin-left: auto;
+    }
+    .adm-score-row { display: flex; gap: 8px; align-items: center; }
+    .adm-score-box {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text-primary); border-radius: 7px; padding: 6px 0;
+      font-size: 20px; font-weight: 900; font-family: var(--font-mono);
+      width: 48px; text-align: center; outline: none;
+    }
+    .adm-score-box:focus { border-color: var(--sky-blue); }
+    .adm-apply-btn {
+      background: linear-gradient(135deg, var(--sky-blue), #1e4fd8);
+      color: #fff; border: none; border-radius: 8px;
+      padding: 9px 0; font-size: 13px; font-weight: 800; cursor: pointer;
+      width: 100%; margin-top: 10px; letter-spacing: 1px;
+    }
+    .adm-apply-btn:active { opacity: 0.85; }
       border-top: 1px solid var(--line-white);
       padding: 12px 16px;
       display: flex;
@@ -2802,6 +2887,7 @@
     <button class="tab" data-tab-id="standings" onclick="showSection('standings', this)">🏆 順位表</button>
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📱 保存</button>
+    <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)">⚙️ 管理</button>
   </div>
 </div>
 
@@ -2905,6 +2991,16 @@
       </div>
       <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'; localStorage.setItem('bannerClosed','1')">✕</button>
     </div>
+
+    <!-- 視聴診断リンク -->
+    <button class="watch-diag-btn" onclick="showSection('quiz', document.querySelector('[data-tab-id=\'quiz\']'))">
+      <span class="watch-diag-icon">📺</span>
+      <div class="watch-diag-text">
+        <div class="watch-diag-title">日本戦の視聴方法を診断</div>
+        <div class="watch-diag-sub">無料 / DAZN / NHK… どれで観る？</div>
+      </div>
+      <span class="watch-diag-arrow">›</span>
+    </button>
 
     <div class="section-label japan-section">⚽ グループリーグ — グループF</div>
 
@@ -3231,9 +3327,9 @@
       <table class="standings-table">
         <thead><tr><th>Team</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GD</th><th class="th-pts">Pts</th></tr></thead>
         <tbody>
-          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>1</td><td>1</td><td>0</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts leader">3</td></tr>
+          <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>2</td><td>1</td><td>1</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts leader">4</td></tr>
+          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td class="td-pts">3</td></tr>
           <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
-          <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td class="td-pts">1</td></tr>
           <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>1</td><td>0</td><td>0</td><td>1</td><td class="td-gd-neg">-4</td><td class="td-pts">0</td></tr>
         </tbody>
       </table>
@@ -3248,7 +3344,7 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇳🇱 オランダ</div>
-          <div class="opp-card-rank">FIFA 8位 · グループF第1節</div>
+          <div class="opp-card-rank">FIFA 8位 · グループF 2試合終了 · 4pt首位</div>
         </div>
         <div class="opp-match-badge played">6/15 終了<br>2-2</div>
       </div>
@@ -3291,7 +3387,17 @@
             </div>
           </div>
         </div>
-        <div class="opp-note">準優勝3回の名門。第1節を2-2で終えており、グループ突破に向けて日本の勝ち点争いの最大のライバル。</div>
+        <div class="opp-result-row" style="margin-bottom:8px">
+          <div>
+            <div class="opp-result-label">📊 6/20 第2節 vs スウェーデン</div>
+            <div class="opp-result-label" style="margin-top:2px">ヒューストン</div>
+          </div>
+          <div style="text-align:right">
+            <div class="opp-result-score">5 - 1</div>
+            <span class="opp-result-badge win">快勝</span>
+          </div>
+        </div>
+        <div class="opp-note">第2節でスウェーデンを5-1で粉砕し4pt首位に浮上。ブロビー2得点・ガクポ2得点の圧巻の攻撃力。第3節はチュニジア戦のため日本とは直接対決なし。日本はオランダが第3節で勝てば1位通過確定のシナリオを追いたい。</div>
       </div>
     </div>
 
@@ -3354,7 +3460,7 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇸🇪 スウェーデン</div>
-          <div class="opp-card-rank">FIFA 38位 · グループF第3節</div>
+          <div class="opp-card-rank">FIFA 38位 · グループF 2試合終了 · 3pt</div>
         </div>
         <div class="opp-match-badge next">6/26（金）<br>08:00</div>
       </div>
@@ -3372,8 +3478,8 @@
         </div>
         <div class="opp-result-row">
           <div>
-            <div class="opp-result-label">📊 第1節 vs チュニジア</div>
-            <div class="opp-result-label" style="margin-top:2px">モンテレイ（6/15）</div>
+            <div class="opp-result-label">📊 第1節 vs チュニジア（6/15）</div>
+            <div class="opp-result-label" style="margin-top:2px">モンテレイ</div>
           </div>
           <div style="text-align:right">
             <div class="opp-result-score">5 - 1</div>
@@ -3397,7 +3503,17 @@
             </div>
           </div>
         </div>
-        <div class="opp-note">グループ首位で迎える最終節。第3節はオランダ戦と同時刻キックオフ。UEFA予選では最下位からプレーオフで這い上がってきた粘り強さがあり、油断は禁物。</div>
+        <div class="opp-result-row" style="margin-bottom:8px">
+          <div>
+            <div class="opp-result-label">📊 第2節 vs オランダ（6/20）</div>
+            <div class="opp-result-label" style="margin-top:2px">ヒューストン</div>
+          </div>
+          <div style="text-align:right">
+            <div class="opp-result-score">1 - 5</div>
+            <span class="opp-result-badge loss">大敗</span>
+          </div>
+        </div>
+        <div class="opp-note">第2節でオランダに1-5と大敗し突破に黄信号。3pt・暫定2位だが得失点差が一気に悪化（±0→-4）。日本と直接対決の第3節は両チームとも必死の一戦になる。スウェーデンが突破するには日本に勝つしかなく、全力で来ることが確実。</div>
       </div>
     </div>
 
@@ -3474,7 +3590,7 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/19 · 28試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong>6/12〜6/20 · 33試合終了</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
@@ -3518,9 +3634,9 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" class="psc-flag" alt="日本">
         <div>
           <div class="psc-title">日本 現在の状況</div>
-          <div class="psc-record">1試合 ／ 1分0敗 ／ 勝点1　🇳🇱 2-2 🇯🇵</div>
+          <div class="psc-record">1試合 ／ 1分0敗 ／ 勝点1　🇳🇱2-2🇯🇵（第1節）｜第2節 vs 🇹🇳 本日13:00</div>
         </div>
-        <div class="psc-pos-badge">暫定2位</div>
+        <div class="psc-pos-badge">暫定3位</div>
       </div>
     </div>
 
@@ -3530,21 +3646,21 @@
         <div class="ps-icon">✅</div>
         <div class="ps-body">
           <div class="ps-title">突破確定ライン</div>
-          <div class="ps-desc">チュニジア戦またはスウェーデン戦で<strong>勝利1回</strong>で実質的に突破圏内。2試合で勝点4以上が目安。</div>
+          <div class="ps-desc"><strong>チュニジア戦に勝利</strong>すれば勝点4で実質突破確定圏内。オランダが失速した今、2位以内は十分狙える。</div>
         </div>
       </div>
       <div class="predict-scenario yellow">
         <div class="ps-icon">⚠️</div>
         <div class="ps-body">
           <div class="ps-title">引き分け継続の場合</div>
-          <div class="ps-desc">残り2試合とも引き分けで勝点3。3位通過の可能性あり（他グループの成績次第）。</div>
+          <div class="ps-desc">チュニジア戦引き分けの場合、勝点2で3位。スウェーデン戦勝利が必須。3位通過は他グループ次第で不確実。</div>
         </div>
       </div>
       <div class="predict-scenario red">
         <div class="ps-icon">❌</div>
         <div class="ps-body">
           <div class="ps-title">敗退のリスク</div>
-          <div class="ps-desc">残り2試合を連敗すると勝点1で敗退が濃厚。チュニジア戦が最重要マッチ。</div>
+          <div class="ps-desc">チュニジア戦に敗れると勝点1で崖っぷち。スウェーデン戦次第になるため、<strong>今日の勝利が絶対条件</strong>。</div>
         </div>
       </div>
     </div>
@@ -3586,13 +3702,13 @@
         </div>
         <div class="pmc-bar-wrap">
           <div class="pmc-label-row"><span>日本</span><span>スウェーデン</span></div>
-          <div class="pmc-bar"><div class="pmc-fill" style="width:48%"></div></div>
-          <div class="pmc-sublabel">ほぼ互角 48% ｜ 相手 52%</div>
+          <div class="pmc-bar"><div class="pmc-fill" style="width:52%"></div></div>
+          <div class="pmc-sublabel">日本やや有利 52% ｜ 相手 48%</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第1節5-1大勝で首位。勢いあり</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>イサク・クルゼフスキら強力FW</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は状況次第で勝点1狙いも</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第2節でオランダに1-5大敗。突破に黄信号</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>イサク・ギェケレシュら強力FW健在</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は3節で共倒れを狙いたい相手</div>
         </div>
       </div>
     </div>
@@ -3876,9 +3992,81 @@ Android：メニュー→ホーム画面に追加
     <button class="share-btn" onclick="shareNative()">🐦 Xでポストする</button>
   </div>
 
-</div>
+  <!-- ===== ADMIN TAB ===== -->
+  <div id="section-admin" class="section">
+    <div class="section-label">⚙️ 速報管理</div>
 
-<!-- BOTTOM NAV -->
+    <div class="sokuhō-admin" id="sokuhōAdmin">
+      <div class="sokuhō-admin-title">⚙️ LIVE UPDATE · 速報入力</div>
+
+      <!-- ロック画面 -->
+      <div id="admLock" style="text-align:center;padding:6px 0 10px">
+        <div style="font-size:22px;margin-bottom:8px">🔒</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">管理者のみ利用できます</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <input id="admPwInput" class="adm-input" type="password" placeholder="パスワード"
+            style="max-width:160px;text-align:center"
+            onkeydown="if(event.key==='Enter')admUnlock()">
+          <button class="adm-btn" onclick="admUnlock()">解錠</button>
+        </div>
+        <div id="admPwErr" style="font-size:11px;color:var(--japan-red);margin-top:6px;display:none">パスワードが違います</div>
+      </div>
+
+      <!-- 入力コンテンツ（ロック中は非表示） -->
+      <div id="admContent" style="display:none">
+
+        <!-- 試合状態 & スコア -->
+        <div class="adm-row">
+          <span class="adm-label">状態</span>
+          <select class="adm-select" id="admState">
+            <option value="prematch">試合前</option>
+            <option value="live">LIVE 進行中</option>
+            <option value="finished">終了</option>
+          </select>
+        </div>
+        <div class="adm-row">
+          <span class="adm-label">スコア</span>
+          <span style="font-size:12px;color:var(--text-muted);flex-shrink:0">チュニジア</span>
+          <input class="adm-score-box" id="admHome" type="number" min="0" max="20" placeholder="-">
+          <span style="font-family:var(--font-mono);font-weight:900;color:var(--text-muted)">:</span>
+          <input class="adm-score-box" id="admAway" type="number" min="0" max="20" placeholder="-">
+          <span style="font-size:12px;color:var(--japan-red);font-weight:700;flex-shrink:0">日本</span>
+        </div>
+        <div class="adm-row">
+          <span class="adm-label">時間</span>
+          <input class="adm-input" id="admMinute" placeholder="例: 45+2' / 前半終了">
+        </div>
+
+        <hr class="adm-divider">
+
+        <!-- ゴール追加 -->
+        <div class="adm-row">
+          <span class="adm-label">⚽ 得点</span>
+          <input class="adm-input" id="admGoalMin" placeholder="23'" style="max-width:56px;font-family:var(--font-mono);font-weight:700">
+          <input class="adm-input" id="admGoalName" placeholder="選手名">
+          <select class="adm-select" id="admGoalTeam" style="max-width:84px">
+            <option value="jp">🇯🇵 日本</option>
+            <option value="tn">🇹🇳 相手</option>
+          </select>
+          <select class="adm-select" id="admGoalOg" style="max-width:68px">
+            <option value="0">通常</option>
+            <option value="1">OG</option>
+          </select>
+          <button class="adm-btn" onclick="admAddGoal()">追加</button>
+        </div>
+
+        <!-- 登録済みゴール一覧 -->
+        <div class="adm-goal-list" id="admGoalList"></div>
+
+        <!-- 反映ボタン -->
+        <button class="adm-apply-btn" onclick="admApply()">✅ 速報欄に反映</button>
+        <button class="adm-btn" onclick="admLock()" style="width:100%;margin-top:8px;background:rgba(255,255,255,0.07);color:var(--text-muted)">🔒 ロック</button>
+
+      </div><!-- /admContent -->
+    </div>
+  </div>
+
+</div>
 <nav class="bottom-nav">
   <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
     <span class="nav-icon">🇯🇵</span>日本戦
@@ -4279,7 +4467,7 @@ Android：メニュー→ホーム画面に追加
     });
 
     // Bottom nav
-    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings' };
+    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     const navTarget = document.getElementById(navId || navMap[id] || 'nav-japan');
     if (navTarget) navTarget.classList.add('active');
@@ -4425,17 +4613,17 @@ Android：メニュー→ホーム画面に追加
     renderChampionGrid();
   });
   const STANDINGS = {
-    F: { jp:true, recap:'第1節：🇳🇱オランダ 2-2 🇯🇵日本　🇸🇪スウェーデン 5-1 🇹🇳チュニジア', teams:[
-      { flag:'🇸🇪', name:'スウェーデン', gp:1, w:1, d:0, l:0, gf:5, ga:1, jp:false },
+    F: { jp:true, recap:'第2節：🇳🇱オランダ 5-1 🇸🇪スウェーデン　🇹🇳チュニジア vs 🇯🇵日本（6/21 13:00）', teams:[
+      { flag:'🇳🇱', name:'オランダ',     gp:2, w:1, d:1, l:0, gf:7, ga:3, jp:false },
+      { flag:'🇸🇪', name:'スウェーデン', gp:2, w:1, d:0, l:1, gf:6, ga:6, jp:false },
       { flag:'🇯🇵', name:'日本',         gp:1, w:0, d:1, l:0, gf:2, ga:2, jp:true  },
-      { flag:'🇳🇱', name:'オランダ',     gp:1, w:0, d:1, l:0, gf:2, ga:2, jp:false },
       { flag:'🇹🇳', name:'チュニジア',   gp:1, w:0, d:0, l:1, gf:1, ga:5, jp:false },
     ]},
     A: { recap:'第2節：🇲🇽メキシコ 1-0 🇰🇷韓国　🇨🇿チェコ 1-1 🇿🇦南アフリカ', teams:[
-      { flag:'🇲🇽', name:'メキシコ',  gp:2, w:2, d:0, l:0, gf:3, ga:0 },
-      { flag:'🇰🇷', name:'韓国',      gp:2, w:1, d:0, l:1, gf:2, ga:3 },
-      { flag:'🇨🇿', name:'チェコ',    gp:2, w:0, d:1, l:1, gf:2, ga:3 },
-      { flag:'🇿🇦', name:'南アフリカ',gp:2, w:0, d:1, l:1, gf:1, ga:2 },
+      { flag:'🇲🇽', name:'メキシコ',   gp:2, w:2, d:0, l:0, gf:3, ga:0 },
+      { flag:'🇰🇷', name:'韓国',       gp:2, w:1, d:0, l:1, gf:2, ga:2 },
+      { flag:'🇨🇿', name:'チェコ',     gp:2, w:0, d:1, l:1, gf:2, ga:3 },
+      { flag:'🇿🇦', name:'南アフリカ', gp:2, w:0, d:1, l:1, gf:1, ga:3 },
     ]},
     B: { recap:'第2節：🇨🇭スイス 4-1 🇧🇦ボスニア　🇨🇦カナダ 6-0 🇶🇦カタール', teams:[
       { flag:'🇨🇦', name:'カナダ',   gp:2, w:1, d:1, l:0, gf:7, ga:1 },
@@ -4444,10 +4632,10 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇶🇦', name:'カタール', gp:2, w:0, d:1, l:1, gf:1, ga:7 },
     ]},
     C: { recap:'第2節：🏴󠁧󠁢󠁳󠁣󠁴󠁿スコットランド 0-1 🇲🇦モロッコ　🇧🇷ブラジル 3-0 🇭🇹ハイチ', teams:[
-      { flag:'🇲🇦', name:'モロッコ',    gp:2, w:1, d:1, l:0, gf:2, ga:1 },
-      { flag:'🇧🇷', name:'ブラジル',    gp:2, w:1, d:1, l:0, gf:4, ga:1 },
+      { flag:'🇧🇷', name:'ブラジル',       gp:2, w:1, d:1, l:0, gf:4, ga:1 },
+      { flag:'🇲🇦', name:'モロッコ',       gp:2, w:1, d:1, l:0, gf:2, ga:1 },
       { flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', name:'スコットランド', gp:2, w:1, d:0, l:1, gf:1, ga:1 },
-      { flag:'🇭🇹', name:'ハイチ',      gp:2, w:0, d:0, l:2, gf:0, ga:4 },
+      { flag:'🇭🇹', name:'ハイチ',         gp:2, w:0, d:0, l:2, gf:0, ga:4 },
     ]},
     D: { recap:'第2節：🇺🇸アメリカ 2-0 🇦🇺オーストラリア　🇹🇷トルコ 0-1 🇵🇾パラグアイ', teams:[
       { flag:'🇺🇸', name:'アメリカ',       gp:2, w:2, d:0, l:0, gf:6, ga:1 },
@@ -4456,14 +4644,14 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇹🇷', name:'トルコ',         gp:2, w:0, d:0, l:2, gf:0, ga:3 },
     ]},
     E: { recap:'第1節：🇩🇪ドイツ 7-1 🇨🇼キュラソー　🇨🇮コートジボワール 1-0 🇪🇨エクアドル', teams:[
-      { flag:'🇩🇪', name:'ドイツ',         gp:1, w:1, d:0, l:0, gf:7, ga:1 },
-      { flag:'🇨🇮', name:'コートジボワール',gp:1, w:1, d:0, l:0, gf:1, ga:0 },
-      { flag:'🇪🇨', name:'エクアドル',     gp:1, w:0, d:0, l:1, gf:0, ga:1 },
-      { flag:'🇨🇼', name:'キュラソー',     gp:1, w:0, d:0, l:1, gf:1, ga:7 },
+      { flag:'🇩🇪', name:'ドイツ',          gp:1, w:1, d:0, l:0, gf:7, ga:1 },
+      { flag:'🇨🇮', name:'コートジボワール', gp:1, w:1, d:0, l:0, gf:1, ga:0 },
+      { flag:'🇪🇨', name:'エクアドル',      gp:1, w:0, d:0, l:1, gf:0, ga:1 },
+      { flag:'🇨🇼', name:'キュラソー',      gp:1, w:0, d:0, l:1, gf:1, ga:7 },
     ]},
     G: { recap:'第1節：🇧🇪ベルギー 1-1 🇪🇬エジプト　🇮🇷イラン 2-2 🇳🇿ニュージーランド', teams:[
-      { flag:'🇳🇿', name:'ニュージーランド', gp:1, w:0, d:1, l:0, gf:2, ga:2 },
       { flag:'🇮🇷', name:'イラン',          gp:1, w:0, d:1, l:0, gf:2, ga:2 },
+      { flag:'🇳🇿', name:'ニュージーランド', gp:1, w:0, d:1, l:0, gf:2, ga:2 },
       { flag:'🇧🇪', name:'ベルギー',        gp:1, w:0, d:1, l:0, gf:1, ga:1 },
       { flag:'🇪🇬', name:'エジプト',        gp:1, w:0, d:1, l:0, gf:1, ga:1 },
     ]},
@@ -4473,7 +4661,7 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇪🇸', name:'スペイン',       gp:1, w:0, d:1, l:0, gf:0, ga:0 },
       { flag:'🇨🇻', name:'カーボベルデ',   gp:1, w:0, d:1, l:0, gf:0, ga:0 },
     ]},
-    I: { recap:'第1節：🇳🇴ノルウェー 4-1 🇮🇶イラク　🇫🇷フランス 3-1 🇸🇳セネガル', teams:[
+    I: { recap:'第1節：🇫🇷フランス 3-1 🇸🇳セネガル　🇮🇶イラク 1-4 🇳🇴ノルウェー', teams:[
       { flag:'🇳🇴', name:'ノルウェー', gp:1, w:1, d:0, l:0, gf:4, ga:1 },
       { flag:'🇫🇷', name:'フランス',   gp:1, w:1, d:0, l:0, gf:3, ga:1 },
       { flag:'🇸🇳', name:'セネガル',   gp:1, w:0, d:0, l:1, gf:1, ga:3 },
@@ -4485,11 +4673,11 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇯🇴', name:'ヨルダン',     gp:1, w:0, d:0, l:1, gf:1, ga:3 },
       { flag:'🇩🇿', name:'アルジェリア', gp:1, w:0, d:0, l:1, gf:0, ga:3 },
     ]},
-    K: { recap:'第1節：🇨🇩DRコンゴ 1-1 🇵🇹ポルトガル　🇺🇿ウズベキスタン 1-3 🇨🇴コロンビア', teams:[
-      { flag:'🇨🇩', name:'DRコンゴ',     gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇵🇹', name:'ポルトガル',   gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇺🇿', name:'ウズベキスタン',gp:1, w:0, d:0, l:1, gf:1, ga:3 },
-      { flag:'🇨🇴', name:'コロンビア',   gp:1, w:1, d:0, l:0, gf:3, ga:1 },
+    K: { recap:'第1節：🇵🇹ポルトガル 1-1 🇨🇩DRコンゴ　🇺🇿ウズベキスタン 1-3 🇨🇴コロンビア', teams:[
+      { flag:'🇨🇴', name:'コロンビア',    gp:1, w:1, d:0, l:0, gf:3, ga:1 },
+      { flag:'🇵🇹', name:'ポルトガル',    gp:1, w:0, d:1, l:0, gf:1, ga:1 },
+      { flag:'🇨🇩', name:'DRコンゴ',      gp:1, w:0, d:1, l:0, gf:1, ga:1 },
+      { flag:'🇺🇿', name:'ウズベキスタン', gp:1, w:0, d:0, l:1, gf:1, ga:3 },
     ]},
     L: { recap:'第1節：🏴󠁧󠁢󠁥󠁮󠁧󠁿イングランド 4-2 🇭🇷クロアチア　🇬🇭ガーナ 1-0 🇵🇦パナマ', teams:[
       { flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'イングランド', gp:1, w:1, d:0, l:0, gf:4, ga:2 },
@@ -4602,11 +4790,11 @@ Android：メニュー→ホーム画面に追加
     {date:'6/19',dow:'金',time:'04:00',home:{n:'スイス',cc:'ch'},         away:{n:'ボスニア',cc:'ba'},    group:'B',venue:'ロサンゼルス',    score:'4-1',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'07:00',home:{n:'カナダ',cc:'ca'},         away:{n:'カタール',cc:'qa'},    group:'B',venue:'バンクーバー',    score:'6-0',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'10:00',home:{n:'メキシコ',cc:'mx'},       away:{n:'韓国',cc:'kr'},        group:'A',venue:'グアダラハラ',    score:'1-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
-    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:false},
-    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
-    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:false},
-    {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
+    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
+    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:true},
+    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
+    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'5-1',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
     {date:'6/21',dow:'日',time:'05:00',home:{n:'ドイツ',cc:'de'},         away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'トロント',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
     {date:'6/21',dow:'日',time:'09:00',home:{n:'エクアドル',cc:'ec'},     away:{n:'キュラソー',cc:'cw'},  group:'E',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/21',dow:'日',time:'13:00',home:{n:'チュニジア',cc:'tn'},     away:{n:'日本',cc:'jp'},        group:'F',venue:'モンテレイ',      score:'',   broad:['dazn-free','ntv','nhkbs','bsp4k'],jp:true,free:true},
@@ -5008,15 +5196,20 @@ Android：メニュー→ホーム画面に追加
   // state: 'prematch' | 'live' | 'finished'
   // homeScore/awayScore: 数字（試合前は null）
   // minute: '23'' のような文字列（試合前・終了は ''）
-  // scorers: [{ min: '23', name: '鎌田 大地', jp: true }, ...]
+  // scorers: [
+  //   { min: '23'', name: '鎌田 大地', jp: true,  og: false },  // 日本のゴール
+  //   { min: '55'', name: 'XXX',       jp: false, og: false },  // 相手のゴール
+  //   { min: '67'', name: '上田 綺世', jp: true,  og: true  },  // オウンゴール（日本選手名で記録）
+  // ]
   const SOKUHŌ_STATE = {
     state:      'prematch',   // ← ここを変更: prematch / live / finished
     homeScore:  null,         // チュニジアのスコア
     awayScore:  null,         // 日本のスコア
     minute:     '',           // 試合時間 例: '45+2''
     scorers: [
-      // { min: '23'', name: '⚽ 鎌田 大地', jp: true },
-      // { min: '55'', name: '⚽ XXX', jp: false },
+      // { min: "23'", name: '鎌田 大地', jp: true,  og: false },
+      // { min: "55'", name: 'メジブリ',  jp: false, og: false },
+      // { min: "67'", name: '上田 綺世', jp: true,  og: true  },
     ],
   };
 
@@ -5052,12 +5245,20 @@ Android：メニュー→ホーム画面に追加
     const scorersEl = document.getElementById('sokuhōScorers');
     if (scorers && scorers.length > 0) {
       scorersEl.style.display = 'flex';
-      scorersEl.innerHTML = scorers.map(s =>
-        '<div class="scorer-row' + (s.jp ? ' jp' : '') + '">'
-        + '<span class="scorer-min">' + s.min + '</span>'
-        + '<span>' + s.name + '</span>'
-        + '</div>'
-      ).join('');
+      // チュニジア国旗（テキスト絵文字）
+      const TN_FLAG = '🇹🇳';
+      const JP_FLAG = '🇯🇵';
+      scorersEl.innerHTML = scorers.map(s => {
+        const flag = s.jp ? JP_FLAG : TN_FLAG;
+        const ogTag = s.og ? '<span class="scorer-og-tag">OG</span>' : '';
+        const ball = s.og ? '⚽️' : '⚽';
+        return '<div class="scorer-row' + (s.jp ? ' jp' : '') + '">'
+          + '<span class="scorer-min">' + s.min + '</span>'
+          + '<span class="scorer-flag">' + flag + '</span>'
+          + '<span class="scorer-name">' + ball + ' ' + s.name + '</span>'
+          + ogTag
+          + '</div>';
+      }).join('');
     } else {
       scorersEl.style.display = 'none';
     }
@@ -5065,6 +5266,120 @@ Android：メニュー→ホーム画面に追加
 
   // 初期化
   try { initSokuhō(); } catch(e) {}
+
+  // ===== 速報管理フォーム JS =====
+  // パスワード照合（SHA-256ハッシュ）
+  const ADM_PW_HASH = '1bf63200cb4a142a9ae7f1f55b50518ed39acdf8479a8cb0f67e3f1fc7081a15'; // samurai2026
+  async function admCheckPw(pw) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('') === ADM_PW_HASH;
+  }
+  async function admUnlock() {
+    const pw = document.getElementById('admPwInput')?.value || '';
+    const ok = await admCheckPw(pw);
+    if (ok) {
+      document.getElementById('admLock').style.display    = 'none';
+      document.getElementById('admContent').style.display = 'block';
+      document.getElementById('admPwInput').value = '';
+      document.getElementById('admPwErr').style.display   = 'none';
+      sessionStorage.setItem('adm_unlocked', '1');
+    } else {
+      document.getElementById('admPwErr').style.display = 'block';
+      document.getElementById('admPwInput').value = '';
+      document.getElementById('admPwInput').focus();
+    }
+  }
+  function admLock() {
+    document.getElementById('admLock').style.display    = 'block';
+    document.getElementById('admContent').style.display = 'none';
+    sessionStorage.removeItem('adm_unlocked');
+  }
+  // セッション中は解錠状態を維持
+  if (sessionStorage.getItem('adm_unlocked') === '1') {
+    try {
+      document.getElementById('admLock').style.display    = 'none';
+      document.getElementById('admContent').style.display = 'block';
+    } catch(e) {}
+  }
+
+  let _admGoals = [];   // { min, name, jp, og }
+
+  function admRenderGoalList() {
+    const el = document.getElementById('admGoalList');
+    if (!el) return;
+    if (_admGoals.length === 0) { el.innerHTML = ''; return; }
+    el.innerHTML = _admGoals.map((g, i) => {
+      const flag = g.jp ? '🇯🇵' : '🇹🇳';
+      const og   = g.og  ? ' <span style="color:var(--gold);font-size:10px">[OG]</span>' : '';
+      return `<div class="adm-goal-item">
+        <span style="font-family:var(--font-mono);color:var(--gold);font-size:11px">${g.min}</span>
+        <span>${flag}</span>
+        <span style="flex:1">${g.name}${og}</span>
+        <button class="adm-goal-del" onclick="admDelGoal(${i})">✕</button>
+      </div>`;
+    }).join('');
+  }
+
+  function admAddGoal() {
+    const min  = (document.getElementById('admGoalMin')?.value  || '').trim();
+    const name = (document.getElementById('admGoalName')?.value || '').trim();
+    const jp   = document.getElementById('admGoalTeam')?.value === 'jp';
+    const og   = document.getElementById('admGoalOg')?.value   === '1';
+    if (!min || !name) { alert('時間と選手名を入力してください'); return; }
+    _admGoals.push({ min, name, jp, og });
+    // 入力欄リセット
+    document.getElementById('admGoalMin').value  = '';
+    document.getElementById('admGoalName').value = '';
+    document.getElementById('admGoalTeam').value = 'jp';
+    document.getElementById('admGoalOg').value   = '0';
+    admRenderGoalList();
+  }
+
+  function admDelGoal(i) {
+    _admGoals.splice(i, 1);
+    admRenderGoalList();
+  }
+
+  function admApply() {
+    const state   = document.getElementById('admState')?.value || 'prematch';
+    const homeVal = document.getElementById('admHome')?.value;
+    const awayVal = document.getElementById('admAway')?.value;
+    const minute  = (document.getElementById('admMinute')?.value || '').trim();
+    const homeScore = homeVal !== '' ? Number(homeVal) : null;
+    const awayScore = awayVal !== '' ? Number(awayVal) : null;
+    // SOKUHŌ_STATEを上書き
+    SOKUHŌ_STATE.state      = state;
+    SOKUHŌ_STATE.homeScore  = homeScore;
+    SOKUHŌ_STATE.awayScore  = awayScore;
+    SOKUHŌ_STATE.minute     = minute;
+    SOKUHŌ_STATE.scorers    = _admGoals.slice();
+    initSokuhō();
+    // フォームを一瞬フラッシュして反映確認
+    const btn = document.querySelector('.adm-apply-btn');
+    if (btn) {
+      btn.textContent = '✅ 反映しました！';
+      setTimeout(() => {
+        btn.textContent = '✅ 速報欄に反映';
+        // 日本戦タブへ移動
+        showSection('japan', document.querySelector('[data-tab-id="japan"]'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 800);
+    }
+  }
+
+  // フォームの初期状態を同期
+  try {
+    const s = document.getElementById('admState');
+    if (s) s.value = SOKUHŌ_STATE.state;
+    const h = document.getElementById('admHome');
+    if (h && SOKUHŌ_STATE.homeScore !== null) h.value = SOKUHŌ_STATE.homeScore;
+    const a = document.getElementById('admAway');
+    if (a && SOKUHŌ_STATE.awayScore !== null) a.value = SOKUHŌ_STATE.awayScore;
+    const m = document.getElementById('admMinute');
+    if (m) m.value = SOKUHŌ_STATE.minute;
+    _admGoals = SOKUHŌ_STATE.scorers.slice();
+    admRenderGoalList();
+  } catch(e) {}
 
   // ===== TEAM DETAIL MODAL =====
   const TEAM_INFO = {
