@@ -74,6 +74,36 @@
       overflow-x: hidden;
     }
 
+    /* ===== JP DETAIL LINK ===== */
+    .jp-detail-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0 0 14px;
+      padding: 12px 16px;
+      background: linear-gradient(90deg, rgba(255,77,46,0.15) 0%, rgba(59,122,240,0.12) 100%);
+      border: 1px solid rgba(255,77,46,0.35);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .jp-detail-link:active {
+      background: linear-gradient(90deg, rgba(255,77,46,0.25) 0%, rgba(59,122,240,0.2) 100%);
+      border-color: rgba(255,77,46,0.6);
+    }
+    .jp-detail-arrow {
+      font-size: 20px;
+      color: var(--japan-red);
+      font-weight: 900;
+      line-height: 1;
+    }
+
     /* ===== HEADER ===== */
     .header {
       position: sticky;
@@ -2526,11 +2556,11 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-inner">
-    <span class="header-ball">🏆</span>
+    <span class="header-ball">🇯🇵</span>
     <div class="header-text">
-      <h1>FIFA WORLD CUP 2026</h1>
-      <div class="title-ja">ワールドカップ 日本ガイド</div>
-      <p>KICKOFF JST · 104 MATCHES · GROUP F</p>
+      <h1>FIFA World Cup 2026</h1>
+      <div class="title-ja">北中米W杯2026 日本代表ガイド</div>
+      <p>試合速報・順位表・日程を毎日更新</p>
     </div>
     <span class="live-badge" id="liveBadge" style="display:none">LIVE</span>
   </div>
@@ -2581,6 +2611,10 @@
 
   <!-- ===== JAPAN TAB ===== -->
   <div id="section-japan" class="section active">
+    <button class="jp-detail-link" onclick="showSection('jpteam')">
+      🇯🇵 日本代表 詳細はこちら
+      <span class="jp-detail-arrow">›</span>
+    </button>
     <div class="install-banner" id="installBanner">
       <span class="icon">📱</span>
       <div class="install-banner-text">
@@ -4668,7 +4702,7 @@ Android：メニュー→ホーム画面に追加
 <!-- ===== TEAM DETAIL MODAL ===== -->
 <div class="team-modal-overlay" id="teamModalOverlay" onclick="closeTeamModal(event)">
   <div class="team-modal-sheet">
-    <div class="team-modal-card" id="teamModalCard">
+    <div class="team-modal-card" id="teamModalCard" onclick="event.stopPropagation()">
       <div class="tm-header" id="tmHeader">
         <div class="tm-drag-handle"></div>
         <button class="tm-back-btn" onclick="closeTeamModalDirect()">＜ 戻る</button>
