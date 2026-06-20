@@ -80,26 +80,26 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      margin: 0 0 14px;
-      padding: 12px 16px;
-      background: linear-gradient(90deg, rgba(255,77,46,0.15) 0%, rgba(59,122,240,0.12) 100%);
-      border: 1px solid rgba(255,77,46,0.35);
-      border-radius: 10px;
-      color: var(--text-primary);
-      font-size: 14px;
-      font-weight: 700;
+      margin: 14px 0 0;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: rgba(232,240,255,0.75);
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       font-family: inherit;
       letter-spacing: 0.3px;
       transition: background 0.2s, border-color 0.2s;
     }
     .jp-detail-link:active {
-      background: linear-gradient(90deg, rgba(255,77,46,0.25) 0%, rgba(59,122,240,0.2) 100%);
-      border-color: rgba(255,77,46,0.6);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
     }
     .jp-detail-arrow {
-      font-size: 20px;
-      color: var(--japan-red);
+      font-size: 16px;
+      color: var(--gold);
       font-weight: 900;
       line-height: 1;
     }
@@ -2611,49 +2611,9 @@
 
   <!-- ===== JAPAN TAB ===== -->
   <div id="section-japan" class="section active">
-    <button class="jp-detail-link" onclick="showSection('jpteam')">
-      🇯🇵 日本代表 詳細はこちら
-      <span class="jp-detail-arrow">›</span>
-    </button>
-    <div class="install-banner" id="installBanner">
-      <span class="icon">📱</span>
-      <div class="install-banner-text">
-        <p>ホーム画面に追加して1タップアクセス！</p>
-        <p>Safari/Chrome → 共有 → ホーム画面に追加</p>
-      </div>
-      <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'; localStorage.setItem('bannerClosed','1')">✕</button>
-    </div>
-
-    <!-- Countdown -->
-    <div class="countdown-card" id="countdownCard">
-      <div class="countdown-label">NEXT JAPAN MATCH</div>
-      <div class="countdown-next" id="countdownNext">日本 vs チュニジア</div>
-      <div class="cd-jst" id="cdJst">日本時間 6月21日（日）13:00</div>
-      <div class="cd-days-pill" id="cdSimple">あと <strong id="cdDaysSimple">--</strong> 日</div>
-      <div class="countdown-digits">
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cdDays">--</div>
-          <div class="countdown-unit-label">日</div>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cdHours">--</div>
-          <div class="countdown-unit-label">時間</div>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cdMins">--</div>
-          <div class="countdown-unit-label">分</div>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cdSecs">--</div>
-          <div class="countdown-unit-label">秒</div>
-        </div>
-      </div>
-    </div>
 
     <!-- ===== 速報欄 ===== -->
+    <div class="section-label japan-section">🇯🇵 日本代表 速報</div>
     <div class="sokuhō-card" id="sokuhōCard">
       <div class="sokuhō-header">
         <div class="sokuhō-title-row">
@@ -2683,8 +2643,8 @@
         </div>
       </div>
 
-      <!-- X速報タイムライン -->
-      <div class="sokuhō-x-section">
+      <!-- X速報タイムライン（一時非表示） -->
+      <div class="sokuhō-x-section" style="display:none">
         <div class="sokuhō-x-label">📣 速報ツイート</div>
         <div class="sokuhō-x-links">
           <a class="sokuhō-x-btn" href="twitter://search?query=%23日本代表%20%23W杯" onclick="this.onerror=function(){};var f=this;setTimeout(function(){f.href='https://x.com/search?q=%23日本代表%20%23W杯&src=typed_query&f=live'},500)" target="_blank" rel="noopener">
@@ -2695,6 +2655,48 @@
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-card" id="countdownCard">
+      <div class="countdown-label">NEXT JAPAN MATCH</div>
+      <div class="countdown-next" id="countdownNext">日本 vs チュニジア</div>
+      <div class="cd-jst" id="cdJst">日本時間 6月21日（日）13:00</div>
+      <div class="cd-days-pill" id="cdSimple">あと <strong id="cdDaysSimple">--</strong> 日</div>
+      <div class="countdown-digits">
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cdDays">--</div>
+          <div class="countdown-unit-label">日</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cdHours">--</div>
+          <div class="countdown-unit-label">時間</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cdMins">--</div>
+          <div class="countdown-unit-label">分</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cdSecs">--</div>
+          <div class="countdown-unit-label">秒</div>
+        </div>
+      </div>
+      <button class="jp-detail-link" onclick="showSection('jpteam')">
+        日本代表 詳細はこちら
+        <span class="jp-detail-arrow">›</span>
+      </button>
+    </div>
+
+    <div class="install-banner" id="installBanner">
+      <span class="icon">📱</span>
+      <div class="install-banner-text">
+        <p>ホーム画面に追加して1タップアクセス！</p>
+        <p>Safari/Chrome → 共有 → ホーム画面に追加</p>
+      </div>
+      <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'; localStorage.setItem('bannerClosed','1')">✕</button>
     </div>
 
     <div class="section-label japan-section">⚽ グループリーグ — グループF</div>
@@ -3097,11 +3099,11 @@
   <div id="section-standings" class="section">
     <div class="section-label">グループリーグ 順位表</div>
     <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節途中（6/20 04:00時点）</div>
+    <div class="standings-meta" id="standingsMeta">第2節終了（6/20 12:00時点）</div>
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
-      出典：フットボールチャンネル ・ 更新：6/19時点
+      出典：ESPN・メディアドッグス ・ 更新：6/20時点
     </div>
   </div>
 
@@ -3920,17 +3922,17 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇧🇦', name:'ボスニア', gp:2, w:0, d:1, l:1, gf:2, ga:5 },
       { flag:'🇶🇦', name:'カタール', gp:2, w:0, d:1, l:1, gf:1, ga:7 },
     ]},
-    C: { recap:'第1節：🏴󠁧󠁢󠁳󠁣󠁴󠁿スコットランド 1-0 🇭🇹ハイチ　🇧🇷ブラジル 1-1 🇲🇦モロッコ', teams:[
-      { flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', name:'スコットランド', gp:1, w:1, d:0, l:0, gf:1, ga:0 },
-      { flag:'🇲🇦', name:'モロッコ', gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇧🇷', name:'ブラジル', gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇭🇹', name:'ハイチ',   gp:1, w:0, d:0, l:1, gf:0, ga:1 },
+    C: { recap:'第2節：🏴󠁧󠁢󠁳󠁣󠁴󠁿スコットランド 0-1 🇲🇦モロッコ　🇧🇷ブラジル 3-0 🇭🇹ハイチ', teams:[
+      { flag:'🇲🇦', name:'モロッコ',    gp:2, w:1, d:1, l:0, gf:2, ga:1 },
+      { flag:'🇧🇷', name:'ブラジル',    gp:2, w:1, d:1, l:0, gf:4, ga:1 },
+      { flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', name:'スコットランド', gp:2, w:1, d:0, l:1, gf:1, ga:1 },
+      { flag:'🇭🇹', name:'ハイチ',      gp:2, w:0, d:0, l:2, gf:0, ga:4 },
     ]},
-    D: { recap:'第2節：🇺🇸アメリカ 2-0 🇦🇺オーストラリア（6/20 トルコvsパラグアイ 第2節開催予定）', teams:[
-      { flag:'🇺🇸', name:'アメリカ',     gp:2, w:2, d:0, l:0, gf:6, ga:1 },
-      { flag:'🇦🇺', name:'オーストラリア',gp:2, w:1, d:0, l:1, gf:2, ga:2 },
-      { flag:'🇹🇷', name:'トルコ',       gp:1, w:0, d:0, l:1, gf:0, ga:2 },
-      { flag:'🇵🇾', name:'パラグアイ',   gp:1, w:0, d:0, l:1, gf:1, ga:4 },
+    D: { recap:'第2節：🇺🇸アメリカ 2-0 🇦🇺オーストラリア　🇹🇷トルコ 0-1 🇵🇾パラグアイ', teams:[
+      { flag:'🇺🇸', name:'アメリカ',       gp:2, w:2, d:0, l:0, gf:6, ga:1 },
+      { flag:'🇦🇺', name:'オーストラリア', gp:2, w:1, d:0, l:1, gf:2, ga:2 },
+      { flag:'🇵🇾', name:'パラグアイ',     gp:2, w:1, d:0, l:1, gf:2, ga:5 },
+      { flag:'🇹🇷', name:'トルコ',         gp:2, w:0, d:0, l:2, gf:0, ga:3 },
     ]},
     E: { recap:'第1節：🇩🇪ドイツ 7-1 🇨🇼キュラソー　🇨🇮コートジボワール 1-0 🇪🇨エクアドル', teams:[
       { flag:'🇩🇪', name:'ドイツ',         gp:1, w:1, d:0, l:0, gf:7, ga:1 },
@@ -4079,10 +4081,10 @@ Android：メニュー→ホーム画面に追加
     {date:'6/19',dow:'金',time:'04:00',home:{n:'スイス',cc:'ch'},         away:{n:'ボスニア',cc:'ba'},    group:'B',venue:'ロサンゼルス',    score:'4-1',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'07:00',home:{n:'カナダ',cc:'ca'},         away:{n:'カタール',cc:'qa'},    group:'B',venue:'バンクーバー',    score:'6-0',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/19',dow:'金',time:'10:00',home:{n:'メキシコ',cc:'mx'},       away:{n:'韓国',cc:'kr'},        group:'A',venue:'グアダラハラ',    score:'1-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
-    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'',   broad:['dazn','fuji'],jp:false,free:false},
-    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
-    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/20',dow:'土',time:'04:00',home:{n:'アメリカ',cc:'us'},       away:{n:'オーストラリア',cc:'au'},group:'D',venue:'シアトル',      score:'2-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
+    {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:false},
     {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
     {date:'6/21',dow:'日',time:'05:00',home:{n:'ドイツ',cc:'de'},         away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'トロント',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
     {date:'6/21',dow:'日',time:'09:00',home:{n:'エクアドル',cc:'ec'},     away:{n:'キュラソー',cc:'cw'},  group:'E',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
