@@ -918,7 +918,71 @@
       color: var(--gold); border-radius: 4px; padding: 2px 7px;
     }
     .jp-coach-desc { font-size: 13px; color: var(--text-primary); line-height: 1.65; }
-    /* ===== 強化版対戦相手カード ===== */
+    /* ===== 決勝トーナメント折りたたみ ===== */
+    .kt-wrap { margin-bottom: 16px; }
+    .kt-header {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 13px 14px;
+      cursor: pointer; user-select: none;
+      transition: background 0.15s;
+    }
+    .kt-header:active { background: rgba(255,255,255,0.08); }
+    .kt-header.open { border-radius: 12px 12px 0 0; border-bottom-color: transparent; }
+    .kt-round-icon { font-size: 18px; flex-shrink: 0; }
+    .kt-round-info { flex: 1; min-width: 0; }
+    .kt-round-title { font-size: 14px; font-weight: 800; }
+    .kt-round-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; font-family: var(--font-mono); }
+    .kt-round-count { font-family: var(--font-mono); font-size: 11px; color: var(--sky-blue); font-weight: 700; flex-shrink: 0; }
+    .kt-arrow { font-size: 13px; color: var(--sky-blue); font-weight: 700; flex-shrink: 0; transition: transform 0.2s; }
+    .kt-header.open .kt-arrow { transform: rotate(90deg); }
+    .kt-body {
+      display: none;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-top: none; border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }
+    .kt-body.open { display: block; }
+    /* 対戦カード */
+    .kt-match {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-bottom: 1px solid var(--line-white);
+      position: relative;
+    }
+    .kt-match:last-child { border-bottom: none; }
+    .kt-match.jp-game { background: rgba(59,122,240,0.06); }
+    .kt-match-date { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); min-width: 32px; flex-shrink: 0; }
+    .kt-teams { flex: 1; min-width: 0; }
+    .kt-team-row { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 2px 0; }
+    .kt-team-row.winner { color: var(--gold); }
+    .kt-team-row.jp { color: var(--sky-blue); }
+    .kt-flag { font-size: 13px; flex-shrink: 0; }
+    .kt-name { flex: 1; }
+    .kt-score { font-family: var(--font-mono); font-size: 13px; font-weight: 900; min-width: 20px; text-align: right; }
+    .kt-vs { font-size: 10px; color: var(--text-muted); padding: 0 0 0 22px; font-family: var(--font-mono); }
+    .kt-predict-badge {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      background: rgba(212,255,63,0.1); border: 1px solid rgba(212,255,63,0.2);
+      color: var(--gold); border-radius: 5px; padding: 2px 7px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .kt-predict-badge.jp-pred { background: rgba(59,122,240,0.15); border-color: rgba(59,122,240,0.3); color: var(--sky-blue); }
+    /* 優勝候補バナー */
+    .kt-favorites {
+      background: linear-gradient(135deg, rgba(212,255,63,0.06), rgba(59,122,240,0.06));
+      border: 1px solid rgba(212,255,63,0.15);
+      border-radius: 12px; padding: 13px 14px; margin-bottom: 14px;
+    }
+    .kt-fav-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; }
+    .kt-fav-list { display: flex; flex-direction: column; gap: 6px; }
+    .kt-fav-item { display: flex; align-items: center; gap: 10px; }
+    .kt-fav-rank { font-family: var(--font-mono); font-size: 13px; font-weight: 900; color: var(--gold); min-width: 24px; }
+    .kt-fav-flag { font-size: 16px; }
+    .kt-fav-name { font-size: 13px; font-weight: 800; flex: 1; }
+    .kt-fav-bar-wrap { flex: 1; }
+    .kt-fav-bar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .kt-fav-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--sky-blue)); border-radius: 2px; }
+    .kt-fav-pct { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); min-width: 34px; text-align: right; }
     .opp-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; margin-bottom: 10px; }
     .opp-card-header { display: flex; align-items: center; gap: 12px; padding: 12px 14px 10px; border-bottom: 1px solid var(--line-white); }
     .opp-card-flag { width: 44px; height: 31px; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.35); flex-shrink: 0; }
@@ -2912,13 +2976,13 @@
         <div class="sokuhō-title-row">
           <span class="sokuhō-dot" id="sokuhōDot"></span>
           <span class="sokuhō-label" id="sokuhōLabel">試合前</span>
-          <span class="sokuhō-match-name">日本 vs チュニジア</span>
+          <span class="sokuhō-match-name">日本 vs スウェーデン</span>
           <span class="sokuhō-time" id="sokuhōMinute"></span>
         </div>
         <div class="sokuhō-score-row">
           <div class="sokuhō-team">
-            <img class="sokuhō-flag" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア">
-            <span class="sokuhō-team-name">チュニジア</span>
+            <img class="sokuhō-flag" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
+            <span class="sokuhō-team-name">スウェーデン</span>
           </div>
           <div class="sokuhō-scoreboard">
             <span class="sokuhō-score" id="sokuhōHomeScore">-</span>
@@ -2953,8 +3017,8 @@
     <!-- Countdown -->
     <div class="countdown-card" id="countdownCard">
       <div class="countdown-label">NEXT JAPAN MATCH</div>
-      <div class="countdown-next" id="countdownNext">日本 vs チュニジア</div>
-      <div class="cd-jst" id="cdJst">日本時間 6月21日（日）13:00</div>
+      <div class="countdown-next" id="countdownNext">日本 vs スウェーデン</div>
+      <div class="cd-jst" id="cdJst">日本時間 6月26日（金）08:00</div>
       <div class="cd-days-pill" id="cdSimple">あと <strong id="cdDaysSimple">--</strong> 日</div>
       <div class="countdown-digits">
         <div class="countdown-unit">
@@ -3035,23 +3099,24 @@
       </div>
     </div>
 
-    <!-- Match 2 (NEXT) -->
-    <div class="match-card japan" style="border-color:rgba(212,255,63,0.4);box-shadow:0 0 0 1px rgba(212,255,63,0.15)">
+    <!-- Match 2 (終了) -->
+    <div class="match-card japan" style="opacity:0.75">
       <div class="match-header">
-        <span class="match-group" style="display:flex;align-items:center;gap:6px">グループF 第2節 <span style="font-size:10px;background:rgba(212,255,63,0.2);border:1px solid rgba(212,255,63,0.5);border-radius:4px;padding:2px 7px;color:var(--gold);font-weight:800;animation:pulse 2s infinite">NEXT</span></span>
+        <span class="match-group" style="display:flex;align-items:center;gap:6px">グループF 第2節 <span style="font-size:10px;background:rgba(255,255,255,0.1);border-radius:4px;padding:2px 7px;color:var(--text-muted);font-weight:700">終了</span></span>
       </div>
       <div class="match-body-row">
         <div class="match-datetime-block">
           <span class="mdb-label">日本時間</span>
           <span class="mdb-date">6月21日（日）</span>
-          <span class="mdb-time">13:00</span>
+          <span class="mdb-time played">13:00</span>
+          <span class="mdb-ft">FT</span>
         </div>
         <div class="match-teams">
           <div class="team" onclick="openTeamModal('tn')" style="cursor:pointer">
             <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア">
             <div class="team-name">チュニジア</div>
           </div>
-          <div class="match-vs">vs<span class="mv-venue">📍 モンテレイ</span></div>
+          <div class="result-badge">0 - 4<span class="rb-venue">📍 モンテレイ</span></div>
           <div class="team" onclick="openTeamModal('jp')" style="cursor:pointer">
             <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
             <div class="team-name japan-team">日本</div>
@@ -3066,10 +3131,10 @@
       </div>
     </div>
 
-    <!-- Match 3 -->
-    <div class="match-card japan">
+    <!-- Match 3 (NEXT) -->
+    <div class="match-card japan" style="border-color:rgba(212,255,63,0.4);box-shadow:0 0 0 1px rgba(212,255,63,0.15)">
       <div class="match-header">
-        <span class="match-group">グループF 第3節</span>
+        <span class="match-group" style="display:flex;align-items:center;gap:6px">グループF 第3節 <span style="font-size:10px;background:rgba(212,255,63,0.2);border:1px solid rgba(212,255,63,0.5);border-radius:4px;padding:2px 7px;color:var(--gold);font-weight:800;animation:pulse 2s infinite">NEXT</span></span>
       </div>
       <div class="match-body-row">
         <div class="match-datetime-block">
@@ -3096,126 +3161,246 @@
       </div>
     </div>
 
-    <div class="section-label mt16">🏆 決勝トーナメント（突破した場合）</div>
+    <!-- 決勝トーナメント -->
+    <div class="section-label">🏆 決勝トーナメント</div>
 
-    <div class="match-card">
-      <div class="match-header">
-        <span class="match-group">ラウンド32（ベスト32）</span>
-        <div class="match-date-time">
-          <div class="match-date">6/28〜7/3</div>
-          <div class="match-time">TBD</div>
-        </div>
-      </div>
-      <div class="match-teams">
-        <div class="team">
-          <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-          <div class="team-name japan-team">日本</div>
-        </div>
-        <div class="match-vs">vs</div>
-        <div class="team">
-          <span class="team-flag">🏳️</span>
-          <div class="team-name" style="color:var(--text-muted)">TBD</div>
-        </div>
-      </div>
-      <div class="match-footer">
-        <span class="broadcast-tag">📺 要確認</span>
+    <!-- 優勝候補 TOP5 -->
+    <div class="kt-favorites">
+      <div class="kt-fav-title">🌟 優勝候補 POWER RANKING</div>
+      <div class="kt-fav-list">
+        <div class="kt-fav-item"><span class="kt-fav-rank">1</span><span class="kt-fav-flag">🇫🇷</span><span class="kt-fav-name">フランス</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:85%"></div></div></div><span class="kt-fav-pct">22%</span></div>
+        <div class="kt-fav-item"><span class="kt-fav-rank">2</span><span class="kt-fav-flag">🇦🇷</span><span class="kt-fav-name">アルゼンチン</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:75%"></div></div></div><span class="kt-fav-pct">18%</span></div>
+        <div class="kt-fav-item"><span class="kt-fav-rank">3</span><span class="kt-fav-flag">🇧🇷</span><span class="kt-fav-name">ブラジル</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:62%"></div></div></div><span class="kt-fav-pct">14%</span></div>
+        <div class="kt-fav-item"><span class="kt-fav-rank">4</span><span class="kt-fav-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-fav-name">イングランド</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:50%"></div></div></div><span class="kt-fav-pct">11%</span></div>
+        <div class="kt-fav-item"><span class="kt-fav-rank">5</span><span class="kt-fav-flag">🇯🇵</span><span class="kt-fav-name">日本（ダークホース）</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:20%"></div></div></div><span class="kt-fav-pct">4%</span></div>
       </div>
     </div>
 
-    <div class="match-card">
-      <div class="match-header">
-        <span class="match-group">ラウンド16（ベスト16）</span>
-        <div class="match-date-time">
-          <div class="match-date">7/4〜7/7</div>
-          <div class="match-time">TBD</div>
+    <!-- ベスト32 -->
+    <div class="kt-wrap">
+      <div class="kt-header" onclick="ktToggle(this)">
+        <span class="kt-round-icon">⚔️</span>
+        <div class="kt-round-info">
+          <div class="kt-round-title">ベスト32 <span style="color:var(--gold)">32</span></div>
+          <div class="kt-round-sub">6/29（日）〜 7/4（金）· 16試合</div>
         </div>
+        <span class="kt-round-count">未定</span>
+        <span class="kt-arrow">▶</span>
       </div>
-      <div class="match-teams">
-        <div class="team">
-          <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-          <div class="team-name japan-team">日本</div>
+      <div class="kt-body">
+        <div class="kt-match jp-game">
+          <div class="kt-match-date">7/1<br>02:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（F2位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">E組2位</span></div>
+          </div>
+          <span class="kt-predict-badge jp-pred">🇯🇵 突破予想</span>
         </div>
-        <div class="match-vs">vs</div>
-        <div class="team">
-          <span class="team-flag">🏳️</span>
-          <div class="team-name" style="color:var(--text-muted)">TBD</div>
+        <div class="kt-match">
+          <div class="kt-match-date">6/29<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">A組2位</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">B組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">未定</span>
         </div>
-      </div>
-      <div class="match-footer">
-        <span class="broadcast-tag">📺 要確認</span>
+        <div class="kt-match">
+          <div class="kt-match-date">6/30<br>02:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（C1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">F組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">🇧🇷 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">6/30<br>10:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇳🇱</span><span class="kt-name">オランダ（F1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">C組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">🇳🇱 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/2<br>05:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（E1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">3位枠</span></div>
+          </div>
+          <span class="kt-predict-badge">🇩🇪 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/3<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-name">イングランド（L1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">J組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/4<br>03:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（J1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">G組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">🇦🇷 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/4<br>07:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（I1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">H組2位</span></div>
+          </div>
+          <span class="kt-predict-badge">🇫🇷 予想</span>
+        </div>
       </div>
     </div>
 
-    <div class="match-card">
-      <div class="match-header">
-        <span class="match-group">準々決勝</span>
-        <div class="match-date-time">
-          <div class="match-date">7/9〜7/11</div>
-          <div class="match-time">TBD</div>
+    <!-- ベスト16 -->
+    <div class="kt-wrap">
+      <div class="kt-header" onclick="ktToggle(this)">
+        <span class="kt-round-icon">🔥</span>
+        <div class="kt-round-info">
+          <div class="kt-round-title">ベスト16 <span style="color:var(--gold)">16</span></div>
+          <div class="kt-round-sub">7/5（土）〜 7/8（火）· 8試合</div>
         </div>
+        <span class="kt-round-count">未定</span>
+        <span class="kt-arrow">▶</span>
       </div>
-      <div class="match-teams">
-        <div class="team">
-          <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-          <div class="team-name japan-team">日本</div>
+      <div class="kt-body">
+        <div class="kt-match jp-game">
+          <div class="kt-match-date">7/5<br>06:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge jp-pred">🇯🇵 接戦</span>
         </div>
-        <div class="match-vs">vs</div>
-        <div class="team">
-          <span class="team-flag">🏳️</span>
-          <div class="team-name" style="color:var(--text-muted)">TBD</div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/6<br>05:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🇳🇱</span><span class="kt-name">オランダ（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge">🇧🇷 予想</span>
         </div>
-      </div>
-      <div class="match-footer">
-        <span class="broadcast-tag">📺 要確認</span>
+        <div class="kt-match">
+          <div class="kt-match-date">7/7<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-name">イングランド（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge">🇦🇷 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/8<br>05:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge">🇫🇷 予想</span>
+        </div>
       </div>
     </div>
 
-    <div class="match-card">
-      <div class="match-header">
-        <span class="match-group">準決勝</span>
-        <div class="match-date-time">
-          <div class="match-date">7/15〜7/16</div>
-          <div class="match-time">TBD</div>
+    <!-- 準々決勝 -->
+    <div class="kt-wrap">
+      <div class="kt-header" onclick="ktToggle(this)">
+        <span class="kt-round-icon">⚡</span>
+        <div class="kt-round-info">
+          <div class="kt-round-title">準々決勝</div>
+          <div class="kt-round-sub">7/10（金）〜 7/12（日）· 4試合</div>
         </div>
+        <span class="kt-round-count">未定</span>
+        <span class="kt-arrow">▶</span>
       </div>
-      <div class="match-teams">
-        <div class="team">
-          <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-          <div class="team-name japan-team">日本</div>
+      <div class="kt-body">
+        <div class="kt-match jp-game">
+          <div class="kt-match-date">7/10<br>or 11</div>
+          <div class="kt-teams">
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge jp-pred">🇯🇵 夢の舞台</span>
         </div>
-        <div class="match-vs">vs</div>
-        <div class="team">
-          <span class="team-flag">🏳️</span>
-          <div class="team-name" style="color:var(--text-muted)">TBD</div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/11<br>or 12</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge">🇫🇷 予想</span>
         </div>
-      </div>
-      <div class="match-footer">
-        <span class="broadcast-tag">📺 要確認</span>
       </div>
     </div>
 
-    <div class="match-card" style="border-color:rgba(212,255,63,0.4);background:rgba(212,255,63,0.07)">
-      <div class="match-header">
-        <span class="match-group" style="color:var(--gold)">🏆 決勝</span>
-        <div class="match-date-time">
-          <div class="match-date">7月20日（月）</div>
-          <div class="match-time">TBD</div>
+    <!-- 準決勝 -->
+    <div class="kt-wrap">
+      <div class="kt-header" onclick="ktToggle(this)">
+        <span class="kt-round-icon">🌟</span>
+        <div class="kt-round-info">
+          <div class="kt-round-title">準決勝</div>
+          <div class="kt-round-sub">7/15（水）〜 7/16（木）· 2試合</div>
+        </div>
+        <span class="kt-round-count">未定</span>
+        <span class="kt-arrow">▶</span>
+      </div>
+      <div class="kt-body">
+        <div class="kt-match">
+          <div class="kt-match-date">7/15<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge">🇫🇷 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/16<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge">🇦🇷 予想</span>
         </div>
       </div>
-      <div class="match-teams">
-        <div class="team">
-          <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-          <div class="team-name japan-team">日本</div>
+    </div>
+
+    <!-- 決勝 -->
+    <div class="kt-wrap">
+      <div class="kt-header" onclick="ktToggle(this)">
+        <span class="kt-round-icon">🏆</span>
+        <div class="kt-round-info">
+          <div class="kt-round-title">決勝</div>
+          <div class="kt-round-sub">7/20（月）04:00 · ニューヨーク</div>
         </div>
-        <div class="match-vs" style="color:var(--gold)">vs</div>
-        <div class="team">
-          <span class="team-flag">🏳️</span>
-          <div class="team-name" style="color:var(--text-muted)">TBD</div>
-        </div>
+        <span class="kt-round-count">未定</span>
+        <span class="kt-arrow">▶</span>
       </div>
-      <div class="match-footer">
-        <span class="broadcast-tag">📺 全局</span>
-        <span class="venue-tag">📍 MetLife Stadium</span>
+      <div class="kt-body">
+        <div class="kt-match">
+          <div class="kt-match-date">7/20<br>04:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row winner"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（優勝予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
+          </div>
+          <span class="kt-predict-badge">🇫🇷 優勝予想</span>
+        </div>
       </div>
     </div>
   </div>
@@ -3328,8 +3513,8 @@
         <thead><tr><th>Team</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GD</th><th class="th-pts">Pts</th></tr></thead>
         <tbody>
           <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>2</td><td>1</td><td>1</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts leader">4</td></tr>
-          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td class="td-pts">3</td></tr>
           <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>2</td><td>1</td><td>1</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts">4</td></tr>
+          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>2</td><td>1</td><td>0</td><td>1</td><td class="td-gd-neg">-4</td><td class="td-pts">3</td></tr>
           <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>2</td><td>0</td><td>0</td><td>2</td><td class="td-gd-neg">-8</td><td class="td-pts">0</td></tr>
         </tbody>
       </table>
@@ -3389,7 +3574,7 @@
         </div>
         <div class="opp-result-row" style="margin-bottom:8px">
           <div>
-            <div class="opp-result-label">📊 6/20 第2節 vs スウェーデン</div>
+            <div class="opp-result-label">📊 6/21 第2節 vs スウェーデン</div>
             <div class="opp-result-label" style="margin-top:2px">ヒューストン</div>
           </div>
           <div style="text-align:right">
@@ -3460,7 +3645,7 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇸🇪 スウェーデン</div>
-          <div class="opp-card-rank">FIFA 38位 · グループF 2試合終了 · 3pt</div>
+          <div class="opp-card-rank">FIFA 38位 · グループF 2試合終了 · 勝点3</div>
         </div>
         <div class="opp-match-badge next">6/26（金）<br>08:00</div>
       </div>
@@ -3505,7 +3690,7 @@
         </div>
         <div class="opp-result-row" style="margin-bottom:8px">
           <div>
-            <div class="opp-result-label">📊 第2節 vs オランダ（6/20）</div>
+            <div class="opp-result-label">📊 第2節 vs オランダ（6/21）</div>
             <div class="opp-result-label" style="margin-top:2px">ヒューストン</div>
           </div>
           <div style="text-align:right">
@@ -3513,7 +3698,7 @@
             <span class="opp-result-badge loss">大敗</span>
           </div>
         </div>
-        <div class="opp-note">第2節でオランダに1-5と大敗し突破に黄信号。3pt・暫定2位だが得失点差が一気に悪化（±0→-4）。日本と直接対決の第3節は両チームとも必死の一戦になる。スウェーデンが突破するには日本に勝つしかなく、全力で来ることが確実。</div>
+        <div class="opp-note">第2節でオランダに1-5と大敗し突破に黄信号。勝点3・暫定3位で得失点差が一気に悪化（GD-4）。日本との直接対決の第3節は背水の陣で臨む。スウェーデンが突破するには日本に勝つしかなく、全力で来ることが確実。</div>
       </div>
     </div>
 
@@ -3590,7 +3775,7 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/21 · 35試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong>6/12〜6/22 · 39試合終了</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
@@ -3603,11 +3788,11 @@
   <div id="section-standings" class="section">
     <div class="section-label">グループリーグ 順位表</div>
     <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節終了（6/21時点）</div>
+    <div class="standings-meta" id="standingsMeta">第2節終了（6/22時点）</div>
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
-      出典：ESPN・メディアドッグス ・ 更新：6/21時点
+      出典：ESPN・メディアドッグス ・ 更新：6/22時点
     </div>
   </div>
 
@@ -3634,7 +3819,7 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" class="psc-flag" alt="日本">
         <div>
           <div class="psc-title">日本 現在の状況</div>
-          <div class="psc-record">2試合 ／ 1勝1分 ／ 勝点4　🇳🇱2-2🇯🇵 · 🇹🇳0-4🇯🇵</div>
+          <div class="psc-record">2試合 ／ 1勝1分 ／ 勝点4　🇳🇱2-2🇯🇵 · 🇯🇵4-0🇹🇳</div>
         </div>
         <div class="psc-pos-badge" style="background:rgba(91,198,107,0.2);border-color:rgba(91,198,107,0.5);color:#5bc66b">暫定2位🔥</div>
       </div>
@@ -3645,22 +3830,22 @@
       <div class="predict-scenario green">
         <div class="ps-icon">✅</div>
         <div class="ps-body">
-          <div class="ps-title">突破確定ライン ✅ 達成！</div>
-          <div class="ps-desc">チュニジア戦に<strong>4-0で大勝</strong>し勝点4を獲得！オランダと並び実質突破確定圏内。第3節スウェーデン戦を残して2位以上が見えてきた！</div>
+          <div class="ps-title">グループ突破・ほぼ確定！</div>
+          <div class="ps-desc">チュニジア戦<strong>4-0完勝</strong>で勝点4。スウェーデン戦（6/26）で<strong>引き分け以上</strong>なら突破確定。勝てば1位通過の可能性も！</div>
         </div>
       </div>
       <div class="predict-scenario yellow">
-        <div class="ps-icon">⚠️</div>
+        <div class="ps-icon">⚡</div>
         <div class="ps-body">
-          <div class="ps-title">第3節 スウェーデン戦</div>
-          <div class="ps-desc">勝てば<strong>グループ突破確定</strong>。引き分けでも勝点5で2位以内が濃厚。負けた場合はオランダとスウェーデンの結果次第になる。</div>
+          <div class="ps-title">第3節 スウェーデン戦（6/26 08:00）</div>
+          <div class="ps-desc">スウェーデンはオランダに<strong>1-5大敗</strong>し崖っぷち。日本は勝てば<strong>グループ1位突破</strong>確定。引き分けでも2位以上がほぼ確実。</div>
         </div>
       </div>
       <div class="predict-scenario red">
-        <div class="ps-icon">❌</div>
+        <div class="ps-icon">⚠️</div>
         <div class="ps-body">
-          <div class="ps-title">敗退の可能性</div>
-          <div class="ps-desc">スウェーデン戦に敗れ、かつ他グループの3位成績が悪かった場合のみ敗退の可能性。現実的にはほぼ突破確定のライン。</div>
+          <div class="ps-title">敗退の可能性は極めて低い</div>
+          <div class="ps-desc">仮にスウェーデン戦に敗れても、他グループ3位の成績次第では3位突破の可能性あり。現実的には突破がほぼ確定ライン。</div>
         </div>
       </div>
     </div>
@@ -3673,19 +3858,19 @@
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="pmc-flag">
           <div>
             <div class="pmc-name">チュニジア</div>
-            <div class="pmc-date">6/21（日）終了 ✅ 0-4</div>
+            <div class="pmc-date">6/21（日）✅ 日本 4-0 勝利！</div>
           </div>
           <div class="pmc-rank">FIFA 54位</div>
         </div>
         <div class="pmc-bar-wrap">
           <div class="pmc-label-row"><span>日本</span><span>チュニジア</span></div>
-          <div class="pmc-bar"><div class="pmc-fill" style="width:62%"></div></div>
-          <div class="pmc-sublabel">日本有利 62% ｜ 相手 38%</div>
+          <div class="pmc-bar"><div class="pmc-fill" style="width:100%"></div></div>
+          <div class="pmc-sublabel">🏆 4-0完勝！ 無失点完封</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>鎌田4分・上田31′83′・伊東69′の4ゴール完勝</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>無失点で守備も完璧。完全試合に近い内容</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>上田がW杯2得点・伊東も得点で攻撃陣好調</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚽</span>鎌田4分・上田31′83′・伊東69′の4ゴール快勝</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🛡️</span>無失点完封。守備も完璧な完全試合</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>上田はW杯史上初の1試合2得点。2試合計3G</div>
         </div>
       </div>
     </div>
@@ -3696,68 +3881,64 @@
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="pmc-flag">
           <div>
             <div class="pmc-name">スウェーデン</div>
-            <div class="pmc-date">6/26（金）08:00</div>
+            <div class="pmc-date">6/26（金）08:00 ⚡ NEXT</div>
           </div>
           <div class="pmc-rank">FIFA 38位</div>
         </div>
         <div class="pmc-bar-wrap">
           <div class="pmc-label-row"><span>日本</span><span>スウェーデン</span></div>
-          <div class="pmc-bar"><div class="pmc-fill" style="width:52%"></div></div>
-          <div class="pmc-sublabel">日本やや有利 52% ｜ 相手 48%</div>
+          <div class="pmc-bar"><div class="pmc-fill" style="width:62%"></div></div>
+          <div class="pmc-sublabel">日本有利 62% ｜ 相手 38%（第2節後推定）</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第2節でオランダに1-5大敗。突破に黄信号</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">✅</span>イサク・ギェケレシュら強力FW健在</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は3節で共倒れを狙いたい相手</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第2節でオランダに1-5大敗。崖っぷちで背水の陣</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚡</span>イサク・ギェケレシュら強力FW依然健在。死に物狂い</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は引き分けでも突破がほぼ確実。勝利で1位通過！</div>
         </div>
       </div>
     </div>
 
     <!-- スタメン予想 -->
-    <div class="section-label">🟦 スタメン予想（チュニジア戦）</div>
+    <div class="section-label">🟦 スタメン予想（スウェーデン戦）</div>
     <div class="predict-formation">
-      <div class="pf-system">4-2-3-1 予想フォーメーション（チュニジア戦）</div>
+      <div class="pf-system">4-3-3 予想フォーメーション（vs スウェーデン）</div>
       <div class="pf-pitch">
 
         <!-- FW -->
-        <div class="pf-row">
-          <div class="pf-player key">
-            <div class="pf-num">9</div>
-            <div class="pf-name">後藤啓介</div>
-            <div class="pf-pos-tag">CF</div>
-          </div>
-        </div>
-
-        <!-- AM -->
         <div class="pf-row">
           <div class="pf-player">
             <div class="pf-num">13</div>
             <div class="pf-name">中村敬斗</div>
             <div class="pf-pos-tag">LW</div>
           </div>
-          <div class="pf-player">
-            <div class="pf-num">11</div>
-            <div class="pf-name">前田大然</div>
-            <div class="pf-pos-tag">AM</div>
+          <div class="pf-player key">
+            <div class="pf-num">18</div>
+            <div class="pf-name">上田綺世</div>
+            <div class="pf-pos-tag">CF</div>
           </div>
           <div class="pf-player">
-            <div class="pf-num">10</div>
-            <div class="pf-name">堂安律</div>
+            <div class="pf-num">23</div>
+            <div class="pf-name">伊東純也</div>
             <div class="pf-pos-tag">RW</div>
           </div>
         </div>
 
-        <!-- DM -->
+        <!-- MF -->
         <div class="pf-row">
-          <div class="pf-player key">
+          <div class="pf-player">
             <div class="pf-num">15</div>
             <div class="pf-name">鎌田大地</div>
+            <div class="pf-pos-tag">CM</div>
+          </div>
+          <div class="pf-player key">
+            <div class="pf-num">7</div>
+            <div class="pf-name">田中碧</div>
             <div class="pf-pos-tag">DM</div>
           </div>
           <div class="pf-player">
-            <div class="pf-num">24</div>
-            <div class="pf-name">佐野海舟</div>
-            <div class="pf-pos-tag">DM</div>
+            <div class="pf-num">10</div>
+            <div class="pf-name">堂安律</div>
+            <div class="pf-pos-tag">CM</div>
           </div>
         </div>
 
@@ -3769,13 +3950,13 @@
             <div class="pf-pos-tag">LB</div>
           </div>
           <div class="pf-player">
-            <div class="pf-num">3</div>
-            <div class="pf-name">谷口彰悟</div>
+            <div class="pf-num">4</div>
+            <div class="pf-name">板倉滉</div>
             <div class="pf-pos-tag">CB</div>
           </div>
           <div class="pf-player">
-            <div class="pf-num">16</div>
-            <div class="pf-name">渡辺剛</div>
+            <div class="pf-num">22</div>
+            <div class="pf-name">冨安健洋</div>
             <div class="pf-pos-tag">CB</div>
           </div>
           <div class="pf-player">
@@ -3797,18 +3978,18 @@
 
       <!-- 注記 -->
       <div class="pf-note">
-        ⭐ 金枠はキーマン　※久保建英・上田綺世不在時の編集部予想
+        ⭐ 金枠はキーマン　※久保建英の復帰状況次第で変動の可能性あり
       </div>
 
       <!-- 注目選手 -->
-      <div class="section-label" style="margin-top:20px">⭐ 注目選手</div>
+      <div class="section-label" style="margin-top:20px">⭐ 注目選手（スウェーデン戦）</div>
       <div class="predict-players">
-        <div class="pp-card" style="opacity:0.6;border-color:rgba(255,77,46,0.3)">
-          <div class="pp-num" style="color:var(--japan-red)">8</div>
+        <div class="pp-card key">
+          <div class="pp-num">18</div>
           <div class="pp-info">
-            <div class="pp-name">久保 建英 <span style="font-size:11px;color:var(--japan-red);font-weight:700">⚠️チュニジア戦欠場</span></div>
-            <div class="pp-club">レアル・ソシエダ</div>
-            <div class="pp-comment">負傷によりチュニジア戦を欠場。スウェーデン戦での復帰を目指す。不在時は鎌田大地がトップ下を担う。</div>
+            <div class="pp-name">上田 綺世</div>
+            <div class="pp-club">フェイエノールト</div>
+            <div class="pp-comment">チュニジア戦でW杯史上初の1試合2得点。2試合3得点と絶好調。スウェーデン戦でも得点が期待される絶対的エース。</div>
           </div>
         </div>
         <div class="pp-card key">
@@ -3816,23 +3997,23 @@
           <div class="pp-info">
             <div class="pp-name">鎌田 大地</div>
             <div class="pp-club">クリスタル・パレス（英）</div>
-            <div class="pp-comment">久保欠場で繰り上がりスタメン有力。テクニックとパスセンスで攻撃を牽引。チュニジア戦で存在感を示せるか。</div>
+            <div class="pp-comment">2試合連続ゴール。チュニジア戦では最速4分弾。久保欠場の穴を完璧に埋め、攻撃の核として機能。</div>
           </div>
         </div>
         <div class="pp-card">
-          <div class="pp-num">22</div>
+          <div class="pp-num">23</div>
           <div class="pp-info">
-            <div class="pp-name">冨安 健洋</div>
-            <div class="pp-club">アヤックス</div>
-            <div class="pp-comment">板倉滉とのCBコンビが守備の要。オランダ戦の2失点を教訓に、セットプレー対応が鍵。</div>
+            <div class="pp-name">伊東 純也</div>
+            <div class="pp-club">スタッド・ランス（仏）</div>
+            <div class="pp-comment">チュニジア戦でゴールを決め好調。スウェーデンのSBとの1対1が鍵。突破力で右サイドを制圧できるか。</div>
           </div>
         </div>
         <div class="pp-card">
-          <div class="pp-num">18</div>
+          <div class="pp-num">8</div>
           <div class="pp-info">
-            <div class="pp-name">上田 綺世</div>
-            <div class="pp-club">フェイエノールト</div>
-            <div class="pp-comment">オランダ戦で同点弾。エースとして得点が求められる。チュニジア守備崩壊の隙を突けるか。</div>
+            <div class="pp-name">久保 建英 <span style="font-size:11px;color:var(--sky-blue);font-weight:700">🔄復帰待望</span></div>
+            <div class="pp-club">レアル・ソシエダ</div>
+            <div class="pp-comment">負傷から回復中でスウェーデン戦復帰を目指す。もし出場すれば攻撃力が格段に上がる。状態が注目される。</div>
           </div>
         </div>
       </div>
@@ -4643,22 +4824,22 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇵🇾', name:'パラグアイ',     gp:2, w:1, d:0, l:1, gf:2, ga:5 },
       { flag:'🇹🇷', name:'トルコ',         gp:2, w:0, d:0, l:2, gf:0, ga:3 },
     ]},
-    E: { recap:'第1節：🇩🇪ドイツ 7-1 🇨🇼キュラソー　🇨🇮コートジボワール 1-0 🇪🇨エクアドル', teams:[
-      { flag:'🇩🇪', name:'ドイツ',          gp:1, w:1, d:0, l:0, gf:7, ga:1 },
-      { flag:'🇨🇮', name:'コートジボワール', gp:1, w:1, d:0, l:0, gf:1, ga:0 },
-      { flag:'🇪🇨', name:'エクアドル',      gp:1, w:0, d:0, l:1, gf:0, ga:1 },
-      { flag:'🇨🇼', name:'キュラソー',      gp:1, w:0, d:0, l:1, gf:1, ga:7 },
+    E: { recap:'第2節：🇩🇪ドイツ 2-1 🇨🇮コートジボワール　🇪🇨エクアドル 0-0 🇨🇼キュラソー', teams:[
+      { flag:'🇩🇪', name:'ドイツ',          gp:2, w:2, d:0, l:0, gf:9, ga:2 },
+      { flag:'🇨🇮', name:'コートジボワール', gp:2, w:1, d:0, l:1, gf:2, ga:9 },
+      { flag:'🇪🇨', name:'エクアドル',      gp:2, w:0, d:1, l:1, gf:0, ga:1 },
+      { flag:'🇨🇼', name:'キュラソー',      gp:2, w:0, d:1, l:1, gf:1, ga:7 },
     ]},
-    G: { recap:'第1節：🇧🇪ベルギー 1-1 🇪🇬エジプト　🇮🇷イラン 2-2 🇳🇿ニュージーランド', teams:[
-      { flag:'🇮🇷', name:'イラン',          gp:1, w:0, d:1, l:0, gf:2, ga:2 },
+    G: { recap:'第2節：🇧🇪ベルギー 0-0 🇮🇷イラン　🇳🇿ニュージーランド vs 🇪🇬エジプト（未)', teams:[
+      { flag:'🇧🇪', name:'ベルギー',        gp:2, w:0, d:2, l:0, gf:1, ga:1 },
+      { flag:'🇮🇷', name:'イラン',          gp:2, w:0, d:2, l:0, gf:2, ga:2 },
       { flag:'🇳🇿', name:'ニュージーランド', gp:1, w:0, d:1, l:0, gf:2, ga:2 },
-      { flag:'🇧🇪', name:'ベルギー',        gp:1, w:0, d:1, l:0, gf:1, ga:1 },
       { flag:'🇪🇬', name:'エジプト',        gp:1, w:0, d:1, l:0, gf:1, ga:1 },
     ]},
-    H: { recap:'第1節：🇺🇾ウルグアイ 1-1 🇸🇦サウジアラビア　🇪🇸スペイン 0-0 🇨🇻カーボベルデ', teams:[
+    H: { recap:'第2節：🇪🇸スペイン 4-0 🇸🇦サウジアラビア　🇺🇾ウルグアイ vs 🇨🇻カーボベルデ（未）', teams:[
+      { flag:'🇪🇸', name:'スペイン',       gp:2, w:1, d:1, l:0, gf:4, ga:0 },
       { flag:'🇺🇾', name:'ウルグアイ',     gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇸🇦', name:'サウジアラビア', gp:1, w:0, d:1, l:0, gf:1, ga:1 },
-      { flag:'🇪🇸', name:'スペイン',       gp:1, w:0, d:1, l:0, gf:0, ga:0 },
+      { flag:'🇸🇦', name:'サウジアラビア', gp:2, w:0, d:1, l:1, gf:1, ga:5 },
       { flag:'🇨🇻', name:'カーボベルデ',   gp:1, w:0, d:1, l:0, gf:0, ga:0 },
     ]},
     I: { recap:'第1節：🇫🇷フランス 3-1 🇸🇳セネガル　🇮🇶イラク 1-4 🇳🇴ノルウェー', teams:[
@@ -4794,12 +4975,12 @@ Android：メニュー→ホーム画面に追加
     {date:'6/20',dow:'土',time:'07:00',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'モロッコ',cc:'ma'},group:'C',venue:'ボストン',         score:'0-1', broad:['dazn','fuji'],jp:false,free:false,past:true},
     {date:'6/20',dow:'土',time:'09:30',home:{n:'ブラジル',cc:'br'},       away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'フィラデルフィア', score:'3-0', broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
     {date:'6/20',dow:'土',time:'12:00',home:{n:'トルコ',cc:'tr'},         away:{n:'パラグアイ',cc:'py'},  group:'D',venue:'サンフランシスコ',score:'0-1', broad:['dazn'],         jp:false,free:false,past:true},
-    {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'5-1',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:false},
-    {date:'6/21',dow:'日',time:'05:00',home:{n:'ドイツ',cc:'de'},         away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'トロント',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
-    {date:'6/21',dow:'日',time:'09:00',home:{n:'エクアドル',cc:'ec'},     away:{n:'キュラソー',cc:'cw'},  group:'E',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/21',dow:'日',time:'02:00',home:{n:'オランダ',cc:'nl'},       away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ヒューストン',    score:'5-1',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
+    {date:'6/21',dow:'日',time:'05:00',home:{n:'ドイツ',cc:'de'},         away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'トロント',    score:'2-1',broad:['dazn','ntv'],   jp:false,free:false,past:true},
+    {date:'6/21',dow:'日',time:'09:00',home:{n:'エクアドル',cc:'ec'},     away:{n:'キュラソー',cc:'cw'},  group:'E',venue:'カンザスシティ',  score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/21',dow:'日',time:'13:00',home:{n:'チュニジア',cc:'tn'},     away:{n:'日本',cc:'jp'},        group:'F',venue:'モンテレイ',      score:'0-4',broad:['dazn-free','ntv','nhkbs','bsp4k'],jp:true,free:true,past:true},
-    {date:'6/22',dow:'月',time:'01:00',home:{n:'スペイン',cc:'es'},       away:{n:'サウジアラビア',cc:'sa'},group:'H',venue:'アトランタ',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
-    {date:'6/22',dow:'月',time:'04:00',home:{n:'ベルギー',cc:'be'},       away:{n:'イラン',cc:'ir'},      group:'G',venue:'ロサンゼルス',    score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/22',dow:'月',time:'01:00',home:{n:'スペイン',cc:'es'},       away:{n:'サウジアラビア',cc:'sa'},group:'H',venue:'アトランタ',    score:'4-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
+    {date:'6/22',dow:'月',time:'04:00',home:{n:'ベルギー',cc:'be'},       away:{n:'イラン',cc:'ir'},      group:'G',venue:'ロサンゼルス',    score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/22',dow:'月',time:'07:00',home:{n:'ウルグアイ',cc:'uy'},     away:{n:'カーボベルデ',cc:'cv'},group:'H',venue:'マイアミ',        score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/22',dow:'月',time:'10:00',home:{n:'ニュージーランド',cc:'nz'},away:{n:'エジプト',cc:'eg'},   group:'G',venue:'バンクーバー',    score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/23',dow:'火',time:'02:00',home:{n:'アルゼンチン',cc:'ar'},   away:{n:'オーストリア',cc:'at'},group:'J',venue:'ダラス',          score:'',   broad:['dazn'],         jp:false,free:false},
@@ -5225,16 +5406,11 @@ Android：メニュー→ホーム画面に追加
   //   { min: '67'', name: '上田 綺世', jp: true,  og: true  },  // オウンゴール（日本選手名で記録）
   // ]
   const SOKUHŌ_STATE = {
-    state:      'finished',
-    homeScore:  0,
-    awayScore:  4,
+    state:      'prematch',
+    homeScore:  null,
+    awayScore:  null,
     minute:     '',
-    scorers: [
-      { min: "4'",  name: '鎌田 大地', jp: true, og: false },
-      { min: "31'", name: '上田 綺世', jp: true, og: false },
-      { min: "69'", name: '伊東 純也', jp: true, og: false },
-      { min: "83'", name: '上田 綺世', jp: true, og: false },
-    ],
+    scorers: [],
   };
 
   function initSokuhō() {
@@ -5286,6 +5462,13 @@ Android：メニュー→ホーム画面に追加
     } else {
       scorersEl.style.display = 'none';
     }
+  }
+
+  // 決勝トーナメント折りたたみ
+  function ktToggle(header) {
+    const isOpen = header.classList.contains('open');
+    header.classList.toggle('open', !isOpen);
+    header.nextElementSibling.classList.toggle('open', !isOpen);
   }
 
   // 初期化
