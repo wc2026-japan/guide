@@ -3165,7 +3165,7 @@
     <div class="section-label">🏆 決勝トーナメント</div>
 
     <!-- 優勝候補 TOP5 -->
-    <div class="kt-favorites">
+    <div class="kt-favorites" style="display:none">
       <div class="kt-fav-title">🌟 優勝候補 POWER RANKING</div>
       <div class="kt-fav-list">
         <div class="kt-fav-item"><span class="kt-fav-rank">1</span><span class="kt-fav-flag">🇫🇷</span><span class="kt-fav-name">フランス</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:85%"></div></div></div><span class="kt-fav-pct">22%</span></div>
@@ -3176,87 +3176,152 @@
       </div>
     </div>
 
+
+    <!-- 🇯🇵 日本の通過パターン別タイムテーブル -->
+    <div class="section-label" style="margin-top:4px">🕐 日本の試合時間（通過順位別）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+
+      <!-- 1位通過 -->
+      <div style="background:linear-gradient(135deg,rgba(30,80,200,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(100,160,255,0.5);border-radius:14px;padding:12px 10px">
+        <div style="font-size:12px;font-weight:900;color:#7eb8ff;letter-spacing:1px;margin-bottom:10px;text-align:center">🥇 1位通過の場合</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#7eb8ff">10:00</span></div>
+          </div>
+          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/5(日) <span style="color:#7eb8ff">02:00</span></div>
+          </div>
+          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/10(金) <span style="color:#7eb8ff">05:00</span></div>
+          </div>
+          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/15(水) <span style="color:#7eb8ff">04:00</span></div>
+          </div>
+          <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
+            <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2位通過 -->
+      <div style="background:linear-gradient(135deg,rgba(180,30,30,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(255,100,100,0.5);border-radius:14px;padding:12px 10px">
+        <div style="font-size:12px;font-weight:900;color:#ff9999;letter-spacing:1px;margin-bottom:10px;text-align:center">🥈 2位通過の場合</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#ff9999">02:00</span></div>
+          </div>
+          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/6(月) <span style="color:#ff9999">05:00</span></div>
+          </div>
+          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/12(日) <span style="color:#ff9999">06:00</span></div>
+          </div>
+          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/16(木) <span style="color:#ff9999">04:00</span></div>
+          </div>
+          <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
+            <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3位決定戦メモ -->
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:12px;color:var(--text-muted);text-align:center">
+      🥉 3位決定戦は両ルート共通　<strong style="color:var(--text-primary)">7/19(日) 06:00</strong>　※日本時間
+    </div>
+
     <!-- ベスト32 -->
     <div class="kt-wrap">
       <div class="kt-header" onclick="ktToggle(this)">
         <span class="kt-round-icon">⚔️</span>
         <div class="kt-round-info">
           <div class="kt-round-title">ベスト32 <span style="color:var(--gold)">32</span></div>
-          <div class="kt-round-sub">6/29（日）〜 7/4（金）· 16試合</div>
+          <div class="kt-round-sub">6/28（土）〜 7/4（金）· 16試合</div>
         </div>
         <span class="kt-round-count">未定</span>
         <span class="kt-arrow">▶</span>
       </div>
       <div class="kt-body">
         <div class="kt-match jp-game">
-          <div class="kt-match-date">7/1<br>02:00</div>
+          <div class="kt-match-date" style="line-height:1.3">6/30(火)<br><span style="color:var(--gold)">🥇10:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈02:00</span></div>
           <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（F2位予想）</span></div>
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（F通過）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">E組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge jp-pred">🇯🇵 突破予想</span>
         </div>
         <div class="kt-match">
           <div class="kt-match-date">6/29<br>04:00</div>
           <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">A組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">A組1位</span></div>
             <div class="kt-vs">vs</div>
             <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">B組2位</span></div>
           </div>
           <span class="kt-predict-badge">未定</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">6/30<br>02:00</div>
+          <div class="kt-match-date">6/29<br>07:00</div>
           <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（C1位予想）</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">C組1位</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">F組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">D組2位</span></div>
           </div>
-          <span class="kt-predict-badge">🇧🇷 予想</span>
+          <span class="kt-predict-badge">未定</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">6/30<br>10:00</div>
+          <div class="kt-match-date">6/30<br>07:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇳🇱</span><span class="kt-name">オランダ（F1位予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">C組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge">🇳🇱 予想</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">7/2<br>05:00</div>
+          <div class="kt-match-date">7/1<br>02:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（E1位予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">3位枠</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge">🇩🇪 予想</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/1<br>07:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（J1位予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge">🇦🇷 予想</span>
         </div>
         <div class="kt-match">
           <div class="kt-match-date">7/3<br>04:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-name">イングランド（L1位予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">J組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/4<br>03:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（J1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">G組2位</span></div>
-          </div>
-          <span class="kt-predict-badge">🇦🇷 予想</span>
         </div>
         <div class="kt-match">
           <div class="kt-match-date">7/4<br>07:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（I1位予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">H組2位</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge">🇫🇷 予想</span>
         </div>
@@ -3269,23 +3334,32 @@
         <span class="kt-round-icon">🔥</span>
         <div class="kt-round-info">
           <div class="kt-round-title">ベスト16 <span style="color:var(--gold)">16</span></div>
-          <div class="kt-round-sub">7/5（土）〜 7/8（火）· 8試合</div>
+          <div class="kt-round-sub">7/5（日）〜 7/8（火）· 8試合</div>
         </div>
         <span class="kt-round-count">未定</span>
         <span class="kt-arrow">▶</span>
       </div>
       <div class="kt-body">
         <div class="kt-match jp-game">
-          <div class="kt-match-date">7/5<br>06:00</div>
+          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/5 02:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/6 05:00</span></div>
           <div class="kt-teams">
             <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（予想）</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 接戦</span>
+          <span class="kt-predict-badge jp-pred">🇯🇵 突破へ！</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">7/6<br>05:00</div>
+          <div class="kt-match-date">7/5<br>06:00</div>
+          <div class="kt-teams">
+            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge">未定</span>
+        </div>
+        <div class="kt-match">
+          <div class="kt-match-date">7/6<br>02:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（予想）</span></div>
             <div class="kt-vs">vs</div>
@@ -3294,22 +3368,13 @@
           <span class="kt-predict-badge">🇧🇷 予想</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">7/7<br>04:00</div>
+          <div class="kt-match-date">7/8<br>05:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-name">イングランド（予想）</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
           </div>
           <span class="kt-predict-badge">🇦🇷 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/8<br>05:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇫🇷 予想</span>
         </div>
       </div>
     </div>
@@ -3327,7 +3392,7 @@
       </div>
       <div class="kt-body">
         <div class="kt-match jp-game">
-          <div class="kt-match-date">7/10<br>or 11</div>
+          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/10 05:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/12 06:00</span></div>
           <div class="kt-teams">
             <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
             <div class="kt-vs">vs</div>
@@ -3336,7 +3401,7 @@
           <span class="kt-predict-badge jp-pred">🇯🇵 夢の舞台</span>
         </div>
         <div class="kt-match">
-          <div class="kt-match-date">7/11<br>or 12</div>
+          <div class="kt-match-date">7/11<br>05:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
             <div class="kt-vs">vs</div>
@@ -3359,23 +3424,23 @@
         <span class="kt-arrow">▶</span>
       </div>
       <div class="kt-body">
+        <div class="kt-match jp-game">
+          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/15 04:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/16 04:00</span></div>
+          <div class="kt-teams">
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
+            <div class="kt-vs">vs</div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          </div>
+          <span class="kt-predict-badge jp-pred">🇯🇵 TOP4へ！</span>
+        </div>
         <div class="kt-match">
-          <div class="kt-match-date">7/15<br>04:00</div>
+          <div class="kt-match-date">7/15 or<br>7/16<br>04:00</div>
           <div class="kt-teams">
             <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
             <div class="kt-vs">vs</div>
             <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
           <span class="kt-predict-badge">🇫🇷 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/16<br>04:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇦🇷 予想</span>
         </div>
       </div>
     </div>
@@ -3392,14 +3457,14 @@
         <span class="kt-arrow">▶</span>
       </div>
       <div class="kt-body">
-        <div class="kt-match">
+        <div class="kt-match jp-game">
           <div class="kt-match-date">7/20<br>04:00</div>
           <div class="kt-teams">
-            <div class="kt-team-row winner"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（優勝予想）</span></div>
+            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（夢）</span></div>
             <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
+            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
           </div>
-          <span class="kt-predict-badge">🇫🇷 優勝予想</span>
+          <span class="kt-predict-badge jp-pred">🇯🇵 悲願の頂点！</span>
         </div>
       </div>
     </div>
