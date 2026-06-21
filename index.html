@@ -5202,14 +5202,13 @@ Android：メニュー→ホーム画面に追加
   //   { min: '67'', name: '上田 綺世', jp: true,  og: true  },  // オウンゴール（日本選手名で記録）
   // ]
   const SOKUHŌ_STATE = {
-    state:      'prematch',   // ← ここを変更: prematch / live / finished
-    homeScore:  null,         // チュニジアのスコア
-    awayScore:  null,         // 日本のスコア
-    minute:     '',           // 試合時間 例: '45+2''
+    state:      'live',
+    homeScore:  0,
+    awayScore:  2,
+    minute:     "後半進行中",
     scorers: [
-      // { min: "23'", name: '鎌田 大地', jp: true,  og: false },
-      // { min: "55'", name: 'メジブリ',  jp: false, og: false },
-      // { min: "67'", name: '上田 綺世', jp: true,  og: true  },
+      { min: "4'",  name: '鎌田 大地', jp: true, og: false },
+      { min: "31'", name: '上田 綺世', jp: true, og: false },
     ],
   };
 
