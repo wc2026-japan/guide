@@ -3840,7 +3840,7 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/22 · 39試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong>6/12〜6/22 · 41試合終了</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
@@ -3853,7 +3853,7 @@
   <div id="section-standings" class="section">
     <div class="section-label">グループリーグ 順位表</div>
     <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節終了（6/22時点）</div>
+    <div class="standings-meta" id="standingsMeta">第2節終了（6/22全試合完了）</div>
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
@@ -4895,17 +4895,17 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇪🇨', name:'エクアドル',      gp:2, w:0, d:1, l:1, gf:0, ga:1 },
       { flag:'🇨🇼', name:'キュラソー',      gp:2, w:0, d:1, l:1, gf:1, ga:7 },
     ]},
-    G: { recap:'第2節：🇧🇪ベルギー 0-0 🇮🇷イラン　🇳🇿ニュージーランド vs 🇪🇬エジプト（未)', teams:[
+    G: { recap:'第2節：🇧🇪ベルギー 0-0 🇮🇷イラン　🇳🇿ニュージーランド 1-3 🇪🇬エジプト', teams:[
+      { flag:'🇪🇬', name:'エジプト',        gp:2, w:1, d:1, l:0, gf:4, ga:2 },
       { flag:'🇧🇪', name:'ベルギー',        gp:2, w:0, d:2, l:0, gf:1, ga:1 },
       { flag:'🇮🇷', name:'イラン',          gp:2, w:0, d:2, l:0, gf:2, ga:2 },
-      { flag:'🇳🇿', name:'ニュージーランド', gp:1, w:0, d:1, l:0, gf:2, ga:2 },
-      { flag:'🇪🇬', name:'エジプト',        gp:1, w:0, d:1, l:0, gf:1, ga:1 },
+      { flag:'🇳🇿', name:'ニュージーランド', gp:2, w:0, d:1, l:1, gf:3, ga:5 },
     ]},
-    H: { recap:'第2節：🇪🇸スペイン 4-0 🇸🇦サウジアラビア　🇺🇾ウルグアイ vs 🇨🇻カーボベルデ（未）', teams:[
+    H: { recap:'第2節：🇪🇸スペイン 4-0 🇸🇦サウジアラビア　🇺🇾ウルグアイ 2-2 🇨🇻カーボベルデ', teams:[
       { flag:'🇪🇸', name:'スペイン',       gp:2, w:1, d:1, l:0, gf:4, ga:0 },
-      { flag:'🇺🇾', name:'ウルグアイ',     gp:1, w:0, d:1, l:0, gf:1, ga:1 },
+      { flag:'🇺🇾', name:'ウルグアイ',     gp:2, w:0, d:2, l:0, gf:3, ga:3 },
+      { flag:'🇨🇻', name:'カーボベルデ',   gp:2, w:0, d:2, l:0, gf:2, ga:2 },
       { flag:'🇸🇦', name:'サウジアラビア', gp:2, w:0, d:1, l:1, gf:1, ga:5 },
-      { flag:'🇨🇻', name:'カーボベルデ',   gp:1, w:0, d:1, l:0, gf:0, ga:0 },
     ]},
     I: { recap:'第1節：🇫🇷フランス 3-1 🇸🇳セネガル　🇮🇶イラク 1-4 🇳🇴ノルウェー', teams:[
       { flag:'🇳🇴', name:'ノルウェー', gp:1, w:1, d:0, l:0, gf:4, ga:1 },
@@ -5046,8 +5046,8 @@ Android：メニュー→ホーム画面に追加
     {date:'6/21',dow:'日',time:'13:00',home:{n:'チュニジア',cc:'tn'},     away:{n:'日本',cc:'jp'},        group:'F',venue:'モンテレイ',      score:'0-4',broad:['dazn-free','ntv','nhkbs','bsp4k'],jp:true,free:true,past:true},
     {date:'6/22',dow:'月',time:'01:00',home:{n:'スペイン',cc:'es'},       away:{n:'サウジアラビア',cc:'sa'},group:'H',venue:'アトランタ',    score:'4-0',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
     {date:'6/22',dow:'月',time:'04:00',home:{n:'ベルギー',cc:'be'},       away:{n:'イラン',cc:'ir'},      group:'G',venue:'ロサンゼルス',    score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
-    {date:'6/22',dow:'月',time:'07:00',home:{n:'ウルグアイ',cc:'uy'},     away:{n:'カーボベルデ',cc:'cv'},group:'H',venue:'マイアミ',        score:'',   broad:['dazn'],         jp:false,free:false},
-    {date:'6/22',dow:'月',time:'10:00',home:{n:'ニュージーランド',cc:'nz'},away:{n:'エジプト',cc:'eg'},   group:'G',venue:'バンクーバー',    score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/22',dow:'月',time:'07:00',home:{n:'ウルグアイ',cc:'uy'},     away:{n:'カーボベルデ',cc:'cv'},group:'H',venue:'マイアミ',        score:'2-2',broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/22',dow:'月',time:'10:00',home:{n:'ニュージーランド',cc:'nz'},away:{n:'エジプト',cc:'eg'},   group:'G',venue:'バンクーバー',    score:'1-3',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/23',dow:'火',time:'02:00',home:{n:'アルゼンチン',cc:'ar'},   away:{n:'オーストリア',cc:'at'},group:'J',venue:'ダラス',          score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/23',dow:'火',time:'06:00',home:{n:'フランス',cc:'fr'},       away:{n:'イラク',cc:'iq'},      group:'I',venue:'フィラデルフィア', score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/23',dow:'火',time:'09:00',home:{n:'ノルウェー',cc:'no'},     away:{n:'セネガル',cc:'sn'},    group:'I',venue:'ニューヨーク',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
