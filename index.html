@@ -565,11 +565,12 @@
 
     .countdown-next {
       font-family: var(--font-display);
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 400;
       margin-bottom: 6px;
       color: #fff;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .countdown-digits {
@@ -2676,6 +2677,7 @@
       font-weight: 700;
       color: var(--text-muted);
       flex: 1;
+      white-space: nowrap;
     }
     .sokuhō-time {
       font-family: var(--font-mono);
@@ -4100,7 +4102,7 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/23 · 43試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong>6/12〜6/23 · 45試合終了</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
@@ -4120,7 +4122,7 @@
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
-      出典：ESPN・メディアドッグス ・ 更新：6/22時点
+      出典：ESPN・メディアドッグス ・ 更新：6/23時点
     </div>
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('standings')"><span class="x-icon">𝕏</span> この情報をシェア</button>
@@ -4164,7 +4166,10 @@
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" class="psc-flag" alt="日本">
         <div>
           <div class="psc-title">日本 現在の状況</div>
-          <div class="psc-record">2試合 ／ 1勝1分 ／ 勝点4　🇳🇱2-2🇯🇵 · 🇯🇵4-0🇹🇳</div>
+          <div class="psc-record">2試合 ／ 1勝1分 ／ 勝点4</div>
+          <div class="psc-record" style="margin-top:3px;letter-spacing:0.5px">
+            🇳🇱 2-2 🇯🇵&nbsp;&nbsp;·&nbsp;&nbsp;🇯🇵 4-0 🇹🇳
+          </div>
         </div>
         <div class="psc-pos-badge" style="background:rgba(91,198,107,0.2);border-color:rgba(91,198,107,0.5);color:#5bc66b">暫定2位🔥</div>
       </div>
@@ -5442,17 +5447,17 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇨🇻', name:'カーボベルデ',   gp:2, w:0, d:2, l:0, gf:2, ga:2 },
       { flag:'🇸🇦', name:'サウジアラビア', gp:2, w:0, d:1, l:1, gf:1, ga:5 },
     ]},
-    I: { recap:'第2節：🇫🇷フランス 3-0 🇮🇶イラク　🇳🇴ノルウェー vs 🇸🇳セネガル（未）', teams:[
+    I: { recap:'第2節：🇫🇷フランス 3-0 🇮🇶イラク　🇳🇴ノルウェー 3-2 🇸🇳セネガル', teams:[
+      { flag:'🇳🇴', name:'ノルウェー', gp:2, w:2, d:0, l:0, gf:7, ga:3 },
       { flag:'🇫🇷', name:'フランス',   gp:2, w:2, d:0, l:0, gf:6, ga:1 },
-      { flag:'🇳🇴', name:'ノルウェー', gp:1, w:1, d:0, l:0, gf:4, ga:1 },
-      { flag:'🇸🇳', name:'セネガル',   gp:1, w:0, d:0, l:1, gf:1, ga:3 },
+      { flag:'🇸🇳', name:'セネガル',   gp:2, w:0, d:0, l:2, gf:3, ga:7 },
       { flag:'🇮🇶', name:'イラク',     gp:2, w:0, d:0, l:2, gf:1, ga:7 },
     ]},
-    J: { recap:'第2節：🇦🇷アルゼンチン 2-0 🇦🇹オーストリア　🇯🇴ヨルダン vs 🇩🇿アルジェリア（未）', teams:[
+    J: { recap:'第2節：🇦🇷アルゼンチン 2-0 🇦🇹オーストリア　🇯🇴ヨルダン 1-2 🇩🇿アルジェリア', teams:[
       { flag:'🇦🇷', name:'アルゼンチン', gp:2, w:2, d:0, l:0, gf:5, ga:0 },
+      { flag:'🇩🇿', name:'アルジェリア', gp:2, w:1, d:0, l:1, gf:2, ga:3 },
       { flag:'🇦🇹', name:'オーストリア', gp:2, w:1, d:0, l:1, gf:3, ga:3 },
-      { flag:'🇯🇴', name:'ヨルダン',     gp:1, w:0, d:0, l:1, gf:1, ga:3 },
-      { flag:'🇩🇿', name:'アルジェリア', gp:1, w:0, d:0, l:1, gf:0, ga:3 },
+      { flag:'🇯🇴', name:'ヨルダン',     gp:2, w:0, d:0, l:2, gf:2, ga:6 },
     ]},
     K: { recap:'第1節：🇵🇹ポルトガル 1-1 🇨🇩DRコンゴ　🇺🇿ウズベキスタン 1-3 🇨🇴コロンビア', teams:[
       { flag:'🇨🇴', name:'コロンビア',    gp:1, w:1, d:0, l:0, gf:3, ga:1 },
@@ -5585,8 +5590,8 @@ Android：メニュー→ホーム画面に追加
     {date:'6/22',dow:'月',time:'10:00',home:{n:'ニュージーランド',cc:'nz'},away:{n:'エジプト',cc:'eg'},   group:'G',venue:'バンクーバー',    score:'1-3',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/23',dow:'火',time:'02:00',home:{n:'アルゼンチン',cc:'ar'},   away:{n:'オーストリア',cc:'at'},group:'J',venue:'ダラス',          score:'2-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/23',dow:'火',time:'06:00',home:{n:'フランス',cc:'fr'},       away:{n:'イラク',cc:'iq'},      group:'I',venue:'フィラデルフィア', score:'3-0',broad:['dazn'],         jp:false,free:false,past:true},
-    {date:'6/23',dow:'火',time:'09:00',home:{n:'ノルウェー',cc:'no'},     away:{n:'セネガル',cc:'sn'},    group:'I',venue:'ニューヨーク',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
-    {date:'6/23',dow:'火',time:'12:00',home:{n:'ヨルダン',cc:'jo'},       away:{n:'アルジェリア',cc:'dz'},group:'J',venue:'サンフランシスコ',score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/23',dow:'火',time:'09:00',home:{n:'ノルウェー',cc:'no'},     away:{n:'セネガル',cc:'sn'},    group:'I',venue:'ニューヨーク',    score:'3-2',broad:['dazn','nhk','bsp4k'],jp:false,free:false,past:true},
+    {date:'6/23',dow:'火',time:'12:00',home:{n:'ヨルダン',cc:'jo'},       away:{n:'アルジェリア',cc:'dz'},group:'J',venue:'サンフランシスコ',score:'1-2',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/24',dow:'水',time:'02:00',home:{n:'ポルトガル',cc:'pt'},     away:{n:'ウズベキスタン',cc:'uz'},group:'K',venue:'ヒューストン',  score:'',   broad:['dazn','nhk'],   jp:false,free:false},
     {date:'6/24',dow:'水',time:'05:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'ガーナ',cc:'gh'},     group:'L',venue:'ボストン',        score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/24',dow:'水',time:'08:00',home:{n:'パナマ',cc:'pa'},         away:{n:'クロアチア',cc:'hr'},  group:'L',venue:'トロント',        score:'',   broad:['dazn','fuji'],  jp:false,free:false},
