@@ -585,12 +585,12 @@
     }
 
     .countdown-num {
-      font-family: var(--font-mono);
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       font-size: 40px;
-      font-weight: 800;
+      font-weight: 900;
       font-variant-numeric: tabular-nums;
       line-height: 1;
-      letter-spacing: -1px;
+      letter-spacing: -2px;
       color: var(--gold);
       text-shadow: 0 0 18px rgba(212,255,63,0.45), 0 0 4px rgba(212,255,63,0.6);
     }
@@ -1181,7 +1181,85 @@
     .pp-club { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
     .pp-comment { font-size: 13px; color: var(--text-primary); line-height: 1.65; }
 
-    /* ===== COMING SOON (members tab teaser) ===== */
+    /* ===== X FOLLOW BAR ===== */
+    .x-follow-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 5px 16px;
+      text-decoration: none;
+      color: inherit;
+      gap: 8px;
+    }
+    .x-follow-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+    .x-follow-icon { font-size: 13px; flex-shrink: 0; }
+    .x-follow-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .x-follow-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .x-follow-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .x-follow-id {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sky-blue);
+    }
+    .x-follow-btn {
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 11px;
+    }
+
+    /* ===== SHARE BUTTON ===== */
+    .share-btn-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0 8px;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 16px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .share-btn:active { background: #1a1a1a; }
+    .share-btn .x-icon { font-size: 13px; font-weight: 900; font-family: sans-serif; }
+
+
     .coming-soon-wrap {
       display: flex;
       flex-direction: column;
@@ -2908,10 +2986,24 @@
     <div class="header-text">
       <h1>FIFA World Cup 2026</h1>
       <div class="title-ja">北中米W杯2026 日本代表ガイド</div>
-      <p>試合速報・順位表・日程を毎日更新</p>
+      <div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;letter-spacing:0.5px;margin-top:2px">📢 日本代表情報 毎日更新！</div>
     </div>
     <span class="live-badge" id="liveBadge" style="display:none">LIVE</span>
   </div>
+
+  <!-- X誘導バナー（非表示） -->
+  <a href="twitter://user?screen_name=coin0115" onclick="var t=this;setTimeout(function(){t.href='https://x.com/coin0115'},500)" target="_blank" rel="noopener" class="x-follow-bar" style="display:none">
+    <span class="x-follow-left">
+      <span class="x-follow-icon">📢</span>
+      <span class="x-follow-text">日本代表速報を毎日更新</span>
+    </span>
+    <span class="x-follow-right">
+      <span class="x-follow-label">運営X</span>
+      <span class="x-follow-id">@coin0115</span>
+      <span class="x-follow-btn">フォロー</span>
+    </span>
+  </a>
+
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
     <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
@@ -2947,11 +3039,12 @@
   <!-- JFA text -->
   <text x="16" y="27" font-family="Arial Black,sans-serif" font-size="4" font-weight="900" fill="#1a1a1a" text-anchor="middle" letter-spacing="0.5">JFA</text>
 </svg></span> 日本代表</button>
-    <button class="tab" data-tab-id="predict" onclick="showSection('predict', this)">⚔️ 突破＆予想</button>
+    <button class="tab" data-tab-id="predict" onclick="showSection('predict', this)">🎯 突破条件</button>
     <button class="tab" data-tab-id="standings" onclick="showSection('standings', this)">🏆 順位表</button>
+    <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)" style="display:none">📊 ランキング</button>
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📱 保存</button>
-    <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)">⚙️ 管理</button>
+    <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)" style="display:none">⚙️ 管理</button>
   </div>
 </div>
 
@@ -3068,6 +3161,13 @@
 
     <div class="section-label japan-section">⚽ グループリーグ — グループF</div>
 
+    <!-- 過去試合トグル -->
+    <button onclick="(function(btn){var w=document.getElementById('past-matches-wrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.textContent=open?'📋 過去の試合結果を見る（第1節・第2節） ▼':'閉じる ▲';})(this)"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--text-muted);font-size:13px;font-weight:700;padding:11px 16px;cursor:pointer;text-align:left;margin-bottom:10px">
+      📋 過去の試合結果を見る（第1節・第2節） ▼
+    </button>
+    <div id="past-matches-wrap" style="display:none">
+
     <!-- Match 1 (終了) -->
     <div class="match-card japan" style="opacity:0.75">
       <div class="match-header">
@@ -3130,6 +3230,8 @@
         <span class="broadcast-tag">📺 BSP4K</span>
       </div>
     </div>
+
+    </div><!-- /past-matches-wrap -->
 
     <!-- Match 3 (NEXT) -->
     <div class="match-card japan" style="border-color:rgba(212,255,63,0.4);box-shadow:0 0 0 1px rgba(212,255,63,0.15)">
@@ -3468,6 +3570,9 @@
         </div>
       </div>
     </div>
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('japan')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
   </div>
 
   <!-- ===== JAPAN TEAM TAB ===== -->
@@ -3521,18 +3626,161 @@
 
     <!-- 監督 -->
     <div class="section-label">👨‍💼 監督</div>
-    <div class="jp-coach-card">
-      <div class="jp-coach-avatar">🎌</div>
-      <div class="jp-coach-body">
-        <div class="jp-coach-eyebrow">HEAD COACH</div>
-        <div class="jp-coach-name">森保 一</div>
-        <div class="jp-coach-tags">
-          <span class="jp-coach-tag">4-2-3-1</span>
-          <span class="jp-coach-tag">3-4-2-1</span>
-          <span class="jp-coach-tag">勝率 約70%</span>
+    <div class="jp-coach-card" style="flex-direction:column;gap:0">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="jp-coach-avatar">🎌</div>
+        <div class="jp-coach-body" style="flex:1">
+          <div class="jp-coach-eyebrow">HEAD COACH</div>
+          <div class="jp-coach-name">
+            <ruby>森保<rt style="font-size:9px;letter-spacing:1px">もりやす</rt></ruby>
+            　
+            <ruby>一<rt style="font-size:9px;letter-spacing:1px">はじめ</rt></ruby>
+          </div>
+          <div class="jp-coach-tags">
+            <span class="jp-coach-tag">4-2-3-1</span>
+            <span class="jp-coach-tag">3-4-2-1</span>
+            <span class="jp-coach-tag">勝率 約70%</span>
+          </div>
         </div>
+        <button onclick="(function(btn){var d=document.getElementById('coach-detail');var open=d.style.display!=='none';d.style.display=open?'none':'block';btn.textContent=open?'詳細を見る▼':'閉じる▲';})(this)"
+          id="coach-toggle-btn"
+          style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">
+          詳細を見る▼
+        </button>
+      </div>
+      <div id="coach-detail" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
         <div class="jp-coach-desc">2018年就任。100試合超を率いて勝率約70%という歴代最高クラスの実績を誇る。カタール大会でドイツ・スペインを撃破したブロック守備＋速攻スタイルを継承。4バックと3バックを状況に応じて使い分ける柔軟な戦術が武器。チーム全員が「W杯優勝」という高い目標を共有しているのが今大会の最大の強み。</div>
       </div>
+    </div>
+
+    <!-- 歴代W杯出場監督 -->
+    <div class="section-label" style="margin-top:20px">📜 歴代W杯出場監督</div>
+    <button onclick="(function(btn){var w=document.getElementById('past-coaches-wrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.textContent=open?'📜 歴代監督を見る ▼':'閉じる ▲';})(this)"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--text-primary);font-size:13px;font-weight:700;padding:12px 16px;cursor:pointer;text-align:left;margin-bottom:12px">
+      📜 歴代監督を見る ▼
+    </button>
+    <div id="past-coaches-wrap" style="display:none">
+
+      <!-- 岡田武史① -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🗾</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">1997–1998　第1期</div>
+            <div class="jp-coach-name" style="font-size:18px">岡田 武史</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇫🇷 1998</span>
+              <span class="jp-coach-tag" style="background:rgba(255,100,100,0.15);color:#ff8888">GL敗退</span>
+              <span class="jp-coach-tag">W杯初出場を達成</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('okada1')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="okada1" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">加茂周監督解任を受け、コーチから電撃昇格。崖っぷちの予選をジョホールバルの歓喜で突破し、日本W杯<strong>初出場を達成</strong>した立役者。本大会では3戦全敗でGL敗退となったが、日本サッカーの歴史を変えた監督として語り継がれる。</div>
+        </div>
+      </div>
+
+      <!-- トルシエ -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🇫🇷</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">1998–2002　フランス人</div>
+            <div class="jp-coach-name" style="font-size:18px">フィリップ・トルシエ</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇯🇵 2002</span>
+              <span class="jp-coach-tag" style="background:rgba(212,255,63,0.15);color:var(--gold)">ベスト16</span>
+              <span class="jp-coach-tag">フラット3</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('torushie')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="torushie" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">「フラット3」の組織守備を徹底し、日韓共催の自国開催ながら<strong>初のGL突破・ベスト16</strong>を達成。ロシア・チュニジア・ベルギーを下した。独特のキャラクターと厳格な指導スタイルで選手と衝突しながらも成果を残した。自国開催の利もあったとはいえ、当時の評価は非常に高い。</div>
+        </div>
+      </div>
+
+      <!-- ジーコ -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🇧🇷</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">2002–2006　ブラジル人</div>
+            <div class="jp-coach-name" style="font-size:18px">ジーコ</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇩🇪 2006</span>
+              <span class="jp-coach-tag" style="background:rgba(255,100,100,0.15);color:#ff8888">GL敗退</span>
+              <span class="jp-coach-tag">アジアカップ優勝</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('zico')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="zico" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">ブラジルの神様・ジーコが指揮。中田・中村・小野・稲本の黄金中盤を組み、<strong>アジアカップ2004優勝</strong>・ドイツW杯予選を世界最速で突破した。しかし本大会ではオーストラリアに逆転負けするなど3戦1分2敗でGL敗退。選手の自主性を重んじすぎた采配に批判も。</div>
+        </div>
+      </div>
+
+      <!-- 岡田武史② -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🗾</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">2007–2010　第2期</div>
+            <div class="jp-coach-name" style="font-size:18px">岡田 武史</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇿🇦 2010</span>
+              <span class="jp-coach-tag" style="background:rgba(212,255,63,0.15);color:var(--gold)">ベスト16</span>
+              <span class="jp-coach-tag">オカナチオ</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('okada2')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="okada2" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">オシム急逝に伴い第2期政権。本大会直前まで不振でバッシングを受けたが、4-1-4-1の堅守速攻「オカナチオ」に戦術を転換。カメルーン・デンマークを破り<strong>海外開催初のGL突破・ベスト16</strong>を達成。PK戦でパラグアイに惜敗。「ごめんなさい」の発言も印象的。</div>
+        </div>
+      </div>
+
+      <!-- ザッケローニ -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🇮🇹</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">2010–2014　イタリア人</div>
+            <div class="jp-coach-name" style="font-size:18px">アルベルト・ザッケローニ</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇧🇷 2014</span>
+              <span class="jp-coach-tag" style="background:rgba(255,100,100,0.15);color:#ff8888">GL敗退</span>
+              <span class="jp-coach-tag">アジアカップ優勝</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('zac')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="zac" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">就任初戦でアルゼンチンに歴史的勝利。<strong>アジアカップ2011優勝</strong>と高い評価を得た。攻撃的な4-2-3-1で本田・香川・岡崎・長友らタレントを活かしたが、ブラジルW杯では史上最強と謳われながらコートジボワール・コロンビアに敗れGL敗退。温厚な人柄で選手から慕われた。</div>
+        </div>
+      </div>
+
+      <!-- 西野朗 -->
+      <div class="jp-coach-card" style="flex-direction:column;gap:0;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="jp-coach-avatar" style="font-size:22px">🗾</div>
+          <div class="jp-coach-body" style="flex:1">
+            <div class="jp-coach-eyebrow">2018　日本人</div>
+            <div class="jp-coach-name" style="font-size:18px">西野 朗</div>
+            <div class="jp-coach-tags">
+              <span class="jp-coach-tag">🇷🇺 2018</span>
+              <span class="jp-coach-tag" style="background:rgba(212,255,63,0.15);color:var(--gold)">ベスト16</span>
+              <span class="jp-coach-tag">W杯2ヶ月前就任</span>
+            </div>
+          </div>
+          <button onclick="togglePastCoach('nishino')" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">詳細▼</button>
+        </div>
+        <div id="nishino" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+          <div class="jp-coach-desc">ハリルホジッチ解任を受け、本大会わずか<strong>2ヶ月前に電撃就任</strong>。GLではコロンビアに歴史的逆転勝利を収め、3大会ぶりのGL突破。ラウンド16でベルギーに2-3逆転負け（残り3分からの大逆転）という悔しい幕切れ。マイアミの奇跡（1996年）を含め日本サッカー史に多大な貢献。</div>
+        </div>
+      </div>
+
     </div>
 
     <!-- グループステージ日本戦 -->
@@ -3587,6 +3835,13 @@
 
     <!-- 強化版対戦相手カード -->
     <div class="section-label">⚠️ グループF 対戦相手</div>
+
+    <!-- オランダ・チュニジア（終了試合・折りたたみ） -->
+    <button onclick="(function(btn){var w=document.getElementById('past-opp-wrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.textContent=open?'📋 終了した対戦相手を見る（オランダ・チュニジア） ▼':'閉じる ▲';})(this)"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--text-muted);font-size:13px;font-weight:700;padding:11px 16px;cursor:pointer;text-align:left;margin-bottom:10px">
+      📋 終了した対戦相手を見る（オランダ・チュニジア） ▼
+    </button>
+    <div id="past-opp-wrap" style="display:none">
 
     <!-- オランダ -->
     <div class="opp-card">
@@ -3704,6 +3959,8 @@
       </div>
     </div>
 
+    </div><!-- /past-opp-wrap -->
+
     <!-- スウェーデン -->
     <div class="opp-card">
       <div class="opp-card-header">
@@ -3810,6 +4067,9 @@
       </div>
       <div class="squad-legend">◇ キーマン</div>
     </div>
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('jpteam')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
   </div>
 
 
@@ -3840,30 +4100,50 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/22 · 41試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong>6/12〜6/23 · 43試合終了</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
 
     <!-- これからの試合 -->
     <div id="scheduleList"></div>
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('schedule')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
   </div>
 
   <!-- ===== STANDINGS TAB ===== -->
   <div id="section-standings" class="section">
     <div class="section-label">グループリーグ 順位表</div>
     <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節終了（6/22全試合完了）</div>
+    <div class="standings-meta" id="standingsMeta">第2節終了（6/23全試合完了）</div>
     <div id="standingsContent"></div>
     <div class="standings-legend">
       <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
       出典：ESPN・メディアドッグス ・ 更新：6/22時点
+    </div>
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('standings')"><span class="x-icon">𝕏</span> この情報をシェア</button>
     </div>
   </div>
 
 
   <!-- ===== PREDICT TAB ===== -->
   <div id="section-predict" class="section">
+
+    <!-- 突破確率バナー -->
+    <div style="background:linear-gradient(135deg,rgba(52,217,165,0.2),rgba(30,80,200,0.2));border:1.5px solid rgba(52,217,165,0.4);border-radius:16px;padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:rgba(52,217,165,0.8);letter-spacing:2px;margin-bottom:6px">🇯🇵 JAPAN QUALIFYING PROBABILITY</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px">
+        <span style="font-size:52px;font-weight:900;color:#34d9a5;line-height:1">95</span>
+        <span style="font-size:28px;font-weight:900;color:#34d9a5">%</span>
+      </div>
+      <div style="background:rgba(0,0,0,0.2);border-radius:8px;height:10px;margin:0 8px 10px;overflow:hidden">
+        <div style="height:100%;width:95%;background:linear-gradient(90deg,#34d9a5,#7eb8ff);border-radius:8px;transition:width 1s ease"></div>
+      </div>
+      <div style="font-size:13px;font-weight:800;color:var(--text-primary)">グループ突破確率 <span style="color:#34d9a5">95%</span></div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">勝点4・暫定2位 ／ スウェーデン戦（6/26）で<strong style="color:#fff">引き分け以上</strong>で確定</div>
+    </div>
 
     <!-- ===== 優勝予想 ===== -->
     <div class="section-label">🏆 あなたの優勝予想</div>
@@ -3914,6 +4194,85 @@
         </div>
       </div>
     </div>
+
+    <!-- 3位通過率シミュレーション -->
+    <div class="section-label" style="margin-top:8px">📊 3位でも決勝T進出できる？グループ別シミュレーション</div>
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:14px 16px;margin-bottom:16px">
+
+      <!-- グループF（日本） -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="background:rgba(212,255,63,0.2);border:1px solid rgba(212,255,63,0.5);border-radius:5px;font-size:11px;font-weight:900;color:var(--gold);padding:2px 8px">F</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-primary)">🇳🇱🇯🇵🇸🇪🇹🇳</span>
+            <span style="font-size:11px;font-weight:800;color:#34d9a5">🥇 1位</span>
+          </div>
+          <span style="font-size:16px;font-weight:900;color:#34d9a5">93.6%</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:6px;height:8px;overflow:hidden">
+          <div style="height:100%;width:93.6%;background:linear-gradient(90deg,#34d9a5,#7eb8ff);border-radius:6px"></div>
+        </div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:3px">← 日本が所属。3位でも突破できる可能性が最も高いグループ！</div>
+      </div>
+
+      <!-- グループC -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:5px;font-size:11px;font-weight:900;color:var(--text-muted);padding:2px 8px">C</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-primary)">🏴󠁧󠁢󠁳󠁣󠁴󠁿🇧🇷🇲🇦🇭🇹</span>
+          </div>
+          <span style="font-size:16px;font-weight:900;color:var(--text-primary)">86.4%</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:6px;height:8px;overflow:hidden">
+          <div style="height:100%;width:86.4%;background:rgba(212,180,60,0.7);border-radius:6px"></div>
+        </div>
+      </div>
+
+      <!-- グループD -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:5px;font-size:11px;font-weight:900;color:var(--text-muted);padding:2px 8px">D</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-primary)">🇹🇷🇺🇸🇵🇦🇦🇺</span>
+          </div>
+          <span style="font-size:16px;font-weight:900;color:var(--text-primary)">82.2%</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:6px;height:8px;overflow:hidden">
+          <div style="height:100%;width:82.2%;background:rgba(212,180,60,0.5);border-radius:6px"></div>
+        </div>
+      </div>
+
+      <!-- グループL -->
+      <div style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:5px;font-size:11px;font-weight:900;color:var(--text-muted);padding:2px 8px">L</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-primary)">🇬🇭🇵🇦🏴󠁧󠁢󠁥󠁮󠁧󠁿🇭🇷</span>
+          </div>
+          <span style="font-size:16px;font-weight:900;color:var(--text-primary)">71.7%</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:6px;height:8px;overflow:hidden">
+          <div style="height:100%;width:71.7%;background:rgba(150,150,255,0.6);border-radius:6px"></div>
+        </div>
+      </div>
+
+      <!-- グループI -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:5px;font-size:11px;font-weight:900;color:var(--text-muted);padding:2px 8px">I</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-primary)">🇮🇶🇳🇴🇫🇷🇸🇳</span>
+          </div>
+          <span style="font-size:16px;font-weight:900;color:var(--text-primary)">71.0%</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.2);border-radius:6px;height:8px;overflow:hidden">
+          <div style="height:100%;width:71%;background:rgba(150,150,255,0.5);border-radius:6px"></div>
+        </div>
+      </div>
+
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);text-align:center;margin-bottom:16px">出典：Fusion-Sim.com（10,000シミュレーション / 6/21更新）</div>
 
     <!-- 対戦相手との力関係 -->
     <div class="section-label">📊 残り2試合の対戦相手分析</div>
@@ -4083,6 +4442,14 @@
         </div>
       </div>
     </div>
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('predict')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
+
+    <!-- 3位通過率ランキング -->
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('predict')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
 
   </div>
 
@@ -4177,6 +4544,53 @@
       <button class="modal-close" onclick="document.getElementById('playerModal').classList.remove('open')">閉じる</button>
       <div style="height:16px;"></div>
     </div>
+  </div>
+
+  <!-- ===== RANKING TAB ===== -->
+  <div id="section-ranking" class="section">
+
+    <div class="section-label">⚽ 得点ランキング　<span style="font-size:11px;color:var(--text-muted);font-weight:400">6/22時点・出典：サッカーキング</span></div>
+
+    <!-- 得点ランキング -->
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:20px">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.5px">
+            <th style="padding:10px 8px;text-align:center;width:36px">順位</th>
+            <th style="padding:10px 8px;text-align:left">選手名</th>
+            <th style="padding:10px 8px;text-align:center;width:36px">国</th>
+            <th style="padding:10px 8px;text-align:center;width:36px;color:var(--gold)">G</th>
+            <th style="padding:10px 8px;text-align:center;width:36px;color:var(--sky-blue)">A</th>
+          </tr>
+        </thead>
+        <tbody id="scorer-tbody">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label">🅰️ アシストランキング　<span style="font-size:11px;color:var(--text-muted);font-weight:400">6/22時点・出典：サッカーキング</span></div>
+
+    <!-- アシストランキング -->
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:20px">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.5px">
+            <th style="padding:10px 8px;text-align:center;width:36px">順位</th>
+            <th style="padding:10px 8px;text-align:left">選手名</th>
+            <th style="padding:10px 8px;text-align:center;width:36px">国</th>
+            <th style="padding:10px 8px;text-align:center;width:36px;color:var(--sky-blue)">A</th>
+            <th style="padding:10px 8px;text-align:center;width:36px;color:var(--gold)">G</th>
+          </tr>
+        </thead>
+        <tbody id="assist-tbody">
+        </tbody>
+      </table>
+    </div>
+
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:4px 0 12px">
+      🇯🇵 = 日本代表選手　G=ゴール　A=アシスト　※順位はFIFA基準（G→A→出場時間）
+    </div>
+
   </div>
 
   <!-- ===== QUIZ TAB ===== -->
@@ -4355,7 +4769,7 @@ Android：メニュー→ホーム画面に追加
 </svg></span>日本代表
   </button>
   <button class="nav-btn" id="nav-predict" onclick="showSection('predict', null, 'nav-predict')">
-    <span class="nav-icon">⚔️</span>突破＆予想
+    <span class="nav-icon">🎯</span>突破条件
   </button>
   <button class="nav-btn" id="nav-standings" onclick="showSection('standings', null, 'nav-standings')">
     <span class="nav-icon">🏆</span>順位表
@@ -4703,6 +5117,35 @@ Android：メニュー→ホーム画面に追加
     renderPlayers();
   }
 
+  function shareTab(tab) {
+    const msgs = {
+      japan:    `🇯🇵 日本代表 最新情報！\nスウェーデン戦（6/26 08:00）に向けて盛り上がろう🔥\nグループ突破確率95%！引き分け以上で確定✅\n#日本代表 #W杯2026`,
+      jpteam:   `🇯🇵 日本代表メンバー情報まとめ\n上田・鎌田・伊東ら絶好調🔥\nW杯2026 グループF 勝点4・暫定2位\n#日本代表 #W杯2026`,
+      schedule: `📅 W杯2026 全試合日程・結果\n最新スコアを随時更新中🔄\n#ワールドカップ2026 #W杯2026`,
+      standings:`🏆 W杯2026 グループ別順位表（6/22更新）\n日本🇯🇵は勝点4で暫定2位！\nスウェーデン戦が天王山🔥\n#日本代表 #W杯2026`,
+      predict:  `🎯 日本代表 グループ突破確率 95%！\n6/26 スウェーデン戦で引き分け以上なら確定✅\n勝てば1位通過！寝不足確定だけど見るしかない😤\n#日本代表 #W杯2026`,
+    };
+    const text = msgs[tab] || `🇯🇵 W杯2026 日本代表情報をチェック！\n#日本代表 #W杯2026`;
+    const tweetUrl = 'twitter://intent/tweet?text=' + encodeURIComponent(text);
+    const webUrl   = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text);
+    var a = document.createElement('a');
+    a.href = tweetUrl;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ window.open(webUrl, '_blank', 'noopener'); }, 800);
+  }
+
+  function togglePastCoach(id) {
+    const d = document.getElementById(id);
+    const btn = d.previousElementSibling.querySelector('button');
+    const open = d.style.display !== 'none';
+    d.style.display = open ? 'none' : 'block';
+    btn.textContent = open ? '詳細▼' : '閉じる▲';
+  }
+
   function showSection(id, tabBtn, navId) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById('section-' + id).classList.add('active');
@@ -4723,6 +5166,94 @@ Android：メニュー→ホーム画面に追加
     if (id === 'members') showMembersContent();
     if (id === 'quiz') renderQuiz();
     if (id === 'predict') renderChampionGrid();
+    if (id === 'ranking') renderRanking();
+  }
+
+  // ===== RANKING DATA (6/22時点) =====
+  const SCORERS = [
+    { rank:1,  name:'リオネル・メッシ',      flag:'🇦🇷', country:'アルゼンチン', g:3, a:1, jp:false },
+    { rank:1,  name:'デニズ・ウンダヴ',       flag:'🇩🇪', country:'ドイツ',       g:3, a:0, jp:false },
+    { rank:1,  name:'ジョナサン・デイヴィッド',flag:'🇨🇦', country:'カナダ',       g:3, a:0, jp:false },
+    { rank:4,  name:'上田 綺世',             flag:'🇯🇵', country:'日本',         g:3, a:0, jp:true  },
+    { rank:5,  name:'ミケル・オヤルサバル',   flag:'🇪🇸', country:'スペイン',     g:2, a:1, jp:false },
+    { rank:5,  name:'マクシミリアーノ・アラウホ',flag:'🇺🇾',country:'ウルグアイ',  g:2, a:1, jp:false },
+    { rank:5,  name:'フォラリン・バログン',   flag:'🇺🇸', country:'アメリカ',     g:2, a:0, jp:false },
+    { rank:5,  name:'ハリー・ケイン',         flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', country:'イングランド', g:2, a:0, jp:false },
+    { rank:5,  name:'ブライアン・ブロビー',   flag:'🇳🇱', country:'オランダ',     g:2, a:0, jp:false },
+    { rank:5,  name:'アーリング・ハーランド', flag:'🇳🇴', country:'ノルウェー',   g:2, a:0, jp:false },
+    { rank:5,  name:'キリアン・エムバペ',     flag:'🇫🇷', country:'フランス',     g:2, a:0, jp:false },
+    { rank:5,  name:'ヤシン・アヤリ',         flag:'🇸🇪', country:'スウェーデン', g:2, a:0, jp:false },
+    { rank:13, name:'鎌田 大地',             flag:'🇯🇵', country:'日本',         g:2, a:1, jp:true  },
+    { rank:14, name:'伊東 純也',             flag:'🇯🇵', country:'日本',         g:1, a:0, jp:true  },
+    { rank:14, name:'中村 敬斗',             flag:'🇯🇵', country:'日本',         g:1, a:1, jp:true  },
+  ];
+
+  const ASSISTERS = [
+    { rank:1,  name:'ミケル・オヤルサバル',   flag:'🇪🇸', country:'スペイン',     a:1, g:2, jp:false },
+    { rank:1,  name:'マクシミリアーノ・アラウホ',flag:'🇺🇾',country:'ウルグアイ',  a:1, g:2, jp:false },
+    { rank:1,  name:'リオネル・メッシ',      flag:'🇦🇷', country:'アルゼンチン', a:1, g:3, jp:false },
+    { rank:1,  name:'中村 敬斗',             flag:'🇯🇵', country:'日本',         a:1, g:1, jp:true  },
+    { rank:1,  name:'鎌田 大地',             flag:'🇯🇵', country:'日本',         a:1, g:2, jp:true  },
+    { rank:1,  name:'コーディ・ガクポ',       flag:'🇳🇱', country:'オランダ',     a:1, g:1, jp:false },
+    { rank:1,  name:'ラミン・ヤマル',         flag:'🇪🇸', country:'スペイン',     a:1, g:1, jp:false },
+  ];
+
+  function renderRanking() {
+    // 得点ランキング
+    const sb = document.getElementById('scorer-tbody');
+    if (!sb) return;
+    sb.innerHTML = '';
+    SCORERS.forEach((p, i) => {
+      const prev = i > 0 ? SCORERS[i - 1] : null;
+      const rankDisp = (prev && prev.rank === p.rank) ? '' : p.rank;
+      const medalMap = { 1:'🥇', 2:'🥈', 3:'🥉' };
+      const medal = medalMap[p.rank] || '';
+      const isJp = p.jp;
+      const tr = document.createElement('tr');
+      tr.style.cssText = isJp
+        ? 'background:rgba(59,122,240,0.18);border-bottom:1px solid rgba(255,255,255,0.06)'
+        : 'border-bottom:1px solid rgba(255,255,255,0.06)';
+      tr.innerHTML = `
+        <td style="padding:10px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${medal || rankDisp}</td>
+        <td style="padding:10px 8px">
+          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'14px':'13px'}">
+            ${isJp ? '🇯🇵 ' : ''}${p.name}${isJp ? ' <span style="font-size:10px;background:rgba(59,122,240,0.3);border-radius:4px;padding:1px 5px;font-weight:900;color:#7eb8ff">日本代表</span>' : ''}
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:1px">${p.country}</div>
+        </td>
+        <td style="padding:10px 6px;text-align:center;font-size:16px">${p.flag}</td>
+        <td style="padding:10px 6px;text-align:center;font-size:16px;font-weight:900;color:var(--gold)">${p.g}</td>
+        <td style="padding:10px 6px;text-align:center;font-size:14px;font-weight:700;color:var(--sky-blue)">${p.a}</td>
+      `;
+      sb.appendChild(tr);
+    });
+
+    // アシストランキング
+    const ab = document.getElementById('assist-tbody');
+    if (!ab) return;
+    ab.innerHTML = '';
+    ASSISTERS.forEach((p, i) => {
+      const prev = i > 0 ? ASSISTERS[i - 1] : null;
+      const rankDisp = (prev && prev.rank === p.rank) ? '' : p.rank;
+      const isJp = p.jp;
+      const tr = document.createElement('tr');
+      tr.style.cssText = isJp
+        ? 'background:rgba(59,122,240,0.18);border-bottom:1px solid rgba(255,255,255,0.06)'
+        : 'border-bottom:1px solid rgba(255,255,255,0.06)';
+      tr.innerHTML = `
+        <td style="padding:10px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${rankDisp || '-'}</td>
+        <td style="padding:10px 8px">
+          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'14px':'13px'}">
+            ${isJp ? '🇯🇵 ' : ''}${p.name}${isJp ? ' <span style="font-size:10px;background:rgba(59,122,240,0.3);border-radius:4px;padding:1px 5px;font-weight:900;color:#7eb8ff">日本代表</span>' : ''}
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:1px">${p.country}</div>
+        </td>
+        <td style="padding:10px 6px;text-align:center;font-size:16px">${p.flag}</td>
+        <td style="padding:10px 6px;text-align:center;font-size:16px;font-weight:900;color:var(--sky-blue)">${p.a}</td>
+        <td style="padding:10px 6px;text-align:center;font-size:14px;font-weight:700;color:var(--gold)">${p.g}</td>
+      `;
+      ab.appendChild(tr);
+    });
   }
 
   function showMembersContent() {
@@ -4849,8 +5380,12 @@ Android：メニュー→ホーム画面に追加
   function shareChampionPick() {
     if (!_championPick) return;
     const text = `私の #W杯2026 優勝予想は ${_championPick}！🏆\n#北中米W杯 #サッカーW杯\nhttps://wc2026-japan.github.io/guide/`;
-    const url = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text);
-    window.open(url, '_blank', 'noopener');
+    const tweetUrl = 'twitter://intent/tweet?text=' + encodeURIComponent(text);
+    const webUrl   = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text);
+    var a = document.createElement('a');
+    a.href = tweetUrl; a.target = '_blank'; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ window.open(webUrl, '_blank', 'noopener'); }, 800);
   }
 
   // 初期化
@@ -4907,15 +5442,15 @@ Android：メニュー→ホーム画面に追加
       { flag:'🇨🇻', name:'カーボベルデ',   gp:2, w:0, d:2, l:0, gf:2, ga:2 },
       { flag:'🇸🇦', name:'サウジアラビア', gp:2, w:0, d:1, l:1, gf:1, ga:5 },
     ]},
-    I: { recap:'第1節：🇫🇷フランス 3-1 🇸🇳セネガル　🇮🇶イラク 1-4 🇳🇴ノルウェー', teams:[
+    I: { recap:'第2節：🇫🇷フランス 3-0 🇮🇶イラク　🇳🇴ノルウェー vs 🇸🇳セネガル（未）', teams:[
+      { flag:'🇫🇷', name:'フランス',   gp:2, w:2, d:0, l:0, gf:6, ga:1 },
       { flag:'🇳🇴', name:'ノルウェー', gp:1, w:1, d:0, l:0, gf:4, ga:1 },
-      { flag:'🇫🇷', name:'フランス',   gp:1, w:1, d:0, l:0, gf:3, ga:1 },
       { flag:'🇸🇳', name:'セネガル',   gp:1, w:0, d:0, l:1, gf:1, ga:3 },
-      { flag:'🇮🇶', name:'イラク',     gp:1, w:0, d:0, l:1, gf:1, ga:4 },
+      { flag:'🇮🇶', name:'イラク',     gp:2, w:0, d:0, l:2, gf:1, ga:7 },
     ]},
-    J: { recap:'第1節：🇦🇷アルゼンチン 3-0 🇩🇿アルジェリア　🇦🇹オーストリア 3-1 🇯🇴ヨルダン', teams:[
-      { flag:'🇦🇷', name:'アルゼンチン', gp:1, w:1, d:0, l:0, gf:3, ga:0 },
-      { flag:'🇦🇹', name:'オーストリア', gp:1, w:1, d:0, l:0, gf:3, ga:1 },
+    J: { recap:'第2節：🇦🇷アルゼンチン 2-0 🇦🇹オーストリア　🇯🇴ヨルダン vs 🇩🇿アルジェリア（未）', teams:[
+      { flag:'🇦🇷', name:'アルゼンチン', gp:2, w:2, d:0, l:0, gf:5, ga:0 },
+      { flag:'🇦🇹', name:'オーストリア', gp:2, w:1, d:0, l:1, gf:3, ga:3 },
       { flag:'🇯🇴', name:'ヨルダン',     gp:1, w:0, d:0, l:1, gf:1, ga:3 },
       { flag:'🇩🇿', name:'アルジェリア', gp:1, w:0, d:0, l:1, gf:0, ga:3 },
     ]},
@@ -5048,8 +5583,8 @@ Android：メニュー→ホーム画面に追加
     {date:'6/22',dow:'月',time:'04:00',home:{n:'ベルギー',cc:'be'},       away:{n:'イラン',cc:'ir'},      group:'G',venue:'ロサンゼルス',    score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/22',dow:'月',time:'07:00',home:{n:'ウルグアイ',cc:'uy'},     away:{n:'カーボベルデ',cc:'cv'},group:'H',venue:'マイアミ',        score:'2-2',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/22',dow:'月',time:'10:00',home:{n:'ニュージーランド',cc:'nz'},away:{n:'エジプト',cc:'eg'},   group:'G',venue:'バンクーバー',    score:'1-3',broad:['dazn'],         jp:false,free:false,past:true},
-    {date:'6/23',dow:'火',time:'02:00',home:{n:'アルゼンチン',cc:'ar'},   away:{n:'オーストリア',cc:'at'},group:'J',venue:'ダラス',          score:'',   broad:['dazn'],         jp:false,free:false},
-    {date:'6/23',dow:'火',time:'06:00',home:{n:'フランス',cc:'fr'},       away:{n:'イラク',cc:'iq'},      group:'I',venue:'フィラデルフィア', score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/23',dow:'火',time:'02:00',home:{n:'アルゼンチン',cc:'ar'},   away:{n:'オーストリア',cc:'at'},group:'J',venue:'ダラス',          score:'2-0',broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/23',dow:'火',time:'06:00',home:{n:'フランス',cc:'fr'},       away:{n:'イラク',cc:'iq'},      group:'I',venue:'フィラデルフィア', score:'3-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/23',dow:'火',time:'09:00',home:{n:'ノルウェー',cc:'no'},     away:{n:'セネガル',cc:'sn'},    group:'I',venue:'ニューヨーク',    score:'',   broad:['dazn','nhk','bsp4k'],jp:false,free:false},
     {date:'6/23',dow:'火',time:'12:00',home:{n:'ヨルダン',cc:'jo'},       away:{n:'アルジェリア',cc:'dz'},group:'J',venue:'サンフランシスコ',score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/24',dow:'水',time:'02:00',home:{n:'ポルトガル',cc:'pt'},     away:{n:'ウズベキスタン',cc:'uz'},group:'K',venue:'ヒューストン',  score:'',   broad:['dazn','nhk'],   jp:false,free:false},
@@ -5443,8 +5978,12 @@ Android：メニュー→ホーム画面に追加
     if (navigator.share) {
       navigator.share({ text });
     } else {
-      const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
-      window.open(url, '_blank');
+      const tweetUrl = 'twitter://intent/tweet?text=' + encodeURIComponent(text);
+      const webUrl   = 'https://x.com/intent/tweet?text=' + encodeURIComponent(text);
+      var a = document.createElement('a');
+      a.href = tweetUrl; a.target = '_blank'; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ window.open(webUrl, '_blank', 'noopener'); }, 800);
     }
   }
 
