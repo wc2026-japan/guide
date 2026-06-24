@@ -919,6 +919,175 @@
       color: var(--gold); border-radius: 4px; padding: 2px 7px;
     }
     .jp-coach-desc { font-size: 13px; color: var(--text-primary); line-height: 1.65; }
+    /* ===== 決勝T 次戦バナー ===== */
+    .ko-next-banner {
+      background: linear-gradient(135deg, #0a1e4a 0%, #0d2860 100%);
+      border: 1.5px solid rgba(100,160,255,0.4);
+      border-radius: 16px; padding: 14px 16px; margin-bottom: 14px;
+    }
+    .ko-next-label {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      color: var(--sky-blue); background: rgba(59,122,240,0.2);
+      border: 1px solid rgba(59,122,240,0.4); border-radius: 4px;
+      padding: 2px 8px; margin-bottom: 10px; letter-spacing: 1px;
+    }
+    .ko-next-body { display: flex; align-items: center; gap: 10px; }
+    .ko-next-team { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+    .ko-next-flag-emoji { font-size: 40px; line-height: 1; }
+    .ko-next-name { font-size: 13px; font-weight: 900; color: #fff; text-align: center; }
+    .ko-next-sub  { font-size: 10px; color: var(--sky-blue); text-align: center; }
+    .ko-next-vs   { font-size: 18px; font-weight: 900; color: var(--text-muted); flex-shrink: 0; }
+    .ko-next-opponent { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .ko-next-opp-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 8px 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .ko-next-q {
+      width: 32px; height: 32px; background: rgba(255,255,255,0.1);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: var(--text-muted); flex-shrink: 0;
+    }
+    .ko-next-opp-name { font-size: 13px; font-weight: 800; color: var(--text-primary); }
+    .ko-next-win-msg {
+      text-align: center; font-size: 13px; font-weight: 900; color: var(--gold);
+      padding: 10px 0 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 10px;
+    }
+    /* ===== 優勝への道 ロードマップ ===== */
+    .ko-roadmap { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; margin-bottom: 14px; }
+    .ko-roadmap-title { font-size: 13px; font-weight: 900; color: var(--text-primary); margin-bottom: 12px; }
+    .ko-roadmap-steps { display: flex; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .ko-roadmap-steps::-webkit-scrollbar { display: none; }
+    .ko-roadmap-step {
+      flex-shrink: 0; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px; padding: 8px 10px; text-align: center; min-width: 62px;
+    }
+    .ko-roadmap-step.active { background: var(--japan-red); border-color: var(--japan-red); }
+    .ko-roadmap-step.final-step { background: linear-gradient(135deg,#7a6010,#c8a020); border-color: var(--gold); }
+    .ko-roadmap-step-code { font-size: 14px; font-weight: 900; color: #fff; }
+    .ko-roadmap-step-name { font-size: 9px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .ko-roadmap-arrow { color: var(--text-muted); font-size: 12px; padding: 0 4px; flex-shrink: 0; }
+    /* ===== ラウンド別 対戦カード ===== */
+    .ko-cards-header { font-size: 14px; font-weight: 900; color: var(--text-primary); margin-bottom: 10px; }
+    .ko-cards-header span { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-left: 6px; }
+    .ko-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .ko-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; }
+    .ko-card.jp-card { border: 1.5px solid rgba(212,255,63,0.5); background: rgba(10,30,80,0.6); }
+    .ko-card-meta { font-size: 9px; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.4; }
+    .ko-card-meta .jp-note { display: inline-block; background: var(--japan-red); color: #fff; font-size: 9px; font-weight: 800; border-radius: 3px; padding: 1px 5px; margin-right: 4px; }
+    .ko-card-teams { display: flex; align-items: center; justify-content: space-around; gap: 4px; }
+    .ko-card-team { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; min-width: 0; }
+    .ko-card-flag { font-size: 26px; line-height: 1; }
+    .ko-card-flag-img { width: 36px; height: 24px; border-radius: 3px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+    .ko-card-team-name { font-size: 10px; font-weight: 700; color: var(--text-primary); text-align: center; line-height: 1.3; }
+    .ko-card-team-name.jp { color: var(--sky-blue); }
+    .ko-card-team-sub { font-size: 9px; color: var(--sky-blue); text-align: center; }
+    .ko-card-vs { font-size: 11px; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
+    .ko-show-more {
+      width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; color: var(--text-primary); font-size: 13px; font-weight: 700;
+      padding: 12px; cursor: pointer; font-family: inherit; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    /* ===== 勝ち上がり予想ルート ===== */
+    .ko-route-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; margin-bottom: 16px; }
+    .ko-route-title { font-size: 13px; font-weight: 900; color: var(--text-primary); margin-bottom: 12px; }
+    .ko-route-steps { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .ko-route-steps::-webkit-scrollbar { display: none; }
+    .ko-route-step {
+      flex-shrink: 0; width: 108px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 3px;
+    }
+    .ko-route-step.active-step { border-color: rgba(212,255,63,0.5); background: rgba(212,255,63,0.06); }
+    .ko-route-step.final-route { border-color: var(--gold); background: rgba(180,140,0,0.1); }
+    .ko-route-arrow { flex-shrink: 0; align-self: center; color: var(--japan-red); font-size: 16px; padding: 0 2px; }
+    .ko-route-step-code { font-size: 12px; font-weight: 900; color: var(--text-primary); }
+    .ko-route-step-round { font-size: 9px; color: var(--text-muted); }
+    .ko-route-step-date { font-size: 9px; color: var(--sky-blue); font-weight: 700; }
+    .ko-route-jp-flag { font-size: 22px; margin: 4px 0 2px; }
+    .ko-route-vs { font-size: 8px; color: var(--text-muted); }
+    .ko-route-opp { display: flex; align-items: center; gap: 3px; font-size: 10px; color: var(--text-muted); }
+    .ko-route-opp-flag { font-size: 14px; }
+    .ko-route-note { font-size: 9px; color: var(--text-muted); margin-top: 4px; text-align: center; }
+
+    /* ===== 決勝トーナメント ラウンドタブ＆ブラケット ===== */
+    .ko-tab {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      color: var(--text-muted);
+      font-size: 12px; font-weight: 800;
+      padding: 7px 14px;
+      cursor: pointer; white-space: nowrap;
+      font-family: inherit;
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .ko-tab.active {
+      background: var(--japan-red);
+      border-color: var(--japan-red);
+      color: #fff;
+    }
+    .ko-round { }
+    .ko-round-note {
+      font-size: 10px; color: var(--text-muted);
+      font-family: var(--font-mono); margin-bottom: 10px;
+    }
+    .ko-bracket {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ko-col { display: flex; flex-direction: column; gap: 8px; }
+    .ko-match {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 9px 11px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ko-match.jp-game {
+      background: rgba(59,122,240,0.07);
+      border-color: rgba(59,122,240,0.3);
+    }
+    .ko-meta {
+      font-size: 9px; color: var(--text-muted);
+      font-family: var(--font-mono); margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .ko-time-jp {
+      font-size: 11px; font-weight: 900;
+      color: var(--gold); margin-bottom: 5px;
+    }
+    .ko-team {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700;
+      color: var(--text-primary); padding: 2px 0;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .ko-team.jp { color: var(--sky-blue); }
+    .ko-sep {
+      height: 1px; background: rgba(255,255,255,0.08);
+      margin: 3px 0;
+    }
+
+    .st-main-tab {
+      padding: 11px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.07);
+      color: var(--text-muted);
+      font-size: 13px; font-weight: 800;
+      cursor: pointer; font-family: inherit;
+      transition: all 0.18s;
+    }
+    .st-main-tab.active {
+      background: var(--japan-red);
+      border-color: var(--japan-red);
+      color: #fff;
+    }
+
     /* ===== 決勝トーナメント折りたたみ ===== */
     .kt-wrap { margin-bottom: 16px; }
     .kt-header {
@@ -2350,6 +2519,87 @@
     }
     .team-modal-overlay.open { display: block; }
 
+    /* ===== SQUAD SECTION ===== */
+    .tm-squad-section { margin-top: 20px; }
+    .tm-squad-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 800;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.08);
+    }
+    .tm-squad-toggle:active { background: rgba(255,255,255,0.12); }
+    .tm-squad-toggle-icon { font-size: 18px; transition: transform 0.25s; }
+    .tm-squad-toggle.open .tm-squad-toggle-icon { transform: rotate(180deg); }
+    .tm-squad-body {
+      display: none;
+      margin-top: 10px;
+    }
+    .tm-squad-body.open { display: block; }
+    .tm-squad-pos-block { margin-bottom: 10px; }
+    .tm-squad-pos-label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--gold);
+      padding: 4px 10px;
+      background: rgba(212,255,63,0.07);
+      border-radius: 6px 6px 0 0;
+      border: 1px solid rgba(212,255,63,0.15);
+      border-bottom: none;
+    }
+    .tm-squad-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0 6px 6px 6px;
+      overflow: hidden;
+    }
+    .tm-squad-player {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .tm-squad-player:nth-child(2n) { border-right: none; }
+    .tm-squad-player:nth-last-child(-n+2) { border-bottom: none; }
+    .tm-squad-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--gold);
+      min-width: 18px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .tm-squad-info { min-width: 0; }
+    .tm-squad-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tm-squad-club {
+      font-size: 10px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .team-modal-sheet {
       min-height: 100%;
       display: flex;
@@ -3268,310 +3518,524 @@
     <!-- 決勝トーナメント -->
     <div class="section-label">🏆 決勝トーナメント</div>
 
-    <!-- 優勝候補 TOP5 -->
-    <div class="kt-favorites" style="display:none">
-      <div class="kt-fav-title">🌟 優勝候補 POWER RANKING</div>
-      <div class="kt-fav-list">
-        <div class="kt-fav-item"><span class="kt-fav-rank">1</span><span class="kt-fav-flag">🇫🇷</span><span class="kt-fav-name">フランス</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:85%"></div></div></div><span class="kt-fav-pct">22%</span></div>
-        <div class="kt-fav-item"><span class="kt-fav-rank">2</span><span class="kt-fav-flag">🇦🇷</span><span class="kt-fav-name">アルゼンチン</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:75%"></div></div></div><span class="kt-fav-pct">18%</span></div>
-        <div class="kt-fav-item"><span class="kt-fav-rank">3</span><span class="kt-fav-flag">🇧🇷</span><span class="kt-fav-name">ブラジル</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:62%"></div></div></div><span class="kt-fav-pct">14%</span></div>
-        <div class="kt-fav-item"><span class="kt-fav-rank">4</span><span class="kt-fav-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-fav-name">イングランド</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:50%"></div></div></div><span class="kt-fav-pct">11%</span></div>
-        <div class="kt-fav-item"><span class="kt-fav-rank">5</span><span class="kt-fav-flag">🇯🇵</span><span class="kt-fav-name">日本（ダークホース）</span><div class="kt-fav-bar-wrap"><div class="kt-fav-bar"><div class="kt-fav-fill" style="width:20%"></div></div></div><span class="kt-fav-pct">4%</span></div>
+    <!-- 1位・2位通過タイムテーブル（折りたたみ） -->
+    <button onclick="(function(btn){var w=document.getElementById('ko-timetable');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.querySelector('.ko-tl-arrow').textContent=open?'▼':'▲';})(this)"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--text-primary);font-family:inherit;font-size:13px;font-weight:700;padding:11px 16px;cursor:pointer;text-align:left;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
+      🕐 1位・2位通過した場合の日本戦スケジュール
+      <span class="ko-tl-arrow" style="color:var(--sky-blue)">▼</span>
+    </button>
+    <div id="ko-timetable" style="display:none;margin-bottom:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <!-- 1位通過 -->
+        <div style="background:linear-gradient(135deg,rgba(30,80,200,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(100,160,255,0.5);border-radius:14px;padding:12px 10px">
+          <div style="font-size:12px;font-weight:900;color:#7eb8ff;letter-spacing:1px;margin-bottom:10px;text-align:center">🥇 1位通過の場合</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#7eb8ff">10:00</span></div>
+            </div>
+            <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/5(日) <span style="color:#7eb8ff">02:00</span></div>
+            </div>
+            <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/10(金) <span style="color:#7eb8ff">05:00</span></div>
+            </div>
+            <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/15(水) <span style="color:#7eb8ff">04:00</span></div>
+            </div>
+            <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
+              <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 2位通過 -->
+        <div style="background:linear-gradient(135deg,rgba(180,30,30,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(255,100,100,0.5);border-radius:14px;padding:12px 10px">
+          <div style="font-size:12px;font-weight:900;color:#ff9999;letter-spacing:1px;margin-bottom:10px;text-align:center">🥈 2位通過の場合</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#ff9999">02:00</span></div>
+            </div>
+            <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/6(月) <span style="color:#ff9999">05:00</span></div>
+            </div>
+            <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/12(日) <span style="color:#ff9999">06:00</span></div>
+            </div>
+            <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
+              <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/16(木) <span style="color:#ff9999">04:00</span></div>
+            </div>
+            <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
+              <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
+              <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:10px 0 0">🥉 3位決定戦は両ルート共通　<strong style="color:var(--text-primary)">7/19(日) 06:00</strong></div>
+    </div>
+    <div class="ko-next-banner">
+      <div class="ko-next-label">日本代表の現在地</div>
+      <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:2px">次戦</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="background:rgba(59,122,240,0.3);border:1px solid rgba(59,122,240,0.5);border-radius:14px;font-size:11px;font-weight:800;color:#7eb8ff;padding:3px 10px">ベスト32</span>
+        <span style="font-size:11px;color:var(--text-muted)">📅 6/30(火) 10:00　📍 モンテレイ</span>
+      </div>
+      <div class="ko-next-body">
+        <div class="ko-next-team">
+          <div class="ko-next-flag-emoji">🇯🇵</div>
+          <div class="ko-next-name">日本</div>
+          <div class="ko-next-sub">（F組1位通過）</div>
+        </div>
+        <div class="ko-next-vs">VS</div>
+        <div class="ko-next-opponent">
+          <div class="ko-next-opp-card">
+            <div class="ko-next-q">?</div>
+            <div class="ko-next-opp-name">C組2位</div>
+          </div>
+          <div style="text-align:center;font-size:11px;color:var(--text-muted)">または</div>
+          <div class="ko-next-opp-card">
+            <div class="ko-next-q">?</div>
+            <div class="ko-next-opp-name">F組3位</div>
+          </div>
+        </div>
+      </div>
+      <div class="ko-next-win-msg">🏆 勝利でベスト16進出！</div>
     </div>
 
-
-    <!-- 🇯🇵 日本の通過パターン別タイムテーブル -->
-    <div class="section-label" style="margin-top:4px">🕐 日本の試合時間（通過順位別）</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-
-      <!-- 1位通過 -->
-      <div style="background:linear-gradient(135deg,rgba(30,80,200,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(100,160,255,0.5);border-radius:14px;padding:12px 10px">
-        <div style="font-size:12px;font-weight:900;color:#7eb8ff;letter-spacing:1px;margin-bottom:10px;text-align:center">🥇 1位通過の場合</div>
-        <div style="display:flex;flex-direction:column;gap:7px">
-          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#7eb8ff">10:00</span></div>
-          </div>
-          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/5(日) <span style="color:#7eb8ff">02:00</span></div>
-          </div>
-          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/10(金) <span style="color:#7eb8ff">05:00</span></div>
-          </div>
-          <div style="background:rgba(30,80,200,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/15(水) <span style="color:#7eb8ff">04:00</span></div>
-          </div>
-          <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
-            <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
-          </div>
+    <!-- ② 優勝への道 ロードマップ -->
+    <div class="ko-roadmap">
+      <div class="ko-roadmap-title">🏆 優勝への道</div>
+      <div class="ko-roadmap-steps">
+        <div class="ko-roadmap-step active" onclick="koCardSwitch('r32',this)">
+          <div class="ko-roadmap-step-code">R32</div>
+          <div class="ko-roadmap-step-name">ベスト32</div>
         </div>
-      </div>
-
-      <!-- 2位通過 -->
-      <div style="background:linear-gradient(135deg,rgba(180,30,30,0.25),rgba(10,18,40,0.9));border:1.5px solid rgba(255,100,100,0.5);border-radius:14px;padding:12px 10px">
-        <div style="font-size:12px;font-weight:900;color:#ff9999;letter-spacing:1px;margin-bottom:10px;text-align:center">🥈 2位通過の場合</div>
-        <div style="display:flex;flex-direction:column;gap:7px">
-          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚔️ 32強</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">6/30(火) <span style="color:#ff9999">02:00</span></div>
-          </div>
-          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🔥 16強</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/6(月) <span style="color:#ff9999">05:00</span></div>
-          </div>
-          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">⚡ 準々決勝</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/12(日) <span style="color:#ff9999">06:00</span></div>
-          </div>
-          <div style="background:rgba(180,30,30,0.2);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700">🌟 準決勝</div>
-            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:1px">7/16(木) <span style="color:#ff9999">04:00</span></div>
-          </div>
-          <div style="background:rgba(212,255,63,0.1);border:1px solid rgba(212,255,63,0.3);border-radius:8px;padding:7px 10px">
-            <div style="font-size:10px;color:var(--gold);font-weight:700">🏆 決勝</div>
-            <div style="font-size:13px;font-weight:900;color:var(--gold);margin-top:1px">7/20(月) <span>04:00</span></div>
-          </div>
+        <div class="ko-roadmap-arrow">—</div>
+        <div class="ko-roadmap-step" onclick="koCardSwitch('r16',this)">
+          <div class="ko-roadmap-step-code">R16</div>
+          <div class="ko-roadmap-step-name">ベスト16</div>
         </div>
-      </div>
-    </div>
-
-    <!-- 3位決定戦メモ -->
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:12px;color:var(--text-muted);text-align:center">
-      🥉 3位決定戦は両ルート共通　<strong style="color:var(--text-primary)">7/19(日) 06:00</strong>　※日本時間
-    </div>
-
-    <!-- ベスト32 -->
-    <div class="kt-wrap">
-      <div class="kt-header" onclick="ktToggle(this)">
-        <span class="kt-round-icon">⚔️</span>
-        <div class="kt-round-info">
-          <div class="kt-round-title">ベスト32 <span style="color:var(--gold)">32</span></div>
-          <div class="kt-round-sub">6/28（土）〜 7/4（金）· 16試合</div>
+        <div class="ko-roadmap-arrow">—</div>
+        <div class="ko-roadmap-step" onclick="koCardSwitch('qf',this)">
+          <div class="ko-roadmap-step-code">QF</div>
+          <div class="ko-roadmap-step-name">準々決勝</div>
         </div>
-        <span class="kt-round-count">未定</span>
-        <span class="kt-arrow">▶</span>
-      </div>
-      <div class="kt-body">
-        <div class="kt-match jp-game">
-          <div class="kt-match-date" style="line-height:1.3">6/30(火)<br><span style="color:var(--gold)">🥇10:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈02:00</span></div>
-          <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（F通過）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 突破予想</span>
+        <div class="ko-roadmap-arrow">—</div>
+        <div class="ko-roadmap-step" onclick="koCardSwitch('sf',this)">
+          <div class="ko-roadmap-step-code">SF</div>
+          <div class="ko-roadmap-step-name">準決勝</div>
         </div>
-        <div class="kt-match">
-          <div class="kt-match-date">6/29<br>04:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">A組1位</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">B組2位</span></div>
-          </div>
-          <span class="kt-predict-badge">未定</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">6/29<br>07:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">C組1位</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">D組2位</span></div>
-          </div>
-          <span class="kt-predict-badge">未定</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">6/30<br>07:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇳🇱</span><span class="kt-name">オランダ（F1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇳🇱 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/1<br>02:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（E1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇩🇪 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/1<br>07:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（J1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇦🇷 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/3<br>04:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="kt-name">イングランド（L1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🏴󠁧󠁢󠁥󠁮󠁧󠁿 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/4<br>07:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（I1位予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
-          </div>
-          <span class="kt-predict-badge">🇫🇷 予想</span>
+        <div class="ko-roadmap-arrow">—</div>
+        <div class="ko-roadmap-step final-step" onclick="koCardSwitch('f',this)">
+          <div class="ko-roadmap-step-code">FINAL</div>
+          <div class="ko-roadmap-step-name">決勝</div>
         </div>
       </div>
     </div>
 
-    <!-- ベスト16 -->
-    <div class="kt-wrap">
-      <div class="kt-header" onclick="ktToggle(this)">
-        <span class="kt-round-icon">🔥</span>
-        <div class="kt-round-info">
-          <div class="kt-round-title">ベスト16 <span style="color:var(--gold)">16</span></div>
-          <div class="kt-round-sub">7/5（日）〜 7/8（火）· 8試合</div>
+    <!-- ③ ラウンド別カード一覧（ロードマップ連動） -->
+
+    <!-- R32 -->
+    <div id="kc-r32" class="ko-cards-wrap">
+      <div class="ko-cards-header">ラウンド32（ベスト32）<span>日本戦と全カード一覧</span></div>
+      <div class="ko-cards-grid">
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note">注目</span>6/30(火) 10:00 · モンテレイ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🇯🇵</div>
+              <div class="ko-card-team-name jp">日本</div>
+              <div class="ko-card-team-sub">（F組1位）</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">C組2位<br>またはF組3位</div>
+            </div>
+          </div>
         </div>
-        <span class="kt-round-count">未定</span>
-        <span class="kt-arrow">▶</span>
+        <div class="ko-card">
+          <div class="ko-card-meta">6/29(月) 10:00 · マイアミ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">B組1位</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">A組3位<br>または他組3位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">6/29(月) 04:00 · ロサンゼルス</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">A組2位</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">B組2位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">6/30(火) 02:00 · ヒューストン</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🇳🇱</div>
+              <div class="ko-card-team-name">オランダ</div>
+              <div class="ko-card-team-sub">（F1位予想）</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">C組2位<br>または3位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">6/30(火) 05:30 · ボストン</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🇩🇪</div>
+              <div class="ko-card-team-name">ドイツ</div>
+              <div class="ko-card-team-sub">（E1位予想）</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">A/B/C/D/F組<br>3位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/1(火) 07:30 · グアダラハラ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">D組1位</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">C/D/E/F/G組<br>3位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/1(火) 10:00 · カンザスシティ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">H組1位</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">G組2位</div>
+            </div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/2(水) 07:00 · ボストン</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">J組1位</div>
+            </div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team">
+              <div class="ko-card-flag">🏳️</div>
+              <div class="ko-card-team-name">K組2位</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="kt-body">
-        <div class="kt-match jp-game">
-          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/5 02:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/6 05:00</span></div>
-          <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+      <button class="ko-show-more" onclick="koToggleAll('r32',this)">すべての試合日程を見る　›</button>
+      <!-- 残り8試合（折りたたみ） -->
+      <div id="kc-r32-more" style="display:none">
+        <div class="ko-cards-grid" style="margin-bottom:12px">
+          <div class="ko-card">
+            <div class="ko-card-meta">7/1(火) 02:00 · ダラス</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">E組2位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">I組2位</div></div>
+            </div>
           </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 突破へ！</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/5<br>06:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇩🇪</span><span class="kt-name">ドイツ（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/1(火) 05:00 · アトランタ</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">G組1位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">H組2位</div></div>
+            </div>
           </div>
-          <span class="kt-predict-badge">未定</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/6<br>02:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇳🇱</span><span class="kt-name">オランダ（予想）</span></div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/2(水) 02:00 · ニューヨーク</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">K組1位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">J組2位</div></div>
+            </div>
           </div>
-          <span class="kt-predict-badge">🇧🇷 予想</span>
-        </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/8<br>05:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/2(水) 05:00 · サンフランシスコ</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">I組1位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">E or 他組3位</div></div>
+            </div>
           </div>
-          <span class="kt-predict-badge">🇦🇷 予想</span>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/3(木) 02:00 · フィラデルフィア</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">L組1位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">H〜L組3位</div></div>
+            </div>
+          </div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/3(木) 05:00 · メキシコシティ</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">A組1位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">B組2位 or 3位</div></div>
+            </div>
+          </div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/3(木) 07:00 · ロサンゼルス</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">L組2位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">K or 他組3位</div></div>
+            </div>
+          </div>
+          <div class="ko-card">
+            <div class="ko-card-meta">7/4(金) 02:00 · トロント</div>
+            <div class="ko-card-teams">
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">J組2位</div></div>
+              <div class="ko-card-vs">VS</div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">K組1位</div></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 準々決勝 -->
-    <div class="kt-wrap">
-      <div class="kt-header" onclick="ktToggle(this)">
-        <span class="kt-round-icon">⚡</span>
-        <div class="kt-round-info">
-          <div class="kt-round-title">準々決勝</div>
-          <div class="kt-round-sub">7/10（金）〜 7/12（日）· 4試合</div>
-        </div>
-        <span class="kt-round-count">未定</span>
-        <span class="kt-arrow">▶</span>
-      </div>
-      <div class="kt-body">
-        <div class="kt-match jp-game">
-          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/10 05:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/12 06:00</span></div>
-          <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇧🇷</span><span class="kt-name">ブラジル（予想）</span></div>
+    <!-- R16 -->
+    <div id="kc-r16" class="ko-cards-wrap" style="display:none">
+      <div class="ko-cards-header">ラウンド16（ベスト16）<span>7/5〜7/8 · 8試合</span></div>
+      <div class="ko-cards-grid">
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note">🥇1位</span>7/5(日) 02:00 · ヒューストン</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">1位通過</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[1]×[4]勝者</div></div>
           </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 夢の舞台</span>
         </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/11<br>05:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇦🇷</span><span class="kt-name">アルゼンチン（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note" style="background:#c0392b">🥈2位</span>7/6(月) 05:00 · ニューヨーク</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">2位通過</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[2]×[5]勝者</div></div>
           </div>
-          <span class="kt-predict-badge">🇫🇷 予想</span>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/5(日) 06:00 · フィラデルフィア</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[3]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[6]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/6(月) 09:00 · メキシコシティ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[7]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[8]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/7(火) 04:00 · ダラス</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[12]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[11]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/7(火) 07:00 · アトランタ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[10]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[9]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/8(水) 04:00 · マイアミ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[14]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[13]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/8(水) 07:00 · ロサンゼルス</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[16]勝者</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[15]勝者</div></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 準決勝 -->
-    <div class="kt-wrap">
-      <div class="kt-header" onclick="ktToggle(this)">
-        <span class="kt-round-icon">🌟</span>
-        <div class="kt-round-info">
-          <div class="kt-round-title">準決勝</div>
-          <div class="kt-round-sub">7/15（水）〜 7/16（木）· 2試合</div>
-        </div>
-        <span class="kt-round-count">未定</span>
-        <span class="kt-arrow">▶</span>
-      </div>
-      <div class="kt-body">
-        <div class="kt-match jp-game">
-          <div class="kt-match-date" style="line-height:1.3">日本戦<br><span style="color:var(--gold)">🥇7/15 04:00</span><br><span style="font-size:10px;color:rgba(255,150,150,0.9)">🥈7/16 04:00</span></div>
-          <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+    <!-- QF -->
+    <div id="kc-qf" class="ko-cards-wrap" style="display:none">
+      <div class="ko-cards-header">準々決勝（QF）<span>7/10〜7/12 · 4試合</span></div>
+      <div class="ko-cards-grid">
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note">🥇1位</span>7/10(金) 05:00 · ボストン</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🇧🇷</div><div class="ko-card-team-name">ブラジル（予想）</div></div>
           </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 TOP4へ！</span>
         </div>
-        <div class="kt-match">
-          <div class="kt-match-date">7/15 or<br>7/16<br>04:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row"><span class="kt-flag">🇫🇷</span><span class="kt-name">フランス（予想）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note" style="background:#c0392b">🥈2位</span>7/12(日) 06:00 · マイアミ</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF対戦相手</div></div>
           </div>
-          <span class="kt-predict-badge">🇫🇷 予想</span>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/11(土) 04:00 · ロサンゼルス</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇩🇪</div><div class="ko-card-team-name">ドイツ（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[e]勝者</div></div>
+          </div>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/11(土) 07:00 · フィラデルフィア</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇦🇷</div><div class="ko-card-team-name">アルゼンチン（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス（予想）</div></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 決勝 -->
-    <div class="kt-wrap">
-      <div class="kt-header" onclick="ktToggle(this)">
-        <span class="kt-round-icon">🏆</span>
-        <div class="kt-round-info">
-          <div class="kt-round-title">決勝</div>
-          <div class="kt-round-sub">7/20（月）04:00 · ニューヨーク</div>
-        </div>
-        <span class="kt-round-count">未定</span>
-        <span class="kt-arrow">▶</span>
-      </div>
-      <div class="kt-body">
-        <div class="kt-match jp-game">
-          <div class="kt-match-date">7/20<br>04:00</div>
-          <div class="kt-teams">
-            <div class="kt-team-row jp"><span class="kt-flag">🇯🇵</span><span class="kt-name">日本（夢）</span></div>
-            <div class="kt-vs">vs</div>
-            <div class="kt-team-row"><span class="kt-flag">🏳️</span><span class="kt-name">対戦相手未定</span></div>
+    <!-- SF -->
+    <div id="kc-sf" class="ko-cards-wrap" style="display:none">
+      <div class="ko-cards-header">準決勝（SF）<span>7/15〜7/16 · 2試合</span></div>
+      <div class="ko-cards-grid">
+        <div class="ko-card jp-card">
+          <div class="ko-card-meta"><span class="jp-note">🥇</span>7/15(水) 04:00 · ダラス　<span style="color:#ff9999">🥈7/16(木) 04:00 · アトランタ</span></div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF勝者</div></div>
           </div>
-          <span class="kt-predict-badge jp-pred">🇯🇵 悲願の頂点！</span>
+        </div>
+        <div class="ko-card">
+          <div class="ko-card-meta">7/15(水) or 7/16(木) 04:00</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス（予想）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF勝者</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:4px 0 12px">🥉 3位決定戦　7/19(日) 06:00 · マイアミ</div>
+    </div>
+
+    <!-- FINAL -->
+    <div id="kc-f" class="ko-cards-wrap" style="display:none">
+      <div class="ko-cards-header">決勝（FINAL）<span>7/20(月) 04:00 · ニューヨーク</span></div>
+      <div class="ko-cards-grid" style="grid-template-columns:1fr">
+        <div class="ko-card jp-card" style="border-color:rgba(212,255,63,0.5)">
+          <div class="ko-card-meta" style="color:var(--gold)">🏆 2026 FIFA World Cup FINAL　7/20(月) 04:00 · メットライフ・スタジアム</div>
+          <div class="ko-card-teams">
+            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（悲願の頂点へ！）</div></div>
+            <div class="ko-card-vs">VS</div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">SF勝者</div></div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- ④ 日本代表の勝ち上がり予想ルート -->
+    <div class="ko-route-section">
+      <div class="ko-route-title">🇯🇵 日本代表の勝ち上がり予想ルート</div>
+      <div class="ko-route-steps">
+        <div class="ko-route-step active-step">
+          <div class="ko-route-step-code">R32</div>
+          <div class="ko-route-step-round">ベスト32</div>
+          <div class="ko-route-step-date">6/30(火) 10:00</div>
+          <div class="ko-route-jp-flag">🇯🇵</div>
+          <div class="ko-route-vs">VS</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🏳️</span>C組2位　F組3位</div>
+        </div>
+        <div class="ko-route-arrow">▶</div>
+        <div class="ko-route-step">
+          <div class="ko-route-step-code">R16</div>
+          <div class="ko-route-step-round">ベスト16</div>
+          <div class="ko-route-step-date">7/5(日) 02:00</div>
+          <div class="ko-route-jp-flag">🇯🇵</div>
+          <div class="ko-route-vs">VS</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇳🇱</span>オランダ（予想）</div>
+        </div>
+        <div class="ko-route-arrow">▶</div>
+        <div class="ko-route-step">
+          <div class="ko-route-step-code">QF</div>
+          <div class="ko-route-step-round">準々決勝</div>
+          <div class="ko-route-step-date">7/10(金) 10:00</div>
+          <div class="ko-route-jp-flag">🇯🇵</div>
+          <div class="ko-route-vs">VS</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇩🇪</span>ドイツ（予想）</div>
+        </div>
+        <div class="ko-route-arrow">▶</div>
+        <div class="ko-route-step">
+          <div class="ko-route-step-code">SF</div>
+          <div class="ko-route-step-round">準決勝</div>
+          <div class="ko-route-step-date">7/15(水) 10:00</div>
+          <div class="ko-route-jp-flag">🇯🇵</div>
+          <div class="ko-route-vs">VS</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇫🇷</span>フランス（予想）</div>
+        </div>
+        <div class="ko-route-arrow">▶</div>
+        <div class="ko-route-step final-route">
+          <div class="ko-route-step-code">FINAL</div>
+          <div class="ko-route-step-round">決勝</div>
+          <div class="ko-route-step-date">7/19(日) 06:00</div>
+          <div class="ko-route-jp-flag">🇯🇵</div>
+          <div class="ko-route-vs">VS</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇦🇷</span>アルゼンチン（予想）</div>
+        </div>
+      </div>
+      <div class="ko-route-note">※ 予想は各メディアの情報をもとにした参考です</div>
+    </div>
+
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('japan')"><span class="x-icon">𝕏</span> この情報をシェア</button>
     </div>
@@ -3591,76 +4055,59 @@
       </div>
     </div>
 
-    <!-- チームプロフィール -->
-    <div class="section-label">📋 チームプロフィール</div>
-    <div class="jp-profile-card">
+    <!-- チームプロフィール + 監督（統合コンパクト） -->
+    <div class="jp-profile-card" style="margin-bottom:14px">
       <div class="jp-profile-header">
-        <span class="jp-profile-header-title">TEAM PROFILE · BASIC INFO</span>
+        <span class="jp-profile-header-title">TEAM PROFILE</span>
       </div>
-      <div class="jp-profile-grid">
-        <div class="jp-profile-item">
-          <div class="jp-profile-label">FIFAランキング</div>
-          <div class="jp-profile-value"><span class="rank-badge">16位 ↑</span></div>
-          <div class="jp-profile-sub">アジア最上位（6/21付）</div>
+      <!-- プロフィール：3列グリッドでコンパクト化 -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-white)">
+        <div style="padding:9px 11px;border-bottom:1px solid var(--line-white);border-right:1px solid var(--line-white)">
+          <div class="jp-profile-label">FIFAランク</div>
+          <div style="font-size:13px;font-weight:900;color:var(--text-primary)"><span class="rank-badge">16位 ↑</span></div>
         </div>
-        <div class="jp-profile-item">
+        <div style="padding:9px 11px;border-bottom:1px solid var(--line-white);border-right:1px solid var(--line-white)">
           <div class="jp-profile-label">W杯出場</div>
-          <div class="jp-profile-value">8大会連続</div>
-          <div class="jp-profile-sub">通算7回目の出場</div>
+          <div style="font-size:13px;font-weight:800;color:var(--text-primary)">8大会連続</div>
         </div>
-        <div class="jp-profile-item">
-          <div class="jp-profile-label">過去最高成績</div>
-          <div class="jp-profile-value">ベスト16</div>
-          <div class="jp-profile-sub">アジア勢最多4回GS突破</div>
+        <div style="padding:9px 11px;border-bottom:1px solid var(--line-white)">
+          <div class="jp-profile-label">過去最高</div>
+          <div style="font-size:13px;font-weight:800;color:var(--text-primary)">ベスト16</div>
         </div>
-        <div class="jp-profile-item">
-          <div class="jp-profile-label">今大会の目標</div>
-          <div class="jp-profile-value">ベスト8</div>
-          <div class="jp-profile-sub">悲願の"壁"突破へ</div>
-        </div>
-        <div class="jp-profile-item full">
-          <div class="jp-profile-label">グループ / 開催地</div>
-          <div class="jp-profile-value">グループF｜ダラス・モンテレイ</div>
-          <div class="jp-profile-sub">オランダ・チュニジア・スウェーデンと同組</div>
+        <div style="padding:9px 11px;grid-column:1/-1;border-bottom:1px solid var(--line-white)">
+          <div class="jp-profile-label">グループF｜今大会目標</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-primary)">ダラス・モンテレイ開催　🎯 ベスト8「壁」突破へ</div>
         </div>
       </div>
-    </div>
-
-    <!-- 監督 -->
-    <div class="section-label">👨‍💼 監督</div>
-    <div class="jp-coach-card" style="flex-direction:column;gap:0">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="jp-coach-avatar">🎌</div>
-        <div class="jp-coach-body" style="flex:1">
-          <div class="jp-coach-eyebrow">HEAD COACH</div>
-          <div class="jp-coach-name">
-            <ruby>森保<rt style="font-size:9px;letter-spacing:1px">もりやす</rt></ruby>
-            　
-            <ruby>一<rt style="font-size:9px;letter-spacing:1px">はじめ</rt></ruby>
-          </div>
-          <div class="jp-coach-tags">
-            <span class="jp-coach-tag">4-2-3-1</span>
-            <span class="jp-coach-tag">3-4-2-1</span>
-            <span class="jp-coach-tag">勝率 約70%</span>
+      <!-- 監督：横1行コンパクト -->
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line-white);background:rgba(59,122,240,0.05)">
+        <div style="font-size:20px;flex-shrink:0">🎌</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:1.5px;color:var(--sky-blue);margin-bottom:1px">HEAD COACH</div>
+          <div style="font-size:14px;font-weight:900;color:var(--text-primary);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <ruby>森保<rt style="font-size:8px">もりやす</rt></ruby>　<ruby>一<rt style="font-size:8px">はじめ</rt></ruby>
+            <span style="display:flex;gap:4px">
+              <span class="jp-coach-tag">4-2-3-1</span>
+              <span class="jp-coach-tag">3-4-2-1</span>
+              <span class="jp-coach-tag">勝率 約70%</span>
+            </span>
           </div>
         </div>
-        <button onclick="(function(btn){var d=document.getElementById('coach-detail');var open=d.style.display!=='none';d.style.display=open?'none':'block';btn.textContent=open?'詳細を見る▼':'閉じる▲';})(this)"
+        <button onclick="(function(btn){var d=document.getElementById('coach-detail');var open=d.style.display!=='none';d.style.display=open?'none':'block';btn.textContent=open?'詳細▼':'閉じる▲';})(this)"
           id="coach-toggle-btn"
-          style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:12px;font-weight:700;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0">
-          詳細を見る▼
+          style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--text-primary);font-size:11px;font-weight:700;padding:5px 10px;cursor:pointer;white-space:nowrap;flex-shrink:0">
+          詳細▼
         </button>
       </div>
-      <div id="coach-detail" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+      <div id="coach-detail" style="display:none;padding:12px 14px;border-bottom:1px solid var(--line-white)">
         <div class="jp-coach-desc">2018年就任。100試合超を率いて勝率約70%という歴代最高クラスの実績を誇る。カタール大会でドイツ・スペインを撃破したブロック守備＋速攻スタイルを継承。4バックと3バックを状況に応じて使い分ける柔軟な戦術が武器。チーム全員が「W杯優勝」という高い目標を共有しているのが今大会の最大の強み。</div>
       </div>
+      <!-- 歴代監督トグル -->
+      <button onclick="(function(btn){var w=document.getElementById('past-coaches-wrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.textContent=open?'📜 歴代W杯監督 ▼':'閉じる ▲';})(this)"
+        style="width:100%;background:transparent;border:none;color:var(--text-muted);font-size:12px;font-weight:700;padding:9px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:5px">
+        📜 歴代W杯監督 ▼
+      </button>
     </div>
-
-    <!-- 歴代W杯出場監督 -->
-    <div class="section-label" style="margin-top:20px">📜 歴代W杯出場監督</div>
-    <button onclick="(function(btn){var w=document.getElementById('past-coaches-wrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';btn.textContent=open?'📜 歴代監督を見る ▼':'閉じる ▲';})(this)"
-      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--text-primary);font-size:13px;font-weight:700;padding:12px 16px;cursor:pointer;text-align:left;margin-bottom:12px">
-      📜 歴代監督を見る ▼
-    </button>
     <div id="past-coaches-wrap" style="display:none">
 
       <!-- 岡田武史① -->
@@ -4028,46 +4475,65 @@
 
     <!-- 代表メンバー -->
     <div class="section-label">代表メンバー 26名</div>
-    <div class="jpteam-squad">
-      <div class="squad-group">
-        <div class="squad-pos-label">GK</div>
-        <div class="squad-player"><span class="sq-num">1</span><span class="sq-name">鈴木 彩艶</span><span class="sq-club">パルマ（伊）</span></div>
-        <div class="squad-player"><span class="sq-num">12</span><span class="sq-name">大迫 敬介</span><span class="sq-club">サンフレッチェ広島</span></div>
-        <div class="squad-player"><span class="sq-num">23</span><span class="sq-name">早川 友基</span><span class="sq-club">鹿島アントラーズ</span></div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <!-- GK -->
+      <div class="tm-squad-pos-block">
+        <div class="tm-squad-pos-label">GK　ゴールキーパー</div>
+        <div class="tm-squad-grid">
+          <div class="tm-squad-player"><span class="tm-squad-num">1</span><div class="tm-squad-info"><div class="tm-squad-name">鈴木 彩艶</div><div class="tm-squad-club">パルマ（伊）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">12</span><div class="tm-squad-info"><div class="tm-squad-name">大迫 敬介</div><div class="tm-squad-club">サンフレッチェ広島</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">23</span><div class="tm-squad-info"><div class="tm-squad-name">早川 友基</div><div class="tm-squad-club">鹿島アントラーズ</div></div></div>
+          <div class="tm-squad-player" style="visibility:hidden"></div>
+        </div>
       </div>
-      <div class="squad-group">
-        <div class="squad-pos-label">DF</div>
-        <div class="squad-player"><span class="sq-num">2</span><span class="sq-name">菅原 由勢</span><span class="sq-club">ウェルダーブレーメン（独）</span></div>
-        <div class="squad-player"><span class="sq-num">3</span><span class="sq-name">谷口 彰悟</span><span class="sq-club">シントトロイデン（ベルギー）</span></div>
-        <div class="squad-player key"><span class="sq-num">4</span><span class="sq-name">板倉 滉 ◇</span><span class="sq-club">アヤックス（蘭）</span></div>
-        <div class="squad-player"><span class="sq-num">5</span><span class="sq-name">長友 佑都</span><span class="sq-club">FC東京</span></div>
-        <div class="squad-player"><span class="sq-num">16</span><span class="sq-name">渡辺 剛</span><span class="sq-club">フェイエノールト（蘭）</span></div>
-        <div class="squad-player"><span class="sq-num">20</span><span class="sq-name">瀬古 歩夢</span><span class="sq-club">ルアーブル（仏）</span></div>
-        <div class="squad-player"><span class="sq-num">21</span><span class="sq-name">伊藤 洋輝</span><span class="sq-club">バイエルン・ミュンヘン（独）</span></div>
-        <div class="squad-player key"><span class="sq-num">22</span><span class="sq-name">冨安 健洋 ◇</span><span class="sq-club">アヤックス（蘭）</span></div>
-        <div class="squad-player"><span class="sq-num">25</span><span class="sq-name">鈴木 淳之介</span><span class="sq-club">コペンハーゲン（デンマーク）</span></div>
+
+      <!-- DF -->
+      <div class="tm-squad-pos-block">
+        <div class="tm-squad-pos-label">DF　ディフェンダー</div>
+        <div class="tm-squad-grid">
+          <div class="tm-squad-player"><span class="tm-squad-num">2</span><div class="tm-squad-info"><div class="tm-squad-name">菅原 由勢</div><div class="tm-squad-club">ブレーメン（独）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">3</span><div class="tm-squad-info"><div class="tm-squad-name">谷口 彰悟</div><div class="tm-squad-club">シントトロイデン（ベルギー）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">4</span><div class="tm-squad-info"><div class="tm-squad-name">板倉 滉 ◇</div><div class="tm-squad-club">アヤックス（蘭）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">5</span><div class="tm-squad-info"><div class="tm-squad-name">長友 佑都</div><div class="tm-squad-club">FC東京</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">16</span><div class="tm-squad-info"><div class="tm-squad-name">渡辺 剛</div><div class="tm-squad-club">フェイエノールト（蘭）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">20</span><div class="tm-squad-info"><div class="tm-squad-name">瀬古 歩夢</div><div class="tm-squad-club">ルアーブル（仏）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">21</span><div class="tm-squad-info"><div class="tm-squad-name">伊藤 洋輝</div><div class="tm-squad-club">バイエルン（独）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">22</span><div class="tm-squad-info"><div class="tm-squad-name">冨安 健洋 ◇</div><div class="tm-squad-club">アヤックス（蘭）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">25</span><div class="tm-squad-info"><div class="tm-squad-name">鈴木 淳之介</div><div class="tm-squad-club">コペンハーゲン（丁）</div></div></div>
+          <div class="tm-squad-player" style="visibility:hidden"></div>
+        </div>
       </div>
-      <div class="squad-group">
-        <div class="squad-pos-label">MF</div>
-        <div class="squad-player" style="opacity:0.5"><span class="sq-num">6</span><span class="sq-name" style="text-decoration:line-through">遠藤 航</span><span class="sq-club" style="color:var(--japan-red)">代表引退（6/12）</span></div>
-        <div class="squad-player"><span class="sq-num">7</span><span class="sq-name">田中 碧</span><span class="sq-club">リーズ（英）</span></div>
-        <div class="squad-player" style="opacity:0.6"><span class="sq-num">8</span><span class="sq-name">久保 建英 <span style="font-size:10px;color:var(--japan-red)">⚠️欠場</span></span><span class="sq-club">レアル・ソシエダ（西）</span></div>
-        <div class="squad-player"><span class="sq-num">10</span><span class="sq-name">堂安 律</span><span class="sq-club">フランクフルト（独）</span></div>
-        <div class="squad-player"><span class="sq-num">11</span><span class="sq-name">前田 大然</span><span class="sq-club">セルティック（スコットランド）</span></div>
-        <div class="squad-player"><span class="sq-num">13</span><span class="sq-name">中村 敬斗</span><span class="sq-club">スタッド・ランス（仏）</span></div>
-        <div class="squad-player"><span class="sq-num">14</span><span class="sq-name">伊東 純也</span><span class="sq-club">ヘンク（ベルギー）</span></div>
-        <div class="squad-player"><span class="sq-num">15</span><span class="sq-name">鎌田 大地</span><span class="sq-club">クリスタル・パレス（英）</span></div>
-        <div class="squad-player"><span class="sq-num">17</span><span class="sq-name">鈴木 唯人</span><span class="sq-club">フライブルク（独）</span></div>
-        <div class="squad-player"><span class="sq-num">24</span><span class="sq-name">佐野 海舟</span><span class="sq-club">マインツ（独）</span></div>
+
+      <!-- MF -->
+      <div class="tm-squad-pos-block">
+        <div class="tm-squad-pos-label">MF　ミッドフィルダー</div>
+        <div class="tm-squad-grid">
+          <div class="tm-squad-player" style="opacity:0.5"><span class="tm-squad-num">6</span><div class="tm-squad-info"><div class="tm-squad-name" style="text-decoration:line-through">遠藤 航</div><div class="tm-squad-club" style="color:var(--japan-red)">代表引退（6/12）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">7</span><div class="tm-squad-info"><div class="tm-squad-name">田中 碧</div><div class="tm-squad-club">リーズ（英）</div></div></div>
+          <div class="tm-squad-player" style="opacity:0.65"><span class="tm-squad-num">8</span><div class="tm-squad-info"><div class="tm-squad-name">久保 建英 <span style="font-size:9px;color:var(--japan-red)">⚠️欠場</span></div><div class="tm-squad-club">Rソシエダ（西）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">10</span><div class="tm-squad-info"><div class="tm-squad-name">堂安 律</div><div class="tm-squad-club">Eフランクフルト（独）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">11</span><div class="tm-squad-info"><div class="tm-squad-name">前田 大然</div><div class="tm-squad-club">セルティック（スコットランド）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">13</span><div class="tm-squad-info"><div class="tm-squad-name">中村 敬斗</div><div class="tm-squad-club">ランス（仏）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">14</span><div class="tm-squad-info"><div class="tm-squad-name">伊東 純也</div><div class="tm-squad-club">ゲンク（ベルギー）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">15</span><div class="tm-squad-info"><div class="tm-squad-name">鎌田 大地</div><div class="tm-squad-club">C・パレス（英）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">17</span><div class="tm-squad-info"><div class="tm-squad-name">鈴木 唯人</div><div class="tm-squad-club">フライブルク（独）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">24</span><div class="tm-squad-info"><div class="tm-squad-name">佐野 海舟</div><div class="tm-squad-club">マインツ（独）</div></div></div>
+        </div>
       </div>
-      <div class="squad-group">
-        <div class="squad-pos-label">FW</div>
-        <div class="squad-player"><span class="sq-num">9</span><span class="sq-name">後藤 啓介</span><span class="sq-club">シントトロイデン（ベルギー）</span></div>
-        <div class="squad-player"><span class="sq-num">18</span><span class="sq-name">上田 綺世</span><span class="sq-club">フェイエノールト（蘭）</span></div>
-        <div class="squad-player"><span class="sq-num">19</span><span class="sq-name">小川 航基</span><span class="sq-club">NEC（蘭）</span></div>
-        <div class="squad-player"><span class="sq-num">26</span><span class="sq-name">塩貝 健人</span><span class="sq-club">ウォルフスブルク（独）</span></div>
+
+      <!-- FW -->
+      <div class="tm-squad-pos-block">
+        <div class="tm-squad-pos-label">FW　フォワード</div>
+        <div class="tm-squad-grid">
+          <div class="tm-squad-player"><span class="tm-squad-num">9</span><div class="tm-squad-info"><div class="tm-squad-name">後藤 啓介</div><div class="tm-squad-club">シントトロイデン（ベルギー）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">18</span><div class="tm-squad-info"><div class="tm-squad-name">上田 綺世</div><div class="tm-squad-club">フェイエノールト（蘭）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">19</span><div class="tm-squad-info"><div class="tm-squad-name">小川 航基</div><div class="tm-squad-club">NEC（蘭）</div></div></div>
+          <div class="tm-squad-player"><span class="tm-squad-num">26</span><div class="tm-squad-info"><div class="tm-squad-name">塩貝 健人</div><div class="tm-squad-club">ウォルフスブルク（独）</div></div></div>
+        </div>
       </div>
-      <div class="squad-legend">◇ キーマン</div>
+
+      <div style="font-size:11px;color:var(--text-muted);text-align:right;padding:4px 0">◇ キーマン</div>
     </div>
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('jpteam')"><span class="x-icon">𝕏</span> この情報をシェア</button>
@@ -4151,14 +4617,288 @@
 
   <!-- ===== STANDINGS TAB ===== -->
   <div id="section-standings" class="section">
-    <div class="section-label">グループリーグ 順位表</div>
-    <div class="group-selector" id="groupSelector"></div>
-    <div class="standings-meta" id="standingsMeta">第2節終了（6/23全試合完了）</div>
-    <div id="standingsContent"></div>
-    <div class="standings-legend">
-      <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
-      出典：ESPN・メディアドッグス ・ 更新：6/23時点
+
+    <!-- メイン切り替えタブ -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+      <button id="st-gs-btn" class="st-main-tab active" onclick="stSwitchMain('gs')">
+        ⚽ グループステージ
+      </button>
+      <button id="st-ko-btn" class="st-main-tab" onclick="stSwitchMain('ko')">
+        🏆 決勝トーナメント
+      </button>
     </div>
+
+    <!-- グループリーグ -->
+    <div id="st-gs-panel">
+      <div class="group-selector" id="groupSelector"></div>
+      <div class="standings-meta" id="standingsMeta">第2節終了（6/23全試合完了）</div>
+      <div id="standingsContent"></div>
+      <div class="standings-legend">
+        <span class="qualify-dot tbd" style="vertical-align:middle"></span> 暫定進出圏内（上位3チームが決勝T進出）<br>
+        出典：ESPN・メディアドッグス ・ 更新：6/23時点
+      </div>
+    </div>
+
+    <!-- 決勝トーナメント -->
+    <div id="st-ko-panel" style="display:none">
+
+      <!-- ラウンドタブ -->
+      <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+        <button class="ko-tab active" onclick="koSwitchTab(this,'st-ko-r32')">⚔️ R32</button>
+        <button class="ko-tab" onclick="koSwitchTab(this,'st-ko-r16')">🔥 R16</button>
+        <button class="ko-tab" onclick="koSwitchTab(this,'st-ko-qf')">⚡ QF</button>
+        <button class="ko-tab" onclick="koSwitchTab(this,'st-ko-sf')">🌟 SF</button>
+        <button class="ko-tab" onclick="koSwitchTab(this,'st-ko-f')">🏆 決勝</button>
+      </div>
+
+      <!-- R32 -->
+      <div id="st-ko-r32" class="ko-round">
+        <div class="ko-round-note">6/28(土)〜7/4(金) · 16試合</div>
+        <div class="ko-bracket">
+          <div class="ko-col">
+            <div class="ko-match jp-game">
+              <div class="ko-meta">6/30(火) · モンテレイ</div>
+              <div class="ko-time-jp">🥇10:00 <span style="color:#ff9999">/ 🥈02:00</span></div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（F通過）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> C組2位 or F組3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">6/29(月) 04:00 · ロサンゼルス</div>
+              <div class="ko-team"><span>🏳️</span> A組2位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> B組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">6/30(火) 05:30 · ボストン</div>
+              <div class="ko-team"><span>🇩🇪</span> ドイツ（E組1位予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> A/B/C/D/F組3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">6/29(月) 07:00 · ヒューストン</div>
+              <div class="ko-team"><span>🏳️</span> C組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> D組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/1(火) 02:00 · ダラス</div>
+              <div class="ko-team"><span>🏳️</span> E組2位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> I組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/1(火) 05:00 · アトランタ</div>
+              <div class="ko-team"><span>🏳️</span> G組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> H組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/2(水) 02:00 · ニューヨーク</div>
+              <div class="ko-team"><span>🏳️</span> K組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> J組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/2(水) 05:00 · サンフランシスコ</div>
+              <div class="ko-team"><span>🏳️</span> I組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> E or 他組3位</div>
+            </div>
+          </div>
+          <div class="ko-col">
+            <div class="ko-match">
+              <div class="ko-meta">6/29(月) 10:00 · マイアミ</div>
+              <div class="ko-team"><span>🏳️</span> B組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> A or 他組3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">6/30(火) 02:00 · ヒューストン</div>
+              <div class="ko-team"><span>🇳🇱</span> オランダ（F1位予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> C組2位 or 3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/1(火) 07:30 · グアダラハラ</div>
+              <div class="ko-team"><span>🏳️</span> D組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> C/D/E/F/G組3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/1(火) 10:00 · カンザスシティ</div>
+              <div class="ko-team"><span>🏳️</span> H組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> G組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/2(水) 07:00 · ボストン</div>
+              <div class="ko-team"><span>🏳️</span> J組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> K組2位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/3(木) 02:00 · フィラデルフィア</div>
+              <div class="ko-team"><span>🏳️</span> L組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> H〜L組3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/3(木) 05:00 · メキシコシティ</div>
+              <div class="ko-team"><span>🏳️</span> A組1位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> B組2位 or 3位</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/4(金) 02:00 · トロント</div>
+              <div class="ko-team"><span>🏳️</span> L組2位</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> K or 他組3位</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- R16 -->
+      <div id="st-ko-r16" class="ko-round" style="display:none">
+        <div class="ko-round-note">7/5(日)〜7/8(水) · 8試合</div>
+        <div class="ko-bracket">
+          <div class="ko-col">
+            <div class="ko-match jp-game">
+              <div class="ko-meta">7/5(日) · ヒューストン</div>
+              <div class="ko-time-jp">🥇 02:00</div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（1位通過）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [1]勝者 vs [4]勝者の勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/5(日) 06:00 · フィラデルフィア</div>
+              <div class="ko-team"><span>🏳️</span> [3]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [6]勝者</div>
+            </div>
+            <div class="ko-match jp-game">
+              <div class="ko-meta">7/6(月) · ニューヨーク</div>
+              <div class="ko-time-jp" style="color:#ff9999">🥈 05:00</div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（2位通過）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [2]勝者 vs [5]勝者の勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/6(月) 09:00 · メキシコシティ</div>
+              <div class="ko-team"><span>🏳️</span> [7]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [8]勝者</div>
+            </div>
+          </div>
+          <div class="ko-col">
+            <div class="ko-match">
+              <div class="ko-meta">7/7(火) 04:00 · ダラス</div>
+              <div class="ko-team"><span>🏳️</span> [12]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [11]勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/7(火) 07:00 · アトランタ</div>
+              <div class="ko-team"><span>🏳️</span> [10]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [9]勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/8(水) 04:00 · マイアミ</div>
+              <div class="ko-team"><span>🏳️</span> [14]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [13]勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/8(水) 07:00 · ロサンゼルス</div>
+              <div class="ko-team"><span>🏳️</span> [16]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [15]勝者</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QF -->
+      <div id="st-ko-qf" class="ko-round" style="display:none">
+        <div class="ko-round-note">7/10(金)〜7/12(日) · 4試合</div>
+        <div class="ko-bracket">
+          <div class="ko-col">
+            <div class="ko-match jp-game">
+              <div class="ko-meta">ボストン / マイアミ</div>
+              <div class="ko-time-jp">🥇7/10(金) 05:00 <span style="color:#ff9999">/ 🥈7/12(日) 06:00</span></div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🇧🇷</span> ブラジル（予想）</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/11(土) 04:00 · ロサンゼルス</div>
+              <div class="ko-team"><span>🇩🇪</span> ドイツ（予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [e]勝者</div>
+            </div>
+          </div>
+          <div class="ko-col">
+            <div class="ko-match">
+              <div class="ko-meta">7/12(日) 10:00 · カンザスシティ</div>
+              <div class="ko-team"><span>🏳️</span> [g]勝者</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> [h]勝者</div>
+            </div>
+            <div class="ko-match">
+              <div class="ko-meta">7/11(土) 07:00 · フィラデルフィア</div>
+              <div class="ko-team"><span>🇦🇷</span> アルゼンチン（予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🇫🇷</span> フランス（予想）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SF -->
+      <div id="st-ko-sf" class="ko-round" style="display:none">
+        <div class="ko-round-note">7/15(水)〜7/16(木) · 2試合</div>
+        <div class="ko-bracket">
+          <div class="ko-col">
+            <div class="ko-match jp-game">
+              <div class="ko-meta">ダラス / アトランタ</div>
+              <div class="ko-time-jp">🥇7/15(水) 04:00 <span style="color:#ff9999">/ 🥈7/16(木) 04:00</span></div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> QF勝者</div>
+            </div>
+          </div>
+          <div class="ko-col">
+            <div class="ko-match">
+              <div class="ko-meta">7/15(水) or 7/16(木) 04:00</div>
+              <div class="ko-team"><span>🇫🇷</span> フランス（予想）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> QF勝者</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:8px 0">🥉 3位決定戦　7/19(日) 06:00 · マイアミ</div>
+      </div>
+
+      <!-- 決勝 -->
+      <div id="st-ko-f" class="ko-round" style="display:none">
+        <div class="ko-round-note">7/20(月) 04:00 · ニューヨーク メットライフ・スタジアム</div>
+        <div class="ko-bracket">
+          <div class="ko-col" style="flex:1;max-width:100%">
+            <div class="ko-match jp-game" style="border:1.5px solid rgba(212,255,63,0.45)">
+              <div class="ko-meta" style="color:var(--gold)">🏆 2026 FIFA World Cup 決勝</div>
+              <div class="ko-time-jp" style="color:var(--gold)">7/20(月) 04:00</div>
+              <div class="ko-team jp"><span>🇯🇵</span> 日本（悲願の頂点へ！）</div>
+              <div class="ko-sep"></div>
+              <div class="ko-team"><span>🏳️</span> SF勝者</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /st-ko-panel -->
+
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('standings')"><span class="x-icon">𝕏</span> この情報をシェア</button>
     </div>
@@ -5587,10 +6327,10 @@
       { flag:'🇦🇹', name:'オーストリア', gp:2, w:1, d:0, l:1, gf:3, ga:3 },
       { flag:'🇯🇴', name:'ヨルダン',     gp:2, w:0, d:0, l:2, gf:2, ga:6 },
     ]},
-    K: { recap:'第2節：🇵🇹ポルトガル 5-0 🇺🇿ウズベキスタン　🇨🇴コロンビア vs 🇨🇩DRコンゴ（未実施）', teams:[
+    K: { recap:'第2節：🇵🇹ポルトガル 5-0 🇺🇿ウズベキスタン　🇨🇴コロンビア 1-0 🇨🇩DRコンゴ', teams:[
+      { flag:'🇨🇴', name:'コロンビア',    gp:2, w:2, d:0, l:0, gf:4, ga:1 },
       { flag:'🇵🇹', name:'ポルトガル',    gp:2, w:1, d:1, l:0, gf:6, ga:1 },
-      { flag:'🇨🇴', name:'コロンビア',    gp:1, w:1, d:0, l:0, gf:3, ga:1 },
-      { flag:'🇨🇩', name:'DRコンゴ',      gp:1, w:0, d:1, l:0, gf:1, ga:1 },
+      { flag:'🇨🇩', name:'DRコンゴ',      gp:2, w:0, d:1, l:1, gf:1, ga:2 },
       { flag:'🇺🇿', name:'ウズベキスタン', gp:2, w:0, d:0, l:2, gf:1, ga:8 },
     ]},
     L: { recap:'第2節：🏴󠁧󠁢󠁥󠁮󠁧󠁿イングランド 0-0 🇬🇭ガーナ　🇵🇦パナマ 0-1 🇭🇷クロアチア', teams:[
@@ -5723,7 +6463,7 @@
     {date:'6/24',dow:'水',time:'02:00',home:{n:'ポルトガル',cc:'pt'},     away:{n:'ウズベキスタン',cc:'uz'},group:'K',venue:'ヒューストン',  score:'5-0',broad:['dazn','nhk'],   jp:false,free:false,past:true},
     {date:'6/24',dow:'水',time:'05:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'ガーナ',cc:'gh'},     group:'L',venue:'ボストン',        score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/24',dow:'水',time:'08:00',home:{n:'パナマ',cc:'pa'},         away:{n:'クロアチア',cc:'hr'},  group:'L',venue:'トロント',        score:'0-1',broad:['dazn','fuji'],  jp:false,free:false,past:true},
-    {date:'6/24',dow:'水',time:'11:00',home:{n:'コロンビア',cc:'co'},     away:{n:'DRコンゴ',cc:'cd'},    group:'K',venue:'グアダラハラ',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
+    {date:'6/24',dow:'水',time:'11:00',home:{n:'コロンビア',cc:'co'},     away:{n:'DRコンゴ',cc:'cd'},    group:'K',venue:'グアダラハラ',    score:'1-0',broad:['dazn','ntv'],   jp:false,free:false,past:true},
     {date:'6/25',dow:'木',time:'04:00a',home:{n:'スイス',cc:'ch'},        away:{n:'カナダ',cc:'ca'},      group:'B',venue:'バンクーバー',    score:'',   broad:['dazn','nhk'],   jp:false,free:false},
     {date:'6/25',dow:'木',time:'04:00b',home:{n:'ボスニア',cc:'ba'},      away:{n:'カタール',cc:'qa'},    group:'B',venue:'シアトル',        score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/25',dow:'木',time:'07:00a',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'ブラジル',cc:'br'},group:'C',venue:'マイアミ',       score:'',   broad:['dazn'],         jp:false,free:false},
@@ -6201,7 +6941,62 @@
     }
   }
 
-  // 決勝トーナメント折りたたみ
+  // ===== 決勝T ロードマップ ↔ カード一覧 連動 =====
+  function koCardSwitch(round, btn) {
+    // ロードマップのactiveを切り替え
+    btn.closest('.ko-roadmap-steps').querySelectorAll('.ko-roadmap-step').forEach(function(s){
+      s.classList.remove('active');
+    });
+    btn.classList.add('active');
+    // カードパネルを切り替え
+    ['r32','r16','qf','sf','f'].forEach(function(r){
+      var el = document.getElementById('kc-' + r);
+      if (el) el.style.display = r === round ? '' : 'none';
+    });
+  }
+  // すべての試合を見る トグル
+  function koToggleAll(round, btn) {
+    var more = document.getElementById('kc-' + round + '-more');
+    if (!more) return;
+    var open = more.style.display !== 'none';
+    more.style.display = open ? 'none' : '';
+    btn.textContent = open ? 'すべての試合日程を見る　›' : '閉じる　›';
+  }
+
+  // ===== 順位表タブ グループリーグ/決勝T 切り替え =====
+  function stSwitchMain(mode) {
+    const gsPanel = document.getElementById('st-gs-panel');
+    const koPanel = document.getElementById('st-ko-panel');
+    const gsBtn   = document.getElementById('st-gs-btn');
+    const koBtn   = document.getElementById('st-ko-btn');
+    if (mode === 'gs') {
+      gsPanel.style.display = '';
+      koPanel.style.display = 'none';
+      gsBtn.classList.add('active');
+      koBtn.classList.remove('active');
+    } else {
+      gsPanel.style.display = 'none';
+      koPanel.style.display = '';
+      gsBtn.classList.remove('active');
+      koBtn.classList.add('active');
+    }
+  }
+
+  // ===== 決勝トーナメント ラウンドタブ切り替え =====
+  function koSwitchTab(btn, targetId) {
+    // 親divの中のko-tabボタンだけactive切り替え
+    btn.closest('div').querySelectorAll('.ko-tab').forEach(function(t){ t.classList.remove('active'); });
+    btn.classList.add('active');
+    // 同じパネル内のko-roundだけ制御するため、prefixで判定
+    const prefix = targetId.startsWith('st-ko-') ? 'st-ko-' : 'ko-';
+    const rounds = ['r32','r16','qf','sf','f'];
+    rounds.forEach(function(r){
+      const el = document.getElementById(prefix + r);
+      if (el) el.style.display = (prefix + r === targetId) ? '' : 'none';
+    });
+  }
+
+  // ===== 決勝トーナメント折りたたみ =====
   function ktToggle(header) {
     const isOpen = header.classList.contains('open');
     header.classList.toggle('open', !isOpen);
@@ -6326,6 +7121,154 @@
   } catch(e) {}
 
   // ===== TEAM DETAIL MODAL =====
+  // ===== SQUAD DATA (グループFの4チーム) =====
+  const SQUAD_DATA = {
+    'jp': {
+      GK: [
+        {no:1,  name:'鈴木彩艶',  club:'パルマ'},
+        {no:12, name:'大迫敬介',  club:'広島'},
+        {no:23, name:'早川友基',  club:'鹿島'},
+      ],
+      DF: [
+        {no:2,  name:'菅原由勢',  club:'ブレーメン'},
+        {no:3,  name:'谷口彰悟',  club:'シントトロイデン'},
+        {no:4,  name:'板倉滉',    club:'アヤックス'},
+        {no:5,  name:'長友佑都',  club:'FC東京'},
+        {no:16, name:'渡辺剛',    club:'フェイエノールト'},
+        {no:20, name:'瀬古歩夢',  club:'ルアーブル'},
+        {no:21, name:'伊藤洋輝',  club:'バイエルン'},
+        {no:22, name:'冨安健洋',  club:'アヤックス'},
+        {no:25, name:'鈴木淳之介',club:'コペンハーゲン'},
+      ],
+      MF: [
+        {no:6,  name:'遠藤航',    club:'リバプール'},
+        {no:7,  name:'田中碧',    club:'リーズ'},
+        {no:8,  name:'久保建英',  club:'Rソシエダード'},
+        {no:10, name:'堂安律',    club:'Eフランクフルト'},
+        {no:13, name:'中村敬斗',  club:'ランス'},
+        {no:14, name:'伊東純也',  club:'ゲンク'},
+        {no:15, name:'鎌田大地',  club:'C・パレス'},
+        {no:17, name:'鈴木唯人',  club:'フライブルク'},
+        {no:24, name:'佐野海舟',  club:'マインツ'},
+      ],
+      FW: [
+        {no:9,  name:'後藤啓介',  club:'シントトロイデン'},
+        {no:11, name:'前田大然',  club:'セルティック'},
+        {no:18, name:'上田綺世',  club:'フェイエノールト'},
+        {no:19, name:'小川航基',  club:'ナイメヘン'},
+        {no:26, name:'塩貝健人',  club:'ウォルフスブルク'},
+      ],
+    },
+    'nl': {
+      GK: [
+        {no:1,  name:'バート・フェルブルッヘン', club:'ブライトン'},
+        {no:13, name:'ロビン・ルーフス',         club:'サンダーランド'},
+        {no:23, name:'マーク・フレッケン',        club:'レバークーゼン'},
+      ],
+      DF: [
+        {no:4,  name:'V・ファン・ダイク',   club:'リバプール'},
+        {no:5,  name:'ネイサン・アケ',       club:'マンC'},
+        {no:6,  name:'D・ダンフリース',      club:'インテル'},
+        {no:7,  name:'J・ハト',             club:'チェルシー'},
+        {no:8,  name:'M・ファンデベン',      club:'トッテナム'},
+        {no:9,  name:'J・ファンヘッケ',      club:'ブライトン'},
+        {no:2,  name:'J・ティンバー',        club:'アーセナル'},
+        {no:17, name:'マッツ・ビーファー',   club:'ブライトン'},
+      ],
+      MF: [
+        {no:10, name:'F・デヨング',          club:'バルセロナ'},
+        {no:3,  name:'M・デローン',          club:'アタランタ'},
+        {no:14, name:'T・レインデルス',      club:'マンC'},
+        {no:12, name:'T・クープマイネルス',  club:'ユベントス'},
+        {no:11, name:'R・フラーフェンベルフ',club:'リバプール'},
+        {no:16, name:'Q・ティンバー',        club:'マルセイユ'},
+        {no:15, name:'グース・ティル',       club:'PSV'},
+        {no:24, name:'J・クライフェルト',    club:'ボーンマス'},
+      ],
+      FW: [
+        {no:19, name:'M・デパイ',            club:'コリンチャンス'},
+        {no:22, name:'W・ウェグホルスト',    club:'アヤックス'},
+        {no:20, name:'D・マレン',            club:'ローマ'},
+        {no:18, name:'C・ガクポ',            club:'リバプール'},
+        {no:25, name:'ノア・ラング',         club:'ガラタサライ'},
+        {no:21, name:'B・ブロッビー',        club:'サンダーランド'},
+        {no:26, name:'C・サマービル',        club:'ウェストハム'},
+      ],
+    },
+    'se': {
+      GK: [
+        {no:1,  name:'K・ノルドフェルト',    club:'AIKソルナ'},
+        {no:12, name:'V・ヨハンソン',        club:'ストーク'},
+        {no:18, name:'J・ゼッテルストロム',  club:'ダービー'},
+      ],
+      DF: [
+        {no:3,  name:'V・リンデロフ(C)',     club:'アストンV'},
+        {no:4,  name:'H・エクダル',          club:'バーンリー'},
+        {no:5,  name:'I・ヒーン',            club:'アタランタ'},
+        {no:6,  name:'C・スターフェルト',    club:'セルタ'},
+        {no:7,  name:'G・グドムンドソン',    club:'リーズ'},
+        {no:15, name:'D・スベンソン',        club:'ドルトムント'},
+        {no:16, name:'G・ラゲルビエルケ',   club:'ブラガ'},
+        {no:2,  name:'E・ホルム',            club:'ユベントス'},
+        {no:20, name:'E・ストラウド',        club:'ミャルビー'},
+        {no:19, name:'E・スミス',            club:'ザンクトパウリ'},
+      ],
+      MF: [
+        {no:8,  name:'M・スバンベリ',        club:'ウォルフスブルク'},
+        {no:10, name:'J・カールストロム',     club:'ウディネーゼ'},
+        {no:11, name:'Y・アヤリ',            club:'ブライトン'},
+        {no:14, name:'L・ベリバル',          club:'トッテナム'},
+        {no:21, name:'B・ゼネリ',            club:'ユニオンSG'},
+        {no:22, name:'K・セマ',              club:'パフォス'},
+      ],
+      FW: [
+        {no:9,  name:'V・ギョケレス',        club:'アーセナル'},
+        {no:17, name:'A・イサク',            club:'リバプール'},
+        {no:23, name:'A・エランガ',          club:'ニューカッスル'},
+        {no:24, name:'B・ニグレン',          club:'セルティック'},
+        {no:25, name:'G・ニルソン',          club:'ブルッヘ'},
+        {no:26, name:'T・アリ',              club:'マルメ'},
+        {no:13, name:'A・ベリャルドソン',    club:'キールHST'},
+      ],
+    },
+    'tn': {
+      GK: [
+        {no:1,  name:'M・シャマフ',          club:'クラブ・アフリカン'},
+        {no:16, name:'A・ダーマン',           club:'CSスファクシアン'},
+        {no:22, name:'S・ベン・ヘッセン',    club:'エトワール・サヘル'},
+      ],
+      DF: [
+        {no:2,  name:'A・アブディ',           club:'ニース'},
+        {no:3,  name:'M・タルビ',             club:'ロリアン'},
+        {no:4,  name:'O・レキク',             club:'マリボル'},
+        {no:5,  name:'A・アルース',           club:'カスンパシャ'},
+        {no:6,  name:'D・ブロン',             club:'セルヴェット'},
+        {no:12, name:'M・ベン・ウアネス',    club:'カスンパシャ'},
+        {no:20, name:'Y・バレリ',             club:'ヤングボーイズ'},
+        {no:21, name:'M・ベン・ハミダ',      club:'エスペランス'},
+        {no:23, name:'M・ネファティ',         club:'ノーショーピング'},
+        {no:24, name:'R・シカウイ',           club:'USモナスティル'},
+      ],
+      MF: [
+        {no:10, name:'ハンニバル・メブリ',   club:'バーンリー'},
+        {no:11, name:'I・ガルビ',             club:'アウクスブルク'},
+        {no:13, name:'R・ヘディラ',           club:'ウニオン・ベルリン'},
+        {no:14, name:'K・アヤリ',             club:'パリSG'},
+        {no:15, name:'M・アドジ・マフムード',club:'ルガノ'},
+        {no:17, name:'E・スキリ(C)',          club:'Eフランクフルト'},
+        {no:25, name:'A・ベン・スリマン',    club:'ノリッジ'},
+        {no:26, name:'S・トゥネクティ',      club:'セルティック'},
+      ],
+      FW: [
+        {no:7,  name:'E・アショウリ',         club:'コペンハーゲン'},
+        {no:8,  name:'E・サアド',             club:'ハノーファー'},
+        {no:9,  name:'H・マストゥーリ',      club:'ダイナモ'},
+        {no:18, name:'R・エルウミ',           club:'バンクーバー'},
+        {no:19, name:'F・シャウアト',         club:'クラブ・アフリカン'},
+      ],
+    },
+  };
+
   const TEAM_INFO = {
     'mx':{'name':'メキシコ','code':'MEX','group':'A','rank':15},
     'za':{'name':'南アフリカ','code':'RSA','group':'A','rank':60},
@@ -6480,10 +7423,50 @@
         </div>`;
     });
 
-    document.getElementById('tmBody').innerHTML = matchHtml + standHtml;
+    document.getElementById('tmBody').innerHTML = matchHtml + standHtml + buildSquadHtml(cc);
     document.getElementById('teamModalOverlay').classList.add('open');
     document.getElementById('teamModalCard').scrollTop = 0;
     document.body.style.overflow = 'hidden';
+  }
+
+  // ===== SQUAD HTML生成 =====
+  function buildSquadHtml(cc) {
+    const squad = SQUAD_DATA[cc];
+    if (!squad) return '';
+
+    const posLabels = { GK:'GK　ゴールキーパー', DF:'DF　ディフェンダー', MF:'MF　ミッドフィルダー', FW:'FW　フォワード' };
+    const posOrder = ['GK','DF','MF','FW'];
+
+    let posBlocks = '';
+    posOrder.forEach(pos => {
+      const players = squad[pos];
+      if (!players || !players.length) return;
+      let cells = players.map(p =>
+        '<div class="tm-squad-player">'
+        + '<span class="tm-squad-num">' + p.no + '</span>'
+        + '<div class="tm-squad-info">'
+        +   '<div class="tm-squad-name">' + p.name + '</div>'
+        +   '<div class="tm-squad-club">' + p.club + '</div>'
+        + '</div>'
+        + '</div>'
+      ).join('');
+      // 奇数の場合は末尾に空セルを追加してグリッドを揃える
+      if (players.length % 2 !== 0) {
+        cells += '<div class="tm-squad-player" style="visibility:hidden"></div>';
+      }
+      posBlocks += '<div class="tm-squad-pos-block">'
+        + '<div class="tm-squad-pos-label">' + posLabels[pos] + '</div>'
+        + '<div class="tm-squad-grid">' + cells + '</div>'
+        + '</div>';
+    });
+
+    return '<div class="tm-squad-section">'
+      + '<button class="tm-squad-toggle" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;b.classList.toggle(\'open\')">'
+      + '🧑‍🤝‍🧑 代表メンバー26人'
+      + '<span class="tm-squad-toggle-icon">▽</span>'
+      + '</button>'
+      + '<div class="tm-squad-body">' + posBlocks + '</div>'
+      + '</div>';
   }
 
   function closeTeamModal(e) {
