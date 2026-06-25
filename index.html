@@ -204,7 +204,7 @@
     /* ===== MAIN CONTENT ===== */
     .main {
       padding: 16px;
-      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+      padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
       max-width: 600px;
       margin: 0 auto;
     }
@@ -2190,15 +2190,15 @@
 
     .match-day-header {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.5px;
       color: var(--text-primary);
-      margin: 26px 0 12px;
+      margin: 14px 0 8px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding-bottom: 8px;
+      gap: 8px;
+      padding-bottom: 6px;
       border-bottom: 2px solid rgba(212,255,63,0.25);
     }
     .match-day-header:first-child { margin-top: 0; }
@@ -2226,12 +2226,12 @@
     .match-row {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 16px 16px;
-      margin-bottom: 12px;
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       cursor: default;
     }
     .match-row.jp-match {
@@ -2240,10 +2240,10 @@
     }
     .match-row .mr-time {
       font-family: -apple-system, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-      font-size: 17px;
+      font-size: 13px;
       font-weight: 900;
       color: var(--gold);
-      min-width: 52px;
+      min-width: 40px;
       text-align: center;
       flex-shrink: 0;
       letter-spacing: 0;
@@ -2254,59 +2254,59 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
     }
     /* 対戦行：国名 vs 国名 ＋ スコアを1行に */
     .match-row .mr-teams .mr-matchup {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 3px;
       row-gap: 2px;
     }
     .match-row .mr-teams .mr-matchup .mr-vs-sep {
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11px;
       flex-shrink: 0;
     }
     /* スコアをmatchup内に含める */
     .match-row .mr-teams .mr-matchup .mr-score-inline {
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 900;
       color: var(--text-primary);
       background: rgba(232,240,255,0.1);
       border: 1px solid var(--line-white);
-      border-radius: 5px;
-      padding: 1px 7px;
+      border-radius: 4px;
+      padding: 0px 5px;
       margin-left: 2px;
       flex-shrink: 0;
     }
-    .mr-team-cell { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
-    .mr-team-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
-    /* メタ行（グループ・会場） */
+    .mr-team-cell { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; }
+    .mr-team-name { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    /* メタ行（グループ・会場）＋放送局タグを1行に */
     .match-row .mr-teams .mr-meta {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-muted);
       font-weight: 500;
     }
     /* 放送局タグ行 */
     .match-row .mr-tags {
       display: flex;
-      gap: 5px;
+      gap: 4px;
       flex-wrap: wrap;
       flex-shrink: 0;
       max-width: none;
       justify-content: flex-start;
     }
     .mr-tag {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      padding: 4px 9px;
-      border-radius: 5px;
+      padding: 2px 6px;
+      border-radius: 4px;
       letter-spacing: 0.2px;
     }
     .mr-tag.dazn  { background:rgba(59,122,240,0.2);  color:#7ba8ff;     border:1px solid rgba(59,122,240,0.35); }
@@ -3581,33 +3581,31 @@
       </div>
       <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:10px 0 0">🥉 3位決定戦は両ルート共通　<strong style="color:var(--text-primary)">7/19(日) 06:00</strong></div>
     </div>
-    <div class="ko-next-banner">
-      <div class="ko-next-label">日本代表の現在地</div>
-      <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:2px">次戦</div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="background:rgba(59,122,240,0.3);border:1px solid rgba(59,122,240,0.5);border-radius:14px;font-size:11px;font-weight:800;color:#7eb8ff;padding:3px 10px">ベスト32</span>
-        <span style="font-size:11px;color:var(--text-muted)">📅 6/30(火) 10:00　📍 モンテレイ</span>
-      </div>
-      <div class="ko-next-body">
-        <div class="ko-next-team">
-          <div class="ko-next-flag-emoji">🇯🇵</div>
-          <div class="ko-next-name">日本</div>
-          <div class="ko-next-sub">（F組1位通過）</div>
+    <div class="ko-next-banner" style="padding:14px 16px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex-shrink:0;text-align:center;min-width:72px;background:rgba(59,122,240,0.12);border:1px solid rgba(59,122,240,0.3);border-radius:12px;padding:10px 12px">
+          <div style="font-size:9px;font-weight:800;color:var(--sky-blue);letter-spacing:1px;margin-bottom:4px">現在地</div>
+          <div style="font-size:44px;line-height:1">🇯🇵</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-top:4px">日本</div>
+          <div style="font-size:10px;color:var(--sky-blue);margin-top:2px">F組1位</div>
         </div>
-        <div class="ko-next-vs">VS</div>
-        <div class="ko-next-opponent">
-          <div class="ko-next-opp-card">
-            <div class="ko-next-q">?</div>
-            <div class="ko-next-opp-name">C組2位</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap">
+            <span style="background:rgba(59,122,240,0.3);border:1px solid rgba(59,122,240,0.5);border-radius:10px;font-size:11px;font-weight:800;color:#7eb8ff;padding:2px 10px">ベスト32</span>
+            <span style="font-size:12px;font-weight:900;color:var(--gold)">次戦</span>
           </div>
-          <div style="text-align:center;font-size:11px;color:var(--text-muted)">または</div>
-          <div class="ko-next-opp-card">
-            <div class="ko-next-q">?</div>
-            <div class="ko-next-opp-name">F組3位</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:7px">📅 6/30(火) 10:00　📍 モンテレイ</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:13px;font-weight:800;color:var(--text-primary)">vs</span>
+            <span style="font-size:26px">🏳️</span>
+            <div>
+              <div style="font-size:14px;font-weight:800;color:var(--text-primary)">C組2位 / F組3位</div>
+              <div style="font-size:10px;color:var(--text-muted)">対戦相手は第3節終了後に確定</div>
+            </div>
           </div>
         </div>
+        <div style="flex-shrink:0;text-align:center;font-size:12px;font-weight:900;color:var(--gold);line-height:1.5">🏆<br>勝てば<br>R16！</div>
       </div>
-      <div class="ko-next-win-msg">🏆 勝利でベスト16進出！</div>
     </div>
 
     <!-- ② 優勝への道 ロードマップ -->
@@ -6464,12 +6462,12 @@
     {date:'6/24',dow:'水',time:'05:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'ガーナ',cc:'gh'},     group:'L',venue:'ボストン',        score:'0-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/24',dow:'水',time:'08:00',home:{n:'パナマ',cc:'pa'},         away:{n:'クロアチア',cc:'hr'},  group:'L',venue:'トロント',        score:'0-1',broad:['dazn','fuji'],  jp:false,free:false,past:true},
     {date:'6/24',dow:'水',time:'11:00',home:{n:'コロンビア',cc:'co'},     away:{n:'DRコンゴ',cc:'cd'},    group:'K',venue:'グアダラハラ',    score:'1-0',broad:['dazn','ntv'],   jp:false,free:false,past:true},
-    {date:'6/25',dow:'木',time:'04:00a',home:{n:'スイス',cc:'ch'},        away:{n:'カナダ',cc:'ca'},      group:'B',venue:'バンクーバー',    score:'',   broad:['dazn','nhk'],   jp:false,free:false},
-    {date:'6/25',dow:'木',time:'04:00b',home:{n:'ボスニア',cc:'ba'},      away:{n:'カタール',cc:'qa'},    group:'B',venue:'シアトル',        score:'',   broad:['dazn'],         jp:false,free:false},
-    {date:'6/25',dow:'木',time:'07:00a',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'ブラジル',cc:'br'},group:'C',venue:'マイアミ',       score:'',   broad:['dazn'],         jp:false,free:false},
-    {date:'6/25',dow:'木',time:'07:00b',home:{n:'モロッコ',cc:'ma'},      away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'アトランタ',      score:'',   broad:['dazn'],         jp:false,free:false},
-    {date:'6/25',dow:'木',time:'10:00a',home:{n:'チェコ',cc:'cz'},        away:{n:'メキシコ',cc:'mx'},    group:'A',venue:'メキシコシティ',  score:'',   broad:['dazn','nhk'],   jp:false,free:false},
-    {date:'6/25',dow:'木',time:'10:00b',home:{n:'南アフリカ',cc:'za'},    away:{n:'韓国',cc:'kr'},        group:'A',venue:'モンテレイ',      score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/25',dow:'木',time:'04:00a',home:{n:'スイス',cc:'ch'},        away:{n:'カナダ',cc:'ca'},      group:'B',venue:'バンクーバー',    score:'2-1',broad:['dazn','nhk'],   jp:false,free:false,past:true},
+    {date:'6/25',dow:'木',time:'04:00b',home:{n:'ボスニア',cc:'ba'},      away:{n:'カタール',cc:'qa'},    group:'B',venue:'シアトル',        score:'3-1',broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/25',dow:'木',time:'07:00a',home:{n:'スコットランド',cc:'gb-sct'},away:{n:'ブラジル',cc:'br'},group:'C',venue:'マイアミ',       score:'0-3',broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/25',dow:'木',time:'07:00b',home:{n:'モロッコ',cc:'ma'},      away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'アトランタ',      score:'4-2',broad:['dazn'],         jp:false,free:false,past:true},
+    {date:'6/25',dow:'木',time:'10:00a',home:{n:'チェコ',cc:'cz'},        away:{n:'メキシコ',cc:'mx'},    group:'A',venue:'メキシコシティ',  score:'0-3',broad:['dazn','nhk'],   jp:false,free:false,past:true},
+    {date:'6/25',dow:'木',time:'10:00b',home:{n:'南アフリカ',cc:'za'},    away:{n:'韓国',cc:'kr'},        group:'A',venue:'モンテレイ',      score:'1-0',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/26',dow:'金',time:'05:00a',home:{n:'キュラソー',cc:'cw'},    away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'フィラデルフィア',score:'',broad:['dazn'],       jp:false,free:false},
     {date:'6/26',dow:'金',time:'05:00b',home:{n:'エクアドル',cc:'ec'},    away:{n:'ドイツ',cc:'de'},      group:'E',venue:'ニューヨーク',    score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/26',dow:'金',time:'08:00', home:{n:'日本',cc:'jp'},          away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ダラス',          score:'',   broad:['dazn-free','nhk'],jp:true,free:true},
