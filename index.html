@@ -3361,6 +3361,18 @@
       </div>
     </div>
 
+    <!-- 視聴リンク（速報欄直下） -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;margin-bottom:12px">
+      <a href="https://abema.tv" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(0,180,216,0.4);background:rgba(0,180,216,0.15);color:#4dd9f0;text-decoration:none">
+        📺 ABEMAで観る
+      </a>
+      <a href="https://www.skyperfectv.co.jp" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(230,57,70,0.4);background:rgba(230,57,70,0.15);color:#ff7b84;text-decoration:none">
+        🛰️ スカパーで観る
+      </a>
+    </div>
+
     <!-- Countdown -->
     <div class="countdown-card" id="countdownCard">
       <div class="countdown-label">NEXT JAPAN MATCH</div>
@@ -4777,6 +4789,10 @@
                 <td><div class="team-cell"><span class="qualify-dot tbd"></span><span class="flag">🇧🇦</span><span class="name">ボスニア</span></div></td>
                 <td class="td-pts leader">4</td><td class="td-gd-neg">-1</td><td>5</td><td>3</td>
               </tr>
+              <tr onclick="openTeamModal('ec')" style="cursor:pointer">
+                <td><div class="team-cell"><span class="qualify-dot tbd"></span><span class="flag">🇪🇨</span><span class="name">エクアドル</span></div></td>
+                <td class="td-pts">4</td><td>0</td><td>2</td><td>3</td>
+              </tr>
               <tr onclick="openTeamModal('se')" style="cursor:pointer">
                 <td><div class="team-cell"><span class="qualify-dot tbd"></span><span class="flag">🇸🇪</span><span class="name">スウェーデン</span></div></td>
                 <td class="td-pts">3</td><td>0</td><td>6</td><td>2</td>
@@ -4801,12 +4817,12 @@
                 <td><div class="team-cell"><span class="qualify-dot tbd"></span><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="name">スコットランド</span></div></td>
                 <td class="td-pts">3</td><td class="td-gd-neg">-3</td><td>1</td><td>3</td>
               </tr>
-              <tr onclick="openTeamModal('cv')" style="cursor:pointer">
-                <td><div class="team-cell"><span class="qualify-dot tbd"></span><span class="flag">🇨🇻</span><span class="name">カーボベルデ</span></div></td>
-                <td class="td-pts">2</td><td>0</td><td>2</td><td>2</td>
-              </tr>
               <tr style="border-top:2px solid rgba(255,255,255,0.15)">
                 <td colspan="5" style="padding:4px 12px;font-size:10px;color:var(--text-muted);text-align:center">── 以下は進出圏外（暫定）──</td>
+              </tr>
+              <tr onclick="openTeamModal('cv')" style="cursor:pointer">
+                <td><div class="team-cell"><span class="flag">🇨🇻</span><span class="name">カーボベルデ</span></div></td>
+                <td class="td-pts">2</td><td>0</td><td>2</td><td>2</td>
               </tr>
               <tr onclick="openTeamModal('be')" style="cursor:pointer">
                 <td><div class="team-cell"><span class="flag">🇧🇪</span><span class="name">ベルギー</span></div></td>
@@ -4815,10 +4831,6 @@
               <tr onclick="openTeamModal('cd')" style="cursor:pointer">
                 <td><div class="team-cell"><span class="flag">🇨🇩</span><span class="name">DRコンゴ</span></div></td>
                 <td class="td-pts">1</td><td class="td-gd-neg">-1</td><td>1</td><td>2</td>
-              </tr>
-              <tr onclick="openTeamModal('ec')" style="cursor:pointer">
-                <td><div class="team-cell"><span class="flag">🇪🇨</span><span class="name">エクアドル</span></div></td>
-                <td class="td-pts">1</td><td class="td-gd-neg">-1</td><td>0</td><td>2</td>
               </tr>
               <tr onclick="openTeamModal('sn')" style="cursor:pointer">
                 <td><div class="team-cell"><span class="flag">🇸🇳</span><span class="name">セネガル</span></div></td>
@@ -6551,11 +6563,11 @@
       { flag:'🇵🇾', name:'パラグアイ',     gp:2, w:1, d:0, l:1, gf:2, ga:5 },
       { flag:'🇹🇷', name:'トルコ',         gp:2, w:0, d:0, l:2, gf:0, ga:3 },
     ]},
-    E: { recap:'第2節：🇩🇪ドイツ 2-1 🇨🇮コートジボワール　🇪🇨エクアドル 0-0 🇨🇼キュラソー', teams:[
-      { flag:'🇩🇪', name:'ドイツ',          gp:2, w:2, d:0, l:0, gf:9, ga:2 },
-      { flag:'🇨🇮', name:'コートジボワール', gp:2, w:1, d:0, l:1, gf:2, ga:9 },
-      { flag:'🇪🇨', name:'エクアドル',      gp:2, w:0, d:1, l:1, gf:0, ga:1 },
-      { flag:'🇨🇼', name:'キュラソー',      gp:2, w:0, d:1, l:1, gf:1, ga:7 },
+    E: { recap:'第3節：🇪🇨エクアドル 2-1 🇩🇪ドイツ（大波乱！）　🇨🇮コートジボワール 2-0 🇨🇼キュラソー', teams:[
+      { flag:'🇨🇮', name:'コートジボワール', gp:3, w:2, d:0, l:1, gf:4, ga:9 },
+      { flag:'🇪🇨', name:'エクアドル',      gp:3, w:1, d:1, l:1, gf:2, ga:2 },
+      { flag:'🇩🇪', name:'ドイツ',          gp:3, w:2, d:0, l:1, gf:10,ga:4 },
+      { flag:'🇨🇼', name:'キュラソー',      gp:3, w:0, d:1, l:2, gf:1, ga:9 },
     ]},
     G: { recap:'第2節：🇧🇪ベルギー 0-0 🇮🇷イラン　🇳🇿ニュージーランド 1-3 🇪🇬エジプト', teams:[
       { flag:'🇪🇬', name:'エジプト',        gp:2, w:1, d:1, l:0, gf:4, ga:2 },
@@ -6744,8 +6756,8 @@
     {date:'6/25',dow:'木',time:'07:00b',home:{n:'モロッコ',cc:'ma'},      away:{n:'ハイチ',cc:'ht'},      group:'C',venue:'アトランタ',      score:'4-2',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/25',dow:'木',time:'10:00a',home:{n:'チェコ',cc:'cz'},        away:{n:'メキシコ',cc:'mx'},    group:'A',venue:'メキシコシティ',  score:'0-3',broad:['dazn','nhk'],   jp:false,free:false,past:true},
     {date:'6/25',dow:'木',time:'10:00b',home:{n:'南アフリカ',cc:'za'},    away:{n:'韓国',cc:'kr'},        group:'A',venue:'モンテレイ',      score:'1-0',broad:['dazn'],         jp:false,free:false,past:true},
-    {date:'6/26',dow:'金',time:'05:00a',home:{n:'キュラソー',cc:'cw'},    away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'フィラデルフィア',score:'',broad:['dazn'],       jp:false,free:false},
-    {date:'6/26',dow:'金',time:'05:00b',home:{n:'エクアドル',cc:'ec'},    away:{n:'ドイツ',cc:'de'},      group:'E',venue:'ニューヨーク',    score:'',   broad:['dazn'],         jp:false,free:false},
+    {date:'6/26',dow:'金',time:'05:00a',home:{n:'キュラソー',cc:'cw'},    away:{n:'コートジボワール',cc:'ci'},group:'E',venue:'フィラデルフィア',score:'0-2',broad:['dazn'],       jp:false,free:false,past:true},
+    {date:'6/26',dow:'金',time:'05:00b',home:{n:'エクアドル',cc:'ec'},    away:{n:'ドイツ',cc:'de'},      group:'E',venue:'ニューヨーク',    score:'2-1',broad:['dazn'],         jp:false,free:false,past:true},
     {date:'6/26',dow:'金',time:'08:00', home:{n:'日本',cc:'jp'},          away:{n:'スウェーデン',cc:'se'},group:'F',venue:'ダラス',          score:'',   broad:['dazn-free','nhk'],jp:true,free:true},
     {date:'6/26',dow:'金',time:'08:00b',home:{n:'チュニジア',cc:'tn'},    away:{n:'オランダ',cc:'nl'},    group:'F',venue:'カンザスシティ',  score:'',   broad:['dazn'],         jp:false,free:false},
     {date:'6/26',dow:'金',time:'11:00a',home:{n:'トルコ',cc:'tr'},        away:{n:'アメリカ',cc:'us'},    group:'D',venue:'ロサンゼルス',    score:'',   broad:['dazn','ntv'],   jp:false,free:false},
@@ -7157,10 +7169,10 @@
   //   { min: '67'', name: '上田 綺世', jp: true,  og: true  },  // オウンゴール（日本選手名で記録）
   // ]
   const SOKUHŌ_STATE = {
-    state:      'prematch',
-    homeScore:  null,
-    awayScore:  null,
-    minute:     '',
+    state:      'live',
+    homeScore:  0,
+    awayScore:  0,
+    minute:     '前半',
     scorers: [],
   };
 
