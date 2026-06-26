@@ -1737,9 +1737,9 @@
       border-radius: 24px 24px 0 0;
       width: 100%;
       max-width: 600px;
-      max-height: 90dvh;
+      max-height: 92dvh;
       overflow-y: auto;
-      padding-bottom: env(safe-area-inset-bottom, 20px);
+      padding-bottom: env(safe-area-inset-bottom, 12px);
       animation: slideUp 0.25s ease;
     }
 
@@ -1749,34 +1749,37 @@
     }
 
     .modal-handle {
-      width: 40px;
+      width: 36px;
       height: 4px;
       background: rgba(255,255,255,0.2);
       border-radius: 2px;
-      margin: 12px auto 0;
+      margin: 10px auto 0;
     }
 
     .modal-hero {
       display: flex;
-      gap: 16px;
-      padding: 16px 20px;
-      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px 8px;
+      align-items: center;
     }
 
-    .modal-photo {
-      width: 90px;
-      height: 100px;
-      border-radius: 12px;
-      object-fit: cover;
-      object-position: top center;
-      background: var(--pitch-dark);
+    .modal-pos-icon {
+      width: 68px;
+      height: 76px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
       flex-shrink: 0;
     }
 
     .modal-hero-info { flex: 1; min-width: 0; }
 
     .modal-num {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--japan-red);
       font-weight: 800;
       letter-spacing: 1px;
@@ -1784,16 +1787,16 @@
     }
 
     .modal-name {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 900;
       line-height: 1.2;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .modal-pos-club {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
 
     .modal-overall {
@@ -1808,7 +1811,7 @@
     .modal-overall-num { font-size: 22px; font-weight: 900; color: var(--gold); }
     .modal-overall-label { font-size: 9px; color: var(--gold-dim); font-weight: 700; letter-spacing: 0.5px; }
 
-    .modal-body { padding: 0 20px 20px; }
+    .modal-body { padding: 0 14px 8px; }
 
     .modal-section-title {
       font-size: 10px;
@@ -1816,25 +1819,25 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin: 16px 0 10px;
+      margin: 12px 0 7px;
     }
 
     .modal-stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     .stat-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 10px 8px;
+      border-radius: 8px;
+      padding: 8px 6px;
       text-align: center;
     }
 
     .stat-box .sv { font-size: 18px; font-weight: 900; color: var(--text-primary); }
-    .stat-box .sl { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
+    .stat-box .sl { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
 
     /* Radar chart */
     .radar-wrap {
@@ -1844,14 +1847,14 @@
     }
 
     .modal-close {
-      width: calc(100% - 40px);
-      margin: 0 20px;
+      width: calc(100% - 28px);
+      margin: 6px 14px;
       background: rgba(255,255,255,0.08);
       border: 1px solid var(--card-border);
       color: var(--text-primary);
-      border-radius: 12px;
-      padding: 13px;
-      font-size: 14px;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       font-family: inherit;
@@ -3425,6 +3428,8 @@
       <span class="watch-diag-arrow">›</span>
     </button>
 
+    <!-- グループリーグ（終了済み・非表示） -->
+    <div style="display:none">
     <div class="section-label japan-section">⚽ グループリーグ — グループF</div>
 
     <!-- 過去試合トグル -->
@@ -3528,6 +3533,7 @@
         
       </div>
     </div>
+    </div><!-- /グループリーグ非表示 -->
 
     <!-- 決勝トーナメント -->
     <div class="section-label">🏆 決勝トーナメント</div>
@@ -3601,20 +3607,20 @@
           <div style="font-size:9px;font-weight:800;color:var(--sky-blue);letter-spacing:1px;margin-bottom:4px">現在地</div>
           <div style="font-size:44px;line-height:1">🇯🇵</div>
           <div style="font-size:13px;font-weight:700;color:#fff;margin-top:4px">日本</div>
-          <div style="font-size:10px;color:var(--sky-blue);margin-top:2px">F組1位</div>
+          <div style="font-size:10px;color:var(--sky-blue);margin-top:2px">F組2位</div>
         </div>
         <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap">
             <span style="background:rgba(59,122,240,0.3);border:1px solid rgba(59,122,240,0.5);border-radius:10px;font-size:11px;font-weight:800;color:#7eb8ff;padding:2px 10px">ベスト32</span>
             <span style="font-size:12px;font-weight:900;color:var(--gold)">次戦</span>
           </div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:7px">📅 6/30(火) 10:00　📍 モンテレイ</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:7px">📅 7/1(水) 予定　📍 TBD</div>
           <div style="display:flex;align-items:center;gap:8px">
             <span style="font-size:13px;font-weight:800;color:var(--text-primary)">vs</span>
-            <span style="font-size:26px">🏳️</span>
+            <span style="font-size:26px">🇧🇷</span>
             <div>
-              <div style="font-size:14px;font-weight:800;color:var(--text-primary)">C組2位 / F組3位</div>
-              <div style="font-size:10px;color:var(--text-muted)">対戦相手は第3節終了後に確定</div>
+              <div style="font-size:14px;font-weight:800;color:var(--text-primary)">ブラジル</div>
+              <div style="font-size:10px;color:var(--text-muted)">C組1位（7pt・3試合）</div>
             </div>
           </div>
         </div>
@@ -4395,6 +4401,8 @@
       </div>
     </div>
 
+    <!-- グループF順位表・対戦相手（終了済み・非表示） -->
+    <div style="display:none">
     <!-- グループF順位表 -->
     <div class="section-label">グループF 順位表</div>
     <div class="jpteam-group-flags">
@@ -4605,6 +4613,7 @@
         <div class="opp-note">第2節でオランダに1-5と大敗し突破に黄信号。勝点3・暫定3位で得失点差が一気に悪化（GD-4）。日本との直接対決の第3節は背水の陣で臨む。スウェーデンが突破するには日本に勝つしかなく、全力で来ることが確実。</div>
       </div>
     </div>
+    </div><!-- /グループF順位表・対戦相手 非表示 -->
 
     <!-- 代表メンバー -->
     <div class="section-label">代表メンバー 26名　<span style="font-size:11px;color:var(--sky-blue);font-weight:400">タップで詳細表示</span></div>
@@ -4659,7 +4668,7 @@
         <div class="tm-squad-pos-label">FW　フォワード</div>
         <div class="tm-squad-grid">
           <div class="tm-squad-player" onclick="openJpPlayerModal(6)" style="cursor:pointer"><span class="tm-squad-num">6</span><div class="tm-squad-info"><div class="tm-squad-name">町野 修斗</div><div class="tm-squad-club">ボルシアMG（独）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
-          <div class="tm-squad-player" onclick="openJpPlayerModal(9)" style="cursor:pointer"><span class="tm-squad-num">9</span><div class="tm-squad-info"><div class="tm-squad-name">後藤 啓介</div><div class="tm-squad-club">シントトロイデン（ベルギー）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
+          <div class="tm-squad-player" onclick="openJpPlayerModal(9)" style="cursor:pointer"><span class="tm-squad-num">9</span><div class="tm-squad-info"><div class="tm-squad-name">後藤 啓介</div><div class="tm-squad-club">フライブルク（独）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
           <div class="tm-squad-player" onclick="openJpPlayerModal(18)" style="cursor:pointer"><span class="tm-squad-num">18</span><div class="tm-squad-info"><div class="tm-squad-name">上田 綺世</div><div class="tm-squad-club">フェイエノールト（蘭）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
           <div class="tm-squad-player" onclick="openJpPlayerModal(19)" style="cursor:pointer"><span class="tm-squad-num">19</span><div class="tm-squad-info"><div class="tm-squad-name">小川 航基</div><div class="tm-squad-club">NEC（蘭）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
           <div class="tm-squad-player" onclick="openJpPlayerModal(26)" style="cursor:pointer"><span class="tm-squad-num">26</span><div class="tm-squad-info"><div class="tm-squad-name">塩貝 健人</div><div class="tm-squad-club">ウォルフスブルク（独）</div></div><span style="font-size:10px;color:var(--text-muted);margin-left:auto">›</span></div>
@@ -5265,174 +5274,173 @@
     </div>
     <div style="font-size:10px;color:var(--text-muted);text-align:center;margin-bottom:16px">出典：Fusion-Sim.com（10,000シミュレーション / 6/21更新）</div>
 
-    <!-- 対戦相手との力関係 -->
+    <!-- グループリーグ対戦相手分析（終了済み・非表示） -->
+    <div style="display:none">
     <div class="section-label">📊 残り2試合の対戦相手分析</div>
     <div class="predict-matchup-card">
       <div class="pmc-header">
         <div class="pmc-match">
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="pmc-flag">
-          <div>
-            <div class="pmc-name">チュニジア</div>
-            <div class="pmc-date">6/21（日）✅ 日本 4-0 勝利！</div>
-          </div>
+          <div><div class="pmc-name">チュニジア</div><div class="pmc-date">6/21（日）✅ 日本 4-0 勝利！</div></div>
           <div class="pmc-rank">FIFA 54位</div>
-        </div>
-        <div class="pmc-bar-wrap">
-          <div class="pmc-label-row"><span>日本</span><span>チュニジア</span></div>
-          <div class="pmc-bar"><div class="pmc-fill" style="width:100%"></div></div>
-          <div class="pmc-sublabel">🏆 4-0完勝！ 無失点完封</div>
-        </div>
-        <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚽</span>鎌田4分・上田31′83′・伊東69′の4ゴール快勝</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🛡️</span>無失点完封。守備も完璧な完全試合</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>上田はW杯史上初の1試合2得点。2試合計3G</div>
         </div>
       </div>
     </div>
-
     <div class="predict-matchup-card">
       <div class="pmc-header">
         <div class="pmc-match">
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="pmc-flag">
-          <div>
-            <div class="pmc-name">スウェーデン</div>
-            <div class="pmc-date">6/26（金）08:00 ⚡ NEXT</div>
-          </div>
+          <div><div class="pmc-name">スウェーデン</div><div class="pmc-date">6/26（金）✅ 日本 1-1 引き分け</div></div>
           <div class="pmc-rank">FIFA 38位</div>
         </div>
+      </div>
+    </div>
+    <!-- スタメン予想（スウェーデン戦） -->
+    <div class="section-label">🟦 スタメン予想（スウェーデン戦）</div>
+    </div><!-- /グループリーグ対戦相手分析 非表示 -->
+
+    <!-- ブラジル戦対戦相手分析 -->
+    <div class="section-label">📊 R32 対戦相手分析：ブラジル</div>
+    <div class="predict-matchup-card">
+      <div class="pmc-header">
+        <div class="pmc-match">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAxNCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA5QzNCIi8+PHBvbHlnb24gcG9pbnRzPSIxMCwxIDE5LDcgMTAsMTMgMSw3IiBmaWxsPSIjRkVERjAwIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI3IiByPSIzIiBmaWxsPSIjMDAyNzc2Ii8+PC9zdmc+" alt="ブラジル" class="pmc-flag">
+          <div>
+            <div class="pmc-name">🇧🇷 ブラジル</div>
+            <div class="pmc-date">7/1（水）予定 · R32</div>
+          </div>
+          <div class="pmc-rank">FIFA 4位</div>
+        </div>
         <div class="pmc-bar-wrap">
-          <div class="pmc-label-row"><span>日本</span><span>スウェーデン</span></div>
-          <div class="pmc-bar"><div class="pmc-fill" style="width:62%"></div></div>
-          <div class="pmc-sublabel">日本有利 62% ｜ 相手 38%（第2節後推定）</div>
+          <div class="pmc-label-row"><span>日本</span><span>ブラジル</span></div>
+          <div class="pmc-bar"><div class="pmc-fill" style="width:28%"></div></div>
+          <div class="pmc-sublabel">日本 28% ｜ ブラジル 55% ｜ 引き分け 17%（推定）</div>
         </div>
         <div class="pmc-points">
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>第2節でオランダに1-5大敗。崖っぷちで背水の陣</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚡</span>イサク・ギェケレシュら強力FW依然健在。死に物狂い</div>
-          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>日本は引き分けでも突破がほぼ確実。勝利で1位通過！</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚠️</span>C組1位で余裕の突破。ヴィニシウス・ロドリゴ・エンドリックと世界屈指の攻撃陣</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">⚡</span>グループリーグ3試合で7得点・失点わずか1。攻守ともに高水準</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🎯</span>スコットランド戦では開始7分でヴィニシウスが先制。早い時間帯の失点に注意</div>
+          <div class="pmc-pt-item"><span class="pmc-pt-icon">🛡️</span>日本の武器はカウンターとセットプレー。ブロック守備から一刺しが勝機</div>
         </div>
       </div>
     </div>
 
-    <!-- スタメン予想 -->
-    <div class="section-label">🟦 スタメン予想（スウェーデン戦）</div>
+    <!-- スタメン予想（ブラジル戦） -->
+    <div class="section-label">🟦 スタメン予想（ブラジル戦）</div>
     <div class="predict-formation">
-      <div class="pf-system">4-3-3 予想フォーメーション（vs スウェーデン）</div>
+      <div class="pf-system">4-2-3-1 予想フォーメーション（vs ブラジル）</div>
       <div class="pf-pitch">
-
         <!-- FW -->
         <div class="pf-row">
-          <div class="pf-player">
-            <div class="pf-num">13</div>
-            <div class="pf-name">中村敬斗</div>
-            <div class="pf-pos-tag">LW</div>
-          </div>
           <div class="pf-player key">
             <div class="pf-num">18</div>
-            <div class="pf-name">上田綺世</div>
-            <div class="pf-pos-tag">CF</div>
-          </div>
-          <div class="pf-player">
-            <div class="pf-num">23</div>
-            <div class="pf-name">伊東純也</div>
-            <div class="pf-pos-tag">RW</div>
+            <div class="pf-name">上田</div>
+            <div class="pf-pos">CF</div>
           </div>
         </div>
-
-        <!-- MF -->
+        <!-- 2列目 -->
         <div class="pf-row">
           <div class="pf-player">
-            <div class="pf-num">15</div>
-            <div class="pf-name">鎌田大地</div>
-            <div class="pf-pos-tag">CM</div>
+            <div class="pf-num">11</div>
+            <div class="pf-name">前田</div>
+            <div class="pf-pos">LW</div>
           </div>
           <div class="pf-player key">
-            <div class="pf-num">7</div>
-            <div class="pf-name">田中碧</div>
-            <div class="pf-pos-tag">DM</div>
+            <div class="pf-num">15</div>
+            <div class="pf-name">鎌田</div>
+            <div class="pf-pos">CAM</div>
           </div>
           <div class="pf-player">
-            <div class="pf-num">10</div>
-            <div class="pf-name">堂安律</div>
-            <div class="pf-pos-tag">CM</div>
+            <div class="pf-num">14</div>
+            <div class="pf-name">伊東</div>
+            <div class="pf-pos">RW</div>
           </div>
         </div>
-
+        <!-- ダブルボランチ -->
+        <div class="pf-row">
+          <div class="pf-player">
+            <div class="pf-num">7</div>
+            <div class="pf-name">田中碧</div>
+            <div class="pf-pos">DM</div>
+          </div>
+          <div class="pf-player">
+            <div class="pf-num">24</div>
+            <div class="pf-name">佐野</div>
+            <div class="pf-pos">DM</div>
+          </div>
+        </div>
         <!-- DF -->
         <div class="pf-row">
           <div class="pf-player">
+            <div class="pf-num">5</div>
+            <div class="pf-name">長友</div>
+            <div class="pf-pos">LB</div>
+          </div>
+          <div class="pf-player key">
             <div class="pf-num">21</div>
-            <div class="pf-name">伊藤洋輝</div>
-            <div class="pf-pos-tag">LB</div>
+            <div class="pf-name">伊藤洋</div>
+            <div class="pf-pos">CB</div>
           </div>
-          <div class="pf-player">
+          <div class="pf-player key">
             <div class="pf-num">4</div>
-            <div class="pf-name">板倉滉</div>
-            <div class="pf-pos-tag">CB</div>
-          </div>
-          <div class="pf-player">
-            <div class="pf-num">22</div>
-            <div class="pf-name">冨安健洋</div>
-            <div class="pf-pos-tag">CB</div>
+            <div class="pf-name">板倉</div>
+            <div class="pf-pos">CB</div>
           </div>
           <div class="pf-player">
             <div class="pf-num">2</div>
-            <div class="pf-name">菅原由勢</div>
-            <div class="pf-pos-tag">RB</div>
+            <div class="pf-name">菅原</div>
+            <div class="pf-pos">RB</div>
           </div>
         </div>
-
         <!-- GK -->
         <div class="pf-row">
-          <div class="pf-player gk">
+          <div class="pf-player key">
             <div class="pf-num">1</div>
-            <div class="pf-name">鈴木彩艶</div>
-            <div class="pf-pos-tag">GK</div>
+            <div class="pf-name">彩艶</div>
+            <div class="pf-pos">GK</div>
           </div>
         </div>
       </div>
+      <div class="pf-note">⭐ 金枠はキーマン　※久保建英の状態次第で2列目に変動の可能性あり</div>
 
-      <!-- 注記 -->
-      <div class="pf-note">
-        ⭐ 金枠はキーマン　※久保建英の復帰状況次第で変動の可能性あり
-      </div>
-
-      <!-- 注目選手 -->
-      <div class="section-label" style="margin-top:20px">⭐ 注目選手（スウェーデン戦）</div>
+      <!-- 注目選手（ブラジル戦） -->
+      <div class="section-label" style="margin-top:20px">⭐ 注目選手（ブラジル戦）</div>
       <div class="predict-players">
         <div class="pp-card key">
           <div class="pp-num">18</div>
           <div class="pp-info">
             <div class="pp-name">上田 綺世</div>
             <div class="pp-club">フェイエノールト</div>
-            <div class="pp-comment">チュニジア戦でW杯史上初の1試合2得点。2試合3得点と絶好調。スウェーデン戦でも得点が期待される絶対的エース。</div>
+            <div class="pp-comment">グループリーグ2得点のエース。ブラジル相手には限られたチャンスをしっかり決める決定力が求められる。高さと強さで最前線に君臨。</div>
           </div>
         </div>
         <div class="pp-card key">
+          <div class="pp-num">4</div>
+          <div class="pp-info">
+            <div class="pp-name">板倉 滉</div>
+            <div class="pp-club">アヤックス（蘭）</div>
+            <div class="pp-comment">ヴィニシウス・ロドリゴ・エンドリックら世界最高の攻撃陣を止められるか。板倉の1対1とカバーリングが日本の命運を握る最重要局面。</div>
+          </div>
+        </div>
+        <div class="pp-card">
           <div class="pp-num">15</div>
           <div class="pp-info">
             <div class="pp-name">鎌田 大地</div>
             <div class="pp-club">クリスタル・パレス（英）</div>
-            <div class="pp-comment">2試合連続ゴール。チュニジア戦では最速4分弾。久保欠場の穴を完璧に埋め、攻撃の核として機能。</div>
+            <div class="pp-comment">グループリーグ2戦連続ゴール。低い位置でボールを受けカウンターを組み立てる役割が重要。ブラジルの強度の高いプレスへの対応がカギ。</div>
           </div>
         </div>
         <div class="pp-card">
-          <div class="pp-num">23</div>
+          <div class="pp-num">1</div>
           <div class="pp-info">
-            <div class="pp-name">伊東 純也</div>
-            <div class="pp-club">スタッド・ランス（仏）</div>
-            <div class="pp-comment">チュニジア戦でゴールを決め好調。スウェーデンのSBとの1対1が鍵。突破力で右サイドを制圧できるか。</div>
-          </div>
-        </div>
-        <div class="pp-card">
-          <div class="pp-num">8</div>
-          <div class="pp-info">
-            <div class="pp-name">久保 建英 <span style="font-size:11px;color:var(--sky-blue);font-weight:700">🔄復帰待望</span></div>
-            <div class="pp-club">レアル・ソシエダ</div>
-            <div class="pp-comment">負傷から回復中でスウェーデン戦復帰を目指す。もし出場すれば攻撃力が格段に上がる。状態が注目される。</div>
+            <div class="pp-name">鈴木 彩艶</div>
+            <div class="pp-club">パルマ（伊）</div>
+            <div class="pp-comment">ブラジル戦では守護神の働きが鍵。ヴィニシウスのスピードある突破やロドリゴのシュートを防ぐビッグセーブがあれば番狂わせの可能性が高まる。</div>
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /ブラジル戦スタメン予想 -->
+
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('predict')"><span class="x-icon">𝕏</span> この情報をシェア</button>
     </div>
@@ -5501,15 +5509,11 @@
     <div class="modal-sheet" id="modalSheet">
       <div class="modal-handle"></div>
       <div class="modal-hero">
-        <img class="modal-photo" id="mPhoto" src="" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 90 100%22><rect fill=%22%230f2040%22 width=%2290%22 height=%22100%22/><g fill=%22%23ffffff%22 opacity=%220.25%22><circle cx=%2245%22 cy=%2232%22 r=%2217%22/><path d=%22M45 52c-20 0-30 13-30 36v8h60v-8c0-23-10-36-30-36z%22/></g></svg>'">
+        <div class="modal-pos-icon" id="mPosIcon">⚽</div>
         <div class="modal-hero-info">
           <div class="modal-num" id="mNum">— GK</div>
           <div class="modal-name" id="mName">選手名</div>
           <div class="modal-pos-club" id="mClub">所属クラブ</div>
-          <div class="modal-overall">
-            <span class="modal-overall-num" id="mOverall">--</span>
-            <span class="modal-overall-label">OVR</span>
-          </div>
         </div>
       </div>
       <div class="modal-body">
@@ -5517,12 +5521,12 @@
         <div class="modal-stats-grid" id="mStats"></div>
 
         <div class="modal-section-title">先発起用率</div>
-        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:12px 14px;">
-          <div class="start-bar-wrap" style="margin-bottom:4px;">
-            <div class="start-bar-bg" style="height:8px;border-radius:4px;">
-              <div class="start-bar-fill" id="mStartBar" style="height:100%;border-radius:4px;transition:width 0.5s;"></div>
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;">
+          <div class="start-bar-wrap" style="margin-bottom:3px;">
+            <div class="start-bar-bg" style="height:6px;border-radius:3px;">
+              <div class="start-bar-fill" id="mStartBar" style="height:100%;border-radius:3px;transition:width 0.5s;"></div>
             </div>
-            <div class="start-bar-label" id="mStartPct" style="font-size:13px;font-weight:800;color:var(--text-primary);"></div>
+            <div class="start-bar-label" id="mStartPct" style="font-size:12px;font-weight:800;color:var(--text-primary);"></div>
           </div>
           <div style="font-size:10px;color:var(--text-muted);">2025-26シーズン先発起用率（編集部推定）</div>
         </div>
@@ -5530,7 +5534,7 @@
         <!-- 日本代表専用詳細セクション -->
         <div id="mJpDetail" style="display:none">
           <div class="modal-section-title">今大会成績</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
             <div class="stat-box">
               <div class="sv" id="mWcG" style="color:var(--gold)">0</div>
               <div class="sl">⚽ ゴール</div>
@@ -5542,26 +5546,30 @@
           </div>
 
           <div class="modal-section-title">詳細情報</div>
-          <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;overflow:hidden">
-            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:11px;color:var(--text-muted);width:56px;flex-shrink:0">所属リーグ</span>
-              <span style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mLeague">—</span>
+          <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;overflow:hidden">
+            <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--card-border)">
+              <div style="padding:8px 12px;border-right:1px solid var(--card-border)">
+                <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">所属リーグ</div>
+                <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mLeague">—</div>
+              </div>
+              <div style="padding:8px 12px">
+                <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">出身地</div>
+                <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mBirth">—</div>
+              </div>
             </div>
-            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:11px;color:var(--text-muted);width:56px;flex-shrink:0">誕生日</span>
-              <span style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mDob">—</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--card-border)">
+              <div style="padding:8px 12px;border-right:1px solid var(--card-border)">
+                <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">誕生日</div>
+                <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mDob">—</div>
+              </div>
+              <div style="padding:8px 12px">
+                <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">趣味</div>
+                <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mHobby">—</div>
+              </div>
             </div>
-            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:11px;color:var(--text-muted);width:56px;flex-shrink:0">出身地</span>
-              <span style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mBirth">—</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:11px;color:var(--text-muted);width:56px;flex-shrink:0">趣味</span>
-              <span style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mHobby">—</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px">
-              <span style="font-size:11px;color:var(--text-muted);width:56px;flex-shrink:0">特技</span>
-              <span style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mSkill">—</span>
+            <div style="padding:8px 12px">
+              <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">特技</div>
+              <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mSkill">—</div>
             </div>
           </div>
         </div>
@@ -5916,26 +5924,26 @@
         { num:23, pos:'GK', name:'早川友基',   club:'鹿島アントラーズ',               league:'🇯🇵 Jリーグ',          dob:'1999/3/18',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'映画鑑賞',             skill:'1対1の強さ',             age:26, ovr:69, start:8,  star:false, img:BASE_JP+'hayakawa_tomoki_01.jpg' },
         { num:22, pos:'DF', name:'冨安健洋',   club:'アヤックス（蘭）',               league:'🇳🇱 エールディヴィジ', dob:'1998/11/5',  birth:'福岡県',     wc_g:0, wc_a:0, hobby:'読書・ゲーム',         skill:'万能センターバック',     age:27, ovr:80, start:80, star:true,  img:BASE_JP+'tomiyasu_takehiro_01.jpg' },
         { num:21, pos:'DF', name:'伊藤洋輝',   club:'バイエルン・ミュンヘン（独）',   league:'🇩🇪 ブンデスリーガ',   dob:'1999/5/12',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'音楽鑑賞',             skill:'左足の精度',             age:26, ovr:79, start:65, star:false, img:BASE_JP+'ito_hiroki_01.jpg' },
-        { num:4,  pos:'DF', name:'板倉滉',     club:'アヤックス（蘭）',               league:'🇳🇱 エールディヴィジ', dob:'1997/1/27',  birth:'神奈川県',   wc_g:0, wc_a:1, hobby:'釣り・音楽',           skill:'空中戦の強さ',           age:29, ovr:78, start:88, star:true,  img:BASE_JP+'itakura_kou_01.jpg' },
+        { num:4,  pos:'DF', name:'板倉滉',     club:'アヤックス（蘭）',               league:'🇳🇱 エールディヴィジ', dob:'1997/1/27',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'釣り・音楽',           skill:'空中戦の強さ',           age:29, ovr:78, start:88, star:true,  img:BASE_JP+'itakura_kou_01.jpg' },
         { num:2,  pos:'DF', name:'菅原由勢',   club:'ヴェルダー・ブレーメン（独）',   league:'🇩🇪 ブンデスリーガ',   dob:'2000/6/28',  birth:'愛知県',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'攻守一体の右SB',         age:25, ovr:75, start:78, star:false, img:BASE_JP+'sugawara_yukinari_01.jpg' },
         { num:16, pos:'DF', name:'渡辺剛',     club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1997/2/28',  birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'読みのある対人守備',     age:29, ovr:75, start:72, star:false, img:BASE_JP+'watanabe_tsuyoshi_01.jpg' },
         { num:20, pos:'DF', name:'瀬古歩夢',   club:'ル・アーヴルAC（仏）',           league:'🇫🇷 リーグ1',          dob:'2000/11/6',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'ビルドアップ能力',       age:25, ovr:73, start:40, star:false, img:BASE_JP+'seko_ayumu_01.jpg' },
         { num:3,  pos:'DF', name:'谷口彰悟',   club:'シント・トロイデン（ベルギー）', league:'🇧🇪 プロリーグ',       dob:'1991/7/15',  birth:'熊本県',     wc_g:0, wc_a:0, hobby:'ゴルフ',               skill:'ラインコントロール',     age:34, ovr:72, start:30, star:false, img:BASE_JP+'taniguchi_shogo_01.jpg' },
         { num:25, pos:'DF', name:'鈴木淳之介', club:'FCコペンハーゲン（デンマーク）', league:'🇩🇰 スーペルリーガ',   dob:'2001/10/20', birth:'千葉県',     wc_g:0, wc_a:0, hobby:'音楽鑑賞・料理',       skill:'高い守備強度',           age:24, ovr:71, start:25, star:false, img:BASE_JP+'suzuki_junnosuke_01.jpg' },
         { num:5,  pos:'DF', name:'長友佑都',   club:'FC東京',                         league:'🇯🇵 Jリーグ',          dob:'1986/9/12',  birth:'愛媛県',     wc_g:0, wc_a:0, hobby:'ヨガ・瞑想',           skill:'メンタルの強さ・経験値', age:39, ovr:67, start:15, star:true,  img:BASE_JP+'nagatomo_yuto_01.jpg' },
-        { num:8,  pos:'MF', name:'久保建英',   club:'レアル・ソシエダ（西）',         league:'🇪🇸 ラ・リーガ',       dob:'2001/6/4',   birth:'神奈川県',   wc_g:1, wc_a:2, hobby:'ゲーム・将棋',         skill:'ドリブル突破と創造性',   age:24, ovr:85, start:95, star:true,  img:BASE_JP+'kubo_takefusa_01.jpg' },
-        { num:10, pos:'MF', name:'堂安律',     club:'Eフランクフルト（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'1998/6/16',  birth:'兵庫県',     wc_g:1, wc_a:1, hobby:'音楽・ファッション',   skill:'両足シュートと推進力',   age:27, ovr:81, start:82, star:true,  img:BASE_JP+'doan_ritsu_01.jpg' },
-        { num:15, pos:'MF', name:'鎌田大地',   club:'クリスタル・パレス（英）',       league:'🇬🇧 プレミアリーグ',   dob:'1996/8/5',   birth:'佐賀県',     wc_g:0, wc_a:1, hobby:'料理・読書',           skill:'テクニックと視野の広さ', age:29, ovr:80, start:78, star:true,  img:BASE_JP+'kamada_daichi_01.jpg' },
-        { num:14, pos:'MF', name:'伊東純也',   club:'KRCヘンク（ベルギー）',          league:'🇧🇪 プロリーグ',       dob:'1993/3/9',   birth:'神奈川県',   wc_g:0, wc_a:1, hobby:'ゲーム',               skill:'突破速度と正確なクロス', age:32, ovr:78, start:62, star:true,  img:BASE_JP+'ito_junya_01.jpg' },
+        { num:8,  pos:'MF', name:'久保建英',   club:'レアル・ソシエダ（西）',         league:'🇪🇸 ラ・リーガ',       dob:'2001/6/4',   birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・将棋',         skill:'ドリブル突破と創造性',   age:24, ovr:85, start:95, star:true,  img:BASE_JP+'kubo_takefusa_01.jpg' },
+        { num:10, pos:'MF', name:'堂安律',     club:'Eフランクフルト（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'1998/6/16',  birth:'兵庫県',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'両足シュートと推進力',   age:27, ovr:81, start:82, star:true,  img:BASE_JP+'doan_ritsu_01.jpg' },
+        { num:15, pos:'MF', name:'鎌田大地',   club:'クリスタル・パレス（英）',       league:'🇬🇧 プレミアリーグ',   dob:'1996/8/5',   birth:'佐賀県',     wc_g:2, wc_a:0, hobby:'料理・読書',           skill:'テクニックと視野の広さ', age:29, ovr:80, start:78, star:true,  img:BASE_JP+'kamada_daichi_01.jpg' },
+        { num:14, pos:'MF', name:'伊東純也',   club:'KRCヘンク（ベルギー）',          league:'🇧🇪 プロリーグ',       dob:'1993/3/9',   birth:'神奈川県',   wc_g:1, wc_a:0, hobby:'ゲーム',               skill:'突破速度と正確なクロス', age:32, ovr:78, start:62, star:true,  img:BASE_JP+'ito_junya_01.jpg' },
         { num:7,  pos:'MF', name:'田中碧',     club:'リーズ・ユナイテッド（英）',     league:'🇬🇧 チャンピオンシップ',dob:'1999/9/10',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'中盤でのボール奪取',     age:27, ovr:77, start:60, star:false, img:BASE_JP+'tanaka_ao_01.jpg' },
         { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:0, wc_a:0, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false, img:BASE_JP+'sano_kaishu_01.jpg' },
         { num:17, pos:'MF', name:'鈴木唯人',   club:'SCフライブルク（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'2001/8/26',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'鋭いターンと仕掛け',     age:24, ovr:73, start:35, star:false, img:BASE_JP+'suzuki_yuito_01.jpg' },
-        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:2, wc_a:0, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true,  img:BASE_JP+'ueda_ayase_01.jpg' },
+        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:3, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true,  img:BASE_JP+'ueda_ayase_01.jpg' },
         { num:11, pos:'FW', name:'前田大然',   club:'セルティック（英）',             league:'🇬🇧 スコティッシュPL', dob:'1997/10/20', birth:'鳥取県',     wc_g:1, wc_a:0, hobby:'ゲーム・アニメ',       skill:'圧倒的なスプリント力',   age:28, ovr:78, start:80, star:true,  img:BASE_JP+'maeda_daizen_01.jpg' },
-        { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true,  img:BASE_JP+'nakamura_keito_01.jpg' },
+        { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:1, wc_a:0, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true,  img:BASE_JP+'nakamura_keito_01.jpg' },
         { num:6,  pos:'FW', name:'町野修斗',   club:'ボルシアMG（独）',               league:'🇩🇪 ブンデスリーガ',   dob:'1999/4/29',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'空中戦と泥臭いゴール',   age:26, ovr:73, start:18, star:false, img:null },
         { num:19, pos:'FW', name:'小川航基',   club:'NECナイメヘン（蘭）',            league:'🇳🇱 エールディヴィジ', dob:'1997/8/8',   birth:'静岡県',     wc_g:0, wc_a:0, hobby:'料理',                 skill:'高さと強さのポストプレー',age:28, ovr:73, start:30, star:false, img:BASE_JP+'ogawa_koki_01.jpg' },
-        { num:9,  pos:'FW', name:'後藤啓介',   club:'シント・トロイデン（ベルギー）', league:'🇧🇪 プロリーグ',       dob:'2004/2/1',   birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'若さとスピード',         age:21, ovr:72, start:30, star:false, img:BASE_JP+'goto_keisuke_01.jpg' },
+        { num:9,  pos:'FW', name:'後藤啓介',   club:'SCフライブルク（独）',            league:'🇩🇪 ブンデスリーガ',   dob:'2004/2/1',   birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'若さとスピード',         age:21, ovr:72, start:30, star:false, img:BASE_JP+'goto_keisuke_01.jpg' },
         { num:26, pos:'FW', name:'塩貝健人',   club:'VfLヴォルフスブルク（独）',      league:'🇩🇪 ブンデスリーガ',   dob:'2002/7/8',   birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽鑑賞',             skill:'ポジショニングの良さ',   age:23, ovr:72, start:20, star:false, img:BASE_JP+'shiogai_kento_01.jpg' },
       ]
     },
@@ -6037,6 +6045,36 @@
     }
   } : null;
 
+  // 日本代表タブのモーダル用に、MEMBERS_RELEASEDに関係なくjpデータを保持
+  const JP_PLAYERS_DATA = [
+        { num:1,  pos:'GK', name:'鈴木彩艶',   club:'パルマ（伊）',                  league:'🇮🇹 セリエA',         dob:'2002/8/20',  birth:'埼玉県',     wc_g:0, wc_a:0, hobby:'ゲーム・音楽鑑賞',     skill:'両足対応のビッグセーブ', age:23, ovr:79, start:92, star:true  },
+        { num:12, pos:'GK', name:'大迫敬介',   club:'サンフレッチェ広島',             league:'🇯🇵 Jリーグ',          dob:'1999/9/3',   birth:'長崎県',     wc_g:0, wc_a:0, hobby:'料理',                 skill:'安定したハイボール処理', age:26, ovr:73, start:35, star:false },
+        { num:23, pos:'GK', name:'早川友基',   club:'鹿島アントラーズ',               league:'🇯🇵 Jリーグ',          dob:'1999/3/18',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'映画鑑賞',             skill:'1対1の強さ',             age:26, ovr:69, start:8,  star:false },
+        { num:22, pos:'DF', name:'冨安健洋',   club:'アヤックス（蘭）',               league:'🇳🇱 エールディヴィジ', dob:'1998/11/5',  birth:'福岡県',     wc_g:0, wc_a:0, hobby:'読書・ゲーム',         skill:'万能センターバック',     age:27, ovr:80, start:80, star:true  },
+        { num:21, pos:'DF', name:'伊藤洋輝',   club:'バイエルン・ミュンヘン（独）',   league:'🇩🇪 ブンデスリーガ',   dob:'1999/5/12',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'音楽鑑賞',             skill:'左足の精度',             age:26, ovr:79, start:65, star:false },
+        { num:4,  pos:'DF', name:'板倉滉',     club:'アヤックス（蘭）',               league:'🇳🇱 エールディヴィジ', dob:'1997/1/27',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'釣り・音楽',           skill:'空中戦の強さ',           age:29, ovr:78, start:88, star:true  },
+        { num:2,  pos:'DF', name:'菅原由勢',   club:'ヴェルダー・ブレーメン（独）',   league:'🇩🇪 ブンデスリーガ',   dob:'2000/6/28',  birth:'愛知県',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'攻守一体の右SB',         age:25, ovr:75, start:78, star:false },
+        { num:16, pos:'DF', name:'渡辺剛',     club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1997/2/28',  birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'読みのある対人守備',     age:29, ovr:75, start:72, star:false },
+        { num:20, pos:'DF', name:'瀬古歩夢',   club:'ル・アーヴルAC（仏）',           league:'🇫🇷 リーグ1',          dob:'2000/11/6',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'ビルドアップ能力',       age:25, ovr:73, start:40, star:false },
+        { num:3,  pos:'DF', name:'谷口彰悟',   club:'シント・トロイデン（ベルギー）', league:'🇧🇪 プロリーグ',       dob:'1991/7/15',  birth:'熊本県',     wc_g:0, wc_a:0, hobby:'ゴルフ',               skill:'ラインコントロール',     age:34, ovr:72, start:30, star:false },
+        { num:25, pos:'DF', name:'鈴木淳之介', club:'FCコペンハーゲン（デンマーク）', league:'🇩🇰 スーペルリーガ',   dob:'2001/10/20', birth:'千葉県',     wc_g:0, wc_a:0, hobby:'音楽鑑賞・料理',       skill:'高い守備強度',           age:24, ovr:71, start:25, star:false },
+        { num:5,  pos:'DF', name:'長友佑都',   club:'FC東京',                         league:'🇯🇵 Jリーグ',          dob:'1986/9/12',  birth:'愛媛県',     wc_g:0, wc_a:0, hobby:'ヨガ・瞑想',           skill:'メンタルの強さ・経験値', age:39, ovr:67, start:15, star:true  },
+        { num:8,  pos:'MF', name:'久保建英',   club:'レアル・ソシエダ（西）',         league:'🇪🇸 ラ・リーガ',       dob:'2001/6/4',   birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・将棋',         skill:'ドリブル突破と創造性',   age:24, ovr:85, start:95, star:true  },
+        { num:10, pos:'MF', name:'堂安律',     club:'Eフランクフルト（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'1998/6/16',  birth:'兵庫県',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'両足シュートと推進力',   age:27, ovr:81, start:82, star:true  },
+        { num:15, pos:'MF', name:'鎌田大地',   club:'クリスタル・パレス（英）',       league:'🇬🇧 プレミアリーグ',   dob:'1996/8/5',   birth:'佐賀県',     wc_g:2, wc_a:0, hobby:'料理・読書',           skill:'テクニックと視野の広さ', age:29, ovr:80, start:78, star:true  },
+        { num:14, pos:'MF', name:'伊東純也',   club:'KRCヘンク（ベルギー）',          league:'🇧🇪 プロリーグ',       dob:'1993/3/9',   birth:'神奈川県',   wc_g:1, wc_a:0, hobby:'ゲーム',               skill:'突破速度と正確なクロス', age:32, ovr:78, start:62, star:true  },
+        { num:7,  pos:'MF', name:'田中碧',     club:'リーズ・ユナイテッド（英）',     league:'🇬🇧 チャンピオンシップ',dob:'1999/9/10',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'中盤でのボール奪取',     age:27, ovr:77, start:60, star:false },
+        { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:0, wc_a:0, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false },
+        { num:17, pos:'MF', name:'鈴木唯人',   club:'SCフライブルク（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'2001/8/26',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'鋭いターンと仕掛け',     age:24, ovr:73, start:35, star:false },
+        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:3, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true  },
+        { num:11, pos:'FW', name:'前田大然',   club:'セルティック（英）',             league:'🇬🇧 スコティッシュPL', dob:'1997/10/20', birth:'鳥取県',     wc_g:1, wc_a:0, hobby:'ゲーム・アニメ',       skill:'圧倒的なスプリント力',   age:28, ovr:78, start:80, star:true  },
+        { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:1, wc_a:0, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true  },
+        { num:6,  pos:'FW', name:'町野修斗',   club:'ボルシアMG（独）',               league:'🇩🇪 ブンデスリーガ',   dob:'1999/4/29',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'空中戦と泥臭いゴール',   age:26, ovr:73, start:18, star:false },
+        { num:19, pos:'FW', name:'小川航基',   club:'NECナイメヘン（蘭）',            league:'🇳🇱 エールディヴィジ', dob:'1997/8/8',   birth:'静岡県',     wc_g:0, wc_a:0, hobby:'料理',                 skill:'高さと強さのポストプレー',age:28, ovr:73, start:30, star:false },
+        { num:9,  pos:'FW', name:'後藤啓介',   club:'SCフライブルク（独）',            league:'🇩🇪 ブンデスリーガ',   dob:'2004/2/1',   birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'若さとスピード',         age:21, ovr:72, start:30, star:false },
+        { num:26, pos:'FW', name:'塩貝健人',   club:'VfLヴォルフスブルク（独）',      league:'🇩🇪 ブンデスリーガ',   dob:'2002/7/8',   birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽鑑賞',             skill:'ポジショニングの良さ',   age:23, ovr:72, start:20, star:false },
+  ];
+
   let currentTeam = 'jp';
   let currentFilter = 'ALL';
 
@@ -6091,7 +6129,6 @@
           <div class="photo-wrap" style="background:${td.color}22">
             ${photoContent}
             <div class="num-badge" style="background:${td.color}">${p.num}</div>
-            <div class="overall-badge" style="color:${ovrColor}">${p.ovr}</div>
             ${p.star ? '<div class="star-badge">⭐</div>' : ''}
           </div>
           <div class="card-body">
@@ -6111,14 +6148,44 @@
   }
 
   function openJpPlayerModal(num) {
-    // 日本代表タブから背番号でopenModalを呼び出す
-    const prevTeam = currentTeam;
-    currentTeam = 'jp';
-    const jpPlayers = TEAM_DATA['jp'].players;
-    const idx = jpPlayers.findIndex(p => p.num === num);
-    if (idx !== -1) {
-      openModal(idx);
+    // JP_PLAYERS_DATAから直接検索（MEMBERS_RELEASEDに非依存）
+    const p = JP_PLAYERS_DATA.find(p => p.num === num);
+    if (!p) return;
+    const td = { flag:'🇯🇵', color:'#ff4d2e' };
+    document.getElementById('mNum').textContent = `🇯🇵 #${p.num} ${p.pos}`;
+    document.getElementById('mNum').style.color = td.color;
+    document.getElementById('mName').textContent = p.name;
+    document.getElementById('mClub').textContent = p.club;
+    setPosIcon(p.pos);
+    document.getElementById('mStartBar').style.width = p.start + '%';
+    document.getElementById('mStartBar').style.background = td.color;
+    document.getElementById('mStartPct').textContent = p.start + '%';
+    document.getElementById('mStats').innerHTML = `
+      <div class="stat-box"><div class="sv">${p.age}</div><div class="sl">年齢</div></div>
+      <div class="stat-box"><div class="sv">#${p.num}</div><div class="sl">背番号</div></div>
+    `;
+    const jpDetail = document.getElementById('mJpDetail');
+    if (p.dob) {
+      jpDetail.style.display = 'block';
+      document.getElementById('mWcG').textContent = p.wc_g ?? 0;
+      document.getElementById('mWcA').textContent = p.wc_a ?? 0;
+      document.getElementById('mLeague').textContent = p.league || '—';
+      document.getElementById('mDob').textContent = p.dob || '—';
+      document.getElementById('mBirth').textContent = p.birth || '—';
+      document.getElementById('mHobby').textContent = p.hobby || '—';
+      document.getElementById('mSkill').textContent = p.skill || '—';
+    } else {
+      jpDetail.style.display = 'none';
     }
+    document.getElementById('playerModal').classList.add('open');
+    document.getElementById('modalSheet').scrollTop = 0;
+  }
+
+  const POS_ICON = { GK:'🧤', DF:'🛡️', MF:'⚙️', FW:'⚡' };
+
+  function setPosIcon(pos) {
+    const el = document.getElementById('mPosIcon');
+    if (el) el.textContent = POS_ICON[pos] || '⚽';
   }
 
   function openModal(gridIdx) {
@@ -6128,14 +6195,11 @@
     if (!p) return;
 
     const fallback = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 100'><rect fill='%230f2040' width='90' height='100'/><g fill='%23ffffff' opacity='0.25'><circle cx='45' cy='32' r='17'/><path d='M45 52c-20 0-30 13-30 36v8h60v-8c0-23-10-36-30-36z'/></g></svg>`;
-    const imgSrc = p.img || fallback;
-    document.getElementById('mPhoto').src = imgSrc;
-    document.getElementById('mPhoto').onerror = function() { this.src = fallback; };
     document.getElementById('mNum').textContent = `${td.flag} #${p.num} ${p.pos}`;
     document.getElementById('mNum').style.color = td.color;
     document.getElementById('mName').textContent = p.name;
     document.getElementById('mClub').textContent = p.club;
-    document.getElementById('mOverall').textContent = p.ovr;
+    setPosIcon(p.pos);
     document.getElementById('mStartBar').style.width = p.start + '%';
     document.getElementById('mStartBar').style.background = td.color;
     document.getElementById('mStartPct').textContent = p.start + '%';
@@ -6143,7 +6207,6 @@
     document.getElementById('mStats').innerHTML = `
       <div class="stat-box"><div class="sv">${p.age}</div><div class="sl">年齢</div></div>
       <div class="stat-box"><div class="sv">#${p.num}</div><div class="sl">背番号</div></div>
-      <div class="stat-box"><div class="sv" style="color:${p.ovr>=85?'var(--gold)':p.ovr>=78?'var(--sky-blue)':'var(--text-primary)'}">${p.ovr}</div><div class="sl">総合値</div></div>
     `;
 
     // 日本代表専用詳細セクション
@@ -7443,7 +7506,7 @@
         {no:24, name:'佐野海舟',  club:'マインツ'},
       ],
       FW: [
-        {no:9,  name:'後藤啓介',  club:'シントトロイデン'},
+        {no:9,  name:'後藤啓介',  club:'フライブルク'},
         {no:11, name:'前田大然',  club:'セルティック'},
         {no:18, name:'上田綺世',  club:'フェイエノールト'},
         {no:19, name:'小川航基',  club:'ナイメヘン'},
