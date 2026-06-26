@@ -7170,10 +7170,13 @@
   // ]
   const SOKUHŌ_STATE = {
     state:      'live',
-    homeScore:  0,
-    awayScore:  0,
-    minute:     '前半',
-    scorers: [],
+    homeScore:  1,
+    awayScore:  1,
+    minute:     '後半進行中',
+    scorers: [
+      { min: "56'", name: '前田 大然', jp: true,  og: false },
+      { min: "62'", name: 'スウェーデン', jp: false, og: false },
+    ],
   };
 
   function initSokuhō() {
