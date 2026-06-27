@@ -1034,45 +1034,90 @@
     .ko-round { }
     .ko-round-note {
       font-size: 10px; color: var(--text-muted);
-      font-family: var(--font-mono); margin-bottom: 10px;
+      font-family: var(--font-mono); margin-bottom: 8px;
     }
-    .ko-bracket {
+    /* コンパクトブラケット */
+    .ko-compact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .ko-compact-match {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 7px 8px;
+      position: relative;
+    }
+    .ko-compact-match.jp-game {
+      background: rgba(30,60,160,0.25);
+      border-color: rgba(212,255,63,0.45);
+    }
+    .ko-compact-num {
+      font-size: 9px; font-weight: 900;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 3px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .ko-compact-num .jp-badge {
+      font-size: 9px; font-weight: 900;
+      background: var(--japan-red); color: #fff;
+      border-radius: 3px; padding: 1px 5px;
+    }
+    .ko-compact-team {
+      font-size: 11px; font-weight: 800;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 4px;
+      padding: 1px 0;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .ko-compact-team.jp { color: var(--sky-blue); }
+    .ko-compact-team.tbd { color: var(--text-muted); font-weight: 600; }
+    .ko-compact-sep { height: 1px; background: rgba(255,255,255,0.08); margin: 3px 0; }
+    /* R16以降のシンプル表 */
+    .ko-later-grid {
+      display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px;
+    }
+    .ko-later-row {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ko-later-row.jp-game {
+      background: rgba(30,60,160,0.25);
+      border-color: rgba(212,255,63,0.45);
+    }
+    .ko-later-date {
+      font-size: 10px; font-weight: 800; color: var(--sky-blue);
+      flex-shrink: 0; width: 52px; text-align: center; line-height: 1.3;
+    }
+    .ko-later-teams {
+      flex: 1; font-size: 12px; font-weight: 800; color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .ko-later-teams .jp { color: var(--sky-blue); }
+    .ko-later-teams .tbd { color: var(--text-muted); font-weight: 600; font-size: 11px; }
+    .ko-bracket {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
     }
     .ko-col { display: flex; flex-direction: column; gap: 8px; }
     .ko-match {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 9px 11px;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 9px 11px;
       display: flex; flex-direction: column; gap: 0;
     }
     .ko-match.jp-game {
-      background: rgba(59,122,240,0.07);
-      border-color: rgba(59,122,240,0.3);
+      background: rgba(59,122,240,0.07); border-color: rgba(59,122,240,0.3);
     }
-    .ko-meta {
-      font-size: 9px; color: var(--text-muted);
-      font-family: var(--font-mono); margin-bottom: 4px;
-      line-height: 1.4;
-    }
-    .ko-time-jp {
-      font-size: 11px; font-weight: 900;
-      color: var(--gold); margin-bottom: 5px;
-    }
-    .ko-team {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 11px; font-weight: 700;
-      color: var(--text-primary); padding: 2px 0;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
+    .ko-meta { font-size: 9px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 4px; line-height: 1.4; }
+    .ko-time-jp { font-size: 11px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
+    .ko-team { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--text-primary); padding: 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .ko-team.jp { color: var(--sky-blue); }
-    .ko-sep {
-      height: 1px; background: rgba(255,255,255,0.08);
-      margin: 3px 0;
-    }
+    .ko-sep { height: 1px; background: rgba(255,255,255,0.08); margin: 3px 0; }
 
     .st-main-tab {
       padding: 11px 8px;
@@ -3938,34 +3983,34 @@
         </div>
         <!-- スペイン vs カーボベルデ -->
         <div class="ko-card">
-          <div class="ko-card-meta">7/3(木) 01:00 · アトランタ</div>
+          <div class="ko-card-meta">7/3(金) 04:00 · アトランタ</div>
           <div class="ko-card-teams">
             <div class="ko-card-team"><div class="ko-card-flag">🇪🇸</div><div class="ko-card-team-name">スペイン</div><div class="ko-card-team-sub">（H組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇨🇻</div><div class="ko-card-team-name">カーボベルデ</div><div class="ko-card-team-sub">（H組2位→3位?）</div></div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">未定</div><div class="ko-card-team-sub">（J組2位）</div></div>
           </div>
         </div>
         <!-- ベルギー vs 3位 -->
         <div class="ko-card">
-          <div class="ko-card-meta">7/2(水) 05:00 · シアトル</div>
+          <div class="ko-card-meta">7/2(木) 05:00 · シアトル</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇪</div><div class="ko-card-team-name">ベルギー</div><div class="ko-card-team-sub">（G組1位）</div></div>
+            <div class="ko-card-team"><div class="ko-card-flag">🇪🇬</div><div class="ko-card-team-name">エジプト</div><div class="ko-card-team-sub">（G組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（A/E/H/I/J組）</div></div>
+            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム</div><div class="ko-card-team-sub">（A/E/H/I/J組）</div></div>
           </div>
         </div>
         <!-- アメリカ vs ボスニア -->
         <div class="ko-card">
-          <div class="ko-card-meta">7/2(水) 09:00 · サンフランシスコ</div>
+          <div class="ko-card-meta">7/2(木) 09:00 · サンフランシスコ</div>
           <div class="ko-card-teams">
             <div class="ko-card-team"><div class="ko-card-flag">🇺🇸</div><div class="ko-card-team-name">アメリカ</div><div class="ko-card-team-sub">（D組1位）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🇧🇦</div><div class="ko-card-team-name">ボスニア</div><div class="ko-card-team-sub">（B組3位）</div></div>
           </div>
         </div>
-        <!-- エジプト vs オーストラリア -->
+        <!-- オーストラリア vs イラン -->
         <div class="ko-card">
-          <div class="ko-card-meta">7/1(水) 02:00 · ダラス</div>
+          <div class="ko-card-meta">7/4(土) 03:00 · ダラス</div>
           <div class="ko-card-teams">
             <div class="ko-card-team"><div class="ko-card-flag">🇦🇺</div><div class="ko-card-team-name">オーストラリア</div><div class="ko-card-team-sub">（D組2位）</div></div>
             <div class="ko-card-vs">VS</div>
@@ -3983,7 +4028,7 @@
             <div class="ko-card-teams">
               <div class="ko-card-team"><div class="ko-card-flag">🇩🇪</div><div class="ko-card-team-name">ドイツ</div><div class="ko-card-team-sub">（E組2位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（A/B/C/D/F組）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇵🇾</div><div class="ko-card-team-name">パラグアイ</div><div class="ko-card-team-sub">（3位）</div></div>
             </div>
           </div>
           <!-- フランス vs 3位 -->
@@ -3992,61 +4037,61 @@
             <div class="ko-card-teams">
               <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス</div><div class="ko-card-team-sub">（I組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（C/D/F/G/H組）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇸🇪</div><div class="ko-card-team-name">スウェーデン</div><div class="ko-card-team-sub">（3位）</div></div>
             </div>
           </div>
           <!-- メキシコ vs 3位 -->
           <div class="ko-card">
-            <div class="ko-card-meta">7/1(水) 11:00 · メキシコシティ</div>
+            <div class="ko-card-meta">7/1(水) 10:00 · メキシコシティ</div>
             <div class="ko-card-teams">
               <div class="ko-card-team"><div class="ko-card-flag">🇲🇽</div><div class="ko-card-team-name">メキシコ</div><div class="ko-card-team-sub">（A組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（C/E/F/H/I組）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">未定</div><div class="ko-card-team-sub">（3位 C/E/F/H/I）</div></div>
             </div>
           </div>
           <!-- L組1位 vs 3位 -->
           <div class="ko-card">
             <div class="ko-card-meta">7/2(水) 01:00 · アトランタ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">L組1位</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="ko-card-team-name">イングランド</div><div class="ko-card-team-sub">（L組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（E/H/I/J/K組）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">未定</div><div class="ko-card-team-sub">（3位 E/H/I/J/K）</div></div>
             </div>
           </div>
           <!-- スイス vs カナダ... → アルゼンチン vs J組2位 -->
           <div class="ko-card">
-            <div class="ko-card-meta">7/3(木) 07:00 · マイアミ</div>
+            <div class="ko-card-meta">7/4(土) 07:00 · マイアミ</div>
             <div class="ko-card-teams">
               <div class="ko-card-team"><div class="ko-card-flag">🇦🇷</div><div class="ko-card-team-name">アルゼンチン</div><div class="ko-card-team-sub">（J組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇨🇻</div><div class="ko-card-team-name">カーボベルデ</div><div class="ko-card-team-sub">（H→3位確定次第）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇨🇻</div><div class="ko-card-team-name">カーボベルデ</div><div class="ko-card-team-sub">（H組2位）</div></div>
             </div>
           </div>
           <!-- スイス vs カナダ -->
           <div class="ko-card">
-            <div class="ko-card-meta">6/29(日) 10:00 · マイアミ</div>
+            <div class="ko-card-meta">7/3(金) 12:00 · シアトル</div>
             <div class="ko-card-teams">
               <div class="ko-card-team"><div class="ko-card-flag">🇨🇭</div><div class="ko-card-team-name">スイス</div><div class="ko-card-team-sub">（B組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（A組など）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">未定</div><div class="ko-card-team-sub">（3位 E/F/G/I/J）</div></div>
             </div>
           </div>
           <!-- K組1位 vs 3位 -->
           <div class="ko-card">
-            <div class="ko-card-meta">7/3(木) 10:30 · カンザスシティ</div>
+            <div class="ko-card-meta">7/4(土) 10:30 · カンザスシティ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">K組1位</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇨🇴</div><div class="ko-card-team-name">コロンビア</div><div class="ko-card-team-sub">（K組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">3位チーム<br>（D/E/I/J/L組）</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">未定</div><div class="ko-card-team-sub">（3位 D/E/I/J/L）</div></div>
             </div>
           </div>
           <!-- J組1位 vs K組2位 -->
           <div class="ko-card">
-            <div class="ko-card-meta">7/4(金) 02:00 · トロント</div>
+            <div class="ko-card-meta">7/3(金) 08:00 · バンクーバー</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">J組1位</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇵🇹</div><div class="ko-card-team-name">ポルトガル</div><div class="ko-card-team-sub">（K組2位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">K組2位</div></div>
+              <div class="ko-card-team"><div class="ko-card-flag">🇬🇭</div><div class="ko-card-team-name">ガーナ</div><div class="ko-card-team-sub">（L組2位）</div></div>
             </div>
           </div>
         </div>
@@ -4209,16 +4254,16 @@
         <div class="ko-route-step active-step">
           <div class="ko-route-step-code">R32</div>
           <div class="ko-route-step-round">ベスト32</div>
-          <div class="ko-route-step-date">6/30(火) 10:00</div>
+          <div class="ko-route-step-date">6/30(火) 02:00</div>
           <div class="ko-route-jp-flag">🇯🇵</div>
           <div class="ko-route-vs">VS</div>
-          <div class="ko-route-opp"><span class="ko-route-opp-flag">🏳️</span>C組2位　F組3位</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇧🇷</span>ブラジル（C組1位）</div>
         </div>
         <div class="ko-route-arrow">▶</div>
         <div class="ko-route-step">
           <div class="ko-route-step-code">R16</div>
           <div class="ko-route-step-round">ベスト16</div>
-          <div class="ko-route-step-date">7/5(日) 02:00</div>
+          <div class="ko-route-step-date">7/6(月) 05:00</div>
           <div class="ko-route-jp-flag">🇯🇵</div>
           <div class="ko-route-vs">VS</div>
           <div class="ko-route-opp"><span class="ko-route-opp-flag">🇳🇱</span>オランダ（予想）</div>
@@ -4227,16 +4272,16 @@
         <div class="ko-route-step">
           <div class="ko-route-step-code">QF</div>
           <div class="ko-route-step-round">準々決勝</div>
-          <div class="ko-route-step-date">7/10(金) 10:00</div>
+          <div class="ko-route-step-date">7/12(日) 06:00</div>
           <div class="ko-route-jp-flag">🇯🇵</div>
           <div class="ko-route-vs">VS</div>
-          <div class="ko-route-opp"><span class="ko-route-opp-flag">🇩🇪</span>ドイツ（予想）</div>
+          <div class="ko-route-opp"><span class="ko-route-opp-flag">🏳️</span>TBD（予想）</div>
         </div>
         <div class="ko-route-arrow">▶</div>
         <div class="ko-route-step">
           <div class="ko-route-step-code">SF</div>
           <div class="ko-route-step-round">準決勝</div>
-          <div class="ko-route-step-date">7/15(水) 10:00</div>
+          <div class="ko-route-step-date">7/16(木) 04:00</div>
           <div class="ko-route-jp-flag">🇯🇵</div>
           <div class="ko-route-vs">VS</div>
           <div class="ko-route-opp"><span class="ko-route-opp-flag">🇫🇷</span>フランス（予想）</div>
@@ -4245,7 +4290,7 @@
         <div class="ko-route-step final-route">
           <div class="ko-route-step-code">FINAL</div>
           <div class="ko-route-step-round">決勝</div>
-          <div class="ko-route-step-date">7/19(日) 06:00</div>
+          <div class="ko-route-step-date">7/20(月) 04:00</div>
           <div class="ko-route-jp-flag">🇯🇵</div>
           <div class="ko-route-vs">VS</div>
           <div class="ko-route-opp"><span class="ko-route-opp-flag">🇦🇷</span>アルゼンチン（予想）</div>
@@ -5072,108 +5117,110 @@
 
       <!-- R32 -->
       <div id="st-ko-r32" class="ko-round">
-        <div class="ko-round-note">6/28(土)〜7/4(金) · 16試合</div>
-        <div class="ko-bracket">
-          <div class="ko-col">
-            <div class="ko-match jp-game">
-              <div class="ko-meta">6/30(火) · モンテレイ</div>
-              <div class="ko-time-jp">🥇10:00 <span style="color:#ff9999">/ 🥈02:00</span></div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（F通過）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> C組2位 or F組3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">6/29(月) 04:00 · ロサンゼルス</div>
-              <div class="ko-team"><span>🏳️</span> A組2位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> B組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">6/30(火) 05:30 · ボストン</div>
-              <div class="ko-team"><span>🇩🇪</span> ドイツ（E組1位予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> A/B/C/D/F組3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">6/29(月) 07:00 · ヒューストン</div>
-              <div class="ko-team"><span>🏳️</span> C組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> D組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/1(火) 02:00 · ダラス</div>
-              <div class="ko-team"><span>🏳️</span> E組2位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> I組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/1(火) 05:00 · アトランタ</div>
-              <div class="ko-team"><span>🏳️</span> G組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> H組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/2(水) 02:00 · ニューヨーク</div>
-              <div class="ko-team"><span>🏳️</span> K組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> J組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/2(水) 05:00 · サンフランシスコ</div>
-              <div class="ko-team"><span>🏳️</span> I組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> E or 他組3位</div>
-            </div>
+        <div class="ko-round-note">6/28〜7/4 · 16試合 · 6/27時点　🟡=TOP10　🔴=日本ルート</div>
+        <!-- 左ブロック ①〜⑧ -->
+        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;letter-spacing:1px">◀ 左ブロック</div>
+        <div class="ko-compact-grid">
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">①　<span>6/29(月) 4:00 LA</span></div>
+            <div class="ko-compact-team">🇿🇦 南アフリカ（A2）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇨🇦 カナダ（B2）</div>
           </div>
-          <div class="ko-col">
-            <div class="ko-match">
-              <div class="ko-meta">6/29(月) 10:00 · マイアミ</div>
-              <div class="ko-team"><span>🏳️</span> B組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> A or 他組3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">6/30(火) 02:00 · ヒューストン</div>
-              <div class="ko-team"><span>🇳🇱</span> オランダ（F1位予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> C組2位 or 3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/1(火) 07:30 · グアダラハラ</div>
-              <div class="ko-team"><span>🏳️</span> D組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> C/D/E/F/G組3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/1(火) 10:00 · カンザスシティ</div>
-              <div class="ko-team"><span>🏳️</span> H組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> G組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/2(水) 07:00 · ボストン</div>
-              <div class="ko-team"><span>🏳️</span> J組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> K組2位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/3(木) 02:00 · フィラデルフィア</div>
-              <div class="ko-team"><span>🏳️</span> L組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> H〜L組3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/3(木) 05:00 · メキシコシティ</div>
-              <div class="ko-team"><span>🏳️</span> A組1位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> B組2位 or 3位</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/4(金) 02:00 · トロント</div>
-              <div class="ko-team"><span>🏳️</span> L組2位</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> K or 他組3位</div>
-            </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">②　<span>6/30(火) 10:00 モンテレー</span></div>
+            <div class="ko-compact-team">🇳🇱 オランダ（F1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇲🇦 モロッコ（C2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">③　<span>6/30(火) 5:30 ボストン</span></div>
+            <div class="ko-compact-team">🇩🇪 ドイツ（E2）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">④　<span>7/1(水) 6:00 NJ</span></div>
+            <div class="ko-compact-team">🇫🇷 フランス（I1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑤　<span>7/3(金) 8:00 バンクーバー</span></div>
+            <div class="ko-compact-team">🇵🇹 ポルトガル（K2）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇬🇭 ガーナ（L2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑥　<span>7/3(金) 4:00 アトランタ</span></div>
+            <div class="ko-compact-team">🇪🇸 スペイン（H1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ J2候補（オーストリア等）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑦　<span>7/2(木) 9:00 SF</span></div>
+            <div class="ko-compact-team">🇺🇸 アメリカ（D1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇧🇦 ボスニア（3位）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑧　<span>7/2(木) 5:00 シアトル</span></div>
+            <div class="ko-compact-team">🇪🇬 エジプト（G1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+        </div>
+        <!-- 右ブロック ⑨〜⑯ -->
+        <div style="font-size:10px;font-weight:800;color:rgba(212,255,63,0.8);margin-bottom:4px;letter-spacing:1px">▶ 右ブロック（日本ルート🔴）</div>
+        <div class="ko-compact-grid">
+          <div class="ko-compact-match jp-game">
+            <div class="ko-compact-num">⑨　<span class="jp-badge">🔥日本戦</span></div>
+            <div class="ko-compact-num" style="margin-top:1px">6/30(火) 2:00 ヒューストン</div>
+            <div class="ko-compact-team">🇧🇷 ブラジル（C1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team jp">🇯🇵 日本（F2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑩　<span>7/1(水) 2:00 ダラス</span></div>
+            <div class="ko-compact-team">🇨🇮 コートジボワール（E1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇳🇴 ノルウェー（I2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑪　<span>7/1(水) 10:00 メキシコシティ</span></div>
+            <div class="ko-compact-team">🇲🇽 メキシコ（A1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑫　<span>7/2(水) 1:00 アトランタ</span></div>
+            <div class="ko-compact-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド（L1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑬　<span>7/4(土) 7:00 マイアミ</span></div>
+            <div class="ko-compact-team">🇦🇷 アルゼンチン（J1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇨🇻 カーボベルデ（H2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑭　<span>7/4(土) 3:00 ダラス</span></div>
+            <div class="ko-compact-team">🇦🇺 オーストラリア（D2）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team">🇧🇪 ベルギー（G2）</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑮　<span>7/3(金) 12:00 シアトル</span></div>
+            <div class="ko-compact-team">🇨🇭 スイス（B1）</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
+          </div>
+          <div class="ko-compact-match">
+            <div class="ko-compact-num">⑯　<span>7/4(土) 10:30 カンザスシティ</span></div>
+            <div class="ko-compact-team tbd">🏳️ K組1位候補</div>
+            <div class="ko-compact-sep"></div>
+            <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
         </div>
       </div>
@@ -5181,60 +5228,42 @@
       <!-- R16 -->
       <div id="st-ko-r16" class="ko-round" style="display:none">
         <div class="ko-round-note">7/5(日)〜7/8(水) · 8試合</div>
-        <div class="ko-bracket">
-          <div class="ko-col">
-            <div class="ko-match jp-game">
-              <div class="ko-meta">7/5(日) · ヒューストン</div>
-              <div class="ko-time-jp">🥇 02:00</div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（1位通過）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [1]勝者 vs [4]勝者の勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/5(日) 06:00 · フィラデルフィア</div>
-              <div class="ko-team"><span>🏳️</span> [3]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [6]勝者</div>
-            </div>
-            <div class="ko-match jp-game">
-              <div class="ko-meta">7/6(月) · ニューヨーク</div>
-              <div class="ko-time-jp" style="color:#ff9999">🥈 05:00</div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（2位通過）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [2]勝者 vs [5]勝者の勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/6(月) 09:00 · メキシコシティ</div>
-              <div class="ko-team"><span>🏳️</span> [7]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [8]勝者</div>
+        <div class="ko-later-grid">
+          <div class="ko-later-row jp-game">
+            <div class="ko-later-date">7/6(月)<br>05:00</div>
+            <div class="ko-later-teams">
+              <span class="jp">🇯🇵 日本</span>（⑨勝者）<br>
+              <span class="tbd">vs ⑩勝者ルート</span>
+              <div style="font-size:9px;color:var(--text-muted);margin-top:1px">📍 ヒューストン 🔥日本戦</div>
             </div>
           </div>
-          <div class="ko-col">
-            <div class="ko-match">
-              <div class="ko-meta">7/7(火) 04:00 · ダラス</div>
-              <div class="ko-team"><span>🏳️</span> [12]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [11]勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/7(火) 07:00 · アトランタ</div>
-              <div class="ko-team"><span>🏳️</span> [10]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [9]勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/8(水) 04:00 · マイアミ</div>
-              <div class="ko-team"><span>🏳️</span> [14]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [13]勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/8(水) 07:00 · ロサンゼルス</div>
-              <div class="ko-team"><span>🏳️</span> [16]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [15]勝者</div>
-            </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/5(日)<br>02:00</div>
+            <div class="ko-later-teams">🇿🇦①②勝者 vs 🇳🇱①②勝者<div style="font-size:9px;color:var(--text-muted)">📍 ロサンゼルス</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/5(日)<br>06:00</div>
+            <div class="ko-later-teams">🇩🇪③④勝者 vs 🇫🇷③④勝者<div style="font-size:9px;color:var(--text-muted)">📍 ボストン</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/6(月)<br>09:00</div>
+            <div class="ko-later-teams">🇨🇮⑩勝者 vs 🇲🇽⑪⑫勝者<div style="font-size:9px;color:var(--text-muted)">📍 ダラス</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/7(火)<br>04:00</div>
+            <div class="ko-later-teams">🇵🇹⑤⑥勝者 vs 🇪🇸⑤⑥勝者<div style="font-size:9px;color:var(--text-muted)">📍 カンザスシティ</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/7(火)<br>08:00</div>
+            <div class="ko-later-teams">🇺🇸⑦⑧勝者 vs 🇪🇬⑦⑧勝者<div style="font-size:9px;color:var(--text-muted)">📍 フィラデルフィア</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/8(水)<br>01:00</div>
+            <div class="ko-later-teams">🇦🇷⑬⑭勝者 vs 🇦🇺⑬⑭勝者<div style="font-size:9px;color:var(--text-muted)">📍 マイアミ</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/8(水)<br>05:00</div>
+            <div class="ko-later-teams">🇨🇭⑮⑯勝者 vs <span class="tbd">⑮⑯勝者</span><div style="font-size:9px;color:var(--text-muted)">📍 ロサンゼルス</div></div>
           </div>
         </div>
       </div>
@@ -5242,35 +5271,26 @@
       <!-- QF -->
       <div id="st-ko-qf" class="ko-round" style="display:none">
         <div class="ko-round-note">7/10(金)〜7/12(日) · 4試合</div>
-        <div class="ko-bracket">
-          <div class="ko-col">
-            <div class="ko-match jp-game">
-              <div class="ko-meta">ボストン / マイアミ</div>
-              <div class="ko-time-jp">🥇7/10(金) 05:00 <span style="color:#ff9999">/ 🥈7/12(日) 06:00</span></div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🇧🇷</span> ブラジル（予想）</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/11(土) 04:00 · ロサンゼルス</div>
-              <div class="ko-team"><span>🇩🇪</span> ドイツ（予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [e]勝者</div>
+        <div class="ko-later-grid">
+          <div class="ko-later-row jp-game">
+            <div class="ko-later-date">7/12(日)<br>06:00</div>
+            <div class="ko-later-teams">
+              <span class="jp">🇯🇵 日本ルート</span> R16勝者<br>
+              <span class="tbd">vs 右ブロック上 R16勝者</span>
+              <div style="font-size:9px;color:var(--text-muted);margin-top:1px">📍 マイアミ 🔥日本ルート（予想）</div>
             </div>
           </div>
-          <div class="ko-col">
-            <div class="ko-match">
-              <div class="ko-meta">7/12(日) 10:00 · カンザスシティ</div>
-              <div class="ko-team"><span>🏳️</span> [g]勝者</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> [h]勝者</div>
-            </div>
-            <div class="ko-match">
-              <div class="ko-meta">7/11(土) 07:00 · フィラデルフィア</div>
-              <div class="ko-team"><span>🇦🇷</span> アルゼンチン（予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🇫🇷</span> フランス（予想）</div>
-            </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/10(金)<br>04:00</div>
+            <div class="ko-later-teams">左ブロック上 R16勝者<div style="font-size:9px;color:var(--text-muted)">📍 ボストン</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/11(土)<br>04:00</div>
+            <div class="ko-later-teams">左ブロック下 R16勝者<div style="font-size:9px;color:var(--text-muted)">📍 フィラデルフィア</div></div>
+          </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/11(土)<br>08:00</div>
+            <div class="ko-later-teams">右ブロック下 R16勝者<div style="font-size:9px;color:var(--text-muted)">📍 ロサンゼルス</div></div>
           </div>
         </div>
       </div>
@@ -5278,39 +5298,33 @@
       <!-- SF -->
       <div id="st-ko-sf" class="ko-round" style="display:none">
         <div class="ko-round-note">7/15(水)〜7/16(木) · 2試合</div>
-        <div class="ko-bracket">
-          <div class="ko-col">
-            <div class="ko-match jp-game">
-              <div class="ko-meta">ダラス / アトランタ</div>
-              <div class="ko-time-jp">🥇7/15(水) 04:00 <span style="color:#ff9999">/ 🥈7/16(木) 04:00</span></div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> QF勝者</div>
+        <div class="ko-later-grid">
+          <div class="ko-later-row jp-game">
+            <div class="ko-later-date">7/16(木)<br>04:00</div>
+            <div class="ko-later-teams">
+              <span class="jp">🇯🇵 日本ルート</span> QF勝者<br>
+              <span class="tbd">vs 右ブロック QF勝者</span>
+              <div style="font-size:9px;color:var(--text-muted);margin-top:1px">📍 アトランタ 🔥日本ルート（予想）</div>
             </div>
           </div>
-          <div class="ko-col">
-            <div class="ko-match">
-              <div class="ko-meta">7/15(水) or 7/16(木) 04:00</div>
-              <div class="ko-team"><span>🇫🇷</span> フランス（予想）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> QF勝者</div>
-            </div>
+          <div class="ko-later-row">
+            <div class="ko-later-date">7/15(水)<br>04:00</div>
+            <div class="ko-later-teams">左ブロック QF勝者<br><span class="tbd">vs 左ブロック QF勝者</span><div style="font-size:9px;color:var(--text-muted)">📍 ダラス</div></div>
           </div>
         </div>
-        <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:8px 0">🥉 3位決定戦　7/19(日) 06:00 · マイアミ</div>
+        <div style="font-size:10px;color:var(--text-muted);text-align:center;padding:6px 0 2px">🥉 3位決定戦　7/19(日) 06:00 · マイアミ</div>
       </div>
 
       <!-- 決勝 -->
       <div id="st-ko-f" class="ko-round" style="display:none">
         <div class="ko-round-note">7/20(月) 04:00 · ニューヨーク メットライフ・スタジアム</div>
-        <div class="ko-bracket">
-          <div class="ko-col" style="flex:1;max-width:100%">
-            <div class="ko-match jp-game" style="border:1.5px solid rgba(212,255,63,0.45)">
-              <div class="ko-meta" style="color:var(--gold)">🏆 2026 FIFA World Cup 決勝</div>
-              <div class="ko-time-jp" style="color:var(--gold)">7/20(月) 04:00</div>
-              <div class="ko-team jp"><span>🇯🇵</span> 日本（悲願の頂点へ！）</div>
-              <div class="ko-sep"></div>
-              <div class="ko-team"><span>🏳️</span> SF勝者</div>
+        <div class="ko-later-grid">
+          <div class="ko-later-row jp-game" style="border-color:rgba(212,255,63,0.45)">
+            <div class="ko-later-date" style="color:var(--gold)">7/20(月)<br>04:00</div>
+            <div class="ko-later-teams">
+              <span class="jp">🇯🇵 日本（悲願の頂点へ！）</span><br>
+              <span class="tbd">vs SF勝者</span>
+              <div style="font-size:9px;color:var(--gold);margin-top:1px">🏆 FIFA World Cup 2026 決勝</div>
             </div>
           </div>
         </div>
@@ -5327,18 +5341,18 @@
   <!-- ===== PREDICT TAB ===== -->
   <div id="section-predict" class="section">
 
-    <!-- 突破確率バナー -->
-    <div style="background:linear-gradient(135deg,rgba(52,217,165,0.2),rgba(30,80,200,0.2));border:1.5px solid rgba(52,217,165,0.4);border-radius:16px;padding:16px;margin-bottom:16px;text-align:center">
-      <div style="font-size:11px;font-weight:700;color:rgba(52,217,165,0.8);letter-spacing:2px;margin-bottom:6px">🇯🇵 JAPAN QUALIFYING PROBABILITY</div>
+    <!-- 決勝T突破確率バナー -->
+    <div style="background:linear-gradient(135deg,rgba(59,122,240,0.2),rgba(30,80,200,0.2));border:1.5px solid rgba(59,122,240,0.4);border-radius:16px;padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:rgba(100,180,255,0.9);letter-spacing:2px;margin-bottom:6px">🇯🇵 JAPAN R32 WIN PROBABILITY vs 🇧🇷</div>
       <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px">
-        <span style="font-size:52px;font-weight:900;color:#34d9a5;line-height:1">95</span>
-        <span style="font-size:28px;font-weight:900;color:#34d9a5">%</span>
+        <span style="font-size:52px;font-weight:900;color:#3b7af0;line-height:1">35</span>
+        <span style="font-size:28px;font-weight:900;color:#3b7af0">%</span>
       </div>
       <div style="background:rgba(0,0,0,0.2);border-radius:8px;height:10px;margin:0 8px 10px;overflow:hidden">
-        <div style="height:100%;width:95%;background:linear-gradient(90deg,#34d9a5,#7eb8ff);border-radius:8px;transition:width 1s ease"></div>
+        <div style="height:100%;width:35%;background:linear-gradient(90deg,#3b7af0,#4dd9f0);border-radius:8px;transition:width 1s ease"></div>
       </div>
-      <div style="font-size:13px;font-weight:800;color:var(--text-primary)">グループ突破確率 <span style="color:#34d9a5">95%</span></div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">勝点4・暫定2位 ／ スウェーデン戦（6/26）で<strong style="color:#fff">引き分け以上</strong>で確定</div>
+      <div style="font-size:13px;font-weight:800;color:var(--text-primary)">決勝T1回戦 突破確率 <span style="color:#4dd9f0">35%</span></div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">R32 vs 🇧🇷 ブラジル ／ <strong style="color:#fff">6/30(火) 02:00</strong> · ヒューストン</div>
     </div>
 
     <!-- ===== 優勝予想 ===== -->
@@ -5354,7 +5368,13 @@
     </div>
 
     <!-- 突破条件 -->
-    <div class="section-label">🎯 グループF 突破結果</div>
+    <div class="section-label">🎯 グループF 突破結果
+      <button onclick="(function(b){var c=document.getElementById('predictResultBody');var o=c.style.display!=='none';c.style.display=o?'none':'block';b.querySelector('.pr-arrow').textContent=o?'▼':'▲'})(this)"
+        style="float:right;background:none;border:1px solid var(--card-border);border-radius:6px;color:var(--text-muted);font-size:11px;font-weight:700;padding:2px 10px;cursor:pointer;display:flex;align-items:center;gap:4px">
+        <span class="pr-arrow">▼</span> 詳細
+      </button>
+    </div>
+    <div id="predictResultBody" style="display:none">
     <div class="predict-status-card">
       <div class="psc-header">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" class="psc-flag" alt="日本">
@@ -5384,7 +5404,8 @@
           <div class="ps-desc">グループC全3試合で<strong>7得点1失点</strong>の圧倒的な成績で首位通過。ヴィニシウスが3試合連続ゴール。難敵だが日本の勝機はある！</div>
         </div>
       </div>
-    </div>
+    </div><!-- /predict-scenarios -->
+    </div><!-- /predictResultBody -->
 
     <!-- ブラジル戦 突破予想 -->
     <div class="section-label" style="margin-top:8px">📊 R32 ブラジル戦 突破予想</div>
