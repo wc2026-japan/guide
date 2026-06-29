@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https: blob:; img-src * data: blob:;">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0a1228">
   <meta name="mobile-web-app-capable" content="true">
@@ -806,10 +807,12 @@
     .team-flag-img {
       width: 38px; height: 28px; object-fit: cover; border-radius: 3px;
       display: block; margin: 0 auto 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      border: none;
     }
     .mr-flag-img {
       width: 20px; height: 14px; object-fit: cover; border-radius: 2px;
       flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      border: none;
     }
     .st-flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; margin-right: 2px; }
     .opp-flag { width: 48px; height: 34px; object-fit: cover; border-radius: 4px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
@@ -996,7 +999,7 @@
     .ko-card-teams { display: flex; align-items: center; justify-content: space-around; gap: 4px; }
     .ko-card-team { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; min-width: 0; }
     .ko-card-flag { font-size: 26px; line-height: 1; }
-    .ko-card-flag-img { width: 36px; height: 24px; border-radius: 3px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+    .ko-card-flag-img { width: 36px; height: 24px; border-radius: 3px; object-fit: cover; border: none; }
     .ko-card-team-name { font-size: 10px; font-weight: 700; color: var(--text-primary); text-align: center; line-height: 1.3; }
     .ko-card-team-name.jp { color: var(--sky-blue); }
     .ko-card-team-sub { font-size: 9px; color: var(--sky-blue); text-align: center; }
@@ -3625,7 +3628,7 @@
         </div>
         <div class="sokuhō-score-row">
           <div class="sokuhō-team">
-            <img class="sokuhō-flag" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAxNCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA5QzNCIi8+PHBvbHlnb24gcG9pbnRzPSIxMCwxIDE5LDcgMTAsMTMgMSw3IiBmaWxsPSIjRkVERjAwIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI3IiByPSIzIiBmaWxsPSIjMDAyNzc2Ii8+PC9zdmc+" alt="ブラジル">
+            <img class="sokuhō-flag" src="https://flagcdn.com/br.svg" alt="ブラジル">
             <span class="sokuhō-team-name">ブラジル</span>
           </div>
           <div class="sokuhō-scoreboard">
@@ -3634,7 +3637,7 @@
             <span class="sokuhō-score" id="sokuhōAwayScore">-</span>
           </div>
           <div class="sokuhō-team right">
-            <img class="sokuhō-flag" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
+            <img class="sokuhō-flag" src="https://flagcdn.com/jp.svg" alt="日本">
             <span class="sokuhō-team-name jp">日本</span>
           </div>
         </div>
@@ -3747,12 +3750,12 @@
         </div>
         <div class="match-teams">
           <div class="team" onclick="openTeamModal('nl')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ">
+            <img class="team-flag-img" src="https://flagcdn.com/nl.svg" alt="オランダ">
             <div class="team-name">オランダ</div>
           </div>
           <div class="result-badge">2 - 2<span class="rb-venue">📍 ダラス</span></div>
           <div class="team" onclick="openTeamModal('jp')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
+            <img class="team-flag-img" src="https://flagcdn.com/jp.svg" alt="日本">
             <div class="team-name japan-team">日本</div>
           </div>
         </div>
@@ -3778,12 +3781,12 @@
         </div>
         <div class="match-teams">
           <div class="team" onclick="openTeamModal('tn')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア">
+            <img class="team-flag-img" src="https://flagcdn.com/tn.svg" alt="チュニジア">
             <div class="team-name">チュニジア</div>
           </div>
           <div class="result-badge">0 - 4<span class="rb-venue">📍 モンテレイ</span></div>
           <div class="team" onclick="openTeamModal('jp')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
+            <img class="team-flag-img" src="https://flagcdn.com/jp.svg" alt="日本">
             <div class="team-name japan-team">日本</div>
           </div>
         </div>
@@ -3811,12 +3814,12 @@
         </div>
         <div class="match-teams">
           <div class="team" onclick="openTeamModal('jp')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
+            <img class="team-flag-img" src="https://flagcdn.com/jp.svg" alt="日本">
             <div class="team-name japan-team">日本</div>
           </div>
           <div class="match-vs"><span style="font-size:22px;font-weight:900;letter-spacing:2px;color:var(--text-primary)">1 - 1</span><span class="mv-venue">📍 ダラス</span></div>
           <div class="team" onclick="openTeamModal('se')" style="cursor:pointer">
-            <img class="team-flag-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMCBzdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
+            <img class="team-flag-img" src="https://flagcdn.com/se.svg" alt="スウェーデン">
             <div class="team-name">スウェーデン</div>
           </div>
         </div>
@@ -3965,72 +3968,72 @@
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note">🔥 日本戦</span>6/30(火) 02:00 · ヒューストン</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">（F組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">（F組2位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇷</div><div class="ko-card-team-name">ブラジル</div><div class="ko-card-team-sub">（C組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/br.svg" alt="🇧🇷" class="ko-card-flag-img"><div class="ko-card-team-name">ブラジル</div><div class="ko-card-team-sub">（C組1位）</div></div>
           </div>
         </div>
         <!-- 南アフリカ vs カナダ -->
         <div class="ko-card" style="opacity:0.7">
           <div class="ko-card-meta">6/29(月) 04:00 · ロサンゼルス <span style="color:#4caf50;font-weight:700">FT</span></div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇿🇦</div><div class="ko-card-team-name">南アフリカ</div><div class="ko-card-team-sub" style="color:#ff6b6b;font-weight:700">0</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/za.svg" alt="🇿🇦" class="ko-card-flag-img"><div class="ko-card-team-name">南アフリカ</div><div class="ko-card-team-sub" style="color:#ff6b6b;font-weight:700">0</div></div>
             <div class="ko-card-vs">-</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇨🇦</div><div class="ko-card-team-name" style="font-weight:700">カナダ</div><div class="ko-card-team-sub" style="color:#4caf50;font-weight:700">1 ✓</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ca.svg" alt="🇨🇦" class="ko-card-flag-img"><div class="ko-card-team-name" style="font-weight:700">カナダ</div><div class="ko-card-team-sub" style="color:#4caf50;font-weight:700">1 ✓</div></div>
           </div>
         </div>
         <!-- オランダ vs モロッコ -->
         <div class="ko-card">
           <div class="ko-card-meta">6/30(火) 10:00 · モンテレー</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇳🇱</div><div class="ko-card-team-name">オランダ</div><div class="ko-card-team-sub">（F組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱" class="ko-card-flag-img"><div class="ko-card-team-name">オランダ</div><div class="ko-card-team-sub">（F組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇲🇦</div><div class="ko-card-team-name">モロッコ</div><div class="ko-card-team-sub">（C組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦" class="ko-card-flag-img"><div class="ko-card-team-name">モロッコ</div><div class="ko-card-team-sub">（C組2位）</div></div>
           </div>
         </div>
         <!-- コートジボワール vs ノルウェー -->
         <div class="ko-card">
           <div class="ko-card-meta">7/1(水) 02:00 · ダラス</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇨🇮</div><div class="ko-card-team-name">コートジボワール</div><div class="ko-card-team-sub">（E組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ci.svg" alt="🇨🇮" class="ko-card-flag-img"><div class="ko-card-team-name">コートジボワール</div><div class="ko-card-team-sub">（E組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇳🇴</div><div class="ko-card-team-name">ノルウェー</div><div class="ko-card-team-sub">（I組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/no.svg" alt="🇳🇴" class="ko-card-flag-img"><div class="ko-card-team-name">ノルウェー</div><div class="ko-card-team-sub">（I組2位）</div></div>
           </div>
         </div>
         <!-- スペイン vs オーストリア -->
         <div class="ko-card">
           <div class="ko-card-meta">7/3(金) 04:00 · アトランタ</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇪🇸</div><div class="ko-card-team-name">スペイン</div><div class="ko-card-team-sub">（H組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/es.svg" alt="🇪🇸" class="ko-card-flag-img"><div class="ko-card-team-name">スペイン</div><div class="ko-card-team-sub">（H組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇦🇹</div><div class="ko-card-team-name">オーストリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/at.svg" alt="🇦🇹" class="ko-card-flag-img"><div class="ko-card-team-name">オーストリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
           </div>
         </div>
         <!-- ベルギー vs セネガル -->
         <div class="ko-card">
           <div class="ko-card-meta">7/2(木) 05:00 · シアトル</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇪</div><div class="ko-card-team-name">ベルギー</div><div class="ko-card-team-sub">（G組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/be.svg" alt="🇧🇪" class="ko-card-flag-img"><div class="ko-card-team-name">ベルギー</div><div class="ko-card-team-sub">（G組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇸🇳</div><div class="ko-card-team-name">セネガル</div><div class="ko-card-team-sub">（A/E/H/I/J組3位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/sn.svg" alt="🇸🇳" class="ko-card-flag-img"><div class="ko-card-team-name">セネガル</div><div class="ko-card-team-sub">（A/E/H/I/J組3位）</div></div>
           </div>
         </div>
         <!-- アメリカ vs ボスニア -->
         <div class="ko-card">
           <div class="ko-card-meta">7/2(木) 09:00 · サンフランシスコ</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇺🇸</div><div class="ko-card-team-name">アメリカ</div><div class="ko-card-team-sub">（D組1位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/us.svg" alt="🇺🇸" class="ko-card-flag-img"><div class="ko-card-team-name">アメリカ</div><div class="ko-card-team-sub">（D組1位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇦</div><div class="ko-card-team-name">ボスニア</div><div class="ko-card-team-sub">（B組3位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ba.svg" alt="🇧🇦" class="ko-card-flag-img"><div class="ko-card-team-name">ボスニア</div><div class="ko-card-team-sub">（B組3位）</div></div>
           </div>
         </div>
         <!-- オーストラリア vs ベルギー -->
         <div class="ko-card">
           <div class="ko-card-meta">7/7(火) 03:00 · ダラス</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇦🇺</div><div class="ko-card-team-name">オーストラリア</div><div class="ko-card-team-sub">（D組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/au.svg" alt="🇦🇺" class="ko-card-flag-img"><div class="ko-card-team-name">オーストラリア</div><div class="ko-card-team-sub">（D組2位）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇪</div><div class="ko-card-team-name">ベルギー</div><div class="ko-card-team-sub">（G組2位）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/be.svg" alt="🇧🇪" class="ko-card-flag-img"><div class="ko-card-team-name">ベルギー</div><div class="ko-card-team-sub">（G組2位）</div></div>
           </div>
         </div>
       </div>
@@ -4042,90 +4045,90 @@
           <div class="ko-card">
             <div class="ko-card-meta">6/30(火) 05:30 · ボストン</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇩🇪</div><div class="ko-card-team-name">ドイツ</div><div class="ko-card-team-sub">（E組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪" class="ko-card-flag-img"><div class="ko-card-team-name">ドイツ</div><div class="ko-card-team-sub">（E組2位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇵🇾</div><div class="ko-card-team-name">パラグアイ</div><div class="ko-card-team-sub">（L組3位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/py.svg" alt="🇵🇾" class="ko-card-flag-img"><div class="ko-card-team-name">パラグアイ</div><div class="ko-card-team-sub">（L組3位）</div></div>
             </div>
           </div>
           <!-- フランス vs スウェーデン -->
           <div class="ko-card">
             <div class="ko-card-meta">7/1(水) 06:00 · ニュージャージー</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス</div><div class="ko-card-team-sub">（I組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/fr.svg" alt="🇫🇷" class="ko-card-flag-img"><div class="ko-card-team-name">フランス</div><div class="ko-card-team-sub">（I組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇸🇪</div><div class="ko-card-team-name">スウェーデン</div><div class="ko-card-team-sub">（B/G/K組3位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/se.svg" alt="🇸🇪" class="ko-card-flag-img"><div class="ko-card-team-name">スウェーデン</div><div class="ko-card-team-sub">（B/G/K組3位）</div></div>
             </div>
           </div>
           <!-- メキシコ vs エクアドル -->
           <div class="ko-card">
             <div class="ko-card-meta">7/1(水) 10:00 · メキシコシティ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇲🇽</div><div class="ko-card-team-name">メキシコ</div><div class="ko-card-team-sub">（A組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/mx.svg" alt="🇲🇽" class="ko-card-flag-img"><div class="ko-card-team-name">メキシコ</div><div class="ko-card-team-sub">（A組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇪🇨</div><div class="ko-card-team-name">エクアドル</div><div class="ko-card-team-sub">（C/E/F/H/I組3位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/ec.svg" alt="🇪🇨" class="ko-card-flag-img"><div class="ko-card-team-name">エクアドル</div><div class="ko-card-team-sub">（C/E/F/H/I組3位）</div></div>
             </div>
           </div>
           <!-- イングランド vs DRコンゴ -->
           <div class="ko-card">
             <div class="ko-card-meta">7/2(木) 01:00 · アトランタ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div><div class="ko-card-team-name">イングランド</div><div class="ko-card-team-sub">（L組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagicons.lipis.dev/flags/4x3/gb-eng.svg" alt="🏴󠁧󠁢󠁥󠁮󠁧󠁿" class="ko-card-flag-img"><div class="ko-card-team-name">イングランド</div><div class="ko-card-team-sub">（L組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇨🇩</div><div class="ko-card-team-name">DRコンゴ</div><div class="ko-card-team-sub">（K組3位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/cd.svg" alt="🇨🇩" class="ko-card-flag-img"><div class="ko-card-team-name">DRコンゴ</div><div class="ko-card-team-sub">（K組3位）</div></div>
             </div>
           </div>
           <!-- スペイン vs オーストリア ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/3(金) 04:00 · アトランタ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇪🇸</div><div class="ko-card-team-name">スペイン</div><div class="ko-card-team-sub">（H組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/es.svg" alt="🇪🇸" class="ko-card-flag-img"><div class="ko-card-team-name">スペイン</div><div class="ko-card-team-sub">（H組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇦🇹</div><div class="ko-card-team-name">オーストリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/at.svg" alt="🇦🇹" class="ko-card-flag-img"><div class="ko-card-team-name">オーストリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
             </div>
           </div>
           <!-- ポルトガル vs クロアチア ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/3(金) 08:00 · バンクーバー</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇵🇹</div><div class="ko-card-team-name">ポルトガル</div><div class="ko-card-team-sub">（K組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹" class="ko-card-flag-img"><div class="ko-card-team-name">ポルトガル</div><div class="ko-card-team-sub">（K組2位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇭🇷</div><div class="ko-card-team-name">クロアチア</div><div class="ko-card-team-sub">（L組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/hr.svg" alt="🇭🇷" class="ko-card-flag-img"><div class="ko-card-team-name">クロアチア</div><div class="ko-card-team-sub">（L組2位）</div></div>
             </div>
           </div>
           <!-- スイス vs アルジェリア ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/3(金) 12:00 · シアトル</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇨🇭</div><div class="ko-card-team-name">スイス</div><div class="ko-card-team-sub">（B組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/ch.svg" alt="🇨🇭" class="ko-card-flag-img"><div class="ko-card-team-name">スイス</div><div class="ko-card-team-sub">（B組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇩🇿</div><div class="ko-card-team-name">アルジェリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/dz.svg" alt="🇩🇿" class="ko-card-flag-img"><div class="ko-card-team-name">アルジェリア</div><div class="ko-card-team-sub">（J組2位）</div></div>
             </div>
           </div>
           <!-- オーストラリア vs エジプト ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/4(土) 03:00 · ダラス</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇦🇺</div><div class="ko-card-team-name">オーストラリア</div><div class="ko-card-team-sub">（D組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/au.svg" alt="🇦🇺" class="ko-card-flag-img"><div class="ko-card-team-name">オーストラリア</div><div class="ko-card-team-sub">（D組2位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇪🇬</div><div class="ko-card-team-name">エジプト</div><div class="ko-card-team-sub">（G組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/eg.svg" alt="🇪🇬" class="ko-card-flag-img"><div class="ko-card-team-name">エジプト</div><div class="ko-card-team-sub">（G組2位）</div></div>
             </div>
           </div>
           <!-- アルゼンチン vs カーボベルデ ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/4(土) 07:00 · マイアミ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇦🇷</div><div class="ko-card-team-name">アルゼンチン</div><div class="ko-card-team-sub">（J組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-card-flag-img"><div class="ko-card-team-name">アルゼンチン</div><div class="ko-card-team-sub">（J組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇨🇻</div><div class="ko-card-team-name">カーボベルデ</div><div class="ko-card-team-sub">（H組2位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/cv.svg" alt="🇨🇻" class="ko-card-flag-img"><div class="ko-card-team-name">カーボベルデ</div><div class="ko-card-team-sub">（H組2位）</div></div>
             </div>
           </div>
           <!-- コロンビア vs ガーナ ✅確定 -->
           <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
             <div class="ko-card-meta">✅ 確定　7/4(土) 10:30 · カンザスシティ</div>
             <div class="ko-card-teams">
-              <div class="ko-card-team"><div class="ko-card-flag">🇨🇴</div><div class="ko-card-team-name">コロンビア</div><div class="ko-card-team-sub">（K組1位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/co.svg" alt="🇨🇴" class="ko-card-flag-img"><div class="ko-card-team-name">コロンビア</div><div class="ko-card-team-sub">（K組1位）</div></div>
               <div class="ko-card-vs">VS</div>
-              <div class="ko-card-team"><div class="ko-card-flag">🇬🇭</div><div class="ko-card-team-name">ガーナ</div><div class="ko-card-team-sub">（L組3位）</div></div>
+              <div class="ko-card-team"><img src="https://flagcdn.com/gh.svg" alt="🇬🇭" class="ko-card-flag-img"><div class="ko-card-team-name">ガーナ</div><div class="ko-card-team-sub">（L組3位）</div></div>
             </div>
           </div>
         </div>
@@ -4139,7 +4142,7 @@
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note">🥇1位</span>7/5(日) 02:00 · ロサンゼルス</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">①②勝者</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">①②勝者</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">①②勝者ルート</div></div>
           </div>
@@ -4147,7 +4150,7 @@
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note" style="background:#c0392b">🥈2位</span>7/6(月) 05:00 · ヒューストン 🔥日本戦</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">⑨勝者</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本</div><div class="ko-card-team-sub">⑨勝者</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">⑩勝者ルート</div></div>
           </div>
@@ -4210,15 +4213,15 @@
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note">🥇1位</span>7/10(金) 05:00 · TBD</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本（予想）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇧🇷</div><div class="ko-card-team-name">ブラジル（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/br.svg" alt="🇧🇷" class="ko-card-flag-img"><div class="ko-card-team-name">ブラジル（予想）</div></div>
           </div>
         </div>
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note" style="background:#c0392b">🥈2位</span>7/12(土) 06:00 · マイアミ</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本（予想）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF対戦相手</div></div>
           </div>
@@ -4226,7 +4229,7 @@
         <div class="ko-card">
           <div class="ko-card-meta">7/11(土) 04:00 · ロサンゼルス</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇩🇪</div><div class="ko-card-team-name">ドイツ（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪" class="ko-card-flag-img"><div class="ko-card-team-name">ドイツ（予想）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">[e]勝者</div></div>
           </div>
@@ -4234,9 +4237,9 @@
         <div class="ko-card">
           <div class="ko-card-meta">7/11(土) 07:00 · フィラデルフィア</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇦🇷</div><div class="ko-card-team-name">アルゼンチン（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-card-flag-img"><div class="ko-card-team-name">アルゼンチン（予想）</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/fr.svg" alt="🇫🇷" class="ko-card-flag-img"><div class="ko-card-team-name">フランス（予想）</div></div>
           </div>
         </div>
       </div>
@@ -4249,7 +4252,7 @@
         <div class="ko-card jp-card">
           <div class="ko-card-meta"><span class="jp-note">🥇</span>7/10(金) 05:00　<span style="color:#ff9999">🥈7/11(土) 06:00</span></div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本（予想）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF勝者</div></div>
           </div>
@@ -4257,7 +4260,7 @@
         <div class="ko-card">
           <div class="ko-card-meta">7/10(金) or 7/11(土)</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇫🇷</div><div class="ko-card-team-name">フランス（予想）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/fr.svg" alt="🇫🇷" class="ko-card-flag-img"><div class="ko-card-team-name">フランス（予想）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">QF勝者</div></div>
           </div>
@@ -4273,7 +4276,7 @@
         <div class="ko-card jp-card" style="border-color:rgba(212,255,63,0.5)">
           <div class="ko-card-meta" style="color:var(--gold)">🏆 2026 FIFA World Cup FINAL　7/20(月) 04:00 · メットライフ・スタジアム</div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><div class="ko-card-flag">🇯🇵</div><div class="ko-card-team-name jp">日本（悲願の頂点へ！）</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵" class="ko-card-flag-img"><div class="ko-card-team-name jp">日本（悲願の頂点へ！）</div></div>
             <div class="ko-card-vs">VS</div>
             <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">SF勝者</div></div>
           </div>
@@ -4344,7 +4347,7 @@
 
     <!-- Hero -->
     <div class="jpteam-hero">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="jpteam-hero-flag">
+      <img src="https://flagcdn.com/jp.svg" alt="日本" class="jpteam-hero-flag">
       <div class="jpteam-hero-text">
         <div class="jpteam-eyebrow">JAPAN · SAMURAI BLUE</div>
         <div class="jpteam-title">日本代表</div>
@@ -4655,7 +4658,7 @@
     <div class="match-row jp-match">
       <div class="mr-time"><span class="mr-time-label">日本時間</span>05:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell" data-cc="nl" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="mr-flag-img"><span class="mr-team-name">オランダ</span></span><span class="mr-score-inline">2 - 2</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="nl" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/nl.svg" alt="オランダ" class="mr-flag-img"><span class="mr-team-name">オランダ</span></span><span class="mr-score-inline">2 - 2</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/jp.svg" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
         <div class="mr-meta">6/15（月）· グループF · ダラス</div>
         <div class="mr-tags"><span class="mr-tag nhk">NHK</span><span class="mr-tag dazn-free">DAZN無料</span></div>
       </div>
@@ -4664,7 +4667,7 @@
     <div class="match-row jp-match">
       <div class="mr-time"><span class="mr-time-label">日本時間</span>13:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell" data-cc="tn" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="mr-flag-img"><span class="mr-team-name">チュニジア</span></span><span class="mr-score-inline">0 - 4</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="tn" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/tn.svg" alt="チュニジア" class="mr-flag-img"><span class="mr-team-name">チュニジア</span></span><span class="mr-score-inline">0 - 4</span><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/jp.svg" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span></div>
         <div class="mr-meta">6/21（日）· グループF · モンテレイ</div>
         <div class="mr-tags"><span class="mr-tag dazn-free">DAZN無料</span><span class="mr-tag ntv">日テレ</span><span class="mr-tag nhkbs">NHK BS</span></div>
       </div>
@@ -4673,7 +4676,7 @@
     <div class="match-row jp-match">
       <div class="mr-time"><span class="mr-time-label">日本時間</span>08:00</div>
       <div class="mr-teams">
-        <div class="mr-matchup"><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span><span class="mr-score-inline">1 - 1</span><span class="mr-team-cell" data-cc="se" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMCBzdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="mr-flag-img"><span class="mr-team-name">スウェーデン</span></span></div>
+        <div class="mr-matchup"><span class="mr-team-cell" data-cc="jp" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/jp.svg" alt="日本" class="mr-flag-img"><span class="mr-team-name jp">日本</span></span><span class="mr-score-inline">1 - 1</span><span class="mr-team-cell" data-cc="se" onclick="var c=this.dataset.cc;if(c)openTeamModal(c)" style="cursor:pointer"><img src="https://flagcdn.com/se.svg" alt="スウェーデン" class="mr-flag-img"><span class="mr-team-name">スウェーデン</span></span></div>
         <div class="mr-meta">6/26（金）· グループF · ダラス</div>
         <div class="mr-tags"><span class="mr-tag dazn-free">DAZN無料</span><span class="mr-tag nhk">NHK</span></div>
       </div>
@@ -4684,19 +4687,19 @@
     <!-- グループF順位表 -->
     <div class="section-label">グループF 順位表</div>
     <div class="jpteam-group-flags">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="日本">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア">
+      <img src="https://flagcdn.com/se.svg" alt="スウェーデン">
+      <img src="https://flagcdn.com/jp.svg" alt="日本">
+      <img src="https://flagcdn.com/nl.svg" alt="オランダ">
+      <img src="https://flagcdn.com/tn.svg" alt="チュニジア">
     </div>
     <div class="standings-card" style="margin-bottom:16px">
       <table class="standings-table">
         <thead><tr><th>Team</th><th>GP</th><th>W</th><th>D</th><th>L</th><th>GD</th><th class="th-pts">Pts</th></tr></thead>
         <tbody>
-          <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>3</td><td>2</td><td>1</td><td>0</td><td class="td-gd-pos">+6</td><td class="td-pts leader">7</td></tr>
-          <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>3</td><td>1</td><td>2</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts">5</td></tr>
-          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMCBzdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>3</td><td>1</td><td>1</td><td>1</td><td class="td-gd-neg">-3</td><td class="td-pts">4</td></tr>
-          <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>3</td><td>0</td><td>0</td><td>3</td><td class="td-gd-neg">-12</td><td class="td-pts">0</td></tr>
+          <tr onclick="openTeamModal('nl')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="https://flagcdn.com/nl.svg" alt="" class="st-flag"><span class="name">オランダ</span></div></td><td>3</td><td>2</td><td>1</td><td>0</td><td class="td-gd-pos">+6</td><td class="td-pts leader">7</td></tr>
+          <tr class="japan-row"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="https://flagcdn.com/jp.svg" alt="" class="st-flag"><span class="name jp">日本</span></div></td><td>3</td><td>1</td><td>2</td><td>0</td><td class="td-gd-pos">+4</td><td class="td-pts">5</td></tr>
+          <tr onclick="openTeamModal('se')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot tbd"></span><img src="https://flagcdn.com/nl.svg" alt="" class="st-flag"><span class="name">スウェーデン</span></div></td><td>3</td><td>1</td><td>1</td><td>1</td><td class="td-gd-neg">-3</td><td class="td-pts">4</td></tr>
+          <tr onclick="openTeamModal('tn')" style="cursor:pointer"><td><div class="team-cell"><span class="qualify-dot"></span><img src="https://flagcdn.com/tn.svg" alt="" class="st-flag"><span class="name">チュニジア</span></div></td><td>3</td><td>0</td><td>0</td><td>3</td><td class="td-gd-neg">-12</td><td class="td-pts">0</td></tr>
         </tbody>
       </table>
     </div>
@@ -4714,7 +4717,7 @@
     <!-- オランダ -->
     <div class="opp-card">
       <div class="opp-card-header">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=" alt="オランダ" class="opp-card-flag">
+        <img src="https://flagcdn.com/nl.svg" alt="オランダ" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇳🇱 オランダ</div>
           <div class="opp-card-rank">FIFA 8位 · グループF 2試合終了 · 4pt首位</div>
@@ -4777,7 +4780,7 @@
     <!-- チュニジア -->
     <div class="opp-card">
       <div class="opp-card-header">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="opp-card-flag">
+        <img src="https://flagcdn.com/tn.svg" alt="チュニジア" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇹🇳 チュニジア</div>
           <div class="opp-card-rank">FIFA 54位 · グループF第2節</div>
@@ -4832,7 +4835,7 @@
     <!-- スウェーデン -->
     <div class="opp-card">
       <div class="opp-card-header">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="opp-card-flag">
+        <img src="https://flagcdn.com/se.svg" alt="スウェーデン" class="opp-card-flag">
         <div class="opp-card-header-info">
           <div class="opp-card-name">🇸🇪 スウェーデン</div>
           <div class="opp-card-rank">FIFA 38位 · グループF 2試合終了 · 勝点3</div>
@@ -5161,49 +5164,49 @@
         <div class="ko-compact-grid">
           <div class="ko-compact-match" style="opacity:0.7">
             <div class="ko-compact-num">①　<span>6/29(月) 4:00 LA</span> <span style="color:#4caf50;font-size:10px;font-weight:700">FT</span></div>
-            <div class="ko-compact-team">🇿🇦 南アフリカ（A2）　<span style="color:#ff6b6b;font-weight:700">0</span></div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/za.svg" alt="🇿🇦" class="ko-compact-flag-img">南アフリカ（A2）　<span style="color:#ff6b6b;font-weight:700">0</span></div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇨🇦 カナダ（B2）　<span style="color:#4caf50;font-weight:700">1 ✓</span></div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ca.svg" alt="🇨🇦" class="ko-compact-flag-img">カナダ（B2）　<span style="color:#4caf50;font-weight:700">1 ✓</span></div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">②　<span>6/30(火) 10:00 モンテレー</span></div>
-            <div class="ko-compact-team">🇳🇱 オランダ（F1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱" class="ko-compact-flag-img">オランダ（F1）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇲🇦 モロッコ（C2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦" class="ko-compact-flag-img">モロッコ（C2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">③　<span>6/30(火) 5:30 ボストン</span></div>
-            <div class="ko-compact-team">🇩🇪 ドイツ（E2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪" class="ko-compact-flag-img">ドイツ（E2）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">④　<span>7/1(水) 6:00 NJ</span></div>
-            <div class="ko-compact-team">🇫🇷 フランス（I1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/fr.svg" alt="🇫🇷" class="ko-compact-flag-img">フランス（I1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑤　<span>7/3(金) 8:00 バンクーバー</span></div>
-            <div class="ko-compact-team">🇵🇹 ポルトガル（K2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹" class="ko-compact-flag-img">ポルトガル（K2）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇬🇭 ガーナ（L2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/gh.svg" alt="🇬🇭" class="ko-compact-flag-img">ガーナ（L2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑥　<span>7/3(金) 4:00 アトランタ</span></div>
-            <div class="ko-compact-team">🇪🇸 スペイン（H1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/es.svg" alt="🇪🇸" class="ko-compact-flag-img">スペイン（H1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ J2候補（オーストリア等）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑦　<span>7/2(木) 9:00 SF</span></div>
-            <div class="ko-compact-team">🇺🇸 アメリカ（D1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/us.svg" alt="🇺🇸" class="ko-compact-flag-img">アメリカ（D1）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇧🇦 ボスニア（3位）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ba.svg" alt="🇧🇦" class="ko-compact-flag-img">ボスニア（3位）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑧　<span>7/2(木) 5:00 シアトル</span></div>
-            <div class="ko-compact-team">🇪🇬 エジプト（G1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/eg.svg" alt="🇪🇬" class="ko-compact-flag-img">エジプト（G1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
@@ -5214,43 +5217,43 @@
           <div class="ko-compact-match jp-game">
             <div class="ko-compact-num">⑨　<span class="jp-badge">🔥日本戦</span></div>
             <div class="ko-compact-num" style="margin-top:1px">6/30(火) 2:00 ヒューストン</div>
-            <div class="ko-compact-team">🇧🇷 ブラジル（C1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/br.svg" alt="🇧🇷" class="ko-compact-flag-img">ブラジル（C1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team jp">🇯🇵 日本（F2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑩　<span>7/1(水) 2:00 ダラス</span></div>
-            <div class="ko-compact-team">🇨🇮 コートジボワール（E1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ci.svg" alt="🇨🇮" class="ko-compact-flag-img">コートジボワール（E1）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇳🇴 ノルウェー（I2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/no.svg" alt="🇳🇴" class="ko-compact-flag-img">ノルウェー（I2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑪　<span>7/1(水) 10:00 メキシコシティ</span></div>
-            <div class="ko-compact-team">🇲🇽 メキシコ（A1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/mx.svg" alt="🇲🇽" class="ko-compact-flag-img">メキシコ（A1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑫　<span>7/2(水) 1:00 アトランタ</span></div>
-            <div class="ko-compact-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド（L1）</div>
+            <div class="ko-compact-team"><img src="https://flagicons.lipis.dev/flags/4x3/gb-eng.svg" alt="🏴󠁧󠁢󠁥󠁮󠁧󠁿" class="ko-compact-flag-img">イングランド（L1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑬　<span>7/4(土) 7:00 マイアミ</span></div>
-            <div class="ko-compact-team">🇦🇷 アルゼンチン（J1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-compact-flag-img">アルゼンチン（J1）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇨🇻 カーボベルデ（H2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/cv.svg" alt="🇨🇻" class="ko-compact-flag-img">カーボベルデ（H2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑭　<span>7/4(土) 3:00 ダラス</span></div>
-            <div class="ko-compact-team">🇦🇺 オーストラリア（D2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/au.svg" alt="🇦🇺" class="ko-compact-flag-img">オーストラリア（D2）</div>
             <div class="ko-compact-sep"></div>
-            <div class="ko-compact-team">🇧🇪 ベルギー（G2）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/be.svg" alt="🇧🇪" class="ko-compact-flag-img">ベルギー（G2）</div>
           </div>
           <div class="ko-compact-match">
             <div class="ko-compact-num">⑮　<span>7/3(金) 12:00 シアトル</span></div>
-            <div class="ko-compact-team">🇨🇭 スイス（B1）</div>
+            <div class="ko-compact-team"><img src="https://flagcdn.com/ch.svg" alt="🇨🇭" class="ko-compact-flag-img">スイス（B1）</div>
             <div class="ko-compact-sep"></div>
             <div class="ko-compact-team tbd">🏳️ 3位通過枠</div>
           </div>
@@ -5415,7 +5418,7 @@
     <div id="predictResultBody" style="display:none">
     <div class="predict-status-card">
       <div class="psc-header">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=" class="psc-flag" alt="日本">
+        <img src="https://flagcdn.com/jp.svg" class="psc-flag" alt="日本">
         <div>
           <div class="psc-title">日本 グループF 最終結果</div>
           <div class="psc-record">3試合 ／ 1勝2分 ／ 勝点5</div>
@@ -5582,7 +5585,7 @@
     <div class="predict-matchup-card">
       <div class="pmc-header">
         <div class="pmc-match">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+" alt="チュニジア" class="pmc-flag">
+          <img src="https://flagcdn.com/tn.svg" alt="チュニジア" class="pmc-flag">
           <div><div class="pmc-name">チュニジア</div><div class="pmc-date">6/21（日）✅ 日本 4-0 勝利！</div></div>
           <div class="pmc-rank">FIFA 54位</div>
         </div>
@@ -5591,7 +5594,7 @@
     <div class="predict-matchup-card">
       <div class="pmc-header">
         <div class="pmc-match">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==" alt="スウェーデン" class="pmc-flag">
+          <img src="https://flagcdn.com/se.svg" alt="スウェーデン" class="pmc-flag">
           <div><div class="pmc-name">スウェーデン</div><div class="pmc-date">6/26（金）✅ 日本 1-1 引き分け</div></div>
           <div class="pmc-rank">FIFA 38位</div>
         </div>
@@ -5606,7 +5609,7 @@
     <div class="predict-matchup-card">
       <div class="pmc-header">
         <div class="pmc-match">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAxNCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA5QzNCIi8+PHBvbHlnb24gcG9pbnRzPSIxMCwxIDE5LDcgMTAsMTMgMSw3IiBmaWxsPSIjRkVERjAwIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI3IiByPSIzIiBmaWxsPSIjMDAyNzc2Ii8+PC9zdmc+" alt="ブラジル" class="pmc-flag">
+          <img src="https://flagcdn.com/br.svg" alt="ブラジル" class="pmc-flag">
           <div>
             <div class="pmc-name">🇧🇷 ブラジル</div>
             <div class="pmc-date">7/1（水）予定 · R32</div>
@@ -7427,54 +7430,54 @@
   function getFlags() {
     if (FLAG_SVG) return FLAG_SVG;
     FLAG_SVG = {
-    'jp': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjYiIGZpbGw9IiNCQzAwMkQiLz48L3N2Zz4=',
-    'nl': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBRTFDMjgiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjMzMyIgd2lkdGg9IjMiIGhlaWdodD0iMC42NjciIGZpbGw9IiMyMTQ2OEIiLz48L3N2Zz4=',
-    'se': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA2QUE3Ii8+PHJlY3QgeD0iNCIgd2lkdGg9IjIiIGhlaWdodD0iMTAiIGZpbGw9IiNGRUNDMDIiLz48cmVjdCB5PSI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMiIgZmlsbD0iI0ZFQ0MwMiIvPjwvc3ZnPg==',
-    'tn': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFNzAwMTMiLz48Y2lyY2xlIGN4PSIxLjUiIGN5PSIxIiByPSIwLjU1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMS41IiBjeT0iMSIgcj0iMC40IiBmaWxsPSIjRTcwMDEzIi8+PC9zdmc+',
-    'de': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDMiPjxyZWN0IHdpZHRoPSI1IiBoZWlnaHQ9IjMiIGZpbGw9IiMwMDAiLz48cmVjdCB5PSIxIiB3aWR0aD0iNSIgaGVpZ2h0PSIxIiBmaWxsPSIjREQwMDAwIi8+PHJlY3QgeT0iMiIgd2lkdGg9IjUiIGhlaWdodD0iMSIgZmlsbD0iI0ZGQ0UwMCIvPjwvc3ZnPg==',
-    'fr': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDIzOTUiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0VEMjkzOSIvPjwvc3ZnPg==',
-    'br': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAxNCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA5QzNCIi8+PHBvbHlnb24gcG9pbnRzPSIxMCwxIDE5LDcgMTAsMTMgMSw3IiBmaWxsPSIjRkZERjAwIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI3IiByPSIzIiBmaWxsPSIjMDAyNzc2Ii8+PC9zdmc+',
-    'ar': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48cmVjdCB3aWR0aD0iMyIgaGVpZ2h0PSIwLjY2NyIgZmlsbD0iIzc0QUNERiIvPjxyZWN0IHk9IjEuMzMzIiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjY2NyIgZmlsbD0iIzc0QUNERiIvPjwvc3ZnPg==',
-    'es': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNBQTE1MUIiLz48cmVjdCB5PSIwLjUiIHdpZHRoPSIzIiBoZWlnaHQ9IjEiIGZpbGw9IiNGMUJGMDAiLz48L3N2Zz4=',
-    'pt': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjQiIGZpbGw9IiNGRjAwMDAiLz48cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSI0IiBmaWxsPSIjMDA2NjAwIi8+PC9zdmc+',
-    'us': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOSAxMCI+PHJlY3Qgd2lkdGg9IjE5IiBoZWlnaHQ9IjEwIiBmaWxsPSIjQjIyMjM0Ii8+PHJlY3QgeT0iMC43NyIgd2lkdGg9IjE5IiBoZWlnaHQ9IjAuNzciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjU0IiB3aWR0aD0iMTkiIGhlaWdodD0iMC43NyIgZmlsbD0iI0IyMjIzNCIvPjxyZWN0IHk9IjIuMzEiIHdpZHRoPSIxOSIgaGVpZ2h0PSIwLjc3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMy4wOCIgd2lkdGg9IjE5IiBoZWlnaHQ9IjAuNzciIGZpbGw9IiNCMjIyMzQiLz48cmVjdCB5PSIzLjg1IiB3aWR0aD0iMTkiIGhlaWdodD0iMC43NyIgZmlsbD0iI2ZmZiIvPjxyZWN0IHk9IjQuNjIiIHdpZHRoPSIxOSIgaGVpZ2h0PSIwLjc3IiBmaWxsPSIjQjIyMjM0Ii8+PHJlY3QgeT0iNS4zOCIgd2lkdGg9IjE5IiBoZWlnaHQ9IjAuNzciIGZpbGw9IiNmZmYiLz48cmVjdCB5PSI2LjE1IiB3aWR0aD0iMTkiIGhlaWdodD0iMC43NyIgZmlsbD0iI0IyMjIzNCIvPjxyZWN0IHk9IjYuOTIiIHdpZHRoPSIxOSIgaGVpZ2h0PSIwLjc3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iNy42OSIgd2lkdGg9IjE5IiBoZWlnaHQ9IjAuNzciIGZpbGw9IiNCMjIyMzQiLz48cmVjdCB5PSI4LjQ2IiB3aWR0aD0iMTkiIGhlaWdodD0iMC43NyIgZmlsbD0iI2ZmZiIvPjxyZWN0IHk9IjkuMjMiIHdpZHRoPSIxOSIgaGVpZ2h0PSIwLjc3IiBmaWxsPSIjQjIyMjM0Ii8+PHJlY3Qgd2lkdGg9IjcuNiIgaGVpZ2h0PSI1LjM4IiBmaWxsPSIjM0MzQjZFIi8+PC9zdmc+',
-    'gb-eng': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyLjQiIHdpZHRoPSIxLjIiIGhlaWdodD0iNCIgZmlsbD0iI0NGMTQyQiIvPjxyZWN0IHk9IjEuNiIgd2lkdGg9IjYiIGhlaWdodD0iMC44IiBmaWxsPSIjQ0YxNDJCIi8+PC9zdmc+',
-    'gb-sct': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjQiIGZpbGw9IiMwMDMwODciLz48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSI2IiB5Mj0iNCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuMSIvPjxsaW5lIHgxPSI2IiB5MT0iMCIgeDI9IjAiIHkyPSI0IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS4xIi8+PC9zdmc+',
-    'kr': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIzIiBjeT0iMiIgcj0iMS4xIiBmaWxsPSIjQ0QyRTNBIi8+PHBhdGggZD0iTTMgMiBhMC41NSAwLjU1IDAgMCAxIDAgLTEuMSBhMS4xIDEuMSAwIDAgMCAwIDIuMiBhMC41NSAwLjU1IDAgMCAxIDAgLTEuMVoiIGZpbGw9IiMwMDM0NzgiLz48L3N2Zz4=',
-    'ma': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNDMTI3MkQiLz48cG9seWdvbiBwb2ludHM9IjEuNSwwLjUgMS42MiwwLjg4IDEuOTcsMC44OCAxLjY5LDEuMDkgMS44LDEuNDcgMS41LDEuMjYgMS4yLDEuNDcgMS4zMSwxLjA5IDEuMDMsMC44OCAxLjM4LDAuODgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwNjIzMyIgc3Ryb2tlLXdpZHRoPSIwLjA3Ii8+PC9zdmc+',
-    'au': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDMiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjMiIGZpbGw9IiMwMDI0N0QiLz48cmVjdCB3aWR0aD0iMyIgaGVpZ2h0PSIxLjUiIGZpbGw9IiMwMDI0N0QiLz48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzIiB5Mj0iMS41IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMC41Ii8+PGxpbmUgeDE9IjMiIHkxPSIwIiB4Mj0iMCIgeTI9IjEuNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjMiIHkyPSIxLjUiIHN0cm9rZT0iI0NDMDAwMCIgc3Ryb2tlLXdpZHRoPSIwLjI1Ii8+PGxpbmUgeDE9IjMiIHkxPSIwIiB4Mj0iMCIgeTI9IjEuNSIgc3Ryb2tlPSIjQ0MwMDAwIiBzdHJva2Utd2lkdGg9IjAuMjUiLz48cmVjdCB4PSIxLjEiIHdpZHRoPSIwLjgiIGhlaWdodD0iMS41IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMC41NSIgd2lkdGg9IjMiIGhlaWdodD0iMC40IiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMS4yNSIgd2lkdGg9IjAuNSIgaGVpZ2h0PSIxLjUiIGZpbGw9IiNDQzAwMDAiLz48cmVjdCB5PSIwLjYyNSIgd2lkdGg9IjMiIGhlaWdodD0iMC4yNSIgZmlsbD0iI0NDMDAwMCIvPjxjaXJjbGUgY3g9IjQuNSIgY3k9IjIuMiIgcj0iMC4yMiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjMuOCIgY3k9IjEuNSIgcj0iMC4xNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjUuMiIgY3k9IjEuNyIgcj0iMC4xNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjUuMCIgY3k9IjIuNSIgcj0iMC4xNSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==',
-    'be': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDAiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjRkFFMDQyIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0VGMzM0MCIvPjwvc3ZnPg==',
-    'no': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMiAxNiI+PHJlY3Qgd2lkdGg9IjIyIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRUYyQjJEIi8+PHJlY3QgeD0iNiIgd2lkdGg9IjQiIGhlaWdodD0iMTYiIGZpbGw9IiNmZmYiLz48cmVjdCB5PSI2IiB3aWR0aD0iMjIiIGhlaWdodD0iNCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjciIHdpZHRoPSIyIiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAyODY4Ii8+PHJlY3QgeT0iNyIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDI4NjgiLz48L3N2Zz4=',
-    'ca': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0IDIiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjRkYwMDAwIi8+PHJlY3QgeD0iMyIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0ZGMDAwMCIvPjwvc3ZnPg==',
-    'mx': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDY4NDciLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0NFMTEyNiIvPjwvc3ZnPg==',
-    'za': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjQiIGZpbGw9IiNERTM4MzEiLz48cmVjdCB5PSIyIiB3aWR0aD0iNiIgaGVpZ2h0PSIyIiBmaWxsPSIjMDA3QTREIi8+PHJlY3QgeT0iMS40IiB3aWR0aD0iNiIgaGVpZ2h0PSIxLjIiIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjU1IiB3aWR0aD0iNiIgaGVpZ2h0PSIwLjkiIGZpbGw9IiNGRkI2MTIiLz48cG9seWdvbiBwb2ludHM9IjAsMCAwLDQgMywyIiBmaWxsPSIjMDAwIi8+PHBvbHlnb24gcG9pbnRzPSIwLDAuNSAwLDMuNSAyLjQsMiIgZmlsbD0iIzAwN0E0RCIvPjwvc3ZnPg==',
-    'hr': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRkYwMDAwIi8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDAwMEZGIi8+PC9zdmc+',
-    'tr': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNFMzBBMTciLz48Y2lyY2xlIGN4PSIxLjEiIGN5PSIxIiByPSIwLjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxLjMiIGN5PSIxIiByPSIwLjMyIiBmaWxsPSIjRTMwQTE3Ii8+PC9zdmc+',
-    'cz': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxIiB3aWR0aD0iMyIgaGVpZ2h0PSIxIiBmaWxsPSIjRDcxNDFBIi8+PHBvbHlnb24gcG9pbnRzPSIwLDAgMS41LDEgMCwyIiBmaWxsPSIjMTE0NTdFIi8+PC9zdmc+',
-    'ch': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkYwMDAwIi8+PHJlY3QgeD0iMTMiIHk9IjYiIHdpZHRoPSI2IiBoZWlnaHQ9IjIwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNiIgeT0iMTMiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2IiBmaWxsPSIjZmZmIi8+PC9zdmc+',
-    'ci': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiNGNzdGMDAiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iIzAwOUE0NCIvPjwvc3ZnPg==',
-    'eg': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjQ0UxMTI2Ii8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDAwIi8+PC9zdmc+',
-    'sa': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDZDMzUiLz48L3N2Zz4=',
-    'sn': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDg1M0YiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjRkRFRjQyIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0UzMUIyMyIvPjwvc3ZnPg==',
-    'uy': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIwLjIyMiIgd2lkdGg9IjMiIGhlaWdodD0iMC4yMjIiIGZpbGw9IiM3NEFDREYiLz48cmVjdCB5PSIwLjY2NyIgd2lkdGg9IjMiIGhlaWdodD0iMC4yMjIiIGZpbGw9IiM3NEFDREYiLz48cmVjdCB5PSIxLjExMSIgd2lkdGg9IjMiIGhlaWdodD0iMC4yMjIiIGZpbGw9IiM3NEFDREYiLz48cmVjdCB5PSIxLjU1NiIgd2lkdGg9IjMiIGhlaWdodD0iMC4yMjIiIGZpbGw9IiM3NEFDREYiLz48L3N2Zz4=',
-    'ec': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuOCIgZmlsbD0iI0ZGRDEwMCIvPjxyZWN0IHk9IjAuOCIgd2lkdGg9IjMiIGhlaWdodD0iMC42IiBmaWxsPSIjMDAzREE1Ii8+PHJlY3QgeT0iMS40IiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjYiIGZpbGw9IiNFRjMzNDAiLz48L3N2Zz4=',
-    'ir': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMjM5RjQwIi8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjREEwMDAwIi8+PC9zdmc+',
-    'nz': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDMiPjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjMiIGZpbGw9IiMwMDI0N0QiLz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxLjUiIGZpbGw9IiMwMDI0N0QiLz48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzIiB5Mj0iMS41IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMC41Ii8+PGxpbmUgeDE9IjMiIHkxPSIwIiB4Mj0iMCIgeTI9IjEuNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjMiIHkyPSIxLjUiIHN0cm9rZT0iI0NGMTQyQiIgc3Ryb2tlLXdpZHRoPSIwLjI4Ii8+PGxpbmUgeDE9IjMiIHkxPSIwIiB4Mj0iMCIgeTI9IjEuNSIgc3Ryb2tlPSIjQ0YxNDJCIiBzdHJva2Utd2lkdGg9IjAuMjgiLz48cmVjdCB4PSIxLjIiIHk9IjAiIHdpZHRoPSIwLjYiIGhlaWdodD0iMS41IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMC42IiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjMiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIxLjMiIHk9IjAiIHdpZHRoPSIwLjQiIGhlaWdodD0iMS41IiBmaWxsPSIjQ0YxNDJCIi8+PHJlY3QgeT0iMC42NSIgd2lkdGg9IjMiIGhlaWdodD0iMC4yIiBmaWxsPSIjQ0YxNDJCIi8+PGNpcmNsZSBjeD0iNC4zIiBjeT0iMC40IiByPSIwLjE4IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iNC4zIiBjeT0iMC40IiByPSIwLjExIiBmaWxsPSIjQ0MwMDAwIi8+PGNpcmNsZSBjeD0iNS4yIiBjeT0iMC43IiByPSIwLjE0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iNS4yIiBjeT0iMC43IiByPSIwLjA5IiBmaWxsPSIjQ0MwMDAwIi8+PGNpcmNsZSBjeD0iNC44IiBjeT0iMS40IiByPSIwLjE4IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iNC44IiBjeT0iMS40IiByPSIwLjExIiBmaWxsPSIjQ0MwMDAwIi8+PGNpcmNsZSBjeD0iNC4wIiBjeT0iMS4wIiByPSIwLjE0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iNC4wIiBjeT0iMS4wIiByPSIwLjA5IiBmaWxsPSIjQ0MwMDAwIi8+PC9zdmc+',
-    'qa': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxMSI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjExIiBmaWxsPSIjOEQxQjNEIi8+PHBvbHlnb24gcG9pbnRzPSIwLDAgOSwwIDExLjUsMS4xIDksMi4yIDExLjUsMy4zIDksNC40IDExLjUsNS41IDksNi42IDExLjUsNy43IDksOC44IDExLjUsOS45IDksMTEgMCwxMSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==',
-    'cv': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDM4OTMiLz48cmVjdCB5PSIxLjIiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuMyIgZmlsbD0iI0NGMjAyNyIvPjxyZWN0IHk9IjAuOCIgd2lkdGg9IjMiIGhlaWdodD0iMC4xIiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS41IiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=',
-    'iq': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjQ0UxMTI2Ii8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDAwIi8+PC9zdmc+',
-    'ba': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyIDEiPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDIzOTUiLz48cG9seWdvbiBwb2ludHM9IjAuNSwwIDEuNSwxIDAuNSwxIiBmaWxsPSIjRkVDQzAyIi8+PC9zdmc+',
-    'py': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRDUyQjFFIi8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDAzOEE4Ii8+PC9zdmc+',
-    'ht': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDIwOUYiLz48cmVjdCB5PSIxIiB3aWR0aD0iMyIgaGVpZ2h0PSIxIiBmaWxsPSIjRDIxMDM0Ii8+PC9zdmc+',
-    'dz': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxLjUiIGhlaWdodD0iMiIgZmlsbD0iIzAwNjIzMyIvPjxyZWN0IHg9IjEuNSIgd2lkdGg9IjEuNSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PC9zdmc+',
-    'jo': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDAwIi8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDA3QTNEIi8+PHBvbHlnb24gcG9pbnRzPSIwLDAgMS4yLDEgMCwyIiBmaWxsPSIjQ0UxMTI2Ii8+PGNpcmNsZSBjeD0iMC41IiBjeT0iMSIgcj0iMC4yIiBmaWxsPSIjZmZmIi8+PC9zdmc+',
-    'at': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRUQyOTM5Ii8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRUQyOTM5Ii8+PC9zdmc+',
-    'cd': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDdGRkYiLz48cmVjdCB3aWR0aD0iMyIgaGVpZ2h0PSIwLjE4IiBmaWxsPSIjRjdENjE4Ii8+PHJlY3QgeT0iMS44MiIgd2lkdGg9IjMiIGhlaWdodD0iMC4xOCIgZmlsbD0iI0Y3RDYxOCIvPjxsaW5lIHgxPSIwIiB5MT0iMiIgeDI9IjMiIHkyPSIwIiBzdHJva2U9IiNDRTExMjYiIHN0cm9rZS13aWR0aD0iMC41Ii8+PGxpbmUgeDE9IjAiIHkxPSIyIiB4Mj0iMyIgeTI9IjAiIHN0cm9rZT0iI0Y3RDYxOCIgc3Ryb2tlLXdpZHRoPSIwLjMiLz48L3N2Zz4=',
-    'uz': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNiIgZmlsbD0iIzFFQkZGRiIvPjxyZWN0IHk9IjAuNiIgd2lkdGg9IjMiIGhlaWdodD0iMC4xMzMiIGZpbGw9IiNDRTExMjYiLz48cmVjdCB5PSIwLjczMyIgd2lkdGg9IjMiIGhlaWdodD0iMC41MzMiIGZpbGw9IiNmZmYiLz48cmVjdCB5PSIxLjI2NiIgd2lkdGg9IjMiIGhlaWdodD0iMC4xMzMiIGZpbGw9IiNDRTExMjYiLz48cmVjdCB5PSIxLjQiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNiIgZmlsbD0iIzFFQjUzQSIvPjwvc3ZnPg==',
-    'co': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuOCIgZmlsbD0iI0ZDRDExNiIvPjxyZWN0IHk9IjAuOCIgd2lkdGg9IjMiIGhlaWdodD0iMC42IiBmaWxsPSIjMDAzMDg3Ii8+PHJlY3QgeT0iMS40IiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjYiIGZpbGw9IiNDRTExMjYiLz48L3N2Zz4=',
-    'gh': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRUYzMzQwIi8+PHJlY3QgeT0iMC42NjciIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjRkNEMTE2Ii8+PHJlY3QgeT0iMS4zMzMiIHdpZHRoPSIzIiBoZWlnaHQ9IjAuNjY3IiBmaWxsPSIjMDA2QjNGIi8+PHBvbHlnb24gcG9pbnRzPSIxLjUsMC42NjcgMS42MiwxLjA1IDIuMCwxLjA1IDEuNjksMS4yNyAxLjgsMS42NSAxLjUsMS40NCAxLjIsMS42NSAxLjMxLDEuMjcgMS4wLDEuMDUgMS4zOCwxLjA1IiBmaWxsPSIjMDAwIi8+PC9zdmc+',
-    'pa': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0IDIiPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIyIiB3aWR0aD0iMiIgaGVpZ2h0PSIxIiBmaWxsPSIjRDIxMDM0Ii8+PHJlY3QgeT0iMSIgd2lkdGg9IjIiIGhlaWdodD0iMSIgZmlsbD0iIzAwNTI5MyIvPjxyZWN0IHg9IjIiIHk9IjEiIHdpZHRoPSIyIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=',
-    'cw': 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDJCN0YiLz48cmVjdCB5PSIxLjM1IiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjMiIGZpbGw9IiNGOUU4MTQiLz48cmVjdCB5PSIwLjgyIiB3aWR0aD0iMyIgaGVpZ2h0PSIwLjEyIiBmaWxsPSIjRjlFODE0Ii8+PGNpcmNsZSBjeD0iMC41NSIgY3k9IjAuNTUiIHI9IjAuMiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjAuODgiIGN5PSIwLjM4IiByPSIwLjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=',
+    'jp': 'https://flagcdn.com/jp.svg',
+    'nl': 'https://flagcdn.com/nl.svg',
+    'se': 'https://flagcdn.com/se.svg',
+    'tn': 'https://flagcdn.com/tn.svg',
+    'de': 'https://flagcdn.com/de.svg',
+    'fr': 'https://flagcdn.com/fr.svg',
+    'br': 'https://flagcdn.com/br.svg',
+    'ar': 'https://flagcdn.com/ar.svg',
+    'es': 'https://flagcdn.com/es.svg',
+    'pt': 'https://flagcdn.com/pt.svg',
+    'us': 'https://flagcdn.com/us.svg',
+    'gb-eng': 'https://flagicons.lipis.dev/flags/4x3/gb-eng.svg',
+    'gb-sct': 'https://flagicons.lipis.dev/flags/4x3/gb-sct.svg',
+    'kr': 'https://flagcdn.com/kr.svg',
+    'ma': 'https://flagcdn.com/ma.svg',
+    'au': 'https://flagcdn.com/au.svg',
+    'be': 'https://flagcdn.com/be.svg',
+    'no': 'https://flagcdn.com/no.svg',
+    'ca': 'https://flagcdn.com/ca.svg',
+    'mx': 'https://flagcdn.com/mx.svg',
+    'za': 'https://flagcdn.com/za.svg',
+    'hr': 'https://flagcdn.com/hr.svg',
+    'tr': 'https://flagcdn.com/tr.svg',
+    'cz': 'https://flagcdn.com/cz.svg',
+    'ch': 'https://flagcdn.com/ch.svg',
+    'ci': 'https://flagcdn.com/ci.svg',
+    'eg': 'https://flagcdn.com/eg.svg',
+    'sa': 'https://flagcdn.com/sa.svg',
+    'sn': 'https://flagcdn.com/sn.svg',
+    'uy': 'https://flagcdn.com/uy.svg',
+    'ec': 'https://flagcdn.com/ec.svg',
+    'ir': 'https://flagcdn.com/ir.svg',
+    'nz': 'https://flagcdn.com/nz.svg',
+    'qa': 'https://flagcdn.com/qa.svg',
+    'cv': 'https://flagcdn.com/cv.svg',
+    'iq': 'https://flagcdn.com/iq.svg',
+    'ba': 'https://flagcdn.com/ba.svg',
+    'py': 'https://flagcdn.com/py.svg',
+    'ht': 'https://flagcdn.com/ht.svg',
+    'dz': 'https://flagcdn.com/dz.svg',
+    'jo': 'https://flagcdn.com/jo.svg',
+    'at': 'https://flagcdn.com/at.svg',
+    'cd': 'https://flagcdn.com/cd.svg',
+    'uz': 'https://flagcdn.com/uz.svg',
+    'co': 'https://flagcdn.com/co.svg',
+    'gh': 'https://flagcdn.com/gh.svg',
+    'pa': 'https://flagcdn.com/pa.svg',
+    'cw': 'https://flagcdn.com/cw.svg',
     };
     return FLAG_SVG;
   }
