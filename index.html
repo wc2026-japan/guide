@@ -8386,9 +8386,11 @@
   const SOKUHŌ_STATE = {
     state:      'live',
     homeScore:  0,
-    awayScore:  0,
+    awayScore:  1,
     minute:     '',
-    scorers: [],
+    scorers: [
+      { min: '', name: '佐野 海舟', jp: true, og: false },
+    ],
   };
 
   function initSokuhō() {
