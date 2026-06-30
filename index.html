@@ -1217,7 +1217,7 @@
     }
     .bk-team.jp   { color: var(--sky-blue); }
     .bk-team.tbd  { color: var(--text-muted); font-weight: 600; font-size: 9px; }
-    .bk-team.won  { color: #4caf50; }
+    .bk-team.won  { color: #4caf50; background: rgba(76,175,80,0.12); border-radius: 4px; padding: 1px 3px; margin: -1px -3px; }
     .bk-team img  { width: 18px; height: 12px; border-radius: 2px; object-fit: cover; flex-shrink: 0; }
     .bk-score     { font-size: 10px; font-weight: 900; margin-left: auto; padding-left: 4px; flex-shrink: 0; }
     .bk-score.w   { color: #4caf50; }
@@ -3860,6 +3860,7 @@
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
     <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
+    <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 決勝T</button>
     <button class="tab" data-tab-id="jpteam" onclick="showSection('jpteam', this)"><span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
   <!-- Shield outer (black) -->
   <path d="M16 0L0 5V18C0 27 7.5 33.5 16 36C24.5 33.5 32 27 32 18V5L16 0Z" fill="#1a1a1a"/>
@@ -5379,16 +5380,6 @@
   <!-- ===== STANDINGS TAB ===== -->
   <div id="section-standings" class="section">
 
-    <!-- メイン切り替えタブ -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
-      <button id="st-gs-btn" class="st-main-tab active" onclick="stSwitchMain('gs')">
-        ⚽ グループステージ
-      </button>
-      <button id="st-ko-btn" class="st-main-tab" onclick="stSwitchMain('ko')">
-        🏆 決勝トーナメント
-      </button>
-    </div>
-
     <!-- グループリーグ -->
     <div id="st-gs-panel">
       <div class="group-selector" id="groupSelector"></div>
@@ -5478,10 +5469,19 @@
       </div>
     </div>
 
-    <!-- 決勝トーナメント -->
-    <div id="st-ko-panel" style="display:none">
+    <div class="share-btn-wrap" style="display:none">
+      <button class="share-btn" onclick="shareTab('standings')"><span class="x-icon">𝕏</span> この情報をシェア</button>
+    </div>
+  </div>
+  <!-- ===== TOURNAMENT TAB ===== -->
+  <div id="section-tournament" class="section">
 
-      <!-- 凡例 -->
+    <div style="margin-bottom:14px">
+      <div style="font-size:20px;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px">🏆 決勝トーナメント表</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:2px">FIFA World Cup 2026 ／ ノックアウトステージ全試合</div>
+    </div>
+
+<!-- 凡例 -->
       <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:10px;color:var(--text-muted);margin-bottom:10px;align-items:center">
         <span>⭐ 注目カード</span>
         <span style="color:var(--sky-blue);font-weight:800">🇯🇵 日本ルート</span>
@@ -5509,20 +5509,20 @@
               <div class="bk-team won"><img src="https://flagcdn.com/ca.svg" alt="🇨🇦">カナダ<span class="bk-score w">1✓</span></div>
             </div>
 
-            <!-- ② オランダ vs モロッコ -->
-            <div class="bk-match">
-              <div class="bk-match-meta">② 6/30(火) 10:00 モンテレー</div>
-              <div class="bk-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱">オランダ（F1）</div>
+            <!-- ② オランダ vs モロッコ FT 1-1 PK2-3 -->
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">② 6/30(火) 10:00 モンテレー <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱">オランダ（F1）<span class="bk-score l">1</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦">モロッコ（C2）</div>
+              <div class="bk-team won"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦">モロッコ（C2）<span class="bk-score w">1(PK3)✓</span></div>
             </div>
 
-            <!-- ③ ドイツ vs 3位枠 -->
-            <div class="bk-match">
-              <div class="bk-match-meta">③ 6/30(火) 05:30 ボストン</div>
-              <div class="bk-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪">ドイツ（E2）</div>
+            <!-- ③ ドイツ vs パラグアイ FT 1-1 PK3-4 -->
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">③ 6/30(火) 05:30 ボストン <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪">ドイツ（E2）<span class="bk-score l">1</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team tbd">— 3位通過枠</div>
+              <div class="bk-team won"><img src="https://flagcdn.com/py.svg" alt="🇵🇾">パラグアイ（3位）<span class="bk-score w">1(PK4)✓</span></div>
             </div>
 
             <!-- ④ フランス vs 3位枠 -->
@@ -5775,17 +5775,17 @@
               <div class="bk-sep"></div>
               <div class="bk-team won"><img src="https://flagcdn.com/ca.svg" alt="🇨🇦">カナダ<span class="bk-score w">1✓</span></div>
             </div>
-            <div class="bk-match">
-              <div class="bk-match-meta">② 6/30 10:00 モンテレー</div>
-              <div class="bk-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱">オランダ</div>
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">② 6/30 10:00 モンテレー <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team"><img src="https://flagcdn.com/nl.svg" alt="🇳🇱">オランダ<span class="bk-score l">1</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦">モロッコ</div>
+              <div class="bk-team won"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦">モロッコ<span class="bk-score w">1(PK3)✓</span></div>
             </div>
-            <div class="bk-match">
-              <div class="bk-match-meta">③ 6/30 05:30 ボストン</div>
-              <div class="bk-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪">ドイツ</div>
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">③ 6/30 05:30 ボストン <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team"><img src="https://flagcdn.com/de.svg" alt="🇩🇪">ドイツ<span class="bk-score l">1</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team tbd">— 3位通過枠</div>
+              <div class="bk-team won"><img src="https://flagcdn.com/py.svg" alt="🇵🇾">パラグアイ<span class="bk-score w">1(PK4)✓</span></div>
             </div>
             <div class="bk-match">
               <div class="bk-match-meta">④ 7/1 06:00 NJ</div>
@@ -5939,12 +5939,9 @@
 
       </div><!-- /bk-mobile -->
 
-    </div><!-- /st-ko-panel -->
+  </div><!-- /section-tournament -->
 
-    <div class="share-btn-wrap" style="display:none">
-      <button class="share-btn" onclick="shareTab('standings')"><span class="x-icon">𝕏</span> この情報をシェア</button>
-    </div>
-  </div>
+
 
 
   <!-- ===== PREDICT TAB ===== -->
@@ -6913,6 +6910,9 @@
   <button class="nav-btn" id="nav-schedule" onclick="showSection('schedule', null, 'nav-schedule')">
     <span class="nav-icon">📅</span>全日程
   </button>
+  <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
+    <span class="nav-icon">🔥</span>決勝T
+  </button>
   <button class="nav-btn" id="nav-jpteam" onclick="showSection('jpteam', null, 'nav-jpteam')">
     <span class="nav-icon" style="display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
   <!-- Shield outer (black) -->
@@ -6947,7 +6947,7 @@
   <text x="16" y="27" font-family="Arial Black,sans-serif" font-size="4" font-weight="900" fill="#1a1a1a" text-anchor="middle" letter-spacing="0.5">JFA</text>
 </svg></span>日本代表
   </button>
-  <button class="nav-btn" id="nav-predict" onclick="showSection('predict', null, 'nav-predict')">
+  <button class="nav-btn" id="nav-predict" onclick="showSection('predict', null, 'nav-predict')" style="display:none">
     <span class="nav-icon">🎯</span>突破条件
   </button>
   <button class="nav-btn" id="nav-standings" onclick="showSection('standings', null, 'nav-standings')">
@@ -7450,7 +7450,7 @@
     });
 
     // Bottom nav
-    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
+    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', tournament:'nav-tournament', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     const navTarget = document.getElementById(navId || navMap[id] || 'nav-japan');
     if (navTarget) navTarget.classList.add('active');
@@ -7955,8 +7955,8 @@
 
     {date:'6/29',dow:'月',time:'04:00',home:{n:'南アフリカ',cc:'za'},   away:{n:'カナダ',cc:'ca'},      group:'R32',venue:'ロサンゼルス',   score:'0-1',broad:['dazn'],jp:false,free:false,past:true},
     {date:'6/30',dow:'火',time:'02:00',home:{n:'ブラジル',cc:'br'},     away:{n:'日本',cc:'jp'},        group:'R32',venue:'ヒューストン',   score:'2-1',broad:['dazn','nhk'],jp:true,free:false},
-    {date:'6/30',dow:'火',time:'05:30',home:{n:'ドイツ',cc:'de'},       away:{n:'パラグアイ',cc:'py'},  group:'R32',venue:'ボストン',        score:'',broad:['dazn'],jp:false,free:false},
-    {date:'6/30',dow:'火',time:'10:00',home:{n:'オランダ',cc:'nl'},     away:{n:'モロッコ',cc:'ma'},    group:'R32',venue:'モンテレー',     score:'',broad:['dazn'],jp:false,free:false},
+    {date:'6/30',dow:'火',time:'05:30',home:{n:'ドイツ',cc:'de'},       away:{n:'パラグアイ',cc:'py'},  group:'R32',venue:'ボストン',        score:'1-1(PK3-4)',broad:['dazn'],jp:false,free:false,past:true},
+    {date:'6/30',dow:'火',time:'10:00',home:{n:'オランダ',cc:'nl'},     away:{n:'モロッコ',cc:'ma'},    group:'R32',venue:'モンテレー',     score:'1-1(PK2-3)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/1', dow:'水',time:'02:00',home:{n:'コートジボワール',cc:'ci'},away:{n:'ノルウェー',cc:'no'},group:'R32',venue:'ダラス',         score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/1', dow:'水',time:'06:00',home:{n:'フランス',cc:'fr'},     away:{n:'スウェーデン',cc:'se'},group:'R32',venue:'ニュージャージー',score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/1', dow:'水',time:'10:00',home:{n:'メキシコ',cc:'mx'},     away:{n:'エクアドル',cc:'ec'},  group:'R32',venue:'メキシコシティ', score:'',broad:['dazn'],jp:false,free:false},
@@ -8469,23 +8469,9 @@
     btn.textContent = open ? 'すべての試合日程を見る　›' : '閉じる　›';
   }
 
-  // ===== 順位表タブ グループリーグ/決勝T 切り替え =====
+  // ===== 順位表タブ（グループリーグのみ。決勝Tは🏆トーナメントタブへ移行） =====
   function stSwitchMain(mode) {
-    const gsPanel = document.getElementById('st-gs-panel');
-    const koPanel = document.getElementById('st-ko-panel');
-    const gsBtn   = document.getElementById('st-gs-btn');
-    const koBtn   = document.getElementById('st-ko-btn');
-    if (mode === 'gs') {
-      gsPanel.style.display = '';
-      koPanel.style.display = 'none';
-      gsBtn.classList.add('active');
-      koBtn.classList.remove('active');
-    } else {
-      gsPanel.style.display = 'none';
-      koPanel.style.display = '';
-      gsBtn.classList.remove('active');
-      koBtn.classList.add('active');
-    }
+    // no-op: 決勝トーナメントは独立タブに移行済み
   }
 
   // ===== 決勝トーナメント ラウンドタブ切り替え =====
