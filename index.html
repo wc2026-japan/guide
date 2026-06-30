@@ -3912,8 +3912,8 @@
     <!-- 敗退後バナー（JAPAN_STATUS='eliminated'時に表示） -->
     <div class="japan-over-banner" id="japanOverBanner">
       <div class="job-emoji">🇯🇵</div>
-      <div class="job-title" id="japanOverTitle">グループリーグ敗退</div>
-      <div class="job-sub" id="japanOverSub">2026 FIFAワールドカップ グループF<br>ご声援ありがとうございました</div>
+      <div class="job-title" id="japanOverTitle">ベスト32敗退</div>
+      <div class="job-sub" id="japanOverSub">2026 FIFA W杯 ラウンド32<br>ブラジル 2-1 日本<br>ご声援ありがとうございました🇯🇵</div>
       <div class="job-result-row" id="japanOverResults"></div>
     </div>
 
@@ -4148,13 +4148,13 @@
         <div style="display:flex;flex-direction:column;gap:8px">
           <div style="background:rgba(188,0,45,0.25);border:1px solid rgba(188,0,45,0.5);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center">
             <div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700;margin-bottom:2px">⚔️ ラウンド32</div>
-              <div style="font-size:14px;font-weight:900;color:#fff">vs 🇧🇷 ブラジル</div>
-              <div style="font-size:10px;color:#ff9999;margin-top:2px">📍 ヒューストン</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:700;margin-bottom:2px">⚔️ ラウンド32　FT</div>
+              <div style="font-size:14px;font-weight:900;color:#fff">🇧🇷 ブラジル　<span style="color:#ff6b6b">2 - 1</span>　🇯🇵 日本</div>
+              <div style="font-size:10px;color:#ff9999;margin-top:2px">📍 ヒューストン ／ ⚽ 佐野海舟</div>
             </div>
             <div style="text-align:right">
               <div style="font-size:13px;font-weight:900;color:#ff9999">6/30(火)</div>
-              <div style="font-size:18px;font-weight:900;color:#fff">02:00</div>
+              <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5)">敗退</div>
             </div>
           </div>
           <div style="background:rgba(30,80,200,0.2);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center">
@@ -7590,16 +7590,17 @@
   // 'advancing'   : 決勝T進出確定
   // 'eliminated'  : グループリーグ敗退
   // 'knockout'    : 決勝T中
-  const JAPAN_STATUS = 'advancing';
+  const JAPAN_STATUS = 'eliminated';
 
   // 優勝予想機能のリリースフラグ（ラウンド16開始時にtrueに変更）
   const CHAMPION_RELEASED = false;
 
   // 敗退後の結果サマリー（JAPAN_STATUS='eliminated'時に使用）
   const JAPAN_RESULTS = [
-    { label: 'オランダ 2-2 日本', type: 'draw' },
-    { label: 'チュニジア 0-4 日本', type: 'win' },
-    { label: '日本 1-1 スウェーデン', type: 'draw' },
+    { label: 'オランダ 2-2 日本',    type: 'draw' },
+    { label: 'チュニジア 0-4 日本',  type: 'win'  },
+    { label: '日本 1-1 スウェーデン',type: 'draw' },
+    { label: 'ブラジル 2-1 日本',    type: 'loss' },
   ];
 
   function initJapanStatus() {
@@ -7953,7 +7954,7 @@
     {date:'6/28',dow:'日',time:'11:00b',home:{n:'ヨルダン',cc:'jo'},      away:{n:'アルゼンチン',cc:'ar'},group:'J',venue:'ダラス',          score:'1-3',broad:['dazn','nhk'],   jp:false,free:false,past:true},
 
     {date:'6/29',dow:'月',time:'04:00',home:{n:'南アフリカ',cc:'za'},   away:{n:'カナダ',cc:'ca'},      group:'R32',venue:'ロサンゼルス',   score:'0-1',broad:['dazn'],jp:false,free:false,past:true},
-    {date:'6/30',dow:'火',time:'02:00',home:{n:'ブラジル',cc:'br'},     away:{n:'日本',cc:'jp'},        group:'R32',venue:'ヒューストン',   score:'',broad:['dazn','nhk'],jp:true,free:false},
+    {date:'6/30',dow:'火',time:'02:00',home:{n:'ブラジル',cc:'br'},     away:{n:'日本',cc:'jp'},        group:'R32',venue:'ヒューストン',   score:'2-1',broad:['dazn','nhk'],jp:true,free:false},
     {date:'6/30',dow:'火',time:'05:30',home:{n:'ドイツ',cc:'de'},       away:{n:'パラグアイ',cc:'py'},  group:'R32',venue:'ボストン',        score:'',broad:['dazn'],jp:false,free:false},
     {date:'6/30',dow:'火',time:'10:00',home:{n:'オランダ',cc:'nl'},     away:{n:'モロッコ',cc:'ma'},    group:'R32',venue:'モンテレー',     score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/1', dow:'水',time:'02:00',home:{n:'コートジボワール',cc:'ci'},away:{n:'ノルウェー',cc:'no'},group:'R32',venue:'ダラス',         score:'',broad:['dazn'],jp:false,free:false},
@@ -8384,7 +8385,7 @@
   //   { min: '67'', name: '上田 綺世', jp: true,  og: true  },  // オウンゴール（日本選手名で記録）
   // ]
   const SOKUHŌ_STATE = {
-    state:      'live',
+    state:      'ft',
     homeScore:  2,
     awayScore:  1,
     minute:     '',
