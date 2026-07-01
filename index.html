@@ -7583,6 +7583,40 @@
     );
   }
 
+  // ===== ランキング 静的データ（7/1時点） =====
+  const RANKING_SCORERS = [
+    { name:'L・メッシ',      country:'アルゼンチン', flag:'🇦🇷', g:6, a:3, jp:false },
+    { name:'E・ハーランド',  country:'ノルウェー',   flag:'🇳🇴', g:5, a:0, jp:false },
+    { name:'K・エムバペ',    country:'フランス',     flag:'🇫🇷', g:4, a:2, jp:false },
+    { name:'ヴィニシウス',   country:'ブラジル',     flag:'🇧🇷', g:4, a:1, jp:false },
+    { name:'O・デンベレ',    country:'フランス',     flag:'🇫🇷', g:4, a:1, jp:false },
+    { name:'J・ダヴィド',    country:'カナダ',       flag:'🇨🇦', g:3, a:1, jp:false },
+    { name:'D・ウンダフ',    country:'ドイツ',       flag:'🇩🇪', g:3, a:2, jp:false },
+    { name:'J・マンザンビ',  country:'スイス',       flag:'🇨🇭', g:3, a:0, jp:false },
+    { name:'M・クーニャ',    country:'ブラジル',     flag:'🇧🇷', g:3, a:0, jp:false },
+    { name:'I・サイバリ',    country:'モロッコ',     flag:'🇲🇦', g:3, a:1, jp:false },
+    { name:'B・ブロビー',    country:'オランダ',     flag:'🇳🇱', g:3, a:0, jp:false },
+    { name:'I・サール',      country:'セネガル',     flag:'🇸🇳', g:3, a:0, jp:false },
+    { name:'鎌田 大地',      country:'日本',         flag:'🇯🇵', g:2, a:1, jp:true  },
+    { name:'上田 綺世',      country:'日本',         flag:'🇯🇵', g:2, a:0, jp:true  },
+    { name:'H・ケイン',      country:'イングランド', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:3, a:1, jp:false },
+  ];
+
+  const RANKING_ASSISTS = [
+    { name:'L・メッシ',      country:'アルゼンチン', flag:'🇦🇷', a:3, g:6, jp:false },
+    { name:'K・エムバペ',    country:'フランス',     flag:'🇫🇷', a:2, g:4, jp:false },
+    { name:'D・ウンダフ',    country:'ドイツ',       flag:'🇩🇪', a:2, g:3, jp:false },
+    { name:'ヴィニシウス',   country:'ブラジル',     flag:'🇧🇷', a:1, g:4, jp:false },
+    { name:'O・デンベレ',    country:'フランス',     flag:'🇫🇷', a:1, g:4, jp:false },
+    { name:'J・ダヴィド',    country:'カナダ',       flag:'🇨🇦', a:1, g:3, jp:false },
+    { name:'I・サイバリ',    country:'モロッコ',     flag:'🇲🇦', a:1, g:3, jp:false },
+    { name:'鎌田 大地',      country:'日本',         flag:'🇯🇵', a:1, g:2, jp:true  },
+    { name:'佐野 海舟',      country:'日本',         flag:'🇯🇵', a:0, g:1, jp:true  },
+    { name:'C・ロナウド',    country:'ポルトガル',   flag:'🇵🇹', a:0, g:2, jp:false },
+  ];
+
+  const RANKING_UPDATED = '7/1 更新';
+
   // ===== ランキング タブ切り替え =====
   function rkSwitch(tab) {
     ['scorer','assist','stats'].forEach(t => {
@@ -7591,172 +7625,59 @@
     });
   }
 
-  async function loadRankingData() {
-    const loading = document.getElementById('ranking-loading');
-    const error   = document.getElementById('ranking-error');
-    const content = document.getElementById('ranking-content');
-    const btn     = document.getElementById('ranking-reload-btn');
+  function loadRankingData() {
+    renderScorers(RANKING_SCORERS);
+    renderAssisters(RANKING_ASSISTS);
 
-    loading.style.display = '';
-    error.style.display   = 'none';
-    content.style.display = 'none';
-    if (btn) btn.disabled = true;
+    ['scorer-updated','assist-updated','stats-updated'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = RANKING_UPDATED;
+    });
 
-    try {
-      const headers = { 'x-apisports-key': RANKING_API_KEY };
-      const base    = `https://v3.football.api-sports.io`;
-
-      // 3本同時取得
-      const [res1, res2, res3] = await Promise.all([
-        fetch(`${base}/players/topscorers?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`, { headers }),
-        fetch(`${base}/players/topassists?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`, { headers }),
-        fetch(`${base}/players/topscorers?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}&page=1`, { headers }),
-      ]);
-
-      const scorers   = (await res1.json()).response || [];
-      const assisters = (await res2.json()).response || [];
-      // スタッツはscorerデータを流用（シュート・パスデータ含む）
-      const statsData = scorers;
-
-      renderScorers(scorers);
-      renderAssisters(assisters);
-      renderStats(statsData);
-
-      const now = new Date();
-      const timeStr = `${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} 更新`;
-      ['scorer-updated','assist-updated','stats-updated'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = timeStr;
-      });
-
-      loading.style.display = 'none';
-      content.style.display = '';
-
-    } catch(e) {
-      loading.style.display = 'none';
-      const errMsg = document.getElementById('ranking-error-msg');
-      if (errMsg) errMsg.textContent = 'データ取得失敗。時間をおいて再試行してください。';
-      error.style.display = '';
-    } finally {
-      if (btn) btn.disabled = false;
-    }
-  }
-
-  function mkPlayerRow(item, rank, col1Key, col2Key, col1Color, col2Color, extraCols) {
-    const p       = item.player;
-    const stats   = item.statistics[0];
-    const isJp    = p.nationality === 'Japan';
-    const country = jaCountry(p.nationality);
-    const flag    = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
-    const medals  = { 1:'🥇', 2:'🥈', 3:'🥉' };
-    const medal   = medals[rank] || rank;
-    const games   = stats.games?.appearences || stats.games?.appearances || 0;
-
-    return `
-      <tr style="${isJp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
-        <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${medal}</td>
-        <td style="padding:9px 8px">
-          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'13px':'12px'}">
-            ${isJp?'🇯🇵 ':''}${p.name}
-          </div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:1px">${country}</div>
-        </td>
-        <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
-        ${extraCols}
-        <td style="padding:9px 4px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4)">${games}</td>
-      </tr>`;
+    document.getElementById('ranking-loading').style.display = 'none';
+    document.getElementById('ranking-error').style.display   = 'none';
+    document.getElementById('ranking-content').style.display = '';
   }
 
   function renderScorers(list) {
-    const tbody = document.getElementById('scorer-tbody');
+    const tbody  = document.getElementById('scorer-tbody');
     if (!tbody) return;
-    tbody.innerHTML = list.slice(0, 15).map((item, i) => {
-      const s       = item.statistics[0];
-      const goals   = s.goals?.total   || 0;
-      const assists = s.goals?.assists || 0;
-      const extra   = `
-        <td style="padding:9px 4px;text-align:center;font-size:15px;font-weight:900;color:var(--gold)">${goals}</td>
-        <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--sky-blue)">${assists}</td>`;
-      return mkPlayerRow(item, i+1, 'goals', 'assists', 'var(--gold)', 'var(--sky-blue)', extra);
+    const medals = { 1:'🥇', 2:'🥈', 3:'🥉' };
+    tbody.innerHTML = list.map((p, i) => {
+      const rank  = i + 1;
+      const medal = medals[rank] || rank;
+      return `<tr style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
+        <td style="padding:11px 8px;text-align:center;font-size:15px;color:var(--text-muted);font-weight:700">${medal}</td>
+        <td style="padding:11px 10px">
+          <div style="font-weight:${p.jp?'900':'700'};color:${p.jp?'var(--sky-blue)':'var(--text-primary)'};font-size:${p.jp?'16px':'15px'}">${p.name}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px">${p.country}</div>
+        </td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px">${p.flag}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:900;color:var(--gold)">${p.g}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:700;color:var(--sky-blue)">${p.a}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:14px;color:rgba(255,255,255,0.4)">-</td>
+      </tr>`;
     }).join('');
   }
 
   function renderAssisters(list) {
     const tbody = document.getElementById('assist-tbody');
     if (!tbody) return;
-    tbody.innerHTML = list.slice(0, 15).map((item, i) => {
-      const s       = item.statistics[0];
-      const assists = s.goals?.assists || 0;
-      const goals   = s.goals?.total   || 0;
-      const extra   = `
-        <td style="padding:9px 4px;text-align:center;font-size:15px;font-weight:900;color:var(--sky-blue)">${assists}</td>
-        <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--gold)">${goals}</td>`;
-      return mkPlayerRow(item, i+1, 'assists', 'goals', 'var(--sky-blue)', 'var(--gold)', extra);
-    }).join('');
+    tbody.innerHTML = list.map((p, i) => `<tr style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
+        <td style="padding:11px 8px;text-align:center;font-size:15px;color:var(--text-muted);font-weight:700">${i+1}</td>
+        <td style="padding:11px 10px">
+          <div style="font-weight:${p.jp?'900':'700'};color:${p.jp?'var(--sky-blue)':'var(--text-primary)'};font-size:${p.jp?'16px':'15px'}">${p.name}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px">${p.country}</div>
+        </td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px">${p.flag}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:900;color:var(--sky-blue)">${p.a}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:700;color:var(--gold)">${p.g}</td>
+        <td style="padding:11px 6px;text-align:center;font-size:14px;color:rgba(255,255,255,0.4)">-</td>
+      </tr>`).join('');
   }
 
-  function renderStats(list) {
-    // シュート数TOP10
-    const shotsSorted = [...list].sort((a,b) =>
-      (b.statistics[0].shots?.total||0) - (a.statistics[0].shots?.total||0)
-    ).slice(0, 10);
+  function renderStats(list) {}
 
-    const shotsTbody = document.getElementById('shots-tbody');
-    if (shotsTbody) {
-      shotsTbody.innerHTML = shotsSorted.map((item, i) => {
-        const s     = item.statistics[0];
-        const total = s.shots?.total  || 0;
-        const on    = s.shots?.on     || 0;
-        const goals = s.goals?.total  || 0;
-        const p     = item.player;
-        const isJp  = p.nationality === 'Japan';
-        const flag  = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
-        return `
-          <tr style="${isJp?'background:rgba(59,122,240,0.18);':''}border-bottom:1px solid rgba(255,255,255,0.06)">
-            <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${i+1}</td>
-            <td style="padding:9px 8px">
-              <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:12px">${isJp?'🇯🇵 ':''}${p.name}</div>
-              <div style="font-size:10px;color:var(--text-muted)">${jaCountry(p.nationality)}</div>
-            </td>
-            <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
-            <td style="padding:9px 4px;text-align:center;font-size:14px;font-weight:900;color:#ff9800">${total}</td>
-            <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--gold)">${on}</td>
-            <td style="padding:9px 4px;text-align:center;font-size:13px;color:var(--sky-blue)">${goals}</td>
-          </tr>`;
-      }).join('');
-    }
-
-    // パス成功率TOP10（50本以上）
-    const passSorted = [...list].filter(item => {
-      const s = item.statistics[0];
-      return (s.passes?.total || 0) >= 50;
-    }).sort((a,b) =>
-      (b.statistics[0].passes?.accuracy||0) - (a.statistics[0].passes?.accuracy||0)
-    ).slice(0, 10);
-
-    const passTbody = document.getElementById('pass-tbody');
-    if (passTbody) {
-      passTbody.innerHTML = passSorted.map((item, i) => {
-        const s        = item.statistics[0];
-        const accuracy = s.passes?.accuracy || 0;
-        const total    = s.passes?.total    || 0;
-        const p        = item.player;
-        const isJp     = p.nationality === 'Japan';
-        const flag     = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
-        return `
-          <tr style="${isJp?'background:rgba(59,122,240,0.18);':''}border-bottom:1px solid rgba(255,255,255,0.06)">
-            <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${i+1}</td>
-            <td style="padding:9px 8px">
-              <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:12px">${isJp?'🇯🇵 ':''}${p.name}</div>
-              <div style="font-size:10px;color:var(--text-muted)">${jaCountry(p.nationality)}</div>
-            </td>
-            <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
-            <td style="padding:9px 4px;text-align:center;font-size:14px;font-weight:900;color:#4caf50">${accuracy}%</td>
-            <td style="padding:9px 4px;text-align:center;font-size:12px;color:rgba(255,255,255,0.5)">${total}</td>
-          </tr>`;
-      }).join('');
-    }
-  }
 
   function showMembersContent() {
     const comingSoon = document.getElementById('membersComingSoon');
