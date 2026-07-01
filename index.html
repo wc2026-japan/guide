@@ -3861,6 +3861,7 @@
     <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
     <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
     <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 決勝T</button>
+    <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)">📊 ランキング</button>
     <button class="tab" data-tab-id="jpteam" onclick="showSection('jpteam', this)"><span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
   <!-- Shield outer (black) -->
   <path d="M16 0L0 5V18C0 27 7.5 33.5 16 36C24.5 33.5 32 27 32 18V5L16 0Z" fill="#1a1a1a"/>
@@ -3897,7 +3898,6 @@
     <button class="tab" data-tab-id="standings" onclick="showSection('standings', this)">🏆 順位表</button>
     <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
     <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
-    <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)" style="display:none">📊 ランキング</button>
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📖 使い方</button>
     <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)" style="display:none">⚙️ 管理</button>
@@ -5690,12 +5690,12 @@
           <div class="bk-col">
             <div class="bk-col-header bk-right">⚔️ R32　6/30〜7/4</div>
 
-            <!-- ⑨ ブラジル vs 日本 🔥 -->
-            <div class="bk-match jp">
-              <div class="bk-match-meta"><span class="jp-badge">🔥日本戦</span>⑨ 6/30(火) 02:00 ヒューストン</div>
-              <div class="bk-team"><img src="https://flagcdn.com/br.svg" alt="🇧🇷">ブラジル（C1）</div>
+            <!-- ⑨ ブラジル 2-1 日本 FT -->
+            <div class="bk-match jp" style="opacity:0.7">
+              <div class="bk-match-meta"><span class="jp-badge">🇯🇵日本戦</span>⑨ 6/30(火) 02:00 ヒューストン <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team won"><img src="https://flagcdn.com/br.svg" alt="🇧🇷">ブラジル（C1）<span class="bk-score w">2✓</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team jp"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵">日本（F2）</div>
+              <div class="bk-team jp"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵">日本（F2）<span class="bk-score l">1</span></div>
             </div>
 
             <!-- ⑩ コートジボワール vs ノルウェー FT 1-2 -->
@@ -5813,11 +5813,11 @@
               <div class="bk-sep"></div>
               <div class="bk-team tbd">— 3位通過枠</div>
             </div>
-            <div class="bk-match jp">
-              <div class="bk-match-meta"><span class="jp-badge">🔥日本戦</span>⑨ 6/30 02:00 ヒューストン</div>
-              <div class="bk-team"><img src="https://flagcdn.com/br.svg" alt="🇧🇷">ブラジル</div>
+            <div class="bk-match jp" style="opacity:0.7">
+              <div class="bk-match-meta"><span class="jp-badge">🇯🇵日本戦</span>⑨ 6/30 02:00 ヒューストン <span style="color:#4caf50;font-weight:900">FT</span></div>
+              <div class="bk-team won"><img src="https://flagcdn.com/br.svg" alt="🇧🇷">ブラジル<span class="bk-score w">2✓</span></div>
               <div class="bk-sep"></div>
-              <div class="bk-team jp"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵">日本</div>
+              <div class="bk-team jp"><img src="https://flagcdn.com/jp.svg" alt="🇯🇵">日本<span class="bk-score l">1</span></div>
             </div>
             <div class="bk-match" style="opacity:0.7">
               <div class="bk-match-meta">⑩ 7/1 02:00 ダラス <span style="color:#4caf50;font-weight:900">FT</span></div>
@@ -6594,7 +6594,7 @@
   <div id="section-ranking" class="section">
 
     <!-- ヘッダー -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <div>
         <div style="font-size:18px;font-weight:900;color:#fff">📊 ランキング</div>
         <div style="font-size:11px;color:var(--text-muted);margin-top:2px">API-Football リアルタイムデータ</div>
@@ -6603,6 +6603,13 @@
         style="background:rgba(59,122,240,0.2);border:1px solid rgba(59,122,240,0.4);color:var(--sky-blue);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">
         🔄 更新
       </button>
+    </div>
+
+    <!-- カテゴリタブ -->
+    <div style="display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch">
+      <button id="rk-tab-scorer" class="ko-tab active" onclick="rkSwitch('scorer')">⚽ 得点王</button>
+      <button id="rk-tab-assist" class="ko-tab" onclick="rkSwitch('assist')">🅰️ アシスト</button>
+      <button id="rk-tab-stats"  class="ko-tab" onclick="rkSwitch('stats')">📈 スタッツ</button>
     </div>
 
     <!-- ローディング -->
@@ -6621,42 +6628,94 @@
     <!-- コンテンツ -->
     <div id="ranking-content" style="display:none">
 
-      <!-- 得点ランキング -->
-      <div class="section-label">⚽ 得点ランキング　<span id="scorer-updated" style="font-size:11px;color:var(--text-muted);font-weight:400"></span></div>
-      <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:20px">
-        <table style="width:100%;border-collapse:collapse;font-size:13px">
-          <thead>
-            <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.5px">
-              <th style="padding:10px 8px;text-align:center;width:36px">順位</th>
-              <th style="padding:10px 8px;text-align:left">選手名</th>
-              <th style="padding:10px 8px;text-align:center;width:40px">国</th>
-              <th style="padding:10px 8px;text-align:center;width:36px;color:var(--gold)">G</th>
-              <th style="padding:10px 8px;text-align:center;width:36px;color:var(--sky-blue)">A</th>
-            </tr>
-          </thead>
-          <tbody id="scorer-tbody"></tbody>
-        </table>
+      <!-- 得点王パネル -->
+      <div id="rk-panel-scorer">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">
+          <span id="scorer-updated"></span>
+        </div>
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:8px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:10px;font-weight:700;letter-spacing:0.5px">
+                <th style="padding:8px 6px;text-align:center;width:32px">#</th>
+                <th style="padding:8px 8px;text-align:left">選手名</th>
+                <th style="padding:8px 4px;text-align:center;width:28px">国</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:var(--gold)">⚽G</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:var(--sky-blue)">🅰️A</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:rgba(255,255,255,0.5)">試</th>
+              </tr>
+            </thead>
+            <tbody id="scorer-tbody"></tbody>
+          </table>
+        </div>
+        <div style="font-size:10px;color:var(--text-muted);text-align:center">G=ゴール　A=アシスト　試=出場試合数</div>
       </div>
 
-      <!-- アシストランキング -->
-      <div class="section-label">🅰️ アシストランキング　<span id="assist-updated" style="font-size:11px;color:var(--text-muted);font-weight:400"></span></div>
-      <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:20px">
-        <table style="width:100%;border-collapse:collapse;font-size:13px">
-          <thead>
-            <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.5px">
-              <th style="padding:10px 8px;text-align:center;width:36px">順位</th>
-              <th style="padding:10px 8px;text-align:left">選手名</th>
-              <th style="padding:10px 8px;text-align:center;width:40px">国</th>
-              <th style="padding:10px 8px;text-align:center;width:36px;color:var(--sky-blue)">A</th>
-              <th style="padding:10px 8px;text-align:center;width:36px;color:var(--gold)">G</th>
-            </tr>
-          </thead>
-          <tbody id="assist-tbody"></tbody>
-        </table>
+      <!-- アシストパネル -->
+      <div id="rk-panel-assist" style="display:none">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">
+          <span id="assist-updated"></span>
+        </div>
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:8px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:10px;font-weight:700;letter-spacing:0.5px">
+                <th style="padding:8px 6px;text-align:center;width:32px">#</th>
+                <th style="padding:8px 8px;text-align:left">選手名</th>
+                <th style="padding:8px 4px;text-align:center;width:28px">国</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:var(--sky-blue)">🅰️A</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:var(--gold)">⚽G</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:rgba(255,255,255,0.5)">試</th>
+              </tr>
+            </thead>
+            <tbody id="assist-tbody"></tbody>
+          </table>
+        </div>
+        <div style="font-size:10px;color:var(--text-muted);text-align:center">A=アシスト　G=ゴール　試=出場試合数</div>
       </div>
 
-      <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:4px 0 12px">
-        🇯🇵 = 日本代表選手　G=ゴール　A=アシスト
+      <!-- スタッツパネル -->
+      <div id="rk-panel-stats" style="display:none">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">
+          <span id="stats-updated"></span>
+        </div>
+
+        <!-- シュート数ランキング -->
+        <div class="section-label" style="font-size:12px;margin-bottom:6px">🎯 シュート数TOP10</div>
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:10px;font-weight:700">
+                <th style="padding:8px 6px;text-align:center;width:32px">#</th>
+                <th style="padding:8px 8px;text-align:left">選手名</th>
+                <th style="padding:8px 4px;text-align:center;width:28px">国</th>
+                <th style="padding:8px 4px;text-align:center;width:36px;color:#ff9800">総S</th>
+                <th style="padding:8px 4px;text-align:center;width:36px;color:var(--gold)">枠内</th>
+                <th style="padding:8px 4px;text-align:center;width:32px;color:var(--sky-blue)">⚽G</th>
+              </tr>
+            </thead>
+            <tbody id="shots-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- パス成功率ランキング -->
+        <div class="section-label" style="font-size:12px;margin-bottom:6px">🎯 パス成功率TOP10（50本以上）</div>
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;margin-bottom:14px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:10px;font-weight:700">
+                <th style="padding:8px 6px;text-align:center;width:32px">#</th>
+                <th style="padding:8px 8px;text-align:left">選手名</th>
+                <th style="padding:8px 4px;text-align:center;width:28px">国</th>
+                <th style="padding:8px 4px;text-align:center;width:44px;color:#4caf50">成功率</th>
+                <th style="padding:8px 4px;text-align:center;width:36px;color:rgba(255,255,255,0.5)">総P</th>
+              </tr>
+            </thead>
+            <tbody id="pass-tbody"></tbody>
+          </table>
+        </div>
+
+        <div style="font-size:10px;color:var(--text-muted);text-align:center">S=シュート　P=パス　※無料APIで取得可能なデータのみ表示</div>
       </div>
 
     </div><!-- /ranking-content -->
@@ -6934,6 +6993,9 @@
   </button>
   <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
     <span class="nav-icon">🔥</span>決勝T
+  </button>
+  <button class="nav-btn" id="nav-ranking" onclick="showSection('ranking', null, 'nav-ranking')">
+    <span class="nav-icon">📊</span>ランキング
   </button>
   <button class="nav-btn" id="nav-jpteam" onclick="showSection('jpteam', null, 'nav-jpteam')">
     <span class="nav-icon" style="display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
@@ -7472,7 +7534,7 @@
     });
 
     // Bottom nav
-    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', tournament:'nav-tournament', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
+    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', tournament:'nav-tournament', ranking:'nav-ranking', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     const navTarget = document.getElementById(navId || navMap[id] || 'nav-japan');
     if (navTarget) navTarget.classList.add('active');
@@ -7521,6 +7583,14 @@
     );
   }
 
+  // ===== ランキング タブ切り替え =====
+  function rkSwitch(tab) {
+    ['scorer','assist','stats'].forEach(t => {
+      document.getElementById('rk-panel-' + t).style.display = t === tab ? '' : 'none';
+      document.getElementById('rk-tab-' + t).classList.toggle('active', t === tab);
+    });
+  }
+
   async function loadRankingData() {
     const loading = document.getElementById('ranking-loading');
     const error   = document.getElementById('ranking-error');
@@ -7533,31 +7603,31 @@
     if (btn) btn.disabled = true;
 
     try {
-      // 得点王・アシスト取得
-      const res = await fetch(
-        `https://v3.football.api-sports.io/players/topscorers?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`,
-        { headers: { 'x-apisports-key': RANKING_API_KEY } }
-      );
-      const data = await res.json();
-      const scorers = data.response || [];
+      const headers = { 'x-apisports-key': RANKING_API_KEY };
+      const base    = `https://v3.football.api-sports.io`;
 
-      // アシスト取得
-      const res2 = await fetch(
-        `https://v3.football.api-sports.io/players/topassists?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`,
-        { headers: { 'x-apisports-key': RANKING_API_KEY } }
-      );
-      const data2 = await res2.json();
-      const assisters = data2.response || [];
+      // 3本同時取得
+      const [res1, res2, res3] = await Promise.all([
+        fetch(`${base}/players/topscorers?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`, { headers }),
+        fetch(`${base}/players/topassists?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}`, { headers }),
+        fetch(`${base}/players/topscorers?league=${WC2026_LEAGUE}&season=${WC2026_SEASON}&page=1`, { headers }),
+      ]);
+
+      const scorers   = (await res1.json()).response || [];
+      const assisters = (await res2.json()).response || [];
+      // スタッツはscorerデータを流用（シュート・パスデータ含む）
+      const statsData = scorers;
 
       renderScorers(scorers);
       renderAssisters(assisters);
+      renderStats(statsData);
 
       const now = new Date();
       const timeStr = `${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} 更新`;
-      const el1 = document.getElementById('scorer-updated');
-      const el2 = document.getElementById('assist-updated');
-      if (el1) el1.textContent = timeStr;
-      if (el2) el2.textContent = timeStr;
+      ['scorer-updated','assist-updated','stats-updated'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = timeStr;
+      });
 
       loading.style.display = 'none';
       content.style.display = '';
@@ -7572,76 +7642,120 @@
     }
   }
 
+  function mkPlayerRow(item, rank, col1Key, col2Key, col1Color, col2Color, extraCols) {
+    const p       = item.player;
+    const stats   = item.statistics[0];
+    const isJp    = p.nationality === 'Japan';
+    const country = jaCountry(p.nationality);
+    const flag    = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
+    const medals  = { 1:'🥇', 2:'🥈', 3:'🥉' };
+    const medal   = medals[rank] || rank;
+    const games   = stats.games?.appearences || stats.games?.appearances || 0;
+
+    return `
+      <tr style="${isJp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
+        <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${medal}</td>
+        <td style="padding:9px 8px">
+          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'13px':'12px'}">
+            ${isJp?'🇯🇵 ':''}${p.name}
+          </div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:1px">${country}</div>
+        </td>
+        <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
+        ${extraCols}
+        <td style="padding:9px 4px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4)">${games}</td>
+      </tr>`;
+  }
+
   function renderScorers(list) {
     const tbody = document.getElementById('scorer-tbody');
     if (!tbody) return;
-    tbody.innerHTML = '';
-    const medals = { 1:'🥇', 2:'🥈', 3:'🥉' };
-    list.slice(0, 15).forEach((item, i) => {
-      const p       = item.player;
-      const stats   = item.statistics[0];
-      const goals   = stats.goals.total || 0;
-      const assists = stats.goals.assists || 0;
-      const country = jaCountry(p.nationality);
-      const isJp    = p.nationality === 'Japan';
-      const rank    = i + 1;
-      const medal   = medals[rank] || rank;
-      const cc      = stats.team?.country_code || '';
-      const flag    = flagEmoji(cc) || '🏳️';
-
-      const tr = document.createElement('tr');
-      tr.style.cssText = isJp
-        ? 'background:rgba(59,122,240,0.18);border-bottom:1px solid rgba(255,255,255,0.06)'
-        : 'border-bottom:1px solid rgba(255,255,255,0.06)';
-      tr.innerHTML = `
-        <td style="padding:10px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${medal}</td>
-        <td style="padding:10px 8px">
-          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'14px':'13px'}">
-            ${isJp?'🇯🇵 ':''}${p.name}${isJp?' <span style="font-size:10px;background:rgba(59,122,240,0.3);border-radius:4px;padding:1px 5px;font-weight:900;color:#7eb8ff">日本代表</span>':''}
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:1px">${country}</div>
-        </td>
-        <td style="padding:10px 6px;text-align:center;font-size:15px">${flag}</td>
-        <td style="padding:10px 6px;text-align:center;font-size:16px;font-weight:900;color:var(--gold)">${goals}</td>
-        <td style="padding:10px 6px;text-align:center;font-size:14px;font-weight:700;color:var(--sky-blue)">${assists}</td>
-      `;
-      tbody.appendChild(tr);
-    });
+    tbody.innerHTML = list.slice(0, 15).map((item, i) => {
+      const s       = item.statistics[0];
+      const goals   = s.goals?.total   || 0;
+      const assists = s.goals?.assists || 0;
+      const extra   = `
+        <td style="padding:9px 4px;text-align:center;font-size:15px;font-weight:900;color:var(--gold)">${goals}</td>
+        <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--sky-blue)">${assists}</td>`;
+      return mkPlayerRow(item, i+1, 'goals', 'assists', 'var(--gold)', 'var(--sky-blue)', extra);
+    }).join('');
   }
 
   function renderAssisters(list) {
     const tbody = document.getElementById('assist-tbody');
     if (!tbody) return;
-    tbody.innerHTML = '';
-    list.slice(0, 15).forEach((item, i) => {
-      const p       = item.player;
-      const stats   = item.statistics[0];
-      const assists = stats.goals.assists || 0;
-      const goals   = stats.goals.total   || 0;
-      const country = jaCountry(p.nationality);
-      const isJp    = p.nationality === 'Japan';
-      const rank    = i + 1;
-      const cc      = stats.team?.country_code || '';
-      const flag    = flagEmoji(cc) || '🏳️';
+    tbody.innerHTML = list.slice(0, 15).map((item, i) => {
+      const s       = item.statistics[0];
+      const assists = s.goals?.assists || 0;
+      const goals   = s.goals?.total   || 0;
+      const extra   = `
+        <td style="padding:9px 4px;text-align:center;font-size:15px;font-weight:900;color:var(--sky-blue)">${assists}</td>
+        <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--gold)">${goals}</td>`;
+      return mkPlayerRow(item, i+1, 'assists', 'goals', 'var(--sky-blue)', 'var(--gold)', extra);
+    }).join('');
+  }
 
-      const tr = document.createElement('tr');
-      tr.style.cssText = isJp
-        ? 'background:rgba(59,122,240,0.18);border-bottom:1px solid rgba(255,255,255,0.06)'
-        : 'border-bottom:1px solid rgba(255,255,255,0.06)';
-      tr.innerHTML = `
-        <td style="padding:10px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${rank}</td>
-        <td style="padding:10px 8px">
-          <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:${isJp?'14px':'13px'}">
-            ${isJp?'🇯🇵 ':''}${p.name}${isJp?' <span style="font-size:10px;background:rgba(59,122,240,0.3);border-radius:4px;padding:1px 5px;font-weight:900;color:#7eb8ff">日本代表</span>':''}
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:1px">${country}</div>
-        </td>
-        <td style="padding:10px 6px;text-align:center;font-size:15px">${flag}</td>
-        <td style="padding:10px 6px;text-align:center;font-size:16px;font-weight:900;color:var(--sky-blue)">${assists}</td>
-        <td style="padding:10px 6px;text-align:center;font-size:14px;font-weight:700;color:var(--gold)">${goals}</td>
-      `;
-      tbody.appendChild(tr);
-    });
+  function renderStats(list) {
+    // シュート数TOP10
+    const shotsSorted = [...list].sort((a,b) =>
+      (b.statistics[0].shots?.total||0) - (a.statistics[0].shots?.total||0)
+    ).slice(0, 10);
+
+    const shotsTbody = document.getElementById('shots-tbody');
+    if (shotsTbody) {
+      shotsTbody.innerHTML = shotsSorted.map((item, i) => {
+        const s     = item.statistics[0];
+        const total = s.shots?.total  || 0;
+        const on    = s.shots?.on     || 0;
+        const goals = s.goals?.total  || 0;
+        const p     = item.player;
+        const isJp  = p.nationality === 'Japan';
+        const flag  = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
+        return `
+          <tr style="${isJp?'background:rgba(59,122,240,0.18);':''}border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${i+1}</td>
+            <td style="padding:9px 8px">
+              <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:12px">${isJp?'🇯🇵 ':''}${p.name}</div>
+              <div style="font-size:10px;color:var(--text-muted)">${jaCountry(p.nationality)}</div>
+            </td>
+            <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
+            <td style="padding:9px 4px;text-align:center;font-size:14px;font-weight:900;color:#ff9800">${total}</td>
+            <td style="padding:9px 4px;text-align:center;font-size:13px;font-weight:700;color:var(--gold)">${on}</td>
+            <td style="padding:9px 4px;text-align:center;font-size:13px;color:var(--sky-blue)">${goals}</td>
+          </tr>`;
+      }).join('');
+    }
+
+    // パス成功率TOP10（50本以上）
+    const passSorted = [...list].filter(item => {
+      const s = item.statistics[0];
+      return (s.passes?.total || 0) >= 50;
+    }).sort((a,b) =>
+      (b.statistics[0].passes?.accuracy||0) - (a.statistics[0].passes?.accuracy||0)
+    ).slice(0, 10);
+
+    const passTbody = document.getElementById('pass-tbody');
+    if (passTbody) {
+      passTbody.innerHTML = passSorted.map((item, i) => {
+        const s        = item.statistics[0];
+        const accuracy = s.passes?.accuracy || 0;
+        const total    = s.passes?.total    || 0;
+        const p        = item.player;
+        const isJp     = p.nationality === 'Japan';
+        const flag     = p.nationality ? flagEmoji(p.nationality.slice(0,2).toLowerCase()) : '🏳️';
+        return `
+          <tr style="${isJp?'background:rgba(59,122,240,0.18);':''}border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:9px 6px;text-align:center;font-size:12px;color:var(--text-muted);font-weight:700">${i+1}</td>
+            <td style="padding:9px 8px">
+              <div style="font-weight:${isJp?'900':'700'};color:${isJp?'var(--sky-blue)':'var(--text-primary)'};font-size:12px">${isJp?'🇯🇵 ':''}${p.name}</div>
+              <div style="font-size:10px;color:var(--text-muted)">${jaCountry(p.nationality)}</div>
+            </td>
+            <td style="padding:9px 4px;text-align:center;font-size:13px">${flag}</td>
+            <td style="padding:9px 4px;text-align:center;font-size:14px;font-weight:900;color:#4caf50">${accuracy}%</td>
+            <td style="padding:9px 4px;text-align:center;font-size:12px;color:rgba(255,255,255,0.5)">${total}</td>
+          </tr>`;
+      }).join('');
+    }
   }
 
   function showMembersContent() {
