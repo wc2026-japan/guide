@@ -6597,7 +6597,7 @@
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <div>
         <div style="font-size:18px;font-weight:900;color:#fff">📊 ランキング</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">API-Football リアルタイムデータ</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">7/1 時点</div>
       </div>
       <button onclick="loadRankingData()" id="ranking-reload-btn"
         style="background:rgba(59,122,240,0.2);border:1px solid rgba(59,122,240,0.4);color:var(--sky-blue);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">
@@ -7585,37 +7585,42 @@
 
   // ===== ランキング 静的データ（7/1時点） =====
   const RANKING_SCORERS = [
-    { name:'L・メッシ',      country:'アルゼンチン', flag:'🇦🇷', g:6, a:3, jp:false },
-    { name:'E・ハーランド',  country:'ノルウェー',   flag:'🇳🇴', g:5, a:0, jp:false },
-    { name:'K・エムバペ',    country:'フランス',     flag:'🇫🇷', g:4, a:2, jp:false },
-    { name:'ヴィニシウス',   country:'ブラジル',     flag:'🇧🇷', g:4, a:1, jp:false },
-    { name:'O・デンベレ',    country:'フランス',     flag:'🇫🇷', g:4, a:1, jp:false },
-    { name:'J・ダヴィド',    country:'カナダ',       flag:'🇨🇦', g:3, a:1, jp:false },
-    { name:'D・ウンダフ',    country:'ドイツ',       flag:'🇩🇪', g:3, a:2, jp:false },
-    { name:'J・マンザンビ',  country:'スイス',       flag:'🇨🇭', g:3, a:0, jp:false },
-    { name:'M・クーニャ',    country:'ブラジル',     flag:'🇧🇷', g:3, a:0, jp:false },
-    { name:'I・サイバリ',    country:'モロッコ',     flag:'🇲🇦', g:3, a:1, jp:false },
-    { name:'B・ブロビー',    country:'オランダ',     flag:'🇳🇱', g:3, a:0, jp:false },
-    { name:'I・サール',      country:'セネガル',     flag:'🇸🇳', g:3, a:0, jp:false },
-    { name:'鎌田 大地',      country:'日本',         flag:'🇯🇵', g:2, a:1, jp:true  },
-    { name:'上田 綺世',      country:'日本',         flag:'🇯🇵', g:2, a:0, jp:true  },
-    { name:'H・ケイン',      country:'イングランド', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:3, a:1, jp:false },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:6, a:2, jp:false },
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:6, a:0, jp:false },
+    { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:5, a:0, jp:false },
+    { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:5, a:0, jp:false },
+    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:4, a:2, jp:false },
+    { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false },
+    { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', g:3, a:2, jp:false },
+    { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:1, jp:false },
+    { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:3, a:1, jp:false },
+    { name:'F・キノーネス',     country:'メキシコ',        flag:'🇲🇽', g:3, a:1, jp:false },
+    { name:'C・ガクポ',         country:'オランダ',        flag:'🇳🇱', g:3, a:1, jp:false },
+    { name:'B・ブロビー',       country:'オランダ',        flag:'🇳🇱', g:3, a:0, jp:false },
+    { name:'M・クーニャ',       country:'ブラジル',        flag:'🇧🇷', g:3, a:0, jp:false },
+    { name:'E・ジャスト',       country:'ニュージーランド', flag:'🇳🇿', g:3, a:0, jp:false },
+    { name:'J・デイビッド',     country:'カナダ',          flag:'🇨🇦', g:3, a:0, jp:false },
   ];
 
   const RANKING_ASSISTS = [
-    { name:'L・メッシ',      country:'アルゼンチン', flag:'🇦🇷', a:3, g:6, jp:false },
-    { name:'K・エムバペ',    country:'フランス',     flag:'🇫🇷', a:2, g:4, jp:false },
-    { name:'D・ウンダフ',    country:'ドイツ',       flag:'🇩🇪', a:2, g:3, jp:false },
-    { name:'ヴィニシウス',   country:'ブラジル',     flag:'🇧🇷', a:1, g:4, jp:false },
-    { name:'O・デンベレ',    country:'フランス',     flag:'🇫🇷', a:1, g:4, jp:false },
-    { name:'J・ダヴィド',    country:'カナダ',       flag:'🇨🇦', a:1, g:3, jp:false },
-    { name:'I・サイバリ',    country:'モロッコ',     flag:'🇲🇦', a:1, g:3, jp:false },
-    { name:'鎌田 大地',      country:'日本',         flag:'🇯🇵', a:1, g:2, jp:true  },
-    { name:'佐野 海舟',      country:'日本',         flag:'🇯🇵', a:0, g:1, jp:true  },
-    { name:'C・ロナウド',    country:'ポルトガル',   flag:'🇵🇹', a:0, g:2, jp:false },
+    { name:'M・オリゼ',         country:'フランス',     flag:'🇫🇷', a:5, g:0, jp:false },
+    { name:'B・ギマランイス',   country:'ブラジル',     flag:'🇧🇷', a:4, g:0, jp:false },
+    { name:'A・イサク',         country:'スウェーデン', flag:'🇸🇪', a:3, g:1, jp:false },
+    { name:'M・オデガール',     country:'ノルウェー',   flag:'🇳🇴', a:3, g:0, jp:false },
+    { name:'R・アルバラド',     country:'メキシコ',     flag:'🇲🇽', a:3, g:0, jp:false },
+    { name:'F・ヴィルツ',       country:'ドイツ',       flag:'🇩🇪', a:3, g:0, jp:false },
+    { name:'K・エムバペ',       country:'フランス',     flag:'🇫🇷', a:2, g:6, jp:false },
+    { name:'O・デンベレ',       country:'フランス',     flag:'🇫🇷', a:2, g:4, jp:false },
+    { name:'D・ウンダフ',       country:'ドイツ',       flag:'🇩🇪', a:2, g:3, jp:false },
+    { name:'C・サマービル',     country:'オランダ',     flag:'🇳🇱', a:2, g:2, jp:false },
+    { name:'I・ンディアエ',     country:'セネガル',     flag:'🇸🇳', a:2, g:2, jp:false },
+    { name:'N・サリバ',         country:'カナダ',       flag:'🇨🇦', a:2, g:0, jp:false },
+    { name:'M・サラー',         country:'エジプト',     flag:'🇪🇬', a:2, g:1, jp:false },
+    { name:'B・エンボロ',       country:'スイス',       flag:'🇨🇭', a:2, g:2, jp:false },
+    { name:'F・エンシソ',       country:'パラグアイ',   flag:'🇵🇾', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/1 更新';
+  const RANKING_UPDATED = '7/2 更新';
 
   // ===== ランキング タブ切り替え =====
   function rkSwitch(tab) {
