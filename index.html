@@ -810,7 +810,7 @@
       border: none;
     }
     .mr-flag-img {
-      width: 20px; height: 14px; object-fit: cover; border-radius: 2px;
+      width: 24px; height: 17px; object-fit: cover; border-radius: 2px;
       flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
       border: none;
     }
@@ -840,8 +840,8 @@
     .cd-days-pill strong { font-family: var(--font-mono); font-size: 18px; color: var(--gold); }
 
     /* ===== SCHEDULE FLAG + NAME ===== */
-    .mr-team-cell { display: inline-flex; align-items: center; gap: 5px; flex-shrink: 1; min-width: 0; }
-    .mr-team-name { font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+    .mr-team-cell { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 1; min-width: 0; }
+    .mr-team-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
 
     /* ===== JAPAN TEAM PAGE ===== */
     .jpteam-hero {
@@ -2487,25 +2487,25 @@
 
     .match-day-header {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.5px;
       color: var(--text-primary);
-      margin: 14px 0 8px;
+      margin: 16px 0 10px;
       display: flex;
       align-items: center;
       gap: 8px;
-      padding-bottom: 6px;
+      padding-bottom: 7px;
       border-bottom: 2px solid rgba(212,255,63,0.25);
     }
     .match-day-header:first-child { margin-top: 0; }
     .day-next-badge {
       background: var(--japan-red);
       color: #fff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 1px;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 4px;
       margin-left: 6px;
     }
@@ -2513,8 +2513,8 @@
       background: var(--gold);
       border: none;
       border-radius: 4px;
-      padding: 5px 11px;
-      font-size: 13px;
+      padding: 6px 13px;
+      font-size: 15px;
       color: var(--pitch-dark);
       font-weight: 800;
       box-shadow: 0 2px 8px rgba(212,255,63,0.3);
@@ -2524,11 +2524,11 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 10px;
-      padding: 8px 12px;
-      margin-bottom: 6px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       cursor: default;
     }
     .match-row.jp-match {
@@ -2537,10 +2537,10 @@
     }
     .match-row .mr-time {
       font-family: -apple-system, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 900;
       color: var(--gold);
-      min-width: 40px;
+      min-width: 46px;
       text-align: center;
       flex-shrink: 0;
       letter-spacing: 0;
@@ -2551,58 +2551,58 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
     }
     /* 対戦行：国名 vs 国名 ＋ スコアを1行に */
     .match-row .mr-teams .mr-matchup {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 3px;
-      row-gap: 2px;
+      gap: 4px;
+      row-gap: 3px;
     }
     .match-row .mr-teams .mr-matchup .mr-vs-sep {
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 11px;
+      font-size: 13px;
       flex-shrink: 0;
     }
     /* スコアをmatchup内に含める */
     .match-row .mr-teams .mr-matchup .mr-score-inline {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 900;
       color: var(--text-primary);
       background: rgba(232,240,255,0.1);
       border: 1px solid var(--line-white);
       border-radius: 4px;
-      padding: 0px 5px;
+      padding: 1px 6px;
       margin-left: 2px;
       flex-shrink: 0;
     }
-    .mr-team-cell { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; }
-    .mr-team-name { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .mr-team-cell { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .mr-team-name { font-size: 14px; font-weight: 700; white-space: nowrap; }
     /* メタ行（グループ・会場）＋放送局タグを1行に */
     .match-row .mr-teams .mr-meta {
-      font-size: 10px;
+      font-size: 11.5px;
       color: var(--text-muted);
       font-weight: 500;
     }
     /* 放送局タグ行 */
     .match-row .mr-tags {
       display: flex;
-      gap: 4px;
+      gap: 5px;
       flex-wrap: wrap;
       flex-shrink: 0;
       max-width: none;
       justify-content: flex-start;
     }
     .mr-tag {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 2px 6px;
+      padding: 3px 7px;
       border-radius: 4px;
       letter-spacing: 0.2px;
     }
@@ -2614,7 +2614,7 @@
     .mr-tag.free      { background:rgba(20,160,120,0.2);  color:#34d9a5;         border:1px solid rgba(20,160,120,0.4); }
     .mr-tag.ntv       { background:rgba(255,100,0,0.15);  color:#f97316;         border:1px solid rgba(249,115,22,0.3); }
     .mr-tag.fuji      { background:rgba(147,51,234,0.15); color:#c084fc;         border:1px solid rgba(192,132,252,0.3); }
-    .mr-tag.score { background:rgba(232,240,255,0.1); color:var(--text-primary); border:1px solid var(--line-white); font-weight:900; font-size:11px; }
+    .mr-tag.score { background:rgba(232,240,255,0.1); color:var(--text-primary); border:1px solid var(--line-white); font-weight:900; font-size:12px; }
 
 
     /* ===== WATCH QUIZ ===== */
@@ -3859,10 +3859,10 @@
   </a>
 
   <div class="tabs" role="tablist">
-    <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
-    <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
     <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 決勝T</button>
+    <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
     <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)">📊 ランキング</button>
+    <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
     <button class="tab" data-tab-id="jpteam" onclick="showSection('jpteam', this)"><span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
   <!-- Shield outer (black) -->
   <path d="M16 0L0 5V18C0 27 7.5 33.5 16 36C24.5 33.5 32 27 32 18V5L16 0Z" fill="#1a1a1a"/>
@@ -5541,12 +5541,12 @@
               <div onclick="openTeamModal('se')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/se.svg" alt="🇸🇪">スウェーデン（H2）<span class="bk-score l">0</span></div>
             </div>
 
-            <!-- ⑤ ポルトガル vs クロアチア -->
-            <div class="bk-match">
-              <div class="bk-match-meta">⑤ 7/3(金) 08:00 バンクーバー</div>
-              <div onclick="openTeamModal('pt')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹">ポルトガル（K2）</div>
+            <!-- ⑤ ポルトガル 2-1 クロアチア(延長) FT -->
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">⑤ 7/3(金) 08:00 バンクーバー <span style="color:#4caf50;font-weight:900">FT(延長)</span></div>
+              <div onclick="openTeamModal('pt')" style="cursor:pointer" class="bk-team won"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹">ポルトガル（K2）<span class="bk-score w">2✓</span></div>
               <div class="bk-sep"></div>
-              <div onclick="openTeamModal('hr')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/hr.svg" alt="🇭🇷">クロアチア（3位）</div>
+              <div onclick="openTeamModal('hr')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/hr.svg" alt="🇭🇷">クロアチア（3位）<span class="bk-score l">1</span></div>
             </div>
 
             <!-- ⑥ スペイン 3-0 オーストリア FT -->
@@ -5801,11 +5801,11 @@
               <div class="bk-sep"></div>
               <div onclick="openTeamModal('se')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/se.svg" alt="🇸🇪">スウェーデン<span class="bk-score l">0</span></div>
             </div>
-            <div class="bk-match">
-              <div class="bk-match-meta">⑤ 7/3 08:00 バンクーバー</div>
-              <div onclick="openTeamModal('pt')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹">ポルトガル</div>
+            <div class="bk-match" style="opacity:0.7">
+              <div class="bk-match-meta">⑤ 7/3 08:00 バンクーバー <span style="color:#4caf50;font-weight:900">FT(延長)</span></div>
+              <div onclick="openTeamModal('pt')" style="cursor:pointer" class="bk-team won"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹">ポルトガル<span class="bk-score w">2✓</span></div>
               <div class="bk-sep"></div>
-              <div onclick="openTeamModal('hr')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/hr.svg" alt="🇭🇷">クロアチア</div>
+              <div onclick="openTeamModal('hr')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/hr.svg" alt="🇭🇷">クロアチア<span class="bk-score l">1</span></div>
             </div>
             <div class="bk-match" style="opacity:0.7">
               <div class="bk-match-meta">⑥ 7/3 04:00 アトランタ <span style="color:#4caf50;font-weight:900">FT</span></div>
@@ -5973,7 +5973,7 @@
           <!-- R16-3: ⑤勝者 vs ⑥勝者 -->
           <div class="bk-match" style="min-width:auto">
             <div class="bk-match-meta">R16-3　7/6(月) 予定</div>
-            <div class="bk-team tbd">— ⑤勝者（ポルトガル/クロアチア）</div>
+            <div onclick="openTeamModal('pt')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/pt.svg" alt="🇵🇹">ポルトガル（⑤勝者）</div>
             <div class="bk-sep"></div>
             <div onclick="openTeamModal('es')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/es.svg" alt="🇪🇸">スペイン（⑥勝者）</div>
           </div>
@@ -7138,17 +7138,17 @@
 
 </div>
 <nav class="bottom-nav">
-  <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
-    <span class="nav-icon">🇯🇵</span>日本戦
+  <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
+    <span class="nav-icon">🔥</span>決勝T
   </button>
   <button class="nav-btn" id="nav-schedule" onclick="showSection('schedule', null, 'nav-schedule')">
     <span class="nav-icon">📅</span>全日程
   </button>
-  <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
-    <span class="nav-icon">🔥</span>決勝T
-  </button>
   <button class="nav-btn" id="nav-ranking" onclick="showSection('ranking', null, 'nav-ranking')">
     <span class="nav-icon">📊</span>ランキング
+  </button>
+  <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
+    <span class="nav-icon">🇯🇵</span>日本戦
   </button>
   <button class="nav-btn" id="nav-jpteam" onclick="showSection('jpteam', null, 'nav-jpteam')">
     <span class="nav-icon" style="display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
@@ -8237,7 +8237,7 @@
     {date:'7/2', dow:'木',time:'05:00',home:{n:'ベルギー',cc:'be'},     away:{n:'セネガル',cc:'sn'},    group:'R32',venue:'シアトル',        score:'3-2(延長)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/2', dow:'木',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ボスニア',cc:'ba'},    group:'R32',venue:'サンフランシスコ',score:'2-0',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/3', dow:'金',time:'04:00',home:{n:'スペイン',cc:'es'},     away:{n:'オーストリア',cc:'at'},group:'R32',venue:'アトランタ',      score:'3-0',broad:['dazn'],jp:false,free:false,past:true},
-    {date:'7/3', dow:'金',time:'08:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'クロアチア',cc:'hr'},  group:'R32',venue:'バンクーバー',   score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/3', dow:'金',time:'08:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'クロアチア',cc:'hr'},  group:'R32',venue:'バンクーバー',   score:'2-1(延長)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/3', dow:'金',time:'12:00',home:{n:'スイス',cc:'ch'},       away:{n:'アルジェリア',cc:'dz'},group:'R32',venue:'シアトル',        score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/4', dow:'土',time:'03:00',home:{n:'オーストラリア',cc:'au'},away:{n:'エジプト',cc:'eg'},   group:'R32',venue:'ダラス',          score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/4', dow:'土',time:'07:00',home:{n:'アルゼンチン',cc:'ar'}, away:{n:'カーボベルデ',cc:'cv'},group:'R32',venue:'マイアミ',        score:'',broad:['dazn'],jp:false,free:false},
@@ -9217,6 +9217,7 @@
     { no:'⑫', home:'gb-eng', away:'cd', score:'2-1',  winner:'gb-eng', date:'7/2', venue:'アトランタ' },
     { no:'⑯', home:'be', away:'sn', score:'3-2(延長)', winner:'be', date:'7/2', venue:'シアトル' },
     { no:'⑥', home:'es', away:'at', score:'3-0',      winner:'es', date:'7/3', venue:'アトランタ' },
+    { no:'⑤', home:'pt', away:'hr', score:'2-1(延長)', winner:'pt', date:'7/3', venue:'バンクーバー' },
   ];
 
   function ccToFlagUrl(cc) {
