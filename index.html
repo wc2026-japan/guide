@@ -1072,43 +1072,80 @@
     }
 
     /* ===== 結合ブラケットビュー（R32 2試合 → R16 1試合） ===== */
-    .pair-block {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      margin-bottom: 14px;
-    }
-    .pair-block .pair-left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    /* ===== 縦連結カード：R32結果 → R16対戦（画像参考デザイン） ===== */
+    /* ===== R32/R16結果カード（参考画像のシンプルなテーブル型を再現） ===== */
+    .ko-rc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 11px;
+      margin-bottom: 10px;
       min-width: 0;
     }
-    .pair-block .pair-connector {
-      width: 20px;
-      flex-shrink: 0;
-      position: relative;
+    .ko-rc-card .rc-meta {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 7px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .pair-block .pair-connector::before {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; top: 25%; bottom: 25%;
-      border-top: 2px solid rgba(212,255,63,0.3);
-      border-right: 2px solid rgba(212,255,63,0.3);
-      border-bottom: 2px solid rgba(212,255,63,0.3);
-      border-radius: 0 6px 6px 0;
+    .ko-rc-card .rc-meta .ft-badge {
+      color: #4caf50; font-weight: 900; margin-right: 4px;
     }
-    .pair-block .pair-right {
-      flex: 1;
+    .ko-rc-card .rc-team-row {
       display: flex;
       align-items: center;
-      min-width: 0;
+      gap: 6px;
+      padding: 3px 0;
+      cursor: pointer;
     }
-    @media (max-width: 600px) {
-      .pair-block { flex-direction: column; gap: 8px; }
-      .pair-block .pair-connector { display: none; }
-      .pair-block .pair-right { padding-left: 0; }
+    .ko-rc-card .rc-team-row img {
+      width: 24px; height: 17px;
+      border-radius: 2px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+    .ko-rc-card .rc-team-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      flex: 1;
+    }
+    .ko-rc-card .rc-team-row.won .rc-team-name { font-weight: 900; }
+    .ko-rc-card .rc-score {
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .ko-rc-card .rc-team-row.won .rc-score { color: var(--text-primary); }
+    /* R32結果(左列) / R16対戦(右列) の2カラムレイアウト */
+    .pair-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .pair-group .pair-r32-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pair-group .pair-r32-list .ko-rc-card { margin-bottom: 0; }
+    .pair-group .pair-r16-card {
+      margin-bottom: 0;
+      border-color: rgba(212,255,63,0.35);
     }
     .ko-round { }
     .ko-round-note {
@@ -4019,8 +4056,8 @@
   <!-- JFA text -->
   <text x="16" y="27" font-family="Arial Black,sans-serif" font-size="4" font-weight="900" fill="#1a1a1a" text-anchor="middle" letter-spacing="0.5">JFA</text>
 </svg></span> 日本代表</button>
-    <button class="tab" data-tab-id="predict" onclick="showSection('predict', this)">🎯 突破条件</button>
     <button class="tab" data-tab-id="standings" onclick="showSection('standings', this)">🏆 順位表</button>
+    <button class="tab" data-tab-id="predict" onclick="showSection('predict', this)">🎯 突破条件</button>
     <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
     <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
@@ -4711,8 +4748,16 @@
       </div>
     </div>
 
-    <!-- ④ 日本代表の勝ち上がり予想ルート -->
-    <div class="ko-route-section">
+    <!-- ④ トーナメント表（R32/R16切り替え） -->
+    <div class="section-label" style="margin-top:20px">🏆 トーナメント表</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
+      <button id="top-bk-tab-r32" class="ko-tab" onclick="topBracketSwitch('r32')" style="text-align:center">⚔️ ラウンド32</button>
+      <button id="top-bk-tab-r16" class="ko-tab active" onclick="topBracketSwitch('r16')" style="text-align:center">🔥 ラウンド16</button>
+    </div>
+    <div id="top-bracket-container" style="margin-bottom:18px"></div>
+
+    <!-- ⑤ 日本代表の勝ち上がり予想ルート（敗退により非表示） -->
+    <div class="ko-route-section" style="display:none">
       <div class="ko-route-title">🇯🇵 日本代表の勝ち上がり予想ルート</div>
       <div class="ko-route-steps">
         <div class="ko-route-step active-step">
@@ -5505,6 +5550,11 @@
   <!-- ===== STANDINGS TAB ===== -->
   <div id="section-standings" class="section">
 
+    <div style="margin-bottom:12px">
+      <div style="font-size:20px;font-weight:900;color:#fff">📊 順位表</div>
+      <div style="font-size:12px;color:var(--text-secondary,rgba(255,255,255,0.75));margin-top:8px;line-height:1.6;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 10px">各グループ上位2チームが決勝トーナメント進出。3位の上位8チームも進出（48カ国拡大方式）。</div>
+    </div>
+
     <!-- グループリーグ -->
     <div id="st-gs-panel">
       <div class="group-selector" id="groupSelector"></div>
@@ -5600,6 +5650,7 @@
     <div style="margin-bottom:14px">
       <div style="font-size:20px;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px">🏆 決勝トーナメント表</div>
       <div style="font-size:11px;color:var(--text-muted);margin-top:2px">FIFA World Cup 2026 ／ ノックアウトステージ全試合</div>
+      <div style="font-size:12px;color:var(--text-secondary,rgba(255,255,255,0.75));margin-top:8px;line-height:1.6;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 10px">各グループ上位2チームが決勝トーナメント進出。3位の上位8チームも進出（48カ国拡大方式）。</div>
     </div>
 
 <!-- 凡例 -->
@@ -5611,8 +5662,16 @@
         <span style="font-size:9px;margin-left:auto;color:rgba(255,255,255,0.35)">👈 横スクロール(PC)</span>
       </div>
 
+      <!-- ラウンド切り替えタブ -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px">
+        <button id="rd-tab-r32" class="ko-tab" onclick="rdSwitch('r32')" style="text-align:center">⚔️ R32</button>
+        <button id="rd-tab-r16" class="ko-tab active" onclick="rdSwitch('r16')" style="text-align:center">🔥 R16</button>
+        <button id="rd-tab-qfsf" class="ko-tab" onclick="rdSwitch('qfsf')" style="text-align:center">⚡ QF・SF</button>
+        <button id="rd-tab-final" class="ko-tab" onclick="rdSwitch('final')" style="text-align:center">🏆 決勝</button>
+      </div>
+
       <!-- ===== R32パネル ===== -->
-      <div id="rd-panel-r32">
+      <div id="rd-panel-r32" style="display:none">
         <!-- サブタブ：トーナメント表 / 試合一覧 -->
         <div style="display:flex;gap:6px;margin-bottom:12px">
           <button id="r32-sub-bracket" class="rd-subtab active" onclick="rdSubSwitch('r32','bracket')">🏆 トーナメント表</button>
@@ -5623,7 +5682,7 @@
       </div><!-- /rd-panel-r32 -->
 
       <!-- ===== R16パネル ===== -->
-      <div id="rd-panel-r16" style="display:none">
+      <div id="rd-panel-r16">
         <div style="display:flex;gap:6px;margin-bottom:12px">
           <button id="r16-sub-bracket" class="rd-subtab active" onclick="rdSubSwitch('r16','bracket')">🏆 トーナメント表</button>
           <button id="r16-sub-list" class="rd-subtab" onclick="rdSubSwitch('r16','list')">📋 試合一覧</button>
@@ -5634,48 +5693,12 @@
 
       <!-- ===== QF・SFパネル ===== -->
       <div id="rd-panel-qfsf" style="display:none">
-        <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">⚡ 準々決勝　7/10〜12　／　🌟 準決勝　7/15〜16</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="font-size:11px;font-weight:900;color:var(--text-muted);margin-top:4px">⚡ QUARTER FINALS</div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">QF1　7/9(木) フォックスボロ</div>
-            <div onclick="openTeamModal('ma')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/ma.svg" alt="🇲🇦">モロッコ（R16-1勝者）</div>
-            <div class="bk-sep"></div>
-            <div onclick="openTeamModal('fr')" style="cursor:pointer" class="bk-team"><img src="https://flagcdn.com/fr.svg" alt="🇫🇷">フランス（R16-2勝者）</div>
-          </div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">QF2　7/11(土) インディアナポリス</div>
-            <div class="bk-team tbd">— 左ブロック下 R16勝者</div>
-            <div class="bk-sep"></div>
-            <div class="bk-team tbd">— 左ブロック下 R16勝者</div>
-          </div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">QF3　7/10(金) マイアミ</div>
-            <div class="bk-team tbd">— R16-3勝者</div>
-            <div class="bk-sep"></div>
-            <div class="bk-team tbd">— 右ブロック上 R16勝者</div>
-          </div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">QF4　7/12(日) カンザスシティ</div>
-            <div class="bk-team tbd">— R16-4勝者</div>
-            <div class="bk-sep"></div>
-            <div class="bk-team tbd">— 右ブロック下 R16勝者</div>
-          </div>
-
-          <div style="font-size:11px;font-weight:900;color:var(--gold);margin-top:10px">🌟 SEMI FINALS</div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">SF1　7/15(水) ダラス</div>
-            <div class="bk-team tbd">— QF1勝者</div>
-            <div class="bk-sep"></div>
-            <div class="bk-team tbd">— QF2勝者</div>
-          </div>
-          <div class="bk-match" style="min-width:auto">
-            <div class="bk-match-meta">SF2　7/16(木) アトランタ</div>
-            <div class="bk-team tbd">— QF3勝者</div>
-            <div class="bk-sep"></div>
-            <div class="bk-team tbd">— QF4勝者</div>
-          </div>
+        <div style="display:flex;gap:6px;margin-bottom:12px">
+          <button id="qfsf-sub-bracket" class="rd-subtab active" onclick="rdSubSwitch('qfsf','bracket')">🏆 トーナメント表</button>
+          <button id="qfsf-sub-list" class="rd-subtab" onclick="rdSubSwitch('qfsf','list')">📋 試合一覧</button>
         </div>
+        <div id="qfsf-bracket-container"></div>
+        <div id="qfsf-list-container" style="display:none"></div>
       </div><!-- /rd-panel-qfsf -->
 
       <!-- ===== 決勝パネル ===== -->
@@ -5697,17 +5720,6 @@
           </div>
         </div>
       </div><!-- /rd-panel-final -->
-
-      <!-- ラウンド切り替えタブ（現在地ナビ） -->
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1)">
-        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">📍 ラウンドを選択</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
-          <button id="rd-tab-r32" class="ko-tab active" onclick="rdSwitch('r32')" style="text-align:center">⚔️ R32</button>
-          <button id="rd-tab-r16" class="ko-tab" onclick="rdSwitch('r16')" style="text-align:center">🔥 R16</button>
-          <button id="rd-tab-qfsf" class="ko-tab" onclick="rdSwitch('qfsf')" style="text-align:center">⚡ QF・SF</button>
-          <button id="rd-tab-final" class="ko-tab" onclick="rdSwitch('final')" style="text-align:center">🏆 決勝</button>
-        </div>
-      </div>
 
   </div><!-- /section-tournament -->
 
@@ -6371,7 +6383,6 @@
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
       <div>
         <div style="font-size:18px;font-weight:900;color:#fff">📊 ランキング</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">7/1 時点</div>
       </div>
       <button onclick="loadRankingData()" id="ranking-reload-btn"
         style="background:rgba(59,122,240,0.2);border:1px solid rgba(59,122,240,0.4);color:var(--sky-blue);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">
@@ -7319,7 +7330,7 @@
     if (id === 'quiz') renderQuiz();
     if (id === 'predict') renderChampionGrid();
     if (id === 'ranking') loadRankingData();
-    if (id === 'tournament') renderR32Bracket();
+    if (id === 'tournament') renderR16Bracket();
   }
 
   // ===== ランキング API-Football連携 =====
@@ -7358,44 +7369,44 @@
     );
   }
 
-  // ===== ランキング 静的データ（7/1時点） =====
+  // ===== ランキング 静的データ =====
   const RANKING_SCORERS = [
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:6, a:2, jp:false },
-    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:6, a:0, jp:false },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:7, a:2, jp:false },
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:7, a:0, jp:false },
     { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:5, a:0, jp:false },
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:5, a:0, jp:false },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:4, a:2, jp:false },
-    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:0, jp:false },
+    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:1, jp:false },
     { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false },
     { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:4, a:1, jp:false },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', g:3, a:2, jp:false },
-    { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:1, jp:false },
-    { name:'F・キノーネス',     country:'メキシコ',        flag:'🇲🇽', g:3, a:1, jp:false },
+    { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:2, jp:false },
+    { name:'F・キニョーネス',   country:'メキシコ',        flag:'🇲🇽', g:3, a:1, jp:false },
     { name:'C・ガクポ',         country:'オランダ',        flag:'🇳🇱', g:3, a:1, jp:false },
+    { name:'F・バログン',       country:'アメリカ',        flag:'🇺🇸', g:3, a:0, jp:false },
     { name:'B・ブロビー',       country:'オランダ',        flag:'🇳🇱', g:3, a:0, jp:false },
     { name:'M・クーニャ',       country:'ブラジル',        flag:'🇧🇷', g:3, a:0, jp:false },
-    { name:'J・デイビッド',     country:'カナダ',          flag:'🇨🇦', g:3, a:0, jp:false },
   ];
 
   const RANKING_ASSISTS = [
-    { name:'M・オリゼ',         country:'フランス',        flag:'🇫🇷', a:5, g:0, jp:false },
+    { name:'M・オリーセ',       country:'フランス',        flag:'🇫🇷', a:5, g:0, jp:false },
     { name:'B・ギマランイス',   country:'ブラジル',        flag:'🇧🇷', a:4, g:0, jp:false },
-    { name:'R・アルバラド',     country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false },
+    { name:'B・ディアス',       country:'モロッコ',        flag:'🇲🇦', a:4, g:0, jp:false },
+    { name:'R・アルバラード',   country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false },
     { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:3, g:0, jp:false },
     { name:'F・ヴィルツ',       country:'ドイツ',          flag:'🇩🇪', a:3, g:0, jp:false },
-    { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:0, jp:false },
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:2, g:6, jp:false },
-    { name:'B・サカ',           country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
+    { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:1, jp:false },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:2, g:7, jp:false },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', a:2, g:4, jp:false },
-    { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
-    { name:'D・ダムフリース',   country:'オランダ',        flag:'🇳🇱', a:2, g:0, jp:false },
-    { name:'J・キミッヒ',       country:'ドイツ',          flag:'🇩🇪', a:2, g:0, jp:false },
-    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', a:2, g:3, jp:false },
-    { name:'P・ベルグ',         country:'ノルウェー',      flag:'🇳🇴', a:2, g:0, jp:false },
+    { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', a:2, g:3, jp:false },
+    { name:'B・サカ',           country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
+    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
+    { name:'J・キミッヒ',       country:'ドイツ',          flag:'🇩🇪', a:2, g:0, jp:false },
+    { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/4 更新';
+  const RANKING_UPDATED = '7/5 更新';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -7405,6 +7416,7 @@
     });
     if (round === 'r32') renderR32Bracket();
     if (round === 'r16') renderR16Bracket();
+    if (round === 'qfsf') renderQFSFBracket();
     const sec = document.getElementById('section-tournament');
     if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -8858,15 +8870,29 @@
 
   // ===== R16（ベスト16）組み合わせ ※home/awayはR32勝者、未確定はnull =====
   const KO_R16_FIXTURES = [
-    { no:'R16-1', home:'ca', away:'ma', date:'7/5(日)', time:'01:00', venue:'ヒューストン', score:'0-3', winner:'ma', r32pair:['①','②'] },
+    { no:'R16-1', home:'ca', away:'ma', date:'7/5(日)', time:'02:00', venue:'ヒューストン', score:'0-3', winner:'ma', r32pair:['①','②'] },
     { no:'R16-2', home:'py', away:'fr', date:'7/5(日)', time:'06:00', venue:'フィラデルフィア', score:'0-1', winner:'fr', r32pair:['③','④'],
       scorers:{ home:[], away:["K.エムバペ 70'"] } },
     { no:'R16-3', home:'pt', away:'es', date:'7/7(火)', time:'04:00', venue:'ダラス', r32pair:['⑤','⑥'] },
-    { no:'R16-4', home:'us', away:'co', date:'7/7(火)', time:'09:00', venue:'シアトル', r32pair:['⑦','⑧'] },
-    { no:'R16-5', home:'br', away:'no', date:'7/6(月)', time:'05:00', venue:'ニュージャージー', jp:true, r32pair:['⑨','⑩'] },
+    { no:'R16-4', home:'us', away:'be', date:'7/7(火)', time:'09:00', venue:'シアトル', r32pair:['⑦','⑯'] },
+    { no:'R16-5', home:'br', away:'no', date:'7/6(月)', time:'05:00', venue:'ニューヨーク', jp:true, r32pair:['⑨','⑩'] },
     { no:'R16-6', home:'mx', away:'gb-eng', date:'7/6(月)', time:'09:00', venue:'メキシコシティ', r32pair:['⑪','⑫'] },
     { no:'R16-7', home:'ar', away:'eg', date:'7/8(水)', time:'01:00', venue:'アトランタ', r32pair:['⑬','⑭'] },
-    { no:'R16-8', home:'ch', away:'be', date:'7/8(水)', time:'05:00', venue:'バンクーバー', r32pair:['⑮','⑯'] },
+    { no:'R16-8', home:'ch', away:'co', date:'7/8(水)', time:'05:00', venue:'バンクーバー', r32pair:['⑮','⑧'] },
+  ];
+
+  // ===== QF（準々決勝）組み合わせ ※home/awayはR16勝者、未確定はnull =====
+  // ===== SF（準決勝）組み合わせ ※home/awayはQF勝者、未確定はnull =====
+  const KO_SF_FIXTURES = [
+    { no:'SF1', home:null, away:null, date:'7/15(水)', time:'', venue:'ダラス',     qfpair:['QF1','QF2'] },
+    { no:'SF2', home:null, away:null, date:'7/16(木)', time:'', venue:'アトランタ', qfpair:['QF3','QF4'] },
+  ];
+
+  const KO_QF_FIXTURES = [
+    { no:'QF1', home:'fr', away:'ma', date:'7/10(金)', time:'05:00', venue:'ボストン',       r16pair:['R16-2','R16-1'] },
+    { no:'QF2', home:null, away:null, date:'7/11(土)', time:'04:00', venue:'ロサンゼルス',   r16pair:['R16-3','R16-4'] },
+    { no:'QF3', home:null, away:null, date:'7/12(日)', time:'06:00', venue:'マイアミ',       r16pair:['R16-5','R16-6'] },
+    { no:'QF4', home:null, away:null, date:'7/12(日)', time:'10:00', venue:'カンザスシティ', r16pair:['R16-7','R16-8'] },
   ];
 
   function kolistTeamRow(cc, isWinner, isKnown) {
@@ -8973,16 +8999,22 @@
       listBtn.classList.remove('active');
       if (round === 'r32') renderR32Bracket();
       if (round === 'r16') renderR16Bracket();
+      if (round === 'qfsf') renderQFSFBracket();
     } else {
       bracketEl.style.display = 'none';
       listEl.style.display = '';
       bracketBtn.classList.remove('active');
       listBtn.classList.add('active');
+      if (round === 'r32') renderR32List();
+      if (round === 'r16') renderR16List();
+      if (round === 'qfsf') renderQFSFList();
     }
   }
 
   // 対戦カード1件分のミニカードHTML（トーナメント表用）
-  function bracketMiniCard(homeCC, awayCC, score, winner, dateLabel, venue, isJp, compact) {
+  // 帯グラフ型の1チーム行を生成
+  // 1試合ぶんの結果カード（参考画像のシンプルなテーブル型）
+  function resultCard(no, homeCC, awayCC, score, winner, dateLabel, venue, extraClass) {
     const homeInfo = TEAM_INFO[homeCC];
     const awayInfo = TEAM_INFO[awayCC];
     const isDone = !!score;
@@ -8990,21 +9022,28 @@
     const scores = isDone ? score.split('-') : [null, null];
     const homeScore = scores[0];
     const awayScore = scores[1] ? scores[1].split('(')[0] : null;
-    const pad = compact ? '7px 9px' : '10px 12px';
+    const extra = isDone && score.includes('(') ? ' ' + score.split('(')[1].replace(')','') : '';
+    const homeName = homeInfo ? homeInfo.name : '未確定';
+    const awayName = awayInfo ? awayInfo.name : '未確定';
+    const homeFlag = homeCC ? `<img src="${ccToFlagUrl(homeCC)}" alt="" onerror="this.outerHTML='<div style=&quot;width:24px;height:17px;border-radius:2px;background:rgba(255,255,255,0.1);flex-shrink:0&quot;></div>'">` : '<div style="width:24px;height:17px;border-radius:2px;background:rgba(255,255,255,0.08);flex-shrink:0"></div>';
+    const awayFlag = awayCC ? `<img src="${ccToFlagUrl(awayCC)}" alt="" onerror="this.outerHTML='<div style=&quot;width:24px;height:17px;border-radius:2px;background:rgba(255,255,255,0.1);flex-shrink:0&quot;></div>'">` : '<div style="width:24px;height:17px;border-radius:2px;background:rgba(255,255,255,0.08);flex-shrink:0"></div>';
     return `
-      <div class="bk-match ${isJp?'jp':''}" style="min-width:auto;width:100%;padding:${pad};${isDone?'opacity:0.85':''}">
-        <div class="bk-match-meta">${isDone?'<span style="color:#4caf50;font-weight:900">FT</span> ':''}${dateLabel}${venue?' ・ '+venue:''}</div>
-        <div onclick="openTeamModal('${homeCC}')" style="cursor:pointer" class="bk-team ${isDone?(homeWon?'won':''):''}">
-          <img src="${ccToFlagUrl(homeCC)}" alt="">${homeInfo?homeInfo.name:'—'}${isDone?`<span class="bk-score ${homeWon?'w':'l'}">${homeScore}</span>`:''}
+      <div class="ko-rc-card ${extraClass||''}">
+        <div class="rc-meta">${isDone?'<span class="ft-badge">FT</span>':''}${no?no+'　':''}${dateLabel}${venue?' ・ '+venue:''}${extra?'　'+extra:''}</div>
+        <div class="rc-team-row ${isDone&&homeWon?'won':''}" ${homeCC?`onclick="openTeamModal('${homeCC}')"`:''}>
+          ${homeFlag}
+          <div class="rc-team-name">${homeName}</div>
+          ${isDone?`<div class="rc-score">${homeScore}</div>`:''}
         </div>
-        <div class="bk-sep"></div>
-        <div onclick="openTeamModal('${awayCC}')" style="cursor:pointer" class="bk-team ${isDone?(!homeWon?'won':''):''}">
-          <img src="${ccToFlagUrl(awayCC)}" alt="">${awayInfo?awayInfo.name:'—'}${isDone?`<span class="bk-score ${!homeWon?'w':'l'}">${awayScore}</span>`:''}
+        <div class="rc-team-row ${isDone&&!homeWon?'won':''}" ${awayCC?`onclick="openTeamModal('${awayCC}')"`:''}>
+          ${awayFlag}
+          <div class="rc-team-name">${awayName}</div>
+          ${isDone?`<div class="rc-score">${awayScore}</div>`:''}
         </div>
       </div>`;
   }
 
-  // ===== 結合ブラケットビュー：R32の2試合 → R16の1試合 を線でつなぐ =====
+  // ===== R32結果カード → R16対戦カード をペアで並べる（参考画像レイアウト） =====
   function renderPairedBracket(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -9020,23 +9059,196 @@
         const [no1, no2] = r16.r32pair;
         const m1 = r32ByNo[no1];
         const m2 = r32ByNo[no2];
-        const leftCards = [m1, m2].filter(Boolean).map(m => {
-          const isJp = (m.home === 'jp' || m.away === 'jp');
-          return bracketMiniCard(m.home, m.away, m.score, m.winner, m.no + '　' + m.date, m.venue, isJp, true);
-        }).join('');
-        const rightCard = bracketMiniCard(r16.home, r16.away, r16.score, r16.winner, r16.no + '　' + r16.date + ' ' + r16.time, r16.venue, r16.jp, false);
+        const r32Cards = [m1, m2].filter(Boolean).map(m =>
+          resultCard(m.no, m.home, m.away, m.score, m.winner, m.date, m.venue)
+        ).join('');
+        const r16Card = resultCard(r16.no, r16.home, r16.away, r16.score, r16.winner, r16.date + ' ' + r16.time, r16.venue, 'pair-r16-card');
 
         return `
-          <div class="pair-block">
-            <div class="pair-left">${leftCards}</div>
-            <div class="pair-connector"></div>
-            <div class="pair-right">${rightCard}</div>
+          <div class="pair-group">
+            <div class="pair-r32-list">${r32Cards}</div>
+            ${r16Card}
           </div>`;
       }).join('');
   }
 
+  // ===== R16結果カード → QF対戦カード をペアで並べる（画像参考レイアウト） =====
+  function renderR16QFBracket(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const r16ByNo = {};
+    KO_R16_FIXTURES.forEach(m => { r16ByNo[m.no] = m; });
+
+    container.innerHTML = `
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">🔥 ラウンド16 の結果 → 準々決勝 の組み合わせ</div>` +
+      KO_QF_FIXTURES.map(qf => {
+        const r16Cards = qf.r16pair.map(no => {
+          const m = r16ByNo[no];
+          if (!m) return '';
+          return resultCard(null, m.home, m.away, m.score, m.winner, m.date + ' ' + m.time, m.venue);
+        }).join('');
+
+        let qfCard;
+        if (qf.home && qf.away) {
+          // 対戦カード確定
+          qfCard = resultCard(null, qf.home, qf.away, qf.score, qf.winner, qf.date + ' ' + qf.time, qf.venue, 'pair-r16-card');
+        } else {
+          // 未確定：候補チームの国旗を「🏳 / 🏳」形式で表示
+          const rows = qf.r16pair.map(no => {
+            const m = r16ByNo[no];
+            if (!m) return '';
+            const flagImg = cc => `<img src="${ccToFlagUrl(cc)}" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.25)">`;
+            return `<div class="rc-team-row" style="cursor:default">${flagImg(m.home)}<span style="color:var(--text-muted);font-size:11px;font-weight:700">/</span>${flagImg(m.away)}</div>`;
+          }).join('');
+          qfCard = `
+            <div class="ko-rc-card pair-r16-card">
+              <div class="rc-meta">${qf.date} ${qf.time} ・ ${qf.venue}</div>
+              ${rows}
+            </div>`;
+        }
+
+        return `
+          <div class="pair-group">
+            <div class="pair-r32-list">${r16Cards}</div>
+            ${qfCard}
+          </div>`;
+      }).join('');
+  }
+
+  // ===== QF対戦カード → SFカード をペアで並べる（R16と同レイアウト） =====
+  function renderQFSFBracket(containerId) {
+    const container = document.getElementById(containerId || 'qfsf-bracket-container');
+    if (!container) return;
+
+    const r16ByNo = {};
+    KO_R16_FIXTURES.forEach(m => { r16ByNo[m.no] = m; });
+    const qfByNo = {};
+    KO_QF_FIXTURES.forEach(m => { qfByNo[m.no] = m; });
+
+    const flagImg = cc => `<img src="${ccToFlagUrl(cc)}" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.25)">`;
+
+    // QFカード（確定時は結果カード、未確定時は候補国旗）
+    const qfCardHtml = (qf, extraClass) => {
+      if (!qf) return '';
+      if (qf.home && qf.away) {
+        return resultCard(null, qf.home, qf.away, qf.score, qf.winner, qf.date + ' ' + qf.time, qf.venue, extraClass);
+      }
+      const rows = qf.r16pair.map(no => {
+        const m = r16ByNo[no];
+        if (!m) return '';
+        const cc1 = m.winner || m.home;
+        if (m.winner) {
+          const info = TEAM_INFO[m.winner];
+          return `<div class="rc-team-row" onclick="openTeamModal('${m.winner}')" style="cursor:pointer">${flagImg(m.winner)}<div class="rc-team-name">${info ? info.name : ''} <span style="color:#4caf50">✓</span></div></div>`;
+        }
+        return `<div class="rc-team-row" style="cursor:default">${flagImg(m.home)}<span style="color:var(--text-muted);font-size:11px;font-weight:700">/</span>${flagImg(m.away)}</div>`;
+      }).join('');
+      return `
+        <div class="ko-rc-card ${extraClass || ''}">
+          <div class="rc-meta">${qf.no}　${qf.date} ${qf.time} ・ ${qf.venue}</div>
+          ${rows}
+        </div>`;
+    };
+
+    container.innerHTML = `
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">⚡ 準々決勝 の組み合わせ → 🌟 準決勝</div>` +
+      KO_SF_FIXTURES.map(sf => {
+        const qfCards = sf.qfpair.map(no => qfCardHtml(qfByNo[no])).join('');
+
+        let sfCard;
+        if (sf.home && sf.away) {
+          sfCard = resultCard(null, sf.home, sf.away, sf.score, sf.winner, (sf.date + ' ' + sf.time).trim(), sf.venue, 'pair-r16-card');
+        } else {
+          const rows = sf.qfpair.map(no => `
+            <div class="rc-team-row" style="cursor:default">
+              <div class="rc-team-name" style="color:var(--text-muted);font-weight:700">— ${no} 勝者</div>
+            </div>`).join('');
+          sfCard = `
+            <div class="ko-rc-card pair-r16-card">
+              <div class="rc-meta">${sf.no}　${(sf.date + ' ' + sf.time).trim()} ・ ${sf.venue}</div>
+              ${rows}
+            </div>`;
+        }
+
+        return `
+          <div class="pair-group">
+            <div class="pair-r32-list">${qfCards}</div>
+            ${sfCard}
+          </div>`;
+      }).join('');
+  }
+
+  // ===== QF・SF 試合一覧 =====
+  function renderQFSFList() {
+    const container = document.getElementById('qfsf-list-container');
+    if (!container) return;
+    const r16ByNo = {};
+    KO_R16_FIXTURES.forEach(m => { r16ByNo[m.no] = m; });
+
+    const candidateLabel = pairNo => {
+      const m = r16ByNo[pairNo];
+      if (!m) return '—';
+      if (m.winner) { const info = TEAM_INFO[m.winner]; return (info ? info.name : '—') + ' ✓'; }
+      const h = TEAM_INFO[m.home], a = TEAM_INFO[m.away];
+      return `${h ? h.name : '—'} / ${a ? a.name : '—'} 勝者`;
+    };
+
+    const matchRow = (m, roundLabel, refPair, refLabelFn) => {
+      const isDone = !!m.score;
+      let rows;
+      if (m.home && m.away) {
+        const homeInfo = TEAM_INFO[m.home];
+        const awayInfo = TEAM_INFO[m.away];
+        const homeWon = m.winner === m.home;
+        const scores = isDone ? m.score.split('-') : [null, null];
+        rows = `
+            <div class="kolist-team-row ${isDone ? (homeWon?'won':'lost') : ''}" onclick="openTeamModal('${m.home}')" style="cursor:pointer">
+              <img src="${ccToFlagUrl(m.home)}" alt="">${homeInfo ? homeInfo.name : '—'}${isDone && homeWon ? ' ✓' : ''}
+              ${isDone ? `<span class="kolist-score">${scores[0]}</span>` : ''}
+            </div>
+            <div class="kolist-team-row ${isDone ? (!homeWon?'won':'lost') : ''}" onclick="openTeamModal('${m.away}')" style="cursor:pointer">
+              <img src="${ccToFlagUrl(m.away)}" alt="">${awayInfo ? awayInfo.name : '—'}${isDone && !homeWon ? ' ✓' : ''}
+              ${isDone ? `<span class="kolist-score">${scores[1] || ''}</span>` : ''}
+            </div>`;
+      } else {
+        rows = refPair.map(no => `
+            <div class="kolist-team-row">
+              <span style="color:var(--text-muted);font-weight:700">— ${refLabelFn(no)}</span>
+            </div>`).join('');
+      }
+      return `
+        <div class="kolist-card">
+          <div class="kolist-date">
+            <div class="d1">${m.date}</div>
+            <div class="d2">${m.time || roundLabel}</div>
+          </div>
+          <div class="kolist-teams">
+            ${rows}
+            <div style="font-size:9px;color:rgba(255,255,255,0.35)">${m.no}　${m.venue}</div>
+          </div>
+        </div>`;
+    };
+
+    container.innerHTML =
+      `<div style="font-size:11px;font-weight:900;color:var(--text-muted);margin-bottom:8px">⚡ 準々決勝（QUARTER FINALS）　4試合</div>` +
+      KO_QF_FIXTURES.map(m => matchRow(m, 'QF', m.r16pair, candidateLabel)).join('') +
+      `<div style="font-size:11px;font-weight:900;color:var(--gold);margin:14px 0 8px">🌟 準決勝（SEMI FINALS）　2試合</div>` +
+      KO_SF_FIXTURES.map(m => matchRow(m, 'SF', m.qfpair, no => no + ' 勝者')).join('');
+  }
+
   function renderR32Bracket() { renderPairedBracket('r32-bracket-container'); }
-  function renderR16Bracket() { renderPairedBracket('r16-bracket-container'); }
+  function renderR16Bracket() { renderR16QFBracket('r16-bracket-container'); }
+
+  // ===== TOPページ：トーナメント表 R32/R16切り替え =====
+  function topBracketSwitch(round) {
+    ['r32','r16'].forEach(r => {
+      const b = document.getElementById('top-bk-tab-' + r);
+      if (b) b.classList.toggle('active', r === round);
+    });
+    if (round === 'r32') renderPairedBracket('top-bracket-container');
+    else renderR16QFBracket('top-bracket-container');
+  }
 
   function buildKoResultHtml(cc) {
     const m = KO_R32_RESULTS.find(r => r.home === cc || r.away === cc);
@@ -9534,6 +9746,8 @@
   // ニュースタブが表示されるたびに描画
   const _origShowSection = typeof showSection === 'function' ? showSection : null;
   document.addEventListener('DOMContentLoaded', function() {
+    // TOPページのトーナメント表（初期表示：ラウンド16）
+    try { topBracketSwitch('r16'); } catch(e) {}
     // showSection をラップしてnewsタブ初期描画を行う
     const origFn = window.showSection;
     window.showSection = function(id, btn, navId) {
