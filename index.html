@@ -10,13 +10,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="日本ガイド">
   <meta name="description" content="2026 FIFAワールドカップ 日程・放送・グループ順位を日本時間でチェック">
-  <title>FIFA World Cup 2026 Japan Guide</title>
+  <title>FIFA World Cup 2026 Japan Guide | 日本代表・全試合日程・速報・順位・決勝トーナメントを最速更新</title>
 
   <!-- OGP / Twitter Card -->
   <meta property="og:type"        content="website">
   <meta property="og:site_name"   content="W杯 日本代表ガイド2026">
   <meta property="og:url"         content="https://wc2026-japan.github.io/guide/">
-  <meta property="og:title"       content="W杯 日本代表ガイド2026 | 試合日程・放送・順位を完全網羅">
+  <meta property="og:title"       content="W杯 日本代表ガイド2026 | 日本代表・全試合日程・速報・順位・決勝トーナメントを最速更新">
   <meta property="og:description" content="ブラジル戦など全試合の日程・地上波/DAZN放送・グループ順位を日本時間でチェック！日本代表の突破確率・選手情報も毎日更新。">
   <meta property="og:image"       content="https://wc2026-japan.github.io/guide/ogp.png">
   <meta property="og:image:width"  content="1200">
@@ -24,7 +24,7 @@
   <meta property="og:locale"      content="ja_JP">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@coin0115">
-  <meta name="twitter:title"       content="W杯 日本代表ガイド2026 | 試合日程・放送・順位を完全網羅">
+  <meta name="twitter:title"       content="W杯 日本代表ガイド2026 | 日本代表・全試合日程・速報・順位・決勝トーナメントを最速更新">
   <meta name="twitter:description" content="ブラジル戦など全試合の日程・地上波/DAZN放送・グループ順位を日本時間でチェック！日本代表の突破確率・選手情報も毎日更新。">
   <meta name="twitter:image"       content="https://wc2026-japan.github.io/guide/ogp.png">
 
@@ -1147,6 +1147,47 @@
       margin-bottom: 0;
       border-color: rgba(212,255,63,0.35);
     }
+    /* ===== ブラケット結線（カードのつながりを示す罫線） ===== */
+    /* 間隔を12pxに固定し、各カードの外側だけにL字線を描く。
+       上下カードの線は隙間中央で1pxオーバーラップさせ、必ず繋がる。 */
+    .pair-group { gap: 12px; }
+    .pair-group .pair-r32-list { gap: 12px; }
+    .pair-group .pair-r32-list .ko-rc-card { margin: 0 !important; position: relative; }
+    .pair-group .pair-r32-list .ko-rc-card::after {
+      content: '';
+      position: absolute;
+      left: 100%;              /* カード右端ちょうどから外側へ（内側に食い込まない） */
+      width: 5px;
+      box-sizing: border-box;  /* ボーダー込みで5px幅に収める */
+      pointer-events: none;
+    }
+    /* 上カード：中央から右へ→下（隙間中央+1pxまで） */
+    .pair-group .pair-r32-list .ko-rc-card:first-child::after {
+      top: 50%;
+      height: calc(50% + 7px);
+      border-top: 2px solid rgba(255,255,255,0.28);
+      border-right: 2px solid rgba(255,255,255,0.28);
+    }
+    /* 下カード：隙間中央-1pxから下りて中央で右へ */
+    .pair-group .pair-r32-list .ko-rc-card:last-child::after {
+      bottom: 50%;
+      height: calc(50% + 7px);
+      border-bottom: 2px solid rgba(255,255,255,0.28);
+      border-right: 2px solid rgba(255,255,255,0.28);
+    }
+    /* 縦線から右カードの左端へ伸びる水平線（縦線位置=カード右端+3〜5px を確実にカバー） */
+    .pair-group .pair-r16-card { position: relative; margin: 0 !important; }
+    .pair-group .pair-r16-card::before {
+      content: '';
+      position: absolute;
+      right: 100%;             /* カード左端ちょうどから外側（左）へ */
+      top: 50%;
+      width: 8px;
+      height: 2px;
+      margin-top: -1px;
+      background: rgba(255,255,255,0.28);
+      pointer-events: none;
+    }
     .ko-round { }
     .ko-round-note {
       font-size: 10px; color: var(--text-muted);
@@ -1289,9 +1330,54 @@
     }
     .bk-match.jp { border-color: rgba(212,255,63,0.55); background: rgba(20,50,140,0.3); }
     .bk-match.final-match {
-      border-color: var(--gold);
-      background: linear-gradient(135deg,rgba(100,80,0,0.3),rgba(30,25,0,0.3));
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #f5c542;
+      background: linear-gradient(135deg, rgba(120,90,10,0.45), rgba(60,45,5,0.35) 45%, rgba(140,105,15,0.5));
       min-width: 160px;
+      animation: finalGlow 2.6s ease-in-out infinite;
+    }
+    /* 黄金の呼吸するグロー */
+    @keyframes finalGlow {
+      0%, 100% {
+        box-shadow: 0 0 14px rgba(255,215,0,0.30), inset 0 0 20px rgba(255,215,0,0.10);
+        border-color: #e0b135;
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(255,215,0,0.60), inset 0 0 32px rgba(255,215,0,0.20);
+        border-color: #ffdf6b;
+      }
+    }
+    /* 光沢が斜めに走るシャイン */
+    .bk-match.final-match::after {
+      content: '';
+      position: absolute;
+      top: -60%; left: -80%;
+      width: 50%; height: 220%;
+      background: linear-gradient(115deg, transparent, rgba(255,235,150,0.35), transparent);
+      animation: finalShine 3.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes finalShine {
+      0%   { left: -80%; }
+      55%  { left: 130%; }
+      100% { left: 130%; }
+    }
+    .bk-match.final-match .bk-match-meta {
+      color: #ffd75e !important;
+      text-shadow: 0 0 8px rgba(255,215,0,0.5);
+    }
+    .bk-match.final-match .bk-team {
+      color: #ffe9a8;
+      font-weight: 800;
+    }
+    .bk-match.final-match .bk-trophy {
+      filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
+      animation: trophyPulse 2.6s ease-in-out infinite;
+    }
+    @keyframes trophyPulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.12); }
     }
     .bk-match.third-match { border-color: rgba(180,120,0,0.4); }
     .bk-match-meta {
@@ -6770,17 +6856,17 @@
 
 </div>
 <nav class="bottom-nav">
-  <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
-    <span class="nav-icon">🔥</span>TOP
+  <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
+    <span class="nav-icon">🇯🇵</span>日本戦
   </button>
   <button class="nav-btn" id="nav-schedule" onclick="showSection('schedule', null, 'nav-schedule')">
     <span class="nav-icon">📅</span>全日程
   </button>
+  <button class="nav-btn" id="nav-tournament" onclick="showSection('tournament', null, 'nav-tournament')">
+    <span class="nav-icon">🔥</span>決勝T
+  </button>
   <button class="nav-btn" id="nav-ranking" onclick="showSection('ranking', null, 'nav-ranking')">
     <span class="nav-icon">📊</span>ランキング
-  </button>
-  <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
-    <span class="nav-icon">🇯🇵</span>日本戦
   </button>
   <button class="nav-btn" id="nav-jpteam" onclick="showSection('jpteam', null, 'nav-jpteam')">
     <span class="nav-icon" style="display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
@@ -7373,7 +7459,7 @@
   const RANKING_SCORERS = [
     { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:7, a:2, jp:false },
     { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:7, a:0, jp:false },
-    { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:5, a:0, jp:false },
+    { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false },
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:5, a:0, jp:false },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:4, a:2, jp:false },
     { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:1, jp:false },
@@ -7406,7 +7492,7 @@
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/5 更新';
+  const RANKING_UPDATED = '7/6 更新';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -7883,7 +7969,7 @@
 
     {date:'7/5', dow:'日',time:'02:00',home:{n:'パラグアイ',cc:'py'},   away:{n:'フランス',cc:'fr'},    group:'R16',venue:'ヒューストン',      score:'0-1',broad:['ntv','dazn'],jp:false,free:false,past:true},
     {date:'7/5', dow:'日',time:'06:00',home:{n:'カナダ',cc:'ca'},       away:{n:'モロッコ',cc:'ma'},    group:'R16',venue:'フィラデルフィア',  score:'0-3',broad:['nhk','bsp4k','dazn'],jp:false,free:false,past:true},
-    {date:'7/6', dow:'月',time:'05:00',home:{n:'ブラジル',cc:'br'},     away:{n:'ノルウェー',cc:'no'},  group:'R16',venue:'ニューヨーク',      score:'',broad:['nhk','bsp4k','dazn'],jp:false,free:false},
+    {date:'7/6', dow:'月',time:'05:00',home:{n:'ブラジル',cc:'br'},     away:{n:'ノルウェー',cc:'no'},  group:'R16',venue:'ニューヨーク',      score:'1-2',broad:['nhk','bsp4k','dazn'],jp:false,free:false,past:true},
     {date:'7/6', dow:'月',time:'09:00',home:{n:'メキシコ',cc:'mx'},     away:{n:'イングランド',cc:'gb-eng'},group:'R16',venue:'メキシコシティ',score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/7', dow:'火',time:'04:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'スペイン',cc:'es'},    group:'R16',venue:'ダラス',            score:'',broad:['ntv','dazn'],jp:false,free:false},
     {date:'7/7', dow:'火',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ベルギー',cc:'be'},    group:'R16',venue:'シアトル',           score:'',broad:['fuji','dazn'],jp:false,free:false},
@@ -8875,7 +8961,8 @@
       scorers:{ home:[], away:["K.エムバペ 70'"] } },
     { no:'R16-3', home:'pt', away:'es', date:'7/7(火)', time:'04:00', venue:'ダラス', r32pair:['⑤','⑥'] },
     { no:'R16-4', home:'us', away:'be', date:'7/7(火)', time:'09:00', venue:'シアトル', r32pair:['⑦','⑯'] },
-    { no:'R16-5', home:'br', away:'no', date:'7/6(月)', time:'05:00', venue:'ニューヨーク', jp:true, r32pair:['⑨','⑩'] },
+    { no:'R16-5', home:'br', away:'no', date:'7/6(月)', time:'05:00', venue:'ニューヨーク', jp:true, score:'1-2', winner:'no', r32pair:['⑨','⑩'],
+      scorers:{ home:["ネイマール 後55'(PK)"], away:["E.ハーランド 後34'","E.ハーランド 後45'"] } },
     { no:'R16-6', home:'mx', away:'gb-eng', date:'7/6(月)', time:'09:00', venue:'メキシコシティ', r32pair:['⑪','⑫'] },
     { no:'R16-7', home:'ar', away:'eg', date:'7/8(水)', time:'01:00', venue:'アトランタ', r32pair:['⑬','⑭'] },
     { no:'R16-8', home:'ch', away:'co', date:'7/8(水)', time:'05:00', venue:'バンクーバー', r32pair:['⑮','⑧'] },
@@ -9099,6 +9186,10 @@
             const m = r16ByNo[no];
             if (!m) return '';
             const flagImg = cc => `<img src="${ccToFlagUrl(cc)}" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.25)">`;
+            if (m.winner) {
+              const info = TEAM_INFO[m.winner];
+              return `<div class="rc-team-row" onclick="openTeamModal('${m.winner}')" style="cursor:pointer">${flagImg(m.winner)}<div class="rc-team-name">${info ? info.name : ''} <span style="color:#4caf50">✓</span></div></div>`;
+            }
             return `<div class="rc-team-row" style="cursor:default">${flagImg(m.home)}<span style="color:var(--text-muted);font-size:11px;font-weight:700">/</span>${flagImg(m.away)}</div>`;
           }).join('');
           qfCard = `
