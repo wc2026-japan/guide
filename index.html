@@ -4020,10 +4020,10 @@
   </a>
 
   <div class="tabs" role="tablist">
-    <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 TOP</button>
+    <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本の軌跡</button>
     <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
+    <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 決勝T</button>
     <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)">📊 ランキング</button>
-    <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本戦</button>
     <button class="tab" data-tab-id="jpteam" onclick="showSection('jpteam', this)"><span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle"><svg viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="22">
   <!-- Shield outer (black) -->
   <path d="M16 0L0 5V18C0 27 7.5 33.5 16 36C24.5 33.5 32 27 32 18V5L16 0Z" fill="#1a1a1a"/>
@@ -4058,10 +4058,10 @@
 </svg></span> 日本代表</button>
     <button class="tab" data-tab-id="standings" onclick="showSection('standings', this)">🏆 順位表</button>
     <button class="tab" data-tab-id="predict" onclick="showSection('predict', this)">🎯 突破条件</button>
-    <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
-    <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📖 使い方</button>
+    <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
+    <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
     <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)" style="display:none">⚙️ 管理</button>
   </div>
 </div>
@@ -6860,9 +6860,9 @@
         { num:15, pos:'MF', name:'鎌田大地',   club:'クリスタル・パレス（英）',       league:'🇬🇧 プレミアリーグ',   dob:'1996/8/5',   birth:'佐賀県',     wc_g:2, wc_a:0, hobby:'料理・読書',           skill:'テクニックと視野の広さ', age:29, ovr:80, start:78, star:true,  img:BASE_JP+'kamada_daichi_01.jpg' },
         { num:14, pos:'MF', name:'伊東純也',   club:'KRCヘンク（ベルギー）',          league:'🇧🇪 プロリーグ',       dob:'1993/3/9',   birth:'神奈川県',   wc_g:1, wc_a:0, hobby:'ゲーム',               skill:'突破速度と正確なクロス', age:32, ovr:78, start:62, star:true,  img:BASE_JP+'ito_junya_01.jpg' },
         { num:7,  pos:'MF', name:'田中碧',     club:'リーズ・ユナイテッド（英）',     league:'🇬🇧 チャンピオンシップ',dob:'1999/9/10',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'中盤でのボール奪取',     age:27, ovr:77, start:60, star:false, img:BASE_JP+'tanaka_ao_01.jpg' },
-        { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:0, wc_a:1, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false, img:BASE_JP+'sano_kaishu_01.jpg' },
+        { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:1, wc_a:1, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false, img:BASE_JP+'sano_kaishu_01.jpg' },
         { num:17, pos:'MF', name:'鈴木唯人',   club:'SCフライブルク（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'2001/8/26',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'鋭いターンと仕掛け',     age:24, ovr:73, start:35, star:false, img:BASE_JP+'suzuki_yuito_01.jpg' },
-        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:3, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true,  img:BASE_JP+'ueda_ayase_01.jpg' },
+        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:2, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true,  img:BASE_JP+'ueda_ayase_01.jpg' },
         { num:11, pos:'FW', name:'前田大然',   club:'セルティック（英）',             league:'🇬🇧 スコティッシュPL', dob:'1997/10/20', birth:'鳥取県',     wc_g:1, wc_a:0, hobby:'ゲーム・アニメ',       skill:'圧倒的なスプリント力',   age:28, ovr:78, start:80, star:true,  img:BASE_JP+'maeda_daizen_01.jpg' },
         { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:1, wc_a:1, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true,  img:BASE_JP+'nakamura_keito_01.jpg' },
         { num:6,  pos:'FW', name:'町野修斗',   club:'ボルシアMG（独）',               league:'🇩🇪 ブンデスリーガ',   dob:'1999/4/29',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'空中戦と泥臭いゴール',   age:26, ovr:73, start:18, star:false, img:null },
@@ -7016,17 +7016,17 @@
         { num:25, pos:'DF', name:'鈴木淳之介', club:'FCコペンハーゲン（デンマーク）', league:'🇩🇰 スーペルリーガ',   dob:'2001/10/20', birth:'千葉県',     wc_g:0, wc_a:0, hobby:'音楽鑑賞・料理',       skill:'高い守備強度',           age:24, ovr:71, start:25, star:false },
         { num:5,  pos:'DF', name:'長友佑都',   club:'FC東京',                         league:'🇯🇵 Jリーグ',          dob:'1986/9/12',  birth:'愛媛県',     wc_g:0, wc_a:0, hobby:'ヨガ・瞑想',           skill:'メンタルの強さ・経験値', age:39, ovr:67, start:15, star:true  },
         { num:8,  pos:'MF', name:'久保建英',   club:'レアル・ソシエダ（西）',         league:'🇪🇸 ラ・リーガ',       dob:'2001/6/4',   birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・将棋',         skill:'ドリブル突破と創造性',   age:24, ovr:85, start:95, star:true  },
-        { num:10, pos:'MF', name:'堂安律',     club:'Eフランクフルト（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'1998/6/16',  birth:'兵庫県',     wc_g:0, wc_a:0, hobby:'音楽・ファッション',   skill:'両足シュートと推進力',   age:27, ovr:81, start:82, star:true  },
+        { num:10, pos:'MF', name:'堂安律',     club:'Eフランクフルト（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'1998/6/16',  birth:'兵庫県',     wc_g:0, wc_a:1, hobby:'音楽・ファッション',   skill:'両足シュートと推進力',   age:27, ovr:81, start:82, star:true  },
         { num:15, pos:'MF', name:'鎌田大地',   club:'クリスタル・パレス（英）',       league:'🇬🇧 プレミアリーグ',   dob:'1996/8/5',   birth:'佐賀県',     wc_g:2, wc_a:0, hobby:'料理・読書',           skill:'テクニックと視野の広さ', age:29, ovr:80, start:78, star:true  },
         { num:14, pos:'MF', name:'伊東純也',   club:'KRCヘンク（ベルギー）',          league:'🇧🇪 プロリーグ',       dob:'1993/3/9',   birth:'神奈川県',   wc_g:1, wc_a:0, hobby:'ゲーム',               skill:'突破速度と正確なクロス', age:32, ovr:78, start:62, star:true  },
         { num:7,  pos:'MF', name:'田中碧',     club:'リーズ・ユナイテッド（英）',     league:'🇬🇧 チャンピオンシップ',dob:'1999/9/10',  birth:'神奈川県',   wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'中盤でのボール奪取',     age:27, ovr:77, start:60, star:false },
-        { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:0, wc_a:0, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false },
+        { num:24, pos:'MF', name:'佐野海舟',   club:'マインツ（独）',                 league:'🇩🇪 ブンデスリーガ',   dob:'2000/3/26',  birth:'岡山県',     wc_g:1, wc_a:1, hobby:'読書・音楽',           skill:'インターセプトと運動量', age:25, ovr:77, start:72, star:false },
         { num:17, pos:'MF', name:'鈴木唯人',   club:'SCフライブルク（独）',           league:'🇩🇪 ブンデスリーガ',   dob:'2001/8/26',  birth:'静岡県',     wc_g:0, wc_a:0, hobby:'ゲーム・アニメ',       skill:'鋭いターンと仕掛け',     age:24, ovr:73, start:35, star:false },
-        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:3, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true  },
+        { num:18, pos:'FW', name:'上田綺世',   club:'フェイエノールト（蘭）',         league:'🇳🇱 エールディヴィジ', dob:'1998/8/28',  birth:'茨城県',     wc_g:2, wc_a:1, hobby:'料理・読書',           skill:'ペナルティエリア内の強さ',age:27, ovr:80, start:85, star:true  },
         { num:11, pos:'FW', name:'前田大然',   club:'セルティック（英）',             league:'🇬🇧 スコティッシュPL', dob:'1997/10/20', birth:'鳥取県',     wc_g:1, wc_a:0, hobby:'ゲーム・アニメ',       skill:'圧倒的なスプリント力',   age:28, ovr:78, start:80, star:true  },
-        { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:1, wc_a:0, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true  },
+        { num:13, pos:'FW', name:'中村敬斗',   club:'スタッド・ランス（仏）',         league:'🇫🇷 リーグ1',          dob:'2000/8/28',  birth:'東京都',     wc_g:1, wc_a:1, hobby:'音楽・ファッション',   skill:'左足の切れ味',           age:25, ovr:75, start:55, star:true  },
         { num:6,  pos:'FW', name:'町野修斗',   club:'ボルシアMG（独）',               league:'🇩🇪 ブンデスリーガ',   dob:'1999/4/29',  birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム',               skill:'空中戦と泥臭いゴール',   age:26, ovr:73, start:18, star:false },
-        { num:19, pos:'FW', name:'小川航基',   club:'NECナイメヘン（蘭）',            league:'🇳🇱 エールディヴィジ', dob:'1997/8/8',   birth:'静岡県',     wc_g:0, wc_a:0, hobby:'料理',                 skill:'高さと強さのポストプレー',age:28, ovr:73, start:30, star:false },
+        { num:19, pos:'FW', name:'小川航基',   club:'NECナイメヘン（蘭）',            league:'🇳🇱 エールディヴィジ', dob:'1997/8/8',   birth:'静岡県',     wc_g:0, wc_a:1, hobby:'料理',                 skill:'高さと強さのポストプレー',age:28, ovr:73, start:30, star:false },
         { num:9,  pos:'FW', name:'後藤啓介',   club:'SCフライブルク（独）',            league:'🇩🇪 ブンデスリーガ',   dob:'2004/2/1',   birth:'大阪府',     wc_g:0, wc_a:0, hobby:'ゲーム・映画',         skill:'若さとスピード',         age:21, ovr:72, start:30, star:false },
         { num:26, pos:'FW', name:'塩貝健人',   club:'VfLヴォルフスブルク（独）',      league:'🇩🇪 ブンデスリーガ',   dob:'2002/7/8',   birth:'東京都',     wc_g:0, wc_a:0, hobby:'音楽鑑賞',             skill:'ポジショニングの良さ',   age:23, ovr:72, start:20, star:false },
   ];
