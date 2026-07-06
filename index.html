@@ -4106,7 +4106,7 @@
   </a>
 
   <div class="tabs" role="tablist">
-    <button class="tab active" data-tab-id="japan" onclick="showSection('japan', this)">🇯🇵 日本の軌跡</button>
+    <button class="tab active" data-tab-id="sokuho" onclick="showSection('sokuho', this)">⚡ 試合速報</button>
     <button class="tab" data-tab-id="schedule" onclick="showSection('schedule', this)">📅 全日程</button>
     <button class="tab" data-tab-id="tournament" onclick="showSection('tournament', this)">🔥 決勝T</button>
     <button class="tab" data-tab-id="ranking" onclick="showSection('ranking', this)">📊 ランキング</button>
@@ -4156,7 +4156,46 @@
 <div class="main">
 
   <!-- ===== JAPAN TAB ===== -->
-  <div id="section-japan" class="section active">
+  <!-- ===== SOKUHO TAB（試合速報） ===== -->
+  <div id="section-sokuho" class="section active">
+
+    <!-- 視聴リンク（日本代表タブから移設） -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:0;margin-bottom:12px">
+      <a href="https://abema.tv" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(0,180,216,0.4);background:rgba(0,180,216,0.15);color:#4dd9f0;text-decoration:none">
+        📺 ABEMAで観る
+      </a>
+      <a href="https://www.skyperfectv.co.jp" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(230,57,70,0.4);background:rgba(230,57,70,0.15);color:#ff7b84;text-decoration:none">
+        🛰️ スカパーで観る
+      </a>
+    </div>
+
+    <!-- ホーム画面追加バナー（日本代表タブから移設） -->
+    <div class="install-banner" id="installBanner">
+      <span class="icon">📱</span>
+      <div class="install-banner-text">
+        <p>ホーム画面に追加して1タップアクセス！</p>
+        <p>Safari/Chrome → 共有 → ホーム画面に追加</p>
+      </div>
+      <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'; localStorage.setItem('bannerClosed','1')">✕</button>
+    </div>
+
+    <!-- 直近の試合結果（SCHEDULEデータから自動描画） -->
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">💡 国名をタップすると、各国の詳細情報（順位・戦績・注目選手など）が見られます。</div>
+    <div class="section-label">⚡ 直近の試合結果</div>
+    <div id="sokuho-recent" style="margin-bottom:18px"></div>
+
+    <!-- 今後の試合 -->
+    <div class="section-label">📅 今後の試合</div>
+    <div id="sokuho-upcoming" style="margin-bottom:18px"></div>
+
+  </div><!-- /section-sokuho -->
+
+  <!-- ===== JAPAN TEAM TAB ===== -->
+  <div id="section-jpteam" class="section">
+
+    <!-- ===== 日本の軌跡（旧・日本の軌跡タブから移設） ===== -->
 
     <!-- 敗退後バナー（JAPAN_STATUS='eliminated'時に表示） -->
     <div class="japan-over-banner" id="japanOverBanner">
@@ -4211,18 +4250,6 @@
       </div>
     </div>
 
-    <!-- 視聴リンク（速報欄直下） -->
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;margin-bottom:12px">
-      <a href="https://abema.tv" target="_blank" rel="noopener"
-        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(0,180,216,0.4);background:rgba(0,180,216,0.15);color:#4dd9f0;text-decoration:none">
-        📺 ABEMAで観る
-      </a>
-      <a href="https://www.skyperfectv.co.jp" target="_blank" rel="noopener"
-        style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:6px;border:1px solid rgba(230,57,70,0.4);background:rgba(230,57,70,0.15);color:#ff7b84;text-decoration:none">
-        🛰️ スカパーで観る
-      </a>
-    </div>
-
     <!-- Countdown -->
     <div class="countdown-card" id="countdownCard">
       <div class="countdown-label">NEXT JAPAN MATCH</div>
@@ -4254,15 +4281,6 @@
         日本代表 詳細はこちら
         <span class="jp-detail-arrow">›</span>
       </button>
-    </div>
-
-    <div class="install-banner" id="installBanner">
-      <span class="icon">📱</span>
-      <div class="install-banner-text">
-        <p>ホーム画面に追加して1タップアクセス！</p>
-        <p>Safari/Chrome → 共有 → ホーム画面に追加</p>
-      </div>
-      <button class="close-btn" onclick="document.getElementById('installBanner').style.display='none'; localStorage.setItem('bannerClosed','1')">✕</button>
     </div>
 
     <!-- 視聴診断リンク -->
@@ -4834,15 +4852,7 @@
       </div>
     </div>
 
-    <!-- ④ トーナメント表（R32/R16切り替え） -->
-    <div class="section-label" style="margin-top:20px">🏆 トーナメント表</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
-      <button id="top-bk-tab-r32" class="ko-tab" onclick="topBracketSwitch('r32')" style="text-align:center">⚔️ ラウンド32</button>
-      <button id="top-bk-tab-r16" class="ko-tab active" onclick="topBracketSwitch('r16')" style="text-align:center">🔥 ラウンド16</button>
-    </div>
-    <div id="top-bracket-container" style="margin-bottom:18px"></div>
-
-    <!-- ⑤ 日本代表の勝ち上がり予想ルート（敗退により非表示） -->
+    <!-- ④ 日本代表の勝ち上がり予想ルート（敗退により非表示） -->
     <div class="ko-route-section" style="display:none">
       <div class="ko-route-title">🇯🇵 日本代表の勝ち上がり予想ルート</div>
       <div class="ko-route-steps">
@@ -4897,10 +4907,9 @@
     <div class="share-btn-wrap" style="display:none">
       <button class="share-btn" onclick="shareTab('japan')"><span class="x-icon">𝕏</span> この情報をシェア</button>
     </div>
-  </div>
 
-  <!-- ===== JAPAN TEAM TAB ===== -->
-  <div id="section-jpteam" class="section">
+    <!-- ===== /日本の軌跡 ===== -->
+
     <div class="section-label">🔵 JAPAN · SAMURAI BLUE</div>
 
     <!-- Hero -->
@@ -6856,8 +6865,8 @@
 
 </div>
 <nav class="bottom-nav">
-  <button class="nav-btn active" id="nav-japan" onclick="showSection('japan', null, 'nav-japan')">
-    <span class="nav-icon">🇯🇵</span>日本戦
+  <button class="nav-btn active" id="nav-sokuho" onclick="showSection('sokuho', null, 'nav-sokuho')">
+    <span class="nav-icon">⚡</span>速報
   </button>
   <button class="nav-btn" id="nav-schedule" onclick="showSection('schedule', null, 'nav-schedule')">
     <span class="nav-icon">📅</span>全日程
@@ -7405,11 +7414,12 @@
     });
 
     // Bottom nav
-    const navMap = { japan:'nav-japan', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', tournament:'nav-tournament', ranking:'nav-ranking', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
+    const navMap = { sokuho:'nav-sokuho', jpteam:'nav-jpteam', predict:'nav-predict', schedule:'nav-schedule', standings:'nav-standings', tournament:'nav-tournament', ranking:'nav-ranking', members:'nav-standings', quiz:'nav-standings', howto:'nav-standings', admin:'nav-standings' };
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    const navTarget = document.getElementById(navId || navMap[id] || 'nav-japan');
+    const navTarget = document.getElementById(navId || navMap[id] || 'nav-sokuho');
     if (navTarget) navTarget.classList.add('active');
 
+    if (id === 'sokuho') renderSokuho();
     if (id === 'schedule') renderSchedule();
     if (id === 'standings') renderStandings();
     if (id === 'members') showMembersContent();
@@ -8589,7 +8599,7 @@
       setTimeout(() => {
         btn.textContent = '✅ 速報欄に反映';
         // 日本戦タブへ移動
-        showSection('japan', document.querySelector('[data-tab-id="japan"]'));
+        showSection('jpteam', document.querySelector('[data-tab-id="jpteam"]'));
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 800);
     }
@@ -9331,6 +9341,59 @@
   function renderR32Bracket() { renderPairedBracket('r32-bracket-container'); }
   function renderR16Bracket() { renderR16QFBracket('r16-bracket-container'); }
 
+  // ===== 試合速報タブ：直近結果と今後の試合をSCHEDULEから自動描画 =====
+  function renderSokuho() {
+    const recentEl = document.getElementById('sokuho-recent');
+    const upEl = document.getElementById('sokuho-upcoming');
+    if (!recentEl || !upEl) return;
+
+    const toKey = s => { const p = s.split('/').map(Number); return p[0] * 100 + p[1]; };
+    const nowJST = new Date(Date.now() + 9 * 60 * 60 * 1000);
+    const todayKey = (nowJST.getUTCMonth() + 1) * 100 + nowJST.getUTCDate();
+
+    const roundLabel = g => (
+      g === 'R32' ? 'ラウンド32' : g === 'R16' ? 'ラウンド16' :
+      g === 'QF' ? '準々決勝' : g === 'SF' ? '準決勝' : g === 'F' ? '決勝' : 'グループ' + g);
+
+    const flag = cc => `<img src="https://flagcdn.com/${cc}.svg" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.25)">`;
+
+    const row = (m, done) => {
+      const sc = done ? m.score.split('-') : null;
+      const center = done
+        ? `<span style="font-size:16px;font-weight:900;color:#fff;font-family:var(--font-mono)">${sc[0]} - ${sc[1]}</span>`
+        : `<span style="font-size:12px;font-weight:800;color:var(--text-muted)">vs</span>`;
+      return `
+        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:10px 12px;margin-bottom:8px">
+          <div style="font-size:10px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:7px">
+            ${done ? '<span style="color:#4caf50;font-weight:900">FT</span> ' : ''}${m.date}(${m.dow}) ${m.time.replace('a','')} ・ ${roundLabel(m.group)} ・ ${m.venue}${m.jp ? ' <span style="color:var(--japan-red);font-weight:900">🇯🇵</span>' : ''}
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span onclick="openTeamModal('${m.home.cc}')" style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:pointer">
+              ${flag(m.home.cc)}
+              <span style="font-size:13px;font-weight:800;color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.home.n}</span>
+            </span>
+            ${center}
+            <span onclick="openTeamModal('${m.away.cc}')" style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:pointer;justify-content:flex-end">
+              <span style="font-size:13px;font-weight:800;color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right">${m.away.n}</span>
+              ${flag(m.away.cc)}
+            </span>
+          </div>
+        </div>`;
+    };
+
+    // 直近の結果：スコア確定試合を新しい順に5件
+    const played = SCHEDULE.filter(m => m.score);
+    played.sort((a, b) => (toKey(b.date) - toKey(a.date)) || String(b.time).localeCompare(String(a.time)));
+    recentEl.innerHTML = played.slice(0, 5).map(m => row(m, true)).join('') ||
+      '<div style="font-size:12px;color:var(--text-muted)">結果はまだありません</div>';
+
+    // 今後の試合：未消化試合を近い順に5件
+    const upcoming = SCHEDULE.filter(m => !m.score && toKey(m.date) >= todayKey);
+    upcoming.sort((a, b) => (toKey(a.date) - toKey(b.date)) || String(a.time).localeCompare(String(b.time)));
+    upEl.innerHTML = upcoming.slice(0, 5).map(m => row(m, false)).join('') ||
+      '<div style="font-size:12px;color:var(--text-muted)">予定されている試合はありません</div>';
+  }
+
   // ===== TOPページ：トーナメント表 R32/R16切り替え =====
   function topBracketSwitch(round) {
     ['r32','r16'].forEach(r => {
@@ -9393,7 +9456,7 @@
     if (!info) return;
     // 遷移元のアクティブセクションを記憶
     const active = document.querySelector('.section.active');
-    _teamModalFromSection = active ? active.id.replace('section-', '') : 'japan';
+    _teamModalFromSection = active ? active.id.replace('section-', '') : 'sokuho';
     // ブラウザ履歴にダミーエントリを追加（バックボタン対策）
     history.pushState({ modal: 'team', cc: cc }, '', '');
 
@@ -9534,7 +9597,7 @@
     document.body.style.overflow = '';
     // ボタン・オーバーレイタップで閉じた場合はhistoryを1つ戻す
     if (!fromPopstate) history.back();
-    const dest = _teamModalFromSection || 'japan';
+    const dest = _teamModalFromSection || 'sokuho';
     _teamModalFromSection = null;
     showSection(dest);
   }
@@ -9837,8 +9900,8 @@
   // ニュースタブが表示されるたびに描画
   const _origShowSection = typeof showSection === 'function' ? showSection : null;
   document.addEventListener('DOMContentLoaded', function() {
-    // TOPページのトーナメント表（初期表示：ラウンド16）
-    try { topBracketSwitch('r16'); } catch(e) {}
+    // 試合速報タブの初期描画
+    try { renderSokuho(); } catch(e) {}
     // showSection をラップしてnewsタブ初期描画を行う
     const origFn = window.showSection;
     window.showSection = function(id, btn, navId) {
