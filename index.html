@@ -7480,7 +7480,7 @@
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', g:3, a:2, jp:false },
     { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:2, jp:false },
     { name:'C・ガクポ',         country:'オランダ',        flag:'🇳🇱', g:3, a:1, jp:false },
-    { name:'F・バログン',       country:'アメリカ',        flag:'🇺🇸', g:3, a:0, jp:false },
+    { name:'R・ルカク',         country:'ベルギー',        flag:'🇧🇪', g:3, a:0, jp:false },
     { name:'B・ブロビー',       country:'オランダ',        flag:'🇳🇱', g:3, a:0, jp:false },
   ];
 
@@ -7502,7 +7502,7 @@
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/6 更新';
+  const RANKING_UPDATED = '7/7 更新';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -7981,16 +7981,14 @@
     {date:'7/5', dow:'日',time:'06:00',home:{n:'カナダ',cc:'ca'},       away:{n:'モロッコ',cc:'ma'},    group:'R16',venue:'フィラデルフィア',  score:'0-3',broad:['nhk','bsp4k','dazn'],jp:false,free:false,past:true},
     {date:'7/6', dow:'月',time:'05:00',home:{n:'ブラジル',cc:'br'},     away:{n:'ノルウェー',cc:'no'},  group:'R16',venue:'ニューヨーク',      score:'1-2',broad:['nhk','bsp4k','dazn'],jp:false,free:false,past:true},
     {date:'7/6', dow:'月',time:'09:00',home:{n:'メキシコ',cc:'mx'},     away:{n:'イングランド',cc:'gb-eng'},group:'R16',venue:'メキシコシティ',score:'2-3',broad:['dazn'],jp:false,free:false,past:true},
-    {date:'7/7', dow:'火',time:'04:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'スペイン',cc:'es'},    group:'R16',venue:'ダラス',            score:'',broad:['ntv','dazn'],jp:false,free:false},
-    {date:'7/7', dow:'火',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ベルギー',cc:'be'},    group:'R16',venue:'シアトル',           score:'',broad:['fuji','dazn'],jp:false,free:false},
+    {date:'7/7', dow:'火',time:'04:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'スペイン',cc:'es'},    group:'R16',venue:'ダラス',            score:'0-1',broad:['ntv','dazn'],jp:false,free:false,past:true},
+    {date:'7/7', dow:'火',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ベルギー',cc:'be'},    group:'R16',venue:'シアトル',           score:'1-4',broad:['fuji','dazn'],jp:false,free:false,past:true},
     {date:'7/8', dow:'水',time:'01:00',home:{n:'アルゼンチン',cc:'ar'}, away:{n:'エジプト',cc:'eg'},    group:'R16',venue:'アトランタ',         score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/8', dow:'水',time:'05:00',home:{n:'スイス',cc:'ch'},       away:{n:'コロンビア',cc:'co'},  group:'R16',venue:'バンクーバー',       score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/10〜7/12',dow:'',time:'準々決勝',home:{n:'準々決勝（計4試合）',cc:''},away:null,group:'準々決勝',venue:'各会場',score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/10', dow:'金',time:'05:00',home:{n:'⚡ QF①',cc:''},       away:{n:'⚡ QF②',cc:''},        group:'QF',venue:'TBD',              score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/11', dow:'土',time:'04:00',home:{n:'⚡ QF③',cc:''},       away:{n:'⚡ QF④',cc:''},        group:'QF',venue:'TBD',              score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/11', dow:'土',time:'09:00',home:{n:'⚡ QF⑤',cc:''},       away:{n:'⚡ QF⑥',cc:''},        group:'QF',venue:'TBD',              score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/12', dow:'日',time:'06:00',home:{n:'⚡ QF⑦',cc:''},       away:{n:'⚡ QF⑧',cc:''},        group:'QF',venue:'TBD',              score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/12', dow:'日',time:'10:00',home:{n:'⚡ QF⑨',cc:''},       away:{n:'⚡ QF⑩',cc:''},        group:'QF',venue:'TBD',              score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/10', dow:'金',time:'05:00',home:{n:'フランス',cc:'fr'},    away:{n:'モロッコ',cc:'ma'},    group:'QF',venue:'ボストン',           score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/11', dow:'土',time:'04:00',home:{n:'スペイン',cc:'es'},    away:{n:'ベルギー',cc:'be'},    group:'QF',venue:'ロサンゼルス',       score:'',broad:['fuji','dazn'],jp:false,free:false},
+    {date:'7/12', dow:'日',time:'06:00',home:{n:'ノルウェー',cc:'no'},  away:{n:'イングランド',cc:'gb-eng'},group:'QF',venue:'マイアミ',       score:'',broad:['nhk','bsp4k','dazn'],jp:false,free:false},
+    {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン/エジプト勝者',cc:''}, away:{n:'スイス/コロンビア勝者',cc:''},group:'QF',venue:'カンザスシティ',score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/15', dow:'水',time:'04:00',home:{n:'🌟 準決勝1',cc:''},   away:null,group:'準決勝',venue:'TBD',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
     {date:'7/16', dow:'木',time:'04:00',home:{n:'🌟 準決勝2',cc:''},   away:null,group:'準決勝',venue:'TBD',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
     {date:'7/19', dow:'日',time:'06:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
@@ -8969,8 +8967,10 @@
     { no:'R16-1', home:'ca', away:'ma', date:'7/5(日)', time:'02:00', venue:'ヒューストン', score:'0-3', winner:'ma', r32pair:['①','②'] },
     { no:'R16-2', home:'py', away:'fr', date:'7/5(日)', time:'06:00', venue:'フィラデルフィア', score:'0-1', winner:'fr', r32pair:['③','④'],
       scorers:{ home:[], away:["K.エムバペ 70'"] } },
-    { no:'R16-3', home:'pt', away:'es', date:'7/7(火)', time:'04:00', venue:'ダラス', r32pair:['⑤','⑥'] },
-    { no:'R16-4', home:'us', away:'be', date:'7/7(火)', time:'09:00', venue:'シアトル', r32pair:['⑦','⑯'] },
+    { no:'R16-3', home:'pt', away:'es', date:'7/7(火)', time:'04:00', venue:'ダラス', score:'0-1', winner:'es', r32pair:['⑤','⑥'],
+      scorers:{ home:[], away:["M.メリノ 90+1'"] } },
+    { no:'R16-4', home:'us', away:'be', date:'7/7(火)', time:'09:00', venue:'シアトル', score:'1-4', winner:'be', r32pair:['⑦','⑯'],
+      scorers:{ home:["M.ティルマン 31'"], away:["C.デ・ケテラーレ 9'","C.デ・ケテラーレ 33'","H.ファナケン 57'","R.ルカク 90+3'"] } },
     { no:'R16-5', home:'br', away:'no', date:'7/6(月)', time:'05:00', venue:'ニューヨーク', jp:true, score:'1-2', winner:'no', r32pair:['⑨','⑩'],
       scorers:{ home:["ネイマール 後55'(PK)"], away:["E.ハーランド 後34'","E.ハーランド 後45'"] } },
     { no:'R16-6', home:'mx', away:'gb-eng', date:'7/6(月)', time:'09:00', venue:'メキシコシティ', score:'2-3', winner:'gb-eng', r32pair:['⑪','⑫'],
@@ -8988,7 +8988,7 @@
 
   const KO_QF_FIXTURES = [
     { no:'QF1', home:'fr', away:'ma', date:'7/10(金)', time:'05:00', venue:'ボストン',       r16pair:['R16-2','R16-1'] },
-    { no:'QF2', home:null, away:null, date:'7/11(土)', time:'04:00', venue:'ロサンゼルス',   r16pair:['R16-3','R16-4'] },
+    { no:'QF2', home:'es', away:'be', date:'7/11(土)', time:'04:00', venue:'ロサンゼルス', r16pair:['R16-3','R16-4'] },
     { no:'QF3', home:'no', away:'gb-eng', date:'7/12(日)', time:'06:00', venue:'マイアミ',   r16pair:['R16-5','R16-6'] },
     { no:'QF4', home:null, away:null, date:'7/12(日)', time:'10:00', venue:'カンザスシティ', r16pair:['R16-7','R16-8'] },
   ];
@@ -9356,7 +9356,9 @@
       g === 'R32' ? 'ラウンド32' : g === 'R16' ? 'ラウンド16' :
       g === 'QF' ? '準々決勝' : g === 'SF' ? '準決勝' : g === 'F' ? '決勝' : 'グループ' + g);
 
-    const flag = cc => `<img src="https://flagcdn.com/${cc}.svg" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.25)">`;
+    const flag = cc => cc
+      ? `<img src="https://flagcdn.com/${cc}.svg" alt="" style="width:24px;height:17px;border-radius:2px;object-fit:cover;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.25)">`
+      : `<span style="display:inline-block;width:24px;height:17px;border-radius:2px;background:rgba(255,255,255,0.12);flex-shrink:0"></span>`;
 
     const row = (m, done) => {
       const sc = done ? m.score.split('-') : null;
@@ -9369,12 +9371,12 @@
             ${done ? '<span style="color:#4caf50;font-weight:900">FT</span> ' : ''}${m.date}(${m.dow}) ${m.time.replace('a','')} ・ ${roundLabel(m.group)} ・ ${m.venue}${m.jp ? ' <span style="color:var(--japan-red);font-weight:900">🇯🇵</span>' : ''}
           </div>
           <div style="display:flex;align-items:center;gap:8px">
-            <span onclick="openTeamModal('${m.home.cc}')" style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:pointer">
+            <span ${m.home.cc ? `onclick="openTeamModal('${m.home.cc}')"` : ''} style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:${m.home.cc ? 'pointer' : 'default'}">
               ${flag(m.home.cc)}
               <span style="font-size:13px;font-weight:800;color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.home.n}</span>
             </span>
             ${center}
-            <span onclick="openTeamModal('${m.away.cc}')" style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:pointer;justify-content:flex-end">
+            <span ${m.away.cc ? `onclick="openTeamModal('${m.away.cc}')"` : ''} style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;cursor:${m.away.cc ? 'pointer' : 'default'};justify-content:flex-end">
               <span style="font-size:13px;font-weight:800;color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right">${m.away.n}</span>
               ${flag(m.away.cc)}
             </span>
