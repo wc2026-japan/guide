@@ -1132,7 +1132,7 @@
     /* R32結果(左列) / R16対戦(右列) の2カラムレイアウト */
     .pair-group {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr); /* コンテンツ幅に引っ張られず常に均等 */
       gap: 10px;
       align-items: center;
       margin-bottom: 10px;
@@ -1151,8 +1151,16 @@
     /* 間隔を12pxに固定し、各カードの外側だけにL字線を描く。
        上下カードの線は隙間中央で1pxオーバーラップさせ、必ず繋がる。 */
     .pair-group { gap: 12px; }
-    .pair-group .pair-r32-list { gap: 12px; }
-    .pair-group .pair-r32-list .ko-rc-card { margin: 0 !important; position: relative; }
+    .pair-group .pair-r32-list { gap: 12px; min-width: 0; }
+    .pair-group .pair-r32-list .ko-rc-card {
+      margin: 0 !important;
+      position: relative;
+      flex: 1;                      /* 左2枚を常に同じ高さに */
+      min-height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .pair-group .pair-r32-list .ko-rc-card::after {
       content: '';
       position: absolute;
@@ -1176,7 +1184,15 @@
       border-right: 2px solid rgba(255,255,255,0.28);
     }
     /* 縦線から右カードの左端へ伸びる水平線（縦線位置=カード右端+3〜5px を確実にカバー） */
-    .pair-group .pair-r16-card { position: relative; margin: 0 !important; }
+    .pair-group .pair-r16-card {
+      position: relative;
+      margin: 0 !important;
+      min-width: 0;
+      min-height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .pair-group .pair-r16-card::before {
       content: '';
       position: absolute;
@@ -7467,8 +7483,8 @@
 
   // ===== ランキング 静的データ =====
   const RANKING_SCORERS = [
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:0, jp:false },
     { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:7, a:2, jp:false },
-    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:7, a:0, jp:false },
     { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false },
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:4, a:2, jp:false },
@@ -7502,7 +7518,7 @@
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/7 更新';
+  const RANKING_UPDATED = '7/8 更新';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -7983,12 +7999,12 @@
     {date:'7/6', dow:'月',time:'09:00',home:{n:'メキシコ',cc:'mx'},     away:{n:'イングランド',cc:'gb-eng'},group:'R16',venue:'メキシコシティ',score:'2-3',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/7', dow:'火',time:'04:00',home:{n:'ポルトガル',cc:'pt'},   away:{n:'スペイン',cc:'es'},    group:'R16',venue:'ダラス',            score:'0-1',broad:['ntv','dazn'],jp:false,free:false,past:true},
     {date:'7/7', dow:'火',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ベルギー',cc:'be'},    group:'R16',venue:'シアトル',           score:'1-4',broad:['fuji','dazn'],jp:false,free:false,past:true},
-    {date:'7/8', dow:'水',time:'01:00',home:{n:'アルゼンチン',cc:'ar'}, away:{n:'エジプト',cc:'eg'},    group:'R16',venue:'アトランタ',         score:'',broad:['dazn'],jp:false,free:false},
-    {date:'7/8', dow:'水',time:'05:00',home:{n:'スイス',cc:'ch'},       away:{n:'コロンビア',cc:'co'},  group:'R16',venue:'バンクーバー',       score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/8', dow:'水',time:'01:00',home:{n:'アルゼンチン',cc:'ar'}, away:{n:'エジプト',cc:'eg'},    group:'R16',venue:'アトランタ',         score:'3-2',broad:['dazn'],jp:false,free:false,past:true},
+    {date:'7/8', dow:'水',time:'05:00',home:{n:'スイス',cc:'ch'},       away:{n:'コロンビア',cc:'co'},  group:'R16',venue:'バンクーバー',       score:'0-0(PK4-3)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/10', dow:'金',time:'05:00',home:{n:'フランス',cc:'fr'},    away:{n:'モロッコ',cc:'ma'},    group:'QF',venue:'ボストン',           score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/11', dow:'土',time:'04:00',home:{n:'スペイン',cc:'es'},    away:{n:'ベルギー',cc:'be'},    group:'QF',venue:'ロサンゼルス',       score:'',broad:['fuji','dazn'],jp:false,free:false},
     {date:'7/12', dow:'日',time:'06:00',home:{n:'ノルウェー',cc:'no'},  away:{n:'イングランド',cc:'gb-eng'},group:'QF',venue:'マイアミ',       score:'',broad:['nhk','bsp4k','dazn'],jp:false,free:false},
-    {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン/エジプト勝者',cc:''}, away:{n:'スイス/コロンビア勝者',cc:''},group:'QF',venue:'カンザスシティ',score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン',cc:'ar'},away:{n:'スイス',cc:'ch'},      group:'QF',venue:'カンザスシティ',     score:'',broad:['dazn'],jp:false,free:false},
     {date:'7/15', dow:'水',time:'04:00',home:{n:'🌟 準決勝1',cc:''},   away:null,group:'準決勝',venue:'TBD',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
     {date:'7/16', dow:'木',time:'04:00',home:{n:'🌟 準決勝2',cc:''},   away:null,group:'準決勝',venue:'TBD',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
     {date:'7/19', dow:'日',time:'06:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn','nhk','free'],jp:false,free:true},
@@ -8975,8 +8991,9 @@
       scorers:{ home:["ネイマール 後55'(PK)"], away:["E.ハーランド 後34'","E.ハーランド 後45'"] } },
     { no:'R16-6', home:'mx', away:'gb-eng', date:'7/6(月)', time:'09:00', venue:'メキシコシティ', score:'2-3', winner:'gb-eng', r32pair:['⑪','⑫'],
       scorers:{ home:["F.キニョネス 42'","R.ヒメネス 69'(PK)"], away:["J.ベリンガム 36'","J.ベリンガム 38'","H.ケイン 60'(PK)"] } },
-    { no:'R16-7', home:'ar', away:'eg', date:'7/8(水)', time:'01:00', venue:'アトランタ', r32pair:['⑬','⑭'] },
-    { no:'R16-8', home:'ch', away:'co', date:'7/8(水)', time:'05:00', venue:'バンクーバー', r32pair:['⑮','⑧'] },
+    { no:'R16-7', home:'ar', away:'eg', date:'7/8(水)', time:'01:00', venue:'アトランタ', score:'3-2', winner:'ar', r32pair:['⑬','⑭'],
+      scorers:{ home:["C.ロメロ 79'","L.メッシ 83'","E.フェルナンデス 90+2'"], away:["イブラヒム 15'","ジコ 67'"] } },
+    { no:'R16-8', home:'ch', away:'co', date:'7/8(水)', time:'05:00', venue:'バンクーバー', score:'0-0(PK4-3)', winner:'ch', r32pair:['⑮','⑧'] },
   ];
 
   // ===== QF（準々決勝）組み合わせ ※home/awayはR16勝者、未確定はnull =====
@@ -8990,7 +9007,7 @@
     { no:'QF1', home:'fr', away:'ma', date:'7/10(金)', time:'05:00', venue:'ボストン',       r16pair:['R16-2','R16-1'] },
     { no:'QF2', home:'es', away:'be', date:'7/11(土)', time:'04:00', venue:'ロサンゼルス', r16pair:['R16-3','R16-4'] },
     { no:'QF3', home:'no', away:'gb-eng', date:'7/12(日)', time:'06:00', venue:'マイアミ',   r16pair:['R16-5','R16-6'] },
-    { no:'QF4', home:null, away:null, date:'7/12(日)', time:'10:00', venue:'カンザスシティ', r16pair:['R16-7','R16-8'] },
+    { no:'QF4', home:'ar', away:'ch', date:'7/12(日)', time:'10:00', venue:'カンザスシティ', r16pair:['R16-7','R16-8'] },
   ];
 
   function kolistTeamRow(cc, isWinner, isKnown) {
@@ -9385,13 +9402,13 @@
     };
 
     // 直近の結果：スコア確定試合を新しい順に5件
-    const played = SCHEDULE.filter(m => m.score);
+    const played = SCHEDULE.filter(m => m.score && m.home && m.away);
     played.sort((a, b) => (toKey(b.date) - toKey(a.date)) || String(b.time).localeCompare(String(a.time)));
     recentEl.innerHTML = played.slice(0, 5).map(m => row(m, true)).join('') ||
       '<div style="font-size:12px;color:var(--text-muted)">結果はまだありません</div>';
 
     // 今後の試合：未消化試合を近い順に5件
-    const upcoming = SCHEDULE.filter(m => !m.score && toKey(m.date) >= todayKey);
+    const upcoming = SCHEDULE.filter(m => !m.score && m.home && m.away && toKey(m.date) >= todayKey);
     upcoming.sort((a, b) => (toKey(a.date) - toKey(b.date)) || String(a.time).localeCompare(String(b.time)));
     upEl.innerHTML = upcoming.slice(0, 5).map(m => row(m, false)).join('') ||
       '<div style="font-size:12px;color:var(--text-muted)">予定されている試合はありません</div>';
