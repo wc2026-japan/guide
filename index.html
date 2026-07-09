@@ -7483,11 +7483,11 @@
 
   // ===== ランキング 静的データ =====
   const RANKING_SCORERS = [
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:8, a:2, jp:false },
     { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:1, jp:false },
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:7, a:2, jp:false },
     { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false },
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false },
-    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:4, a:2, jp:false },
+    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:5, a:2, jp:false },
     { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:1, jp:false },
     { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false },
     { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:4, a:1, jp:false },
@@ -7518,7 +7518,7 @@
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
 
-  const RANKING_UPDATED = '7/8 更新';
+  const RANKING_UPDATED = '7/10 更新';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -8001,7 +8001,7 @@
     {date:'7/7', dow:'火',time:'09:00',home:{n:'アメリカ',cc:'us'},     away:{n:'ベルギー',cc:'be'},    group:'R16',venue:'シアトル',           score:'1-4',broad:['fuji','dazn'],jp:false,free:false,past:true},
     {date:'7/8', dow:'水',time:'01:00',home:{n:'アルゼンチン',cc:'ar'}, away:{n:'エジプト',cc:'eg'},    group:'R16',venue:'アトランタ',         score:'3-2',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/8', dow:'水',time:'05:00',home:{n:'スイス',cc:'ch'},       away:{n:'コロンビア',cc:'co'},  group:'R16',venue:'バンクーバー',       score:'0-0(PK4-3)',broad:['dazn'],jp:false,free:false,past:true},
-    {date:'7/10', dow:'金',time:'05:00',home:{n:'フランス',cc:'fr'},    away:{n:'モロッコ',cc:'ma'},    group:'QF',venue:'ボストン',           score:'',broad:['dazn'],jp:false,free:false},
+    {date:'7/10', dow:'金',time:'05:00',home:{n:'フランス',cc:'fr'},    away:{n:'モロッコ',cc:'ma'},    group:'QF',venue:'ボストン',           score:'2-0',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/11', dow:'土',time:'04:00',home:{n:'スペイン',cc:'es'},    away:{n:'ベルギー',cc:'be'},    group:'QF',venue:'ロサンゼルス',       score:'',broad:['fuji','dazn'],jp:false,free:false},
     {date:'7/12', dow:'日',time:'06:00',home:{n:'ノルウェー',cc:'no'},  away:{n:'イングランド',cc:'gb-eng'},group:'QF',venue:'マイアミ',       score:'',broad:['nhk','bsp4k','dazn'],jp:false,free:false},
     {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン',cc:'ar'},away:{n:'スイス',cc:'ch'},      group:'QF',venue:'カンザスシティ',     score:'',broad:['dazn'],jp:false,free:false},
@@ -9109,7 +9109,8 @@
   ];
 
   const KO_QF_FIXTURES = [
-    { no:'QF1', home:'fr', away:'ma', date:'7/10(金)', time:'05:00', venue:'ボストン',       r16pair:['R16-2','R16-1'] },
+    { no:'QF1', home:'fr', away:'ma', date:'7/10(金)', time:'05:00', venue:'ボストン', score:'2-0', winner:'fr', r16pair:['R16-2','R16-1'],
+      scorers:{ home:["K.エムバペ 後15'","O.デンベレ 後21'"], away:[] } },
     { no:'QF2', home:'es', away:'be', date:'7/11(土)', time:'04:00', venue:'ロサンゼルス', r16pair:['R16-3','R16-4'] },
     { no:'QF3', home:'no', away:'gb-eng', date:'7/12(日)', time:'06:00', venue:'マイアミ',   r16pair:['R16-5','R16-6'] },
     { no:'QF4', home:'ar', away:'ch', date:'7/12(日)', time:'10:00', venue:'カンザスシティ', r16pair:['R16-7','R16-8'] },
@@ -9384,10 +9385,18 @@
         if (sf.home && sf.away) {
           sfCard = resultCard(null, sf.home, sf.away, sf.score, sf.winner, (sf.date + ' ' + sf.time).trim(), sf.venue, 'pair-r16-card');
         } else {
-          const rows = sf.qfpair.map(no => `
+          const rows = sf.qfpair.map(no => {
+            const q = qfByNo[no];
+            if (q && q.winner) {
+              const info = TEAM_INFO[q.winner];
+              return `
+            <div class="rc-team-row" onclick="openTeamModal('${q.winner}')" style="cursor:pointer">${flagImg(q.winner)}<div class="rc-team-name">${info ? info.name : ''} <span style="color:#4caf50">✓</span></div></div>`;
+            }
+            return `
             <div class="rc-team-row" style="cursor:default">
               <div class="rc-team-name" style="color:var(--text-muted);font-weight:700">— ${no} 勝者</div>
-            </div>`).join('');
+            </div>`;
+          }).join('');
           sfCard = `
             <div class="ko-rc-card pair-r16-card">
               <div class="rc-meta">${sf.no}　${(sf.date + ' ' + sf.time).trim()} ・ ${sf.venue}</div>
