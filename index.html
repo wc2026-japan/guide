@@ -5635,7 +5635,7 @@
     <!-- 過去の試合（折りたたみ） -->
     <div class="sched-past-header" id="pastHeader" onclick="togglePastMatches()">
       <span class="sched-past-icon">📋</span>
-      <span class="sched-past-text">過去の試合　<strong>6/12〜6/23 · 45試合終了</strong></span>
+      <span class="sched-past-text">過去の試合　<strong id="pastRangeLabel">6/12〜 · 集計中</strong></span>
       <span class="sched-past-arrow" id="pastArrow">▶ 結果を見る</span>
     </div>
     <div id="pastMatchList" style="display:none"></div>
@@ -8134,6 +8134,16 @@
     }
 
     const upcoming = SCHEDULE.filter(m => isUpcoming(m) && matchPassesFilter(m));
+
+    // 過去試合ヘッダーの期間・試合数を自動更新（個別試合のみカウント）
+    const pastAll = SCHEDULE.filter(m => !isUpcoming(m) && m.home && m.away);
+    const labelEl = document.getElementById('pastRangeLabel');
+    if (labelEl && pastAll.length) {
+      const key = s => { const p = String(s).split('/').map(Number); return p[0] * 100 + (p[1] || 0); };
+      const sorted = pastAll.slice().sort((a, b) => key(a.date) - key(b.date));
+      labelEl.textContent = sorted[0].date + '〜' + sorted[sorted.length - 1].date + ' · ' + pastAll.length + '試合終了';
+    }
+
     const byDate = {};
     upcoming.forEach(m => {
       if (!byDate[m.date]) byDate[m.date] = { dow: m.dow, matches: [] };
