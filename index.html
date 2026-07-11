@@ -4192,7 +4192,7 @@
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📖 使い方</button>
     <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
-    <button class="tab" data-tab-id="news" onclick="showSection('news', this)">📰 ニュース</button>
+    <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
     <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)" style="display:none">⚙️ 管理</button>
   </div>
 </div>
@@ -6874,7 +6874,7 @@
   </div>
 
   <!-- ===== NEWS TAB ===== -->
-  <div id="section-news" class="section">
+  <div id="section-news" class="section" style="display:none">
     <div class="section-label">📰 最新ニュース &amp; トピック</div>
 
     <!-- カテゴリフィルター -->
@@ -6905,6 +6905,34 @@
         <button class="article-modal-close-btn" onclick="closeArticle()">✕</button>
       </div>
       <div id="articleContent"></div>
+    </div>
+  </div>
+
+  <!-- ===== サイトフッター（法的情報） ===== -->
+  <footer style="margin-top:28px;padding:18px 16px 26px;border-top:1px solid rgba(255,255,255,0.1);text-align:center">
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;margin-bottom:12px">
+      <a href="javascript:void(0)" onclick="openLegal('privacy')" style="font-size:11px;color:var(--text-muted);text-decoration:none">プライバシーポリシー</a>
+      <span style="font-size:11px;color:rgba(255,255,255,0.2)">｜</span>
+      <a href="javascript:void(0)" onclick="openLegal('operator')" style="font-size:11px;color:var(--text-muted);text-decoration:none">運営者情報</a>
+      <span style="font-size:11px;color:rgba(255,255,255,0.2)">｜</span>
+      <a href="javascript:void(0)" onclick="openLegal('disclaimer')" style="font-size:11px;color:var(--text-muted);text-decoration:none">免責事項</a>
+      <span style="font-size:11px;color:rgba(255,255,255,0.2)">｜</span>
+      <a href="javascript:void(0)" onclick="openLegal('contact')" style="font-size:11px;color:var(--text-muted);text-decoration:none">お問い合わせ</a>
+    </div>
+    <div style="font-size:10px;color:rgba(255,255,255,0.35);line-height:1.7">© 2026 W杯日本代表ガイド ・ 非公式ガイドです。最新情報は各公式サイトをご確認ください。</div>
+  </footer>
+
+  <!-- 法的情報モーダル -->
+  <div id="legalModalOverlay" onclick="if(event.target===this)closeLegal()"
+    style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:220;padding:20px;overflow-y:auto">
+    <div style="max-width:560px;margin:40px auto;background:#0d1530;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:20px 18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div id="legalTitle" style="font-size:16px;font-weight:900;color:var(--text-primary)"></div>
+        <button onclick="closeLegal()" style="background:none;border:none;color:var(--text-muted);font-size:18px;cursor:pointer;padding:4px">✕</button>
+      </div>
+      <div id="legalBody" style="font-size:12px;color:var(--text-primary);line-height:1.9"></div>
+      <button onclick="closeLegal()"
+        style="display:block;width:100%;margin-top:16px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:13px;font-weight:800;cursor:pointer;font-family:inherit">← 戻る</button>
     </div>
   </div>
 
@@ -7241,6 +7269,64 @@
           </div>
         </div>`;
     }).join('');
+  }
+
+  // ===== 法的情報モーダル（プライバシーポリシー・運営者情報・免責事項・お問い合わせ） =====
+  const LEGAL_CONTENT = {
+    privacy: {
+      title: 'プライバシーポリシー',
+      body: `
+        <p style="margin:0 0 12px"><strong>■ アクセス解析ツールについて</strong><br>
+        当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス（GA4）」を利用しています。Googleアナリティクスはトラフィックデータの収集のためにCookieを使用します。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することができますので、お使いのブラウザの設定をご確認ください。詳しくは<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">Googleアナリティクス利用規約</a>をご確認ください。</p>
+        <p style="margin:0 0 12px"><strong>■ 広告の配信について</strong><br>
+        当サイトでは、第三者配信の広告サービス「Google AdSense（グーグルアドセンス）」を利用しています（利用申請中の場合を含みます）。Googleなどの第三者配信事業者はCookieを使用して、ユーザーの当サイトや他のウェブサイトへの過去のアクセス情報に基づいて、パーソナライズされた広告を配信します。パーソナライズ広告は、<a href="https://adssettings.google.com/" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">広告設定</a>で無効にできます。また、<a href="https://optout.aboutads.info/" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">www.aboutads.info</a>にアクセスすれば、第三者配信事業者のCookieを無効にできます。</p>
+        <p style="margin:0 0 12px"><strong>■ アフィリエイトプログラムについて</strong><br>
+        当サイトは、A8.netをはじめとするアフィリエイトプログラムに参加しています。当サイトのリンクを経由して商品・サービスの申込みがあった場合、提携企業から報酬を受け取ることがあります。</p>
+        <p style="margin:0 0 12px"><strong>■ 個人情報の取り扱いについて</strong><br>
+        当サイトが収集した情報は、上記の目的以外では利用しません。法令に基づく場合を除き、第三者に開示・提供することはありません。</p>
+        <p style="margin:0;color:var(--text-muted);font-size:11px">制定日：2026年6月11日<br>最終改定：2026年7月12日</p>`
+    },
+    operator: {
+      title: '運営者情報',
+      body: `
+        <p style="margin:0 0 12px"><strong>サイト名</strong><br>W杯日本代表ガイド2026（FIFA World Cup 2026 Japan Guide）</p>
+        <p style="margin:0 0 12px"><strong>運営者</strong><br>ハイセ</p>
+        <p style="margin:0 0 12px"><strong>発信媒体</strong><br>
+        ・X（旧Twitter）：<a href="https://x.com/coin0115" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">ハイセ｜サッカー日本代表🇯🇵×W杯速報（@coin0115）</a><br>
+        ・note：<a href="https://note.com/samurai_watch" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">note.com/samurai_watch</a>（試合レポート・戦術分析）</p>
+        <p style="margin:0"><strong>サイトの目的</strong><br>FIFAワールドカップ2026の試合日程・結果・日本国内での視聴方法を、日本のサッカーファン向けに分かりやすくまとめた非公式ファンガイドです。</p>`
+    },
+    disclaimer: {
+      title: '免責事項',
+      body: `
+        <p style="margin:0 0 12px">当サイトは、FIFA、日本サッカー協会（JFA）、各国サッカー協会、放送・配信事業者とは一切関係のない<strong>非公式のファンサイト</strong>です。</p>
+        <p style="margin:0 0 12px">掲載している試合日程・放送予定・順位・選手情報などは、公開情報をもとに正確な記載に努めていますが、その正確性・完全性・最新性を保証するものではありません。放送・配信予定は変更される場合がありますので、<strong>必ず各公式サイトで最新情報をご確認ください</strong>。</p>
+        <p style="margin:0 0 12px">当サイトの情報を利用したことにより生じたいかなる損害についても、運営者は責任を負いかねます。</p>
+        <p style="margin:0">当サイトからリンクやバナーなどによって他のサイトに移動した場合、移動先サイトで提供される情報・サービス等について一切の責任を負いません。</p>`
+    },
+    contact: {
+      title: 'お問い合わせ',
+      body: `
+        <p style="margin:0 0 12px">当サイトへのお問い合わせ（情報の誤りのご指摘・掲載に関するご要望・その他）は、以下の窓口までお願いします。</p>
+        <p style="margin:0 0 12px"><strong>■ X（旧Twitter）</strong><br><a href="https://x.com/coin0115" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">@coin0115（ハイセ｜サッカー日本代表🇯🇵×W杯速報）</a> のDMまたはリプライ</p>
+        <p style="margin:0 0 12px"><strong>■ note</strong><br><a href="https://note.com/samurai_watch" target="_blank" rel="noopener" style="color:var(--sky-blue,#7eb8ff)">note.com/samurai_watch</a> のコメント欄</p>
+        <p style="margin:0;color:var(--text-muted);font-size:11px">※ 内容によっては返信できない場合があります。あらかじめご了承ください。</p>`
+    },
+  };
+
+  function openLegal(type) {
+    const c = LEGAL_CONTENT[type];
+    if (!c) return;
+    document.getElementById('legalTitle').textContent = c.title;
+    document.getElementById('legalBody').innerHTML = c.body;
+    const ov = document.getElementById('legalModalOverlay');
+    ov.style.display = 'block';
+    ov.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal() {
+    document.getElementById('legalModalOverlay').style.display = 'none';
+    document.body.style.overflow = '';
   }
 
   // ===== 各国代表メンバーの選手詳細モーダル =====
