@@ -9685,7 +9685,12 @@
         </div>`;
     });
 
-    document.getElementById('tmBody').innerHTML = buildProfileHtml(cc) + buildKoResultHtml(cc) + matchHtml + standHtml + buildSquadHtml(cc);
+    const backBtnHtml = `
+      <button onclick="closeTeamModalDirect()"
+        style="display:block;width:100%;margin-top:16px;padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:var(--text-primary);font-size:14px;font-weight:800;cursor:pointer;font-family:inherit">
+        ← 戻る
+      </button>`;
+    document.getElementById('tmBody').innerHTML = buildProfileHtml(cc) + buildKoResultHtml(cc) + matchHtml + standHtml + buildSquadHtml(cc) + backBtnHtml;
     document.getElementById('teamModalOverlay').classList.add('open');
     document.getElementById('teamModalCard').scrollTop = 0;
     document.body.style.overflow = 'hidden';
