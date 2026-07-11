@@ -2288,7 +2288,7 @@
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.75);
-      z-index: 200;
+      z-index: 210;
       align-items: flex-end;
       justify-content: center;
       backdrop-filter: blur(4px);
@@ -3133,6 +3133,26 @@
       border-radius: 0 6px 6px 6px;
       overflow: hidden;
     }
+    .tm-squad-player.expandable { cursor: pointer; }
+    .tm-squad-detail {
+      display: none;
+      margin-top: 6px;
+      padding: 7px 9px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      font-size: 10px;
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    .tm-squad-player.open .tm-squad-detail { display: block; }
+    .tm-sd-label {
+      display: inline-block;
+      width: 52px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .tm-sd-arrow { font-size: 9px; color: var(--text-muted); }
+    .tm-squad-player.open .tm-sd-arrow { display: inline-block; transform: rotate(180deg); }
     .tm-squad-player {
       display: flex;
       align-items: center;
@@ -4172,7 +4192,7 @@
     <button class="tab" data-tab-id="quiz" onclick="showSection('quiz', this)">📺 視聴診断</button>
     <button class="tab" data-tab-id="howto" onclick="showSection('howto', this)">📖 使い方</button>
     <button class="tab" data-tab-id="goods" onclick="showSection('goods', this)" style="display:none">🛒 応援グッズ</button>
-    <button class="tab" data-tab-id="news" onclick="showSection('news', this)" style="display:none">📰 ニュース</button>
+    <button class="tab" data-tab-id="news" onclick="showSection('news', this)">📰 ニュース</button>
     <button class="tab" data-tab-id="admin" onclick="showSection('admin', this)" style="display:none">⚙️ 管理</button>
   </div>
 </div>
@@ -6436,8 +6456,8 @@
         <div class="modal-section-title">プロフィール</div>
         <div class="modal-stats-grid" id="mStats"></div>
 
-        <div class="modal-section-title">先発起用率</div>
-        <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;">
+        <div class="modal-section-title" id="mStartTitle">先発起用率</div>
+        <div id="mStartBox" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;">
           <div class="start-bar-wrap" style="margin-bottom:3px;">
             <div class="start-bar-bg" style="height:6px;border-radius:3px;">
               <div class="start-bar-fill" id="mStartBar" style="height:100%;border-radius:3px;transition:width 0.5s;"></div>
@@ -6854,7 +6874,7 @@
   </div>
 
   <!-- ===== NEWS TAB ===== -->
-  <div id="section-news" class="section" style="display:none">
+  <div id="section-news" class="section">
     <div class="section-label">📰 最新ニュース &amp; トピック</div>
 
     <!-- カテゴリフィルター -->
@@ -7223,10 +7243,42 @@
     }).join('');
   }
 
+  // ===== 各国代表メンバーの選手詳細モーダル =====
+  function openSquadPlayerModal(cc, pos, idx) {
+    const squad = SQUAD_DATA[cc];
+    if (!squad || !squad[pos] || !squad[pos][idx]) return;
+    const p = squad[pos][idx];
+    const info = TEAM_INFO[cc] || {};
+
+    document.getElementById('mNum').textContent = `#${p.no} ${pos}`;
+    document.getElementById('mNum').style.color = 'var(--gold)';
+    document.getElementById('mName').textContent = p.name;
+    document.getElementById('mClub').textContent = (info.name ? info.name + '代表 ／ ' : '') + p.club;
+    setPosIcon(pos);
+
+    // 日本専用UI（先発起用率・今大会成績）は非表示
+    const st1 = document.getElementById('mStartTitle');
+    const st2 = document.getElementById('mStartBox');
+    if (st1) st1.style.display = 'none';
+    if (st2) st2.style.display = 'none';
+    document.getElementById('mJpDetail').style.display = 'none';
+
+    document.getElementById('mStats').innerHTML =
+      (p.age ? `<div class="stat-box"><div class="sv">${p.age}</div><div class="sl">年齢</div></div>` : '') +
+      (p.h ? `<div class="stat-box"><div class="sv">${p.h}cm</div><div class="sl">身長</div></div>` : '') +
+      `<div class="stat-box"><div class="sv">#${p.no}</div><div class="sl">背番号</div></div>`;
+
+    document.getElementById('playerModal').classList.add('open');
+  }
+
   function openJpPlayerModal(num) {
     // JP_PLAYERS_DATAから直接検索（MEMBERS_RELEASEDに非依存）
     const p = JP_PLAYERS_DATA.find(p => p.num === num);
     if (!p) return;
+    const st1 = document.getElementById('mStartTitle');
+    const st2 = document.getElementById('mStartBox');
+    if (st1) st1.style.display = '';
+    if (st2) st2.style.display = '';
     const td = { flag:'🇯🇵', color:'#ff4d2e' };
     document.getElementById('mNum').textContent = `🇯🇵 #${p.num} ${p.pos}`;
     document.getElementById('mNum').style.color = td.color;
@@ -8838,16 +8890,16 @@
     },
     // ===== ベスト8：正式登録26人（FIFA公式スカッド準拠・7/9時点） =====
     'fr': {
-      GK: [ {no:1,name:'B・サンバ',club:'レンヌ'}, {no:16,name:'M・メニャン',club:'ミラン'}, {no:23,name:'R・リセール',club:'ランス'} ],
-      DF: [ {no:2,name:'M・ギュスト',club:'チェルシー'}, {no:3,name:'L・ディニュ',club:'アストン・ヴィラ'}, {no:4,name:'D・ウパメカノ',club:'バイエルン'},
-            {no:5,name:'J・クンデ',club:'バルセロナ'}, {no:15,name:'I・コナテ',club:'リバプール'}, {no:17,name:'W・サリバ',club:'アーセナル'},
-            {no:19,name:'T・エルナンデス',club:'アル・ヒラル'}, {no:21,name:'L・エルナンデス',club:'PSG'}, {no:26,name:'M・ラクロワ',club:'クリスタル・パレス'} ],
-      MF: [ {no:6,name:'M・コネ',club:'ローマ'}, {no:8,name:'A・チュアメニ',club:'レアル・マドリード'}, {no:13,name:'N・カンテ',club:'フェネルバフチェ'},
-            {no:14,name:'A・ラビオ',club:'ミラン'}, {no:18,name:'W・ザイール=エメリ',club:'PSG'}, {no:24,name:'R・シェルキ',club:'マンチェスター・C'},
-            {no:25,name:'M・アクリウシュ',club:'モナコ'} ],
-      FW: [ {no:7,name:'O・デンベレ',club:'PSG'}, {no:9,name:'M・テュラム',club:'インテル'}, {no:10,name:'K・エムバペ',club:'レアル・マドリード'},
-            {no:11,name:'M・オリーズ',club:'バイエルン'}, {no:12,name:'B・バルコラ',club:'PSG'}, {no:20,name:'D・ドゥエ',club:'PSG'},
-            {no:22,name:'J=P・マテタ',club:'クリスタル・パレス'} ],
+      GK: [ {no:1,name:'B・サンバ',club:'レンヌ',h:187,age:32}, {no:16,name:'M・メニャン',club:'ミラン',h:191,age:30}, {no:23,name:'R・リセール',club:'ランス',h:193,age:21} ],
+      DF: [ {no:2,name:'M・ギュスト',club:'チェルシー',h:179,age:23}, {no:3,name:'L・ディニュ',club:'アストン・ヴィラ',h:178,age:32}, {no:4,name:'D・ウパメカノ',club:'バイエルン',h:186,age:27},
+            {no:5,name:'J・クンデ',club:'バルセロナ',h:178,age:27}, {no:15,name:'I・コナテ',club:'リバプール',h:194,age:27}, {no:17,name:'W・サリバ',club:'アーセナル',h:192,age:25},
+            {no:19,name:'T・エルナンデス',club:'アル・ヒラル',h:184,age:28}, {no:21,name:'L・エルナンデス',club:'PSG',h:184,age:30}, {no:26,name:'M・ラクロワ',club:'クリスタル・パレス',h:192,age:26} ],
+      MF: [ {no:6,name:'M・コネ',club:'ローマ',h:185,age:25}, {no:8,name:'A・チュアメニ',club:'レアル・マドリード',h:188,age:26}, {no:13,name:'N・カンテ',club:'フェネルバフチェ',h:171,age:35},
+            {no:14,name:'A・ラビオ',club:'ミラン',h:191,age:31}, {no:18,name:'W・ザイール=エメリ',club:'PSG',h:176,age:20}, {no:24,name:'R・シェルキ',club:'マンチェスター・C',h:180,age:22},
+            {no:25,name:'M・アクリウシュ',club:'モナコ',h:183,age:24} ],
+      FW: [ {no:7,name:'O・デンベレ',club:'PSG',h:179,age:29}, {no:9,name:'M・テュラム',club:'インテル',h:192,age:28}, {no:10,name:'K・エムバペ',club:'レアル・マドリード',h:180,age:27},
+            {no:11,name:'M・オリーズ',club:'バイエルン',h:184,age:24}, {no:12,name:'B・バルコラ',club:'PSG',h:187,age:23}, {no:20,name:'D・ドゥエ',club:'PSG',h:182,age:21},
+            {no:22,name:'J=P・マテタ',club:'クリスタル・パレス',h:192,age:28} ],
     },
     'ma': {
       GK: [ {no:1,name:'Y・ブヌ',club:'アル・ヒラル'}, {no:12,name:'M・エル・カジュイ',club:'RSベルカン'}, {no:22,name:'A・R・タグノーティ',club:'ASFAR'} ],
@@ -9549,14 +9601,22 @@
   }
 
   function buildKoResultHtml(cc) {
-    const m = KO_R32_RESULTS.find(r => r.home === cc || r.away === cc);
-    if (!m) return '';
-    const homeInfo = TEAM_INFO[m.home];
-    const awayInfo = TEAM_INFO[m.away];
-    if (!homeInfo || !awayInfo) return '';
-    const homeWon = m.winner === m.home;
-    const awayWon = m.winner === m.away;
-    const scorersHtml = m.scorers ? `
+    // 全ノックアウトラウンドの結果を古い順に表示（消化済みのみ）
+    const rounds = [
+      { list: KO_R32_RESULTS,  label: '決勝トーナメント1回戦（R32）結果' },
+      { list: (typeof KO_R16_FIXTURES !== 'undefined' ? KO_R16_FIXTURES : []), label: '決勝トーナメント2回戦（R16）結果' },
+      { list: (typeof KO_QF_FIXTURES !== 'undefined' ? KO_QF_FIXTURES : []),   label: '準々決勝（QF）結果' },
+      { list: (typeof KO_SF_FIXTURES !== 'undefined' ? KO_SF_FIXTURES : []),   label: '準決勝（SF）結果' },
+    ];
+
+    const koCard = (m, label) => {
+      const homeInfo = TEAM_INFO[m.home];
+      const awayInfo = TEAM_INFO[m.away];
+      if (!homeInfo || !awayInfo) return '';
+      const homeWon = m.winner === m.home;
+      const awayWon = m.winner === m.away;
+      const dateStr = m.date + (m.time ? ' ' + m.time : '');
+      const scorersHtml = m.scorers ? `
         <div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08)">
           <div style="flex:1;min-width:0">
             ${(m.scorers.home||[]).map(s => `<div style="font-size:10px;color:var(--text-muted);line-height:1.6">⚽ ${s}</div>`).join('')}
@@ -9565,10 +9625,10 @@
             ${(m.scorers.away||[]).map(s => `<div style="font-size:10px;color:var(--text-muted);line-height:1.6">${s} ⚽</div>`).join('')}
           </div>
         </div>` : '';
-    return `
-      <div class="section-label" style="font-size:13px;margin:0 0 8px">🏆 決勝トーナメント1回戦（R32）結果</div>
+      return `
+      <div class="section-label" style="font-size:13px;margin:0 0 8px">🏆 ${label}</div>
       <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 14px;margin-bottom:16px">
-        <div style="font-size:10px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px">${m.no} ${m.date} ／ ${m.venue} ／ <span style="color:#4caf50;font-weight:900">FT</span></div>
+        <div style="font-size:10px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px">${m.no} ${dateStr} ／ ${m.venue} ／ <span style="color:#4caf50;font-weight:900">FT</span></div>
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
           <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0;${homeWon?'':'opacity:0.55'}">
             <img src="${ccToFlagUrl(m.home)}" style="width:24px;height:16px;border-radius:2px;object-fit:cover;flex-shrink:0">
@@ -9582,6 +9642,14 @@
         </div>
         ${scorersHtml}
       </div>`;
+    };
+
+    let out = '';
+    rounds.forEach(r => {
+      const m = r.list.find(x => (x.home === cc || x.away === cc) && x.score);
+      if (m) out += koCard(m, r.label);
+    });
+    return out;
   }
 
   let _teamModalFromSection = null; // モーダルを開いた遷移元セクションID
@@ -9708,15 +9776,20 @@
     posOrder.forEach(pos => {
       const players = squad[pos];
       if (!players || !players.length) return;
-      let cells = players.map(p =>
-        '<div class="tm-squad-player">'
-        + '<span class="tm-squad-num">' + p.no + '</span>'
-        + '<div class="tm-squad-info">'
-        +   '<div class="tm-squad-name">' + p.name + '</div>'
-        +   '<div class="tm-squad-club">' + p.club + '</div>'
-        + '</div>'
-        + '</div>'
-      ).join('');
+      let cells = players.map((p, idx) => {
+        // 日本は既存の詳細モーダル、他国は各国選手モーダルを開く
+        const clickFn = (cc === 'jp')
+          ? "openJpPlayerModal(" + p.no + ")"
+          : "openSquadPlayerModal('" + cc + "','" + pos + "'," + idx + ")";
+        return '<div class="tm-squad-player" onclick="' + clickFn + '" style="cursor:pointer">'
+          + '<span class="tm-squad-num">' + p.no + '</span>'
+          + '<div class="tm-squad-info">'
+          +   '<div class="tm-squad-name">' + p.name + '</div>'
+          +   '<div class="tm-squad-club">' + p.club + '</div>'
+          + '</div>'
+          + '<span style="font-size:10px;color:var(--text-muted);margin-left:auto;flex-shrink:0">›</span>'
+          + '</div>';
+      }).join('');
       // 奇数の場合は末尾に空セルを追加してグリッドを揃える
       if (players.length % 2 !== 0) {
         cells += '<div class="tm-squad-player" style="visibility:hidden"></div>';
