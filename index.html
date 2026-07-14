@@ -6424,20 +6424,22 @@
             </div>
             <div class="start-bar-label" id="mStartPct" style="font-size:12px;font-weight:800;color:var(--text-primary);"></div>
           </div>
-          <div style="font-size:10px;color:var(--text-muted);">2025-26シーズン先発起用率（編集部推定）</div>
+          <div style="font-size:10px;color:var(--text-muted);" id="mStartNote">2025-26シーズン先発起用率（編集部推定）</div>
         </div>
 
         <!-- 日本代表専用詳細セクション -->
         <div id="mJpDetail" style="display:none">
-          <div class="modal-section-title">今大会成績</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-            <div class="stat-box">
-              <div class="sv" id="mWcG" style="color:var(--gold)">0</div>
-              <div class="sl">⚽ ゴール</div>
-            </div>
-            <div class="stat-box">
-              <div class="sv" id="mWcA" style="color:var(--sky-blue)">0</div>
-              <div class="sl">🅰️ アシスト</div>
+          <div id="mWcSection">
+            <div class="modal-section-title">今大会成績</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div class="stat-box">
+                <div class="sv" id="mWcG" style="color:var(--gold)">0</div>
+                <div class="sl">⚽ ゴール</div>
+              </div>
+              <div class="stat-box">
+                <div class="sv" id="mWcA" style="color:var(--sky-blue)">0</div>
+                <div class="sl">🅰️ アシスト</div>
+              </div>
             </div>
           </div>
 
@@ -6453,17 +6455,17 @@
                 <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mBirth">—</div>
               </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--card-border)">
+            <div id="mDobRow" style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--card-border)">
               <div style="padding:8px 12px;border-right:1px solid var(--card-border)">
                 <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">誕生日</div>
                 <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mDob">—</div>
               </div>
-              <div style="padding:8px 12px">
+              <div style="padding:8px 12px" id="mHobbyCell">
                 <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">趣味</div>
                 <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mHobby">—</div>
               </div>
             </div>
-            <div style="padding:8px 12px">
+            <div style="padding:8px 12px" id="mSkillCell">
               <div style="font-size:10px;color:var(--text-muted);margin-bottom:2px">特技</div>
               <div style="font-size:13px;font-weight:700;color:var(--text-primary)" id="mSkill">—</div>
             </div>
@@ -7313,32 +7315,148 @@
     document.body.style.overflow = '';
   }
 
-  // ===== 各国代表メンバーの選手詳細モーダル =====
+  // ===== クラブ名 → 所属リーグ 自動判定テーブル =====
+  const CLUB_LEAGUE = {
+    'アーセナル':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','チェルシー':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','リバプール':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','マンチェスター・C':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','マンチェスター・U':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ',
+    'アストン・ヴィラ':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','クリスタル・パレス':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','エバートン':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','ニューカッスル':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','トッテナム':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ',
+    'ノッティンガム・F':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','ブレントフォード':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','ウルブス':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','ブライトン':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','フルアム':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ',
+    'サンダーランド':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','リーズ':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ','バーンリー':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ',
+    'ダービー':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 チャンピオンシップ','ワトフォード':'🏴󠁧󠁢󠁥󠁮󠁧󠁿 チャンピオンシップ',
+    'レアル・マドリード':'🇪🇸 ラ・リーガ','バルセロナ':'🇪🇸 ラ・リーガ','アトレティコ':'🇪🇸 ラ・リーガ','レアル・ソシエダ':'🇪🇸 ラ・リーガ','アスレティック・ビルバオ':'🇪🇸 ラ・リーガ',
+    'レアル・ベティス':'🇪🇸 ラ・リーガ','ジローナ':'🇪🇸 ラ・リーガ','オサスナ':'🇪🇸 ラ・リーガ','セルタ':'🇪🇸 ラ・リーガ','バレンシア':'🇪🇸 ラ・リーガ',
+    'バイエルン':'🇩🇪 ブンデスリーガ','レバークーゼン':'🇩🇪 ブンデスリーガ','ライプツィヒ':'🇩🇪 ブンデスリーガ','ドルトムント':'🇩🇪 ブンデスリーガ','フランクフルト':'🇩🇪 ブンデスリーガ',
+    'シュツットガルト':'🇩🇪 ブンデスリーガ','マインツ':'🇩🇪 ブンデスリーガ','ボルシアMG':'🇩🇪 ブンデスリーガ','フライブルク':'🇩🇪 ブンデスリーガ','アウクスブルク':'🇩🇪 ブンデスリーガ',
+    'ハンブルガーSV':'🇩🇪 ブンデスリーガ','デュッセルドルフ':'🇩🇪 2.ブンデスリーガ',
+    'ミラン':'🇮🇹 セリエA','インテル':'🇮🇹 セリエA','ローマ':'🇮🇹 セリエA','ナポリ':'🇮🇹 セリエA','ユヴェントス':'🇮🇹 セリエA',
+    'アタランタ':'🇮🇹 セリエA','ジェノア':'🇮🇹 セリエA','トリノ':'🇮🇹 セリエA','ボローニャ':'🇮🇹 セリエA','クレモネーゼ':'🇮🇹 セリエA','コモ':'🇮🇹 セリエA','ピサ':'🇮🇹 セリエA',
+    'PSG':'🇫🇷 リーグ1','マルセイユ':'🇫🇷 リーグ1','モナコ':'🇫🇷 リーグ1','リヨン':'🇫🇷 リーグ1','リール':'🇫🇷 リーグ1','レンヌ':'🇫🇷 リーグ1','ランス':'🇫🇷 リーグ1','ストラスブール':'🇫🇷 リーグ1','アンジェ':'🇫🇷 リーグ1','ロリアン':'🇫🇷 リーグ1',
+    'PSV':'🇳🇱 エールディヴィジ','アヤックス':'🇳🇱 エールディヴィジ',
+    'ベンフィカ':'🇵🇹 プリメイラ・リーガ','スポルティング':'🇵🇹 プリメイラ・リーガ',
+    'クラブ・ブルッヘ':'🇧🇪 プロリーグ','ヘンク':'🇧🇪 プロリーグ','メヘレン':'🇧🇪 プロリーグ',
+    'フェネルバフチェ':'🇹🇷 スュペル・リグ',
+    'ボデ/グリムト':'🇳🇴 エリテセリエン','ヴァイキング':'🇳🇴 エリテセリエン',
+    'レンジャーズ':'🏴󠁧󠁢󠁳󠁣󠁴󠁿 スコティッシュ・プレミアシップ',
+    'ヤングボーイズ':'🇨🇭 スイス・スーパーリーグ',
+    'オリンピアコス':'🇬🇷 ギリシャ・スーパーリーグ',
+    'ゼニト':'🇷🇺 ロシア・プレミアリーグ',
+    'グレミオ':'🇧🇷 ブラジル・セリエA','フラメンゴ':'🇧🇷 ブラジル・セリエA','ボタフォゴ':'🇧🇷 ブラジル・セリエA','サントス':'🇧🇷 ブラジル・セリエA',
+    'アル・ヒラル':'🇸🇦 サウジ・プロリーグ','アル・ファテフ':'🇸🇦 サウジ・プロリーグ','アル・イテハド':'🇸🇦 サウジ・プロリーグ',
+    'アル・アハリ':'🇪🇬 エジプト・プレミアリーグ','ASFAR':'🇲🇦 ボトラプロ','RSベルカン':'🇲🇦 ボトラプロ',
+    'アル・アイン':'🇦🇪 UAEプロリーグ','インテル・マイアミ':'🇺🇸 MLS','リーベル・プレート':'🇦🇷 アルゼンチンリーガ','ボカ・ジュニアーズ':'🇦🇷 アルゼンチンリーガ','パルメイラス':'🇧🇷 ブラジル・セリエA',
+  };
+  function clubLeague(club) {
+    return CLUB_LEAGUE[club] || '—';
+  }
+
+  const CC_FLAG = { fr:'🇫🇷', ma:'🇲🇦', es:'🇪🇸', be:'🇧🇪', no:'🇳🇴', 'gb-eng':'🏴󠁧󠁢󠁥󠁮󠁧󠁿', ar:'🇦🇷', ch:'🇨🇭', br:'🇧🇷' };
+
+  function ageFromDob(dobStr) {
+    if (!dobStr) return null;
+    const parts = dobStr.split('/').map(Number);
+    if (parts.length !== 3 || !parts[0]) return null;
+    const [y, m, d] = parts;
+    const today = new Date();
+    let age = today.getFullYear() - y;
+    const hadBirthday = (today.getMonth() + 1 > m) || (today.getMonth() + 1 === m && today.getDate() >= d);
+    if (!hadBirthday) age--;
+    return age;
+  }
+
+  // ===== 代表メンバーの生年月日・出身地（判明分のみ／不明は非公開表示） =====
+  const SQUAD_EXTRA = {
+    fr_10:{birth:'フランス・パリ',dob:'1998/12/20',g:8,a:2,hobby:'チェス・ゲーム',skill:'圧倒的な加速力とフィニッシュ精度',start:99}, fr_7:{birth:'フランス・ヴェルヌイユ=シュル=セーヌ',dob:'1997/5/15',g:5,a:2,hobby:'非公開',skill:'高速ドリブルとチャンスメイク',start:86},
+    fr_8:{birth:'フランス・ルーアン',dob:'2000/1/27'}, fr_15:{birth:'フランス・パリ',dob:'1999/5/25'}, fr_17:{birth:'フランス・ボンディ',dob:'2001/3/24'},
+    fr_13:{birth:'フランス・パリ',dob:'1991/3/29'}, fr_4:{birth:'フランス・エヴルー',dob:'1998/10/27'}, fr_5:{birth:'フランス・パリ',dob:'1998/11/12'},
+    fr_9:{birth:'イタリア・パルマ',dob:'1997/8/6'}, fr_21:{birth:'フランス・マルセイユ',dob:'1996/2/14'}, fr_19:{birth:'フランス・マルセイユ',dob:'1997/10/6'},
+    fr_11:{g:0,a:5,start:93}, fr_12:{g:2,a:0,start:55}, fr_14:{g:0,a:1,start:87},
+    ma_2:{birth:'スペイン・マドリード',dob:'1998/11/4',g:0,a:2,start:100}, ma_1:{birth:'カナダ・モントリオール',dob:'1991/4/5'},
+    ma_4:{birth:'オランダ・フリセンフェーン',dob:'1996/8/21'}, ma_3:{birth:'オランダ・カルスペル',dob:'1997/11/14'}, ma_10:{birth:'スペイン・マラガ',dob:'1999/8/3',g:0,a:4,hobby:'非公開',skill:'密集地帯での創造性',start:86},
+    ma_11:{g:3,a:0,start:71}, ma_8:{g:2,a:0,start:83}, ma_9:{g:2,a:0,start:32},
+    es_16:{birth:'スペイン・マドリード',dob:'1996/6/22'}, es_20:{birth:'スペイン・テネリフェ',dob:'2002/11/25'}, es_9:{birth:'スペイン・ロス・パラシオス',dob:'2004/8/5'},
+    es_19:{birth:'スペイン・エスプルーグス・デ・リョブラガット',dob:'2007/7/13'}, es_21:{birth:'スペイン・エイバル',dob:'1997/4/9',g:4,a:1,hobby:'非公開',skill:'冷静なフィニッシュとポジショニング',start:89}, es_24:{g:0,a:2,start:100}, es_14:{g:0,a:1,start:100}, es_23:{birth:'スペイン（バスク）',dob:'1997/6/11'},
+    be_7:{birth:'ベルギー・ドローゲンボス',dob:'1991/6/28'}, be_1:{birth:'ベルギー・ブレー',dob:'1992/5/11'}, be_8:{birth:'ベルギー・スィント=ピータース=レウ',dob:'1997/5/7',g:2,a:0,start:100},
+    be_10:{g:2,a:3,start:95}, be_23:{g:0,a:2,start:65}, be_20:{g:0,a:2,start:61}, be_21:{g:0,a:1,start:92},
+    be_9:{g:3,a:0,hobby:'非公開',skill:'高さを活かしたポストプレー',start:45}, be_17:{g:3,a:0,hobby:'非公開',skill:'ドリブルからの得点感覚',start:65},
+    no_9:{birth:'イングランド・リーズ（ノルウェー育ち）',dob:'2000/7/21',g:7,a:0,hobby:'サウナ・アイスバス',skill:'圧巻のフィジカルと決定力',start:91},
+    no_8:{g:0,a:2,start:88},
+    no_10:{birth:'ノルウェー・ドランメン',dob:'1998/12/17',g:0,a:3,hobby:'非公開',skill:'展開力と精密なラストパス',start:90},
+    no_21:{birth:'ノルウェー',dob:'2003/6/8',g:1,a:3,hobby:'非公開',skill:'攻撃的センスに優れた若きタレント',start:51},
+    'gb-eng_10':{birth:'イングランド・スタウアブリッジ',dob:'2003/6/29',g:6,a:0,hobby:'ゴルフ',skill:'攻守にわたる運動量とゴール感覚',start:98},
+    'gb-eng_9':{birth:'イングランド・ロンドン',dob:'1993/7/28',g:6,a:1,hobby:'ダーツ観戦・アメフト',skill:'得点感覚とビルドアップ能力を兼備',start:100},
+    'gb-eng_7':{birth:'イングランド・ロンドン',dob:'2001/9/5',g:0,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:51},
+    'gb-eng_4':{birth:'イングランド・キングストン',dob:'1999/1/14'}, 'gb-eng_1':{birth:'イングランド・サンダーランド',dob:'1994/3/5'},
+    'gb-eng_18':{birth:'イングランド・リヴァプール',dob:'2001/2/24',g:0,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:63}, 'gb-eng_8':{g:0,a:1,start:100},
+    ar_23:{birth:'アルゼンチン・マル・デル・プラタ',dob:'1992/9/2'}, ar_7:{birth:'アルゼンチン・サルタ',dob:'1994/5/24'}, ar_9:{birth:'アルゼンチン・カラフェ',dob:'2000/1/31'},
+    ar_20:{birth:'アルゼンチン・サンタフェ',dob:'1998/12/24',g:0,a:1,start:100}, ar_10:{birth:'アルゼンチン・ロサリオ',dob:'1987/6/24',g:8,a:1,hobby:'家族との時間・マテ茶',skill:'卓越したドリブルと得点感覚',start:100},
+    ch_1:{birth:'スイス・チューリッヒ',dob:'1997/12/6'}, ch_10:{birth:'スイス・バーゼル',dob:'1992/9/27'}, ch_7:{birth:'カメルーン・ヤウンデ',dob:'1997/2/14',g:2,a:2,start:94},
+    ch_11:{g:2,a:0,start:76}, ch_17:{g:2,a:0,start:56}, ch_13:{g:0,a:1,start:99},
+    ch_9:{g:3,a:2,hobby:'非公開',skill:'中盤での推進力とロングシュート',start:57},
+    ar_1:{birth:'アルゼンチン・サンタフェ',dob:'1994/5/6'}, ar_2:{birth:'アルゼンチン・サンニコラス',dob:'1997/5/10'}, ar_3:{birth:'アルゼンチン・ラナス',dob:'1992/8/31'},
+    ar_4:{birth:'アルゼンチン・サンタフェ',dob:'1997/1/1'}, ar_6:{birth:'アルゼンチン・グアレグアイ',dob:'1998/1/18',g:0,a:1,start:99}, ar_13:{birth:'アルゼンチン・コルドバ',dob:'1998/4/27'},
+    ar_19:{birth:'アルゼンチン・ブエノスアイレス',dob:'1988/2/12'}, ar_5:{birth:'アルゼンチン・ブエノスアイレス',dob:'1994/6/29'}, ar_11:{birth:'アルゼンチン・ローサス',dob:'1996/4/9'},
+    ar_24:{birth:'アルゼンチン・サンマルティン',dob:'2001/1/17'}, ar_16:{birth:'アルゼンチン・ラヌース',dob:'2001/4/26'}, ar_17:{birth:'アルゼンチン・ブエノスアイレス',dob:'2002/10/12'},
+    ar_18:{birth:'アルゼンチン・ブエノスアイレス',dob:'2004/7/8'}, ar_22:{birth:'アルゼンチン・バイア・ブランカ',dob:'1997/8/22',g:2,a:0,start:58},
+    br_1:{birth:'ブラジル・ノヴァ・ハンブルゴ',dob:'1992/10/2'}, br_4:{birth:'ブラジル・サンパウロ',dob:'1994/5/14'}, br_5:{birth:'ブラジル・サンジョゼ・ドス・カンポス',dob:'1992/2/23'},
+    br_7:{birth:'ブラジル・サンゴンサロ',dob:'2000/7/12',g:4,a:1,hobby:'ダンス',skill:'爆発的なスピードと仕掛け',start:100},
+    br_9:{g:3,a:0,start:65},
+    br_10:{birth:'ブラジル・モジ・ダス・クルーゼス',dob:'1992/2/5'}, br_8:{birth:'ブラジル',dob:'1997/11/16',g:0,a:4,start:93}, br_11:{birth:'ブラジル・ポルト・アレグレ',dob:'1996/12/14'},
+  };
+
+  // ===== 各国代表メンバーの選手詳細モーダル（日本代表版と同一構成） =====
   function openSquadPlayerModal(cc, pos, idx) {
     const squad = SQUAD_DATA[cc];
     if (!squad || !squad[pos] || !squad[pos][idx]) return;
     const p = squad[pos][idx];
     const info = TEAM_INFO[cc] || {};
+    const extra = SQUAD_EXTRA[cc + '_' + p.no] || {};
+    const flag = CC_FLAG[cc] || '';
 
-    document.getElementById('mNum').textContent = `#${p.no} ${pos}`;
+    document.getElementById('mNum').textContent = `${flag} #${p.no} ${pos}`.trim();
     document.getElementById('mNum').style.color = 'var(--gold)';
     document.getElementById('mName').textContent = p.name;
     document.getElementById('mClub').textContent = (info.name ? info.name + '代表 ／ ' : '') + p.club;
     setPosIcon(pos);
 
-    // 日本専用UI（先発起用率・今大会成績）は非表示
+    // 先発起用率：今大会の実出場時間データが判明している選手はそれを表示（不明は非公開）
     const st1 = document.getElementById('mStartTitle');
     const st2 = document.getElementById('mStartBox');
-    if (st1) st1.style.display = 'none';
-    if (st2) st2.style.display = 'none';
-    document.getElementById('mJpDetail').style.display = 'none';
+    if (st1) st1.style.display = '';
+    if (st2) st2.style.display = '';
+    const startNote = document.getElementById('mStartNote');
+    if (typeof extra.start === 'number') {
+      document.getElementById('mStartBar').style.width = extra.start + '%';
+      document.getElementById('mStartBar').style.background = 'var(--gold)';
+      document.getElementById('mStartPct').textContent = extra.start + '%';
+      if (startNote) startNote.textContent = '今大会の出場時間ベース（footballparadise.com調べ）';
+    } else {
+      document.getElementById('mStartBar').style.width = '0%';
+      document.getElementById('mStartBar').style.background = 'var(--gold)';
+      document.getElementById('mStartPct').textContent = '非公開';
+      if (startNote) startNote.textContent = '今大会の出場データなし';
+    }
 
+    const age = p.age || ageFromDob(extra.dob);
     document.getElementById('mStats').innerHTML =
-      (p.age ? `<div class="stat-box"><div class="sv">${p.age}</div><div class="sl">年齢</div></div>` : '') +
+      (age ? `<div class="stat-box"><div class="sv">${age}</div><div class="sl">年齢</div></div>` : '') +
       (p.h ? `<div class="stat-box"><div class="sv">${p.h}cm</div><div class="sl">身長</div></div>` : '') +
       `<div class="stat-box"><div class="sv">#${p.no}</div><div class="sl">背番号</div></div>`;
 
+    document.getElementById('mJpDetail').style.display = 'block';
+    const wcSec = document.getElementById('mWcSection'); if (wcSec) wcSec.style.display = '';
+    const hobbyCell = document.getElementById('mHobbyCell'); if (hobbyCell) hobbyCell.style.display = '';
+    const skillCell = document.getElementById('mSkillCell'); if (skillCell) skillCell.style.display = '';
+    const dobRow = document.getElementById('mDobRow'); if (dobRow) dobRow.style.gridTemplateColumns = '';
+
+    document.getElementById('mWcG').textContent = extra.g ?? 0;
+    document.getElementById('mWcA').textContent = extra.a ?? 0;
+    document.getElementById('mLeague').textContent = clubLeague(p.club);
+    document.getElementById('mBirth').textContent = extra.birth || '非公開';
+    document.getElementById('mDob').textContent = extra.dob || '非公開';
+    document.getElementById('mHobby').textContent = extra.hobby || '非公開';
+    document.getElementById('mSkill').textContent = extra.skill || '非公開';
+
     document.getElementById('playerModal').classList.add('open');
+    document.getElementById('modalSheet').scrollTop = 0;
   }
 
   function openJpPlayerModal(num) {
@@ -7365,6 +7483,11 @@
     const jpDetail = document.getElementById('mJpDetail');
     if (p.dob) {
       jpDetail.style.display = 'block';
+      const startNote3 = document.getElementById('mStartNote'); if (startNote3) startNote3.textContent = '2025-26シーズン先発起用率（編集部推定）';
+      const wcSec3 = document.getElementById('mWcSection'); if (wcSec3) wcSec3.style.display = '';
+      const hobbyCell3 = document.getElementById('mHobbyCell'); if (hobbyCell3) hobbyCell3.style.display = '';
+      const skillCell3 = document.getElementById('mSkillCell'); if (skillCell3) skillCell3.style.display = '';
+      const dobRow3 = document.getElementById('mDobRow'); if (dobRow3) dobRow3.style.gridTemplateColumns = '';
       document.getElementById('mWcG').textContent = p.wc_g ?? 0;
       document.getElementById('mWcA').textContent = p.wc_a ?? 0;
       document.getElementById('mLeague').textContent = p.league || '—';
@@ -7614,16 +7737,16 @@
 
   // ===== ランキング 静的データ =====
   const RANKING_SCORERS = [
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:8, a:3, jp:false },
-    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:1, jp:false },
-    { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false },
-    { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false },
-    { name:'J・ベリンガム',     country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:0, jp:false },
-    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:5, a:2, jp:false },
-    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:1, jp:false },
-    { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false },
-    { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:4, a:1, jp:false },
-    { name:'F・キニョーネス',   country:'メキシコ',        flag:'🇲🇽', g:4, a:1, jp:false },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:8, a:3, jp:false, key:'mbappe' },
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:1, jp:false, key:'messi' },
+    { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false, key:'haaland' },
+    { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false, key:'kane' },
+    { name:'J・ベリンガム',     country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:0, jp:false, key:'bellingham' },
+    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:5, a:2, jp:false, key:'dembele' },
+    { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false, key:'vinicius' },
+    { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:4, a:1, jp:false, key:'sarr' },
+    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:4, a:1, jp:false, key:'oyarzabal' },
+    { name:'F・キニョーネス',   country:'メキシコ',        flag:'🇲🇽', g:4, a:1, jp:false, key:'quinones' },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', g:3, a:2, jp:false },
     { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:2, jp:false },
     { name:'C・ガクポ',         country:'オランダ',        flag:'🇳🇱', g:3, a:1, jp:false },
@@ -7632,22 +7755,87 @@
   ];
 
   const RANKING_ASSISTS = [
-    { name:'M・オリーセ',       country:'フランス',        flag:'🇫🇷', a:5, g:0, jp:false },
-    { name:'B・ギマランイス',   country:'ブラジル',        flag:'🇧🇷', a:4, g:0, jp:false },
-    { name:'B・ディアス',       country:'モロッコ',        flag:'🇲🇦', a:4, g:0, jp:false },
-    { name:'R・アルバラード',   country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false },
-    { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:3, g:0, jp:false },
-    { name:'A・シェルデルップ', country:'ノルウェー',      flag:'🇳🇴', a:3, g:1, jp:false },
-    { name:'F・ヴィルツ',       country:'ドイツ',          flag:'🇩🇪', a:3, g:0, jp:false },
-    { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:1, jp:false },
-    { name:'B・サカ',           country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:3, g:0, jp:false },
-    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:3, g:0, jp:false },
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:3, g:8, jp:false },
-    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', a:2, g:5, jp:false },
+    { name:'M・オリーセ',       country:'フランス',        flag:'🇫🇷', a:5, g:0, jp:false, key:'olise' },
+    { name:'B・ギマランイス',   country:'ブラジル',        flag:'🇧🇷', a:4, g:0, jp:false, key:'guimaraes' },
+    { name:'B・ディアス',       country:'モロッコ',        flag:'🇲🇦', a:4, g:0, jp:false, key:'brahim' },
+    { name:'R・アルバラード',   country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false, key:'alvarado' },
+    { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:1, jp:false, key:'isak' },
+    { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:4, g:0, jp:false, key:'odegaard' },
+    { name:'B・サカ',           country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:3, g:0, jp:false, key:'saka' },
+    { name:'A・シェルデルップ', country:'ノルウェー',      flag:'🇳🇴', a:3, g:1, jp:false, key:'schjelderup' },
+    { name:'F・ヴィルツ',       country:'ドイツ',          flag:'🇩🇪', a:3, g:0, jp:false, key:'wirtz' },
+    { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', a:2, g:5, jp:false, key:'dembele' },
+    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:3, g:8, jp:false, key:'mbappe' },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', a:2, g:3, jp:false },
     { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', a:2, g:3, jp:false },
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
   ];
+
+  // ===== 得点王・アシストランキング TOP10 選手詳細データ（7/12時点・公開情報ベース） =====
+  const RANKING_PLAYER_DETAIL = {
+    mbappe:      { pos:'FW', age:27, league:'🇪🇸 ラ・リーガ',       club:'レアル・マドリード',       birth:'フランス・パリ',       dob:'1998/12/20', hobby:'チェス・ゲーム',   skill:'圧倒的な加速力とフィニッシュ精度' },
+    messi:       { pos:'FW', age:39, league:'🇺🇸 MLS',              club:'インテル・マイアミCF',     birth:'アルゼンチン・ロサリオ', dob:'1987/6/24',  hobby:'家族との時間・マテ茶', skill:'卓越したドリブルと得点感覚' },
+    haaland:     { pos:'FW', age:25, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'マンチェスター・シティ',   birth:'イングランド・リーズ（ノルウェー育ち）', dob:'2000/7/21', hobby:'サウナ・アイスバス', skill:'圧巻のフィジカルと決定力' },
+    kane:        { pos:'FW', age:32, league:'🇩🇪 ブンデスリーガ',   club:'バイエルン・ミュンヘン',   birth:'イングランド・ロンドン', dob:'1993/7/28',  hobby:'ダーツ観戦・アメフト', skill:'得点感覚とビルドアップ能力を兼備' },
+    bellingham:  { pos:'MF', age:23, league:'🇪🇸 ラ・リーガ',       club:'レアル・マドリード',       birth:'イングランド・スタウアブリッジ', dob:'2003/6/29', hobby:'ゴルフ',           skill:'攻守にわたる運動量とゴール感覚' },
+    dembele:     { pos:'FW', age:29, league:'🇫🇷 リーグ1',          club:'パリ・サンジェルマン',     birth:'フランス・ヴェルヌイユ=シュル=セーヌ', dob:'1997/5/15', hobby:'非公開',           skill:'高速ドリブルとチャンスメイク' },
+    vinicius:    { pos:'FW', age:26, league:'🇪🇸 ラ・リーガ',       club:'レアル・マドリード',       birth:'ブラジル・サンゴンサロ', dob:'2000/7/12',  hobby:'ダンス',           skill:'爆発的なスピードと仕掛け' },
+    sarr:        { pos:'FW', age:28, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'クリスタル・パレス',       birth:'セネガル・サン=ルイ',   dob:'1998/2/25',  hobby:'非公開',           skill:'圧倒的なスピードと推進力' },
+    oyarzabal:   { pos:'FW', age:29, league:'🇪🇸 ラ・リーガ',       club:'レアル・ソシエダ',         birth:'スペイン・エイバル',     dob:'1997/4/9',   hobby:'非公開',           skill:'冷静なフィニッシュとポジショニング' },
+    quinones:    { pos:'FW', age:29, league:'🇸🇦 サウジ・プロリーグ', club:'アル・カディシーヤ',       birth:'コロンビア出身（メキシコ代表）', dob:'1997/5/8', hobby:'非公開',           skill:'独特なリズムのドリブル突破' },
+    olise:       { pos:'MF', age:24, league:'🇩🇪 ブンデスリーガ',   club:'バイエルン・ミュンヘン',   birth:'イングランド・ロンドン', dob:'2001/12/12', hobby:'非公開',           skill:'精度の高いクロスとセットプレー' },
+    guimaraes:   { pos:'MF', age:28, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'ニューカッスル・ユナイテッド', birth:'ブラジル',       dob:'1997/11/16', hobby:'非公開',           skill:'攻守のバランスに優れたパス能力' },
+    brahim:      { pos:'MF', age:26, league:'🇪🇸 ラ・リーガ',       club:'レアル・マドリード',       birth:'スペイン・マラガ（モロッコ系）', dob:'1999/8/3', hobby:'非公開',           skill:'密集地帯での創造性' },
+    alvarado:    { pos:'MF', age:27, league:'🇲🇽 リーガMX',         club:'CFグアダラハラ',           birth:'メキシコ・グアダラハラ', dob:'1998/11/18', hobby:'非公開',           skill:'スピードを活かした仕掛け' },
+    isak:        { pos:'FW', age:26, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'リヴァプール',             birth:'スウェーデン',           dob:'1999/9/27',  hobby:'非公開',           skill:'しなやかなボディバランスと決定力' },
+    odegaard:    { pos:'MF', age:27, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'アーセナル',               birth:'ノルウェー・ドランメン', dob:'1998/12/17', hobby:'非公開',           skill:'展開力と精密なラストパス' },
+    saka:        { pos:'FW', age:24, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'アーセナル',               birth:'イングランド・ロンドン', dob:'2001/9/5',   hobby:'非公開',           skill:'左足からの正確なシュートとクロス' },
+    schjelderup: { pos:'FW', age:23, league:'🇵🇹 プリメイラ・リーガ', club:'SLベンフィカ',             birth:'ノルウェー',             dob:'2003/6/8',   hobby:'非公開',           skill:'攻撃的センスに優れた若きタレント' },
+    wirtz:       { pos:'MF', age:23, league:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 プレミアリーグ', club:'リヴァプール',             birth:'ドイツ',                 dob:'2003/5/3',   hobby:'非公開',           skill:'卓越した創造性とラストパス' },
+  };
+
+  function openRankingPlayerModal(key) {
+    const scorer = RANKING_SCORERS.find(p => p.key === key);
+    const assist = RANKING_ASSISTS.find(p => p.key === key);
+    const p = scorer || assist;
+    const d = RANKING_PLAYER_DETAIL[key];
+    if (!p || !d) return;
+
+    document.getElementById('mNum').textContent = `${p.flag} ${d.pos}`;
+    document.getElementById('mNum').style.color = 'var(--gold)';
+    document.getElementById('mName').textContent = p.name;
+    document.getElementById('mClub').textContent = `${d.club}（${p.country}代表）`;
+    setPosIcon(d.pos);
+
+    // 先発起用率セクションは非表示（クラブでの起用率データなし）
+    const st1 = document.getElementById('mStartTitle');
+    const st2 = document.getElementById('mStartBox');
+    if (st1) st1.style.display = 'none';
+    if (st2) st2.style.display = 'none';
+
+    document.getElementById('mStats').innerHTML =
+      `<div class="stat-box"><div class="sv">${d.age}</div><div class="sl">年齢</div></div>` +
+      `<div class="stat-box"><div class="sv">${p.flag}</div><div class="sl">${p.country}</div></div>`;
+
+    const jpDetail = document.getElementById('mJpDetail');
+    jpDetail.style.display = 'block';
+    const startNote2 = document.getElementById('mStartNote'); if (startNote2) startNote2.textContent = '2025-26シーズン先発起用率（編集部推定）';
+    const wcSec2 = document.getElementById('mWcSection'); if (wcSec2) wcSec2.style.display = '';
+    const hobbyCell2 = document.getElementById('mHobbyCell'); if (hobbyCell2) hobbyCell2.style.display = '';
+    const skillCell2 = document.getElementById('mSkillCell'); if (skillCell2) skillCell2.style.display = '';
+    const dobRow2 = document.getElementById('mDobRow'); if (dobRow2) dobRow2.style.gridTemplateColumns = '';
+    document.getElementById('mWcG').textContent = (scorer ? scorer.g : (assist ? assist.g : 0));
+    document.getElementById('mWcA').textContent = (assist ? assist.a : (scorer ? scorer.a : 0));
+    document.getElementById('mLeague').textContent = d.league;
+    document.getElementById('mDob').textContent = d.dob;
+    document.getElementById('mBirth').textContent = d.birth;
+    document.getElementById('mHobby').textContent = d.hobby;
+    document.getElementById('mSkill').textContent = d.skill;
+
+    document.getElementById('playerModal').classList.add('open');
+    document.getElementById('modalSheet').scrollTop = 0;
+  }
 
   const RANKING_UPDATED = '7/12 更新（準々決勝終了時点）';
 
@@ -7693,7 +7881,8 @@
     tbody.innerHTML = list.map((p, i) => {
       const rank  = i + 1;
       const medal = medals[rank] || rank;
-      return `<tr style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
+      const clk = p.key ? ` onclick="openRankingPlayerModal('${p.key}')" style="cursor:pointer"` : '';
+      return `<tr${clk} style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
         <td style="padding:11px 8px;text-align:center;font-size:15px;color:var(--text-muted);font-weight:700">${medal}</td>
         <td style="padding:11px 10px">
           <div style="font-weight:${p.jp?'900':'700'};color:${p.jp?'var(--sky-blue)':'var(--text-primary)'};font-size:${p.jp?'16px':'15px'}">${p.name}</div>
@@ -7710,7 +7899,9 @@
   function renderAssisters(list) {
     const tbody = document.getElementById('assist-tbody');
     if (!tbody) return;
-    tbody.innerHTML = list.map((p, i) => `<tr style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
+    tbody.innerHTML = list.map((p, i) => {
+      const clk = p.key ? ` onclick="openRankingPlayerModal('${p.key}')" style="cursor:pointer"` : '';
+      return `<tr${clk} style="${p.jp ? 'background:rgba(59,122,240,0.18);' : ''}border-bottom:1px solid rgba(255,255,255,0.06)">
         <td style="padding:11px 8px;text-align:center;font-size:15px;color:var(--text-muted);font-weight:700">${i+1}</td>
         <td style="padding:11px 10px">
           <div style="font-weight:${p.jp?'900':'700'};color:${p.jp?'var(--sky-blue)':'var(--text-primary)'};font-size:${p.jp?'16px':'15px'}">${p.name}</div>
@@ -7720,7 +7911,8 @@
         <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:900;color:var(--sky-blue)">${p.a}</td>
         <td style="padding:11px 6px;text-align:center;font-size:18px;font-weight:700;color:var(--gold)">${p.g}</td>
         <td style="padding:11px 6px;text-align:center;font-size:14px;color:rgba(255,255,255,0.4)">-</td>
-      </tr>`).join('');
+      </tr>`;
+    }).join('');
   }
 
   function renderStats(list) {}
