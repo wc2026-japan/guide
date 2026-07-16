@@ -4484,15 +4484,15 @@
         </div>
         <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap">
-            <span style="background:rgba(212,255,63,0.15);border:1px solid rgba(212,255,63,0.4);border-radius:10px;font-size:11px;font-weight:800;color:var(--gold);padding:2px 10px">準決勝</span>
-            <span style="font-size:12px;font-weight:900;color:var(--gold)">次戦 SF2</span>
+            <span style="background:rgba(212,255,63,0.15);border:1px solid rgba(212,255,63,0.4);border-radius:10px;font-size:11px;font-weight:800;color:var(--gold);padding:2px 10px">決勝</span>
+            <span style="font-size:12px;font-weight:900;color:var(--gold)">FINAL</span>
           </div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:7px">📅 7/16(木) 04:00　📍 アトランタ</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:7px">📅 7/20(月) 04:00　📍 ニューヨーク</div>
           <div style="display:flex;align-items:center;gap:8px">
-            <span style="font-size:26px">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+            <span style="font-size:26px">🇪🇸</span>
             <div>
-              <div style="font-size:14px;font-weight:800;color:var(--text-primary)">イングランド vs アルゼンチン</div>
-              <div style="font-size:10px;color:var(--text-muted)">SF1結果：🇪🇸スペイン 2-0 🇫🇷フランス（決勝進出）</div>
+              <div style="font-size:14px;font-weight:800;color:var(--text-primary)">スペイン vs アルゼンチン</div>
+              <div style="font-size:10px;color:var(--text-muted)">🥉 3位決定戦：🇫🇷フランス vs 🏴󠁧󠁢󠁥󠁮󠁧󠁿イングランド　7/19(日) 06:00</div>
             </div>
           </div>
         </div>
@@ -4519,12 +4519,12 @@
           <div class="ko-roadmap-step-name">準々決勝</div>
         </div>
         <div class="ko-roadmap-arrow">—</div>
-        <div class="ko-roadmap-step active" onclick="koCardSwitch('sf',this)">
+        <div class="ko-roadmap-step" onclick="koCardSwitch('sf',this)">
           <div class="ko-roadmap-step-code">SF</div>
           <div class="ko-roadmap-step-name">準決勝</div>
         </div>
         <div class="ko-roadmap-arrow">—</div>
-        <div class="ko-roadmap-step final-step" onclick="koCardSwitch('f',this)">
+        <div class="ko-roadmap-step active final-step" onclick="koCardSwitch('f',this)">
           <div class="ko-roadmap-step-code">FINAL</div>
           <div class="ko-roadmap-step-name">決勝</div>
         </div>
@@ -4819,7 +4819,7 @@
     </div>
 
     <!-- SF -->
-    <div id="kc-sf" class="ko-cards-wrap">
+    <div id="kc-sf" class="ko-cards-wrap" style="display:none">
       <div class="ko-cards-header">準決勝（SF）<span>7/15〜7/16 · 2試合</span></div>
       <div class="ko-cards-grid">
         <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
@@ -4831,11 +4831,11 @@
           </div>
         </div>
         <div class="ko-card" style="border-color:rgba(46,204,113,0.4)">
-          <div class="ko-card-meta">✅ 確定　7/16(木) 04:00 · アトランタ</div>
+          <div class="ko-card-meta">✅ 終了　7/16(木) 04:00 · アトランタ <span style="color:#4caf50;font-weight:700">FT</span></div>
           <div class="ko-card-teams">
-            <div class="ko-card-team"><img src="https://flagicons.lipis.dev/flags/4x3/gb-eng.svg" alt="🏴󠁧󠁢󠁥󠁮󠁧󠁿" class="ko-card-flag-img"><div class="ko-card-team-name">イングランド</div></div>
-            <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-card-flag-img"><div class="ko-card-team-name">アルゼンチン</div></div>
+            <div class="ko-card-team"><img src="https://flagicons.lipis.dev/flags/4x3/gb-eng.svg" alt="🏴󠁧󠁢󠁥󠁮󠁧󠁿" class="ko-card-flag-img"><div class="ko-card-team-name">イングランド</div><div class="ko-card-team-sub" style="color:var(--text-muted)">1</div></div>
+            <div class="ko-card-vs">-</div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-card-flag-img"><div class="ko-card-team-name" style="font-weight:700">アルゼンチン</div><div class="ko-card-team-sub" style="color:#4caf50;font-weight:700">2 ✓</div></div>
           </div>
         </div>
       </div>
@@ -4843,7 +4843,7 @@
     </div>
 
     <!-- FINAL -->
-    <div id="kc-f" class="ko-cards-wrap" style="display:none">
+    <div id="kc-f" class="ko-cards-wrap">
       <div class="ko-cards-header">決勝（FINAL）<span>7/20(月) 04:00 · ニューヨーク</span></div>
       <div class="ko-cards-grid" style="grid-template-columns:1fr">
         <div class="ko-card" style="border-color:rgba(212,255,63,0.5)">
@@ -4851,7 +4851,7 @@
           <div class="ko-card-teams">
             <div class="ko-card-team"><img src="https://flagcdn.com/es.svg" alt="🇪🇸" class="ko-card-flag-img"><div class="ko-card-team-name" style="font-weight:700">スペイン</div><div class="ko-card-team-sub" style="color:#4caf50">SF1勝者・確定</div></div>
             <div class="ko-card-vs">VS</div>
-            <div class="ko-card-team"><div class="ko-card-flag">🏳️</div><div class="ko-card-team-name">SF2勝者</div><div class="ko-card-team-sub">🏴󠁧󠁢󠁥󠁮󠁧󠁿イングランド / 🇦🇷アルゼンチン</div></div>
+            <div class="ko-card-team"><img src="https://flagcdn.com/ar.svg" alt="🇦🇷" class="ko-card-flag-img"><div class="ko-card-team-name" style="font-weight:700">アルゼンチン</div><div class="ko-card-team-sub" style="color:#4caf50">SF2勝者・確定</div></div>
           </div>
         </div>
       </div>
@@ -7385,7 +7385,7 @@
     'gb-eng_9':{birth:'イングランド・ロンドン',dob:'1993/7/28',g:6,a:1,hobby:'ダーツ観戦・アメフト',skill:'得点感覚とビルドアップ能力を兼備',start:100},
     'gb-eng_7':{birth:'イングランド・ロンドン',dob:'2001/9/5',g:0,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:51},
     'gb-eng_4':{birth:'イングランド・キングストン',dob:'1999/1/14'}, 'gb-eng_1':{birth:'イングランド・サンダーランド',dob:'1994/3/5'},
-    'gb-eng_18':{birth:'イングランド・リヴァプール',dob:'2001/2/24',g:0,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:63}, 'gb-eng_8':{g:0,a:1,start:100},
+    'gb-eng_18':{birth:'イングランド・リヴァプール',dob:'2001/2/24',g:1,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:63}, 'gb-eng_8':{g:0,a:1,start:100},
     ar_23:{birth:'アルゼンチン・マル・デル・プラタ',dob:'1992/9/2'}, ar_7:{birth:'アルゼンチン・サルタ',dob:'1994/5/24'}, ar_9:{birth:'アルゼンチン・カラフェ',dob:'2000/1/31'},
     ar_20:{birth:'アルゼンチン・サンタフェ',dob:'1998/12/24',g:0,a:1,start:100}, ar_10:{birth:'アルゼンチン・ロサリオ',dob:'1987/6/24',g:8,a:1,hobby:'家族との時間・マテ茶',skill:'卓越したドリブルと得点感覚',start:100},
     ch_1:{birth:'スイス・チューリッヒ',dob:'1997/12/6'}, ch_10:{birth:'スイス・バーゼル',dob:'1992/9/27'}, ch_7:{birth:'カメルーン・ヤウンデ',dob:'1997/2/14',g:2,a:2,start:94},
@@ -7394,8 +7394,8 @@
     ar_1:{birth:'アルゼンチン・サンタフェ',dob:'1994/5/6'}, ar_2:{birth:'アルゼンチン・サンニコラス',dob:'1997/5/10'}, ar_3:{birth:'アルゼンチン・ラナス',dob:'1992/8/31'},
     ar_4:{birth:'アルゼンチン・サンタフェ',dob:'1997/1/1'}, ar_6:{birth:'アルゼンチン・グアレグアイ',dob:'1998/1/18',g:0,a:1,start:99}, ar_13:{birth:'アルゼンチン・コルドバ',dob:'1998/4/27'},
     ar_19:{birth:'アルゼンチン・ブエノスアイレス',dob:'1988/2/12'}, ar_5:{birth:'アルゼンチン・ブエノスアイレス',dob:'1994/6/29'}, ar_11:{birth:'アルゼンチン・ローサス',dob:'1996/4/9'},
-    ar_24:{birth:'アルゼンチン・サンマルティン',dob:'2001/1/17'}, ar_16:{birth:'アルゼンチン・ラヌース',dob:'2001/4/26'}, ar_17:{birth:'アルゼンチン・ブエノスアイレス',dob:'2002/10/12'},
-    ar_18:{birth:'アルゼンチン・ブエノスアイレス',dob:'2004/7/8'}, ar_22:{birth:'アルゼンチン・バイア・ブランカ',dob:'1997/8/22',g:2,a:0,start:58},
+    ar_24:{birth:'アルゼンチン・サンマルティン',dob:'2001/1/17',g:1,a:0,start:100}, ar_16:{birth:'アルゼンチン・ラヌース',dob:'2001/4/26'}, ar_17:{birth:'アルゼンチン・ブエノスアイレス',dob:'2002/10/12'},
+    ar_18:{birth:'アルゼンチン・ブエノスアイレス',dob:'2004/7/8'}, ar_22:{birth:'アルゼンチン・バイア・ブランカ',dob:'1997/8/22',g:3,a:0,start:58},
     br_1:{birth:'ブラジル・ノヴァ・ハンブルゴ',dob:'1992/10/2'}, br_4:{birth:'ブラジル・サンパウロ',dob:'1994/5/14'}, br_5:{birth:'ブラジル・サンジョゼ・ドス・カンポス',dob:'1992/2/23'},
     br_7:{birth:'ブラジル・サンゴンサロ',dob:'2000/7/12',g:4,a:1,hobby:'ダンス',skill:'爆発的なスピードと仕掛け',start:100},
     br_9:{g:3,a:0,start:65},
@@ -7743,30 +7743,31 @@
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false, key:'kane' },
     { name:'J・ベリンガム',     country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:0, jp:false, key:'bellingham' },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:5, a:2, jp:false, key:'dembele' },
+    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:5, a:1, jp:false, key:'oyarzabal' },
     { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false, key:'vinicius' },
     { name:'I・サール',         country:'セネガル',        flag:'🇸🇳', g:4, a:1, jp:false, key:'sarr' },
-    { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:5, a:1, jp:false, key:'oyarzabal' },
     { name:'F・キニョーネス',   country:'メキシコ',        flag:'🇲🇽', g:4, a:1, jp:false, key:'quinones' },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', g:3, a:2, jp:false },
     { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', g:3, a:2, jp:false },
     { name:'C・ガクポ',         country:'オランダ',        flag:'🇳🇱', g:3, a:1, jp:false },
     { name:'R・ルカク',         country:'ベルギー',        flag:'🇧🇪', g:3, a:0, jp:false },
     { name:'C・デ・ケテラーレ', country:'ベルギー',        flag:'🇧🇪', g:3, a:0, jp:false },
+    { name:'L・マルティネス',   country:'アルゼンチン',    flag:'🇦🇷', g:3, a:0, jp:false },
   ];
 
   const RANKING_ASSISTS = [
     { name:'M・オリーセ',       country:'フランス',        flag:'🇫🇷', a:5, g:0, jp:false, key:'olise' },
     { name:'B・ギマランイス',   country:'ブラジル',        flag:'🇧🇷', a:4, g:0, jp:false, key:'guimaraes' },
     { name:'B・ディアス',       country:'モロッコ',        flag:'🇲🇦', a:4, g:0, jp:false, key:'brahim' },
+    { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:4, g:0, jp:false, key:'odegaard' },
+    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:3, g:8, jp:false, key:'mbappe' },
     { name:'R・アルバラード',   country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false, key:'alvarado' },
     { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:1, jp:false, key:'isak' },
-    { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:4, g:0, jp:false, key:'odegaard' },
     { name:'B・サカ',           country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:3, g:0, jp:false, key:'saka' },
     { name:'A・シェルデルップ', country:'ノルウェー',      flag:'🇳🇴', a:3, g:1, jp:false, key:'schjelderup' },
     { name:'F・ヴィルツ',       country:'ドイツ',          flag:'🇩🇪', a:3, g:0, jp:false, key:'wirtz' },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', a:2, g:5, jp:false, key:'dembele' },
-    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:0, jp:false },
-    { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:3, g:8, jp:false, key:'mbappe' },
+    { name:'A・ゴードン',       country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', a:2, g:1, jp:false },
     { name:'D・ウンダフ',       country:'ドイツ',          flag:'🇩🇪', a:2, g:3, jp:false },
     { name:'Y・マンザンビ',     country:'スイス',          flag:'🇨🇭', a:2, g:3, jp:false },
     { name:'C・サマービル',     country:'オランダ',        flag:'🇳🇱', a:2, g:2, jp:false },
@@ -7837,7 +7838,7 @@
     document.getElementById('modalSheet').scrollTop = 0;
   }
 
-  const RANKING_UPDATED = '7/12 更新（準々決勝終了時点）';
+  const RANKING_UPDATED = '7/16 更新（準決勝終了時点）';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -8329,7 +8330,7 @@
     {date:'7/12', dow:'日',time:'06:00',home:{n:'ノルウェー',cc:'no'},  away:{n:'イングランド',cc:'gb-eng'},group:'QF',venue:'マイアミ',       score:'1-2(延長)',broad:['nhk','bsp4k','dazn'],jp:false,free:false,past:true},
     {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン',cc:'ar'},away:{n:'スイス',cc:'ch'},      group:'QF',venue:'カンザスシティ',     score:'3-1(延長)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/15', dow:'水',time:'04:00',home:{n:'フランス',cc:'fr'},   away:{n:'スペイン',cc:'es'},group:'SF',venue:'ダラス',score:'0-2',broad:['ntv','dazn-free'],jp:false,free:true,past:true},
-    {date:'7/16', dow:'木',time:'04:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'アルゼンチン',cc:'ar'},group:'SF',venue:'アトランタ',score:'',broad:['nhk','bsp4k','dazn-free'],jp:false,free:true},
+    {date:'7/16', dow:'木',time:'04:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'アルゼンチン',cc:'ar'},group:'SF',venue:'アトランタ',score:'1-2',broad:['nhk','bsp4k','dazn-free'],jp:false,free:true,past:true},
     {date:'7/19', dow:'日',time:'06:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
     {date:'7/20', dow:'月',time:'04:00',home:{n:'🏆 決勝',cc:''},      away:null,group:'決勝',venue:'ニューヨーク',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
   ];
@@ -9429,7 +9430,8 @@
   const KO_SF_FIXTURES = [
     { no:'SF1', home:'fr', away:'es', date:'7/15(水)', time:'04:00', venue:'ダラス', score:'0-2', winner:'es', qfpair:['QF1','QF2'],
       scorers:{ home:[], away:["(PK) M.オヤルサバル 22'","P.ポルロ 58'"] } },
-    { no:'SF2', home:'gb-eng', away:'ar', date:'7/16(木)', time:'04:00', venue:'アトランタ', qfpair:['QF3','QF4'] },
+    { no:'SF2', home:'gb-eng', away:'ar', date:'7/16(木)', time:'04:00', venue:'アトランタ', score:'1-2', winner:'ar', qfpair:['QF3','QF4'],
+      scorers:{ home:["A.ゴードン 55'"], away:["E.フェルナンデス 85'","L.マルティネス 90+2'"] } },
   ];
 
   const KO_QF_FIXTURES = [
