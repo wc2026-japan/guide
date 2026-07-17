@@ -5765,9 +5765,9 @@
       <!-- ラウンド切り替えタブ -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px">
         <button id="rd-tab-r32" class="ko-tab" onclick="rdSwitch('r32')" style="text-align:center">⚔️ R32</button>
-        <button id="rd-tab-r16" class="ko-tab active" onclick="rdSwitch('r16')" style="text-align:center">🔥 R16</button>
+        <button id="rd-tab-r16" class="ko-tab" onclick="rdSwitch('r16')" style="text-align:center">🔥 R16</button>
         <button id="rd-tab-qfsf" class="ko-tab" onclick="rdSwitch('qfsf')" style="text-align:center">⚡ QF・SF</button>
-        <button id="rd-tab-final" class="ko-tab" onclick="rdSwitch('final')" style="text-align:center">🏆 決勝</button>
+        <button id="rd-tab-final" class="ko-tab active" onclick="rdSwitch('final')" style="text-align:center">🏆 決勝</button>
       </div>
 
       <!-- ===== R32パネル ===== -->
@@ -5782,7 +5782,7 @@
       </div><!-- /rd-panel-r32 -->
 
       <!-- ===== R16パネル ===== -->
-      <div id="rd-panel-r16">
+      <div id="rd-panel-r16" style="display:none">
         <div style="display:flex;gap:6px;margin-bottom:12px">
           <button id="r16-sub-bracket" class="rd-subtab active" onclick="rdSubSwitch('r16','bracket')">🏆 トーナメント表</button>
           <button id="r16-sub-list" class="rd-subtab" onclick="rdSubSwitch('r16','list')">📋 試合一覧</button>
@@ -5802,21 +5802,21 @@
       </div><!-- /rd-panel-qfsf -->
 
       <!-- ===== 決勝パネル ===== -->
-      <div id="rd-panel-final" style="display:none">
+      <div id="rd-panel-final">
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">🥉 3位決定戦　7/19　／　🏆 決勝　7/20</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div class="bk-match third-match" style="min-width:auto">
             <div class="bk-match-meta">🥉 3位決定戦　7/19(日) 06:00 マイアミ</div>
-            <div class="bk-team tbd">SF1敗者</div>
+            <div class="bk-team">🇫🇷 フランス</div>
             <div class="bk-sep"></div>
-            <div class="bk-team tbd">SF2敗者</div>
+            <div class="bk-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド</div>
           </div>
           <div class="bk-match final-match" style="min-width:auto">
             <div class="bk-match-meta" style="color:var(--gold);font-weight:900">🏆 決勝　7/20(月) 04:00 ニューヨーク</div>
             <div class="bk-trophy">🏆</div>
-            <div class="bk-team tbd" style="justify-content:center">SF1 勝者</div>
+            <div class="bk-team" style="justify-content:center">🇪🇸 スペイン</div>
             <div class="bk-sep"></div>
-            <div class="bk-team tbd" style="justify-content:center">SF2 勝者</div>
+            <div class="bk-team" style="justify-content:center">🇦🇷 アルゼンチン</div>
           </div>
         </div>
       </div><!-- /rd-panel-final -->
@@ -7373,7 +7373,7 @@
     ma_4:{birth:'オランダ・フリセンフェーン',dob:'1996/8/21'}, ma_3:{birth:'オランダ・カルスペル',dob:'1997/11/14'}, ma_10:{birth:'スペイン・マラガ',dob:'1999/8/3',g:0,a:4,hobby:'非公開',skill:'密集地帯での創造性',start:86},
     ma_11:{g:3,a:0,start:71}, ma_8:{g:2,a:0,start:83}, ma_9:{g:2,a:0,start:32},
     es_16:{birth:'スペイン・マドリード',dob:'1996/6/22'}, es_20:{birth:'スペイン・テネリフェ',dob:'2002/11/25'}, es_9:{birth:'スペイン・ロス・パラシオス',dob:'2004/8/5'},
-    es_19:{birth:'スペイン・エスプルーグス・デ・リョブラガット',dob:'2007/7/13'}, es_21:{birth:'スペイン・エイバル',dob:'1997/4/9',g:5,a:1,hobby:'非公開',skill:'冷静なフィニッシュとポジショニング',start:89}, es_24:{g:0,a:2,start:100}, es_14:{g:0,a:1,start:100}, es_12:{g:1,a:0,start:70}, es_23:{birth:'スペイン（バスク）',dob:'1997/6/11'},
+    es_19:{birth:'スペイン・エスプルーグス・デ・リョブラガット',dob:'2007/7/13'}, es_21:{birth:'スペイン・エイバル',dob:'1997/4/9',g:5,a:1,hobby:'非公開',skill:'冷静なフィニッシュとポジショニング',start:89}, es_24:{g:0,a:2,start:100}, es_14:{g:0,a:1,start:100}, es_12:{g:2,a:0,start:70}, es_23:{birth:'スペイン（バスク）',dob:'1997/6/11'},
     be_7:{birth:'ベルギー・ドローゲンボス',dob:'1991/6/28'}, be_1:{birth:'ベルギー・ブレー',dob:'1992/5/11'}, be_8:{birth:'ベルギー・スィント=ピータース=レウ',dob:'1997/5/7',g:2,a:0,start:100},
     be_10:{g:2,a:3,start:95}, be_23:{g:0,a:2,start:65}, be_20:{g:0,a:2,start:61}, be_21:{g:0,a:1,start:92},
     be_9:{g:3,a:0,hobby:'非公開',skill:'高さを活かしたポストプレー',start:45}, be_17:{g:3,a:0,hobby:'非公開',skill:'ドリブルからの得点感覚',start:65},
@@ -7381,20 +7381,20 @@
     no_8:{g:0,a:2,start:88},
     no_10:{birth:'ノルウェー・ドランメン',dob:'1998/12/17',g:0,a:3,hobby:'非公開',skill:'展開力と精密なラストパス',start:90},
     no_21:{birth:'ノルウェー',dob:'2003/6/8',g:1,a:3,hobby:'非公開',skill:'攻撃的センスに優れた若きタレント',start:51},
-    'gb-eng_10':{birth:'イングランド・スタウアブリッジ',dob:'2003/6/29',g:6,a:0,hobby:'ゴルフ',skill:'攻守にわたる運動量とゴール感覚',start:98},
+    'gb-eng_10':{birth:'イングランド・スタウアブリッジ',dob:'2003/6/29',g:6,a:1,hobby:'ゴルフ',skill:'攻守にわたる運動量とゴール感覚',start:98},
     'gb-eng_9':{birth:'イングランド・ロンドン',dob:'1993/7/28',g:6,a:1,hobby:'ダーツ観戦・アメフト',skill:'得点感覚とビルドアップ能力を兼備',start:100},
     'gb-eng_7':{birth:'イングランド・ロンドン',dob:'2001/9/5',g:0,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:51},
     'gb-eng_4':{birth:'イングランド・キングストン',dob:'1999/1/14'}, 'gb-eng_1':{birth:'イングランド・サンダーランド',dob:'1994/3/5'},
     'gb-eng_18':{birth:'イングランド・リヴァプール',dob:'2001/2/24',g:1,a:3,hobby:'非公開',skill:'左足からの正確なシュートとクロス',start:63}, 'gb-eng_8':{g:0,a:1,start:100},
     ar_23:{birth:'アルゼンチン・マル・デル・プラタ',dob:'1992/9/2'}, ar_7:{birth:'アルゼンチン・サルタ',dob:'1994/5/24'}, ar_9:{birth:'アルゼンチン・カラフェ',dob:'2000/1/31'},
-    ar_20:{birth:'アルゼンチン・サンタフェ',dob:'1998/12/24',g:0,a:1,start:100}, ar_10:{birth:'アルゼンチン・ロサリオ',dob:'1987/6/24',g:8,a:1,hobby:'家族との時間・マテ茶',skill:'卓越したドリブルと得点感覚',start:100},
+    ar_20:{birth:'アルゼンチン・サンタフェ',dob:'1998/12/24',g:0,a:1,start:100}, ar_10:{birth:'アルゼンチン・ロサリオ',dob:'1987/6/24',g:8,a:4,hobby:'家族との時間・マテ茶',skill:'卓越したドリブルと得点感覚',start:100},
     ch_1:{birth:'スイス・チューリッヒ',dob:'1997/12/6'}, ch_10:{birth:'スイス・バーゼル',dob:'1992/9/27'}, ch_7:{birth:'カメルーン・ヤウンデ',dob:'1997/2/14',g:2,a:2,start:94},
     ch_11:{g:2,a:0,start:76}, ch_17:{g:2,a:0,start:56}, ch_13:{g:0,a:1,start:99},
     ch_9:{g:3,a:2,hobby:'非公開',skill:'中盤での推進力とロングシュート',start:57},
     ar_1:{birth:'アルゼンチン・サンタフェ',dob:'1994/5/6'}, ar_2:{birth:'アルゼンチン・サンニコラス',dob:'1997/5/10'}, ar_3:{birth:'アルゼンチン・ラナス',dob:'1992/8/31'},
     ar_4:{birth:'アルゼンチン・サンタフェ',dob:'1997/1/1'}, ar_6:{birth:'アルゼンチン・グアレグアイ',dob:'1998/1/18',g:0,a:1,start:99}, ar_13:{birth:'アルゼンチン・コルドバ',dob:'1998/4/27'},
     ar_19:{birth:'アルゼンチン・ブエノスアイレス',dob:'1988/2/12'}, ar_5:{birth:'アルゼンチン・ブエノスアイレス',dob:'1994/6/29'}, ar_11:{birth:'アルゼンチン・ローサス',dob:'1996/4/9'},
-    ar_24:{birth:'アルゼンチン・サンマルティン',dob:'2001/1/17',g:1,a:0,start:100}, ar_16:{birth:'アルゼンチン・ラヌース',dob:'2001/4/26'}, ar_17:{birth:'アルゼンチン・ブエノスアイレス',dob:'2002/10/12'},
+    ar_24:{birth:'アルゼンチン・サンマルティン',dob:'2001/1/17',g:2,a:0,start:100}, ar_16:{birth:'アルゼンチン・ラヌース',dob:'2001/4/26'}, ar_17:{birth:'アルゼンチン・ブエノスアイレス',dob:'2002/10/12'},
     ar_18:{birth:'アルゼンチン・ブエノスアイレス',dob:'2004/7/8'}, ar_22:{birth:'アルゼンチン・バイア・ブランカ',dob:'1997/8/22',g:3,a:0,start:58},
     br_1:{birth:'ブラジル・ノヴァ・ハンブルゴ',dob:'1992/10/2'}, br_4:{birth:'ブラジル・サンパウロ',dob:'1994/5/14'}, br_5:{birth:'ブラジル・サンジョゼ・ドス・カンポス',dob:'1992/2/23'},
     br_7:{birth:'ブラジル・サンゴンサロ',dob:'2000/7/12',g:4,a:1,hobby:'ダンス',skill:'爆発的なスピードと仕掛け',start:100},
@@ -7738,10 +7738,10 @@
   // ===== ランキング 静的データ =====
   const RANKING_SCORERS = [
     { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', g:8, a:3, jp:false, key:'mbappe' },
-    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:1, jp:false, key:'messi' },
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', g:8, a:4, jp:false, key:'messi' },
     { name:'E・ハーランド',     country:'ノルウェー',      flag:'🇳🇴', g:7, a:0, jp:false, key:'haaland' },
     { name:'H・ケイン',         country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false, key:'kane' },
-    { name:'J・ベリンガム',     country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:0, jp:false, key:'bellingham' },
+    { name:'J・ベリンガム',     country:'イングランド',    flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', g:6, a:1, jp:false, key:'bellingham' },
     { name:'O・デンベレ',       country:'フランス',        flag:'🇫🇷', g:5, a:2, jp:false, key:'dembele' },
     { name:'M・オヤルサバル',   country:'スペイン',        flag:'🇪🇸', g:5, a:1, jp:false, key:'oyarzabal' },
     { name:'ヴィニシウス',      country:'ブラジル',        flag:'🇧🇷', g:4, a:1, jp:false, key:'vinicius' },
@@ -7760,6 +7760,7 @@
     { name:'B・ギマランイス',   country:'ブラジル',        flag:'🇧🇷', a:4, g:0, jp:false, key:'guimaraes' },
     { name:'B・ディアス',       country:'モロッコ',        flag:'🇲🇦', a:4, g:0, jp:false, key:'brahim' },
     { name:'M・オデガール',     country:'ノルウェー',      flag:'🇳🇴', a:4, g:0, jp:false, key:'odegaard' },
+    { name:'L・メッシ',         country:'アルゼンチン',    flag:'🇦🇷', a:4, g:8, jp:false, key:'messi' },
     { name:'K・エムバペ',       country:'フランス',        flag:'🇫🇷', a:3, g:8, jp:false, key:'mbappe' },
     { name:'R・アルバラード',   country:'メキシコ',        flag:'🇲🇽', a:3, g:0, jp:false, key:'alvarado' },
     { name:'A・イサク',         country:'スウェーデン',    flag:'🇸🇪', a:3, g:1, jp:false, key:'isak' },
@@ -7838,7 +7839,7 @@
     document.getElementById('modalSheet').scrollTop = 0;
   }
 
-  const RANKING_UPDATED = '7/16 更新（準決勝終了時点）';
+  const RANKING_UPDATED = '7/16 更新（準決勝終了・決勝進出国確定時点）';
 
   // ===== 決勝トーナメント ラウンド切り替え =====
   function rdSwitch(round) {
@@ -8331,8 +8332,8 @@
     {date:'7/12', dow:'日',time:'10:00',home:{n:'アルゼンチン',cc:'ar'},away:{n:'スイス',cc:'ch'},      group:'QF',venue:'カンザスシティ',     score:'3-1(延長)',broad:['dazn'],jp:false,free:false,past:true},
     {date:'7/15', dow:'水',time:'04:00',home:{n:'フランス',cc:'fr'},   away:{n:'スペイン',cc:'es'},group:'SF',venue:'ダラス',score:'0-2',broad:['ntv','dazn-free'],jp:false,free:true,past:true},
     {date:'7/16', dow:'木',time:'04:00',home:{n:'イングランド',cc:'gb-eng'},away:{n:'アルゼンチン',cc:'ar'},group:'SF',venue:'アトランタ',score:'1-2',broad:['nhk','bsp4k','dazn-free'],jp:false,free:true,past:true},
-    {date:'7/19', dow:'日',time:'06:00',home:{n:'🥉 3位決定戦',cc:''},away:null,group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
-    {date:'7/20', dow:'月',time:'04:00',home:{n:'🏆 決勝',cc:''},      away:null,group:'決勝',venue:'ニューヨーク',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
+    {date:'7/19', dow:'日',time:'06:00',home:{n:'フランス',cc:'fr'},away:{n:'イングランド',cc:'gb-eng'},group:'3位決定戦',venue:'マイアミ',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
+    {date:'7/20', dow:'月',time:'04:00',home:{n:'スペイン',cc:'es'},      away:{n:'アルゼンチン',cc:'ar'},group:'決勝',venue:'ニューヨーク',score:'',broad:['dazn-free','nhk','bsp4k'],jp:false,free:true},
   ];
 
   // ===== スケジュールフィルター状態 =====
