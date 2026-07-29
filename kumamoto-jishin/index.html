@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>令和8年熊本地震 公式情報リンク集</title>
+<style>
+  html { color-scheme: light; }
+  :root {
+    --bg: #FFFFFF;
+    --text: #35322C;
+    --sub: #8A8478;
+    --line: #EDE8DC;
+    --accent: #E08A3C;
+    --accent-soft: #FDF1E2;
+    --warn-bg: #FDF0EC;
+    --warn-line: #F0C4B4;
+    --warn-text: #B5502E;
+    --chip-bg: #F6F3EC;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    background: #FFFFFF;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 60px; overflow-x: hidden; }
+
+  h1 {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: 0.01em;
+  }
+  .updated {
+    font-size: 12.5px;
+    color: var(--sub);
+    margin-bottom: 18px;
+  }
+
+  .notice {
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-line);
+    border-radius: 14px;
+    padding: 16px 16px;
+    margin-bottom: 26px;
+  }
+  .warn-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--warn-text);
+    margin-bottom: 6px;
+  }
+  .warn p { font-size: 13.5px; margin: 0 0 8px; }
+  .warn a {
+    color: var(--warn-text);
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--warn-line);
+  }
+
+  h2.section {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    scroll-margin-top: 14px;
+  }
+  .section-desc {
+    font-size: 12.5px;
+    color: var(--sub);
+    margin-bottom: 12px;
+  }
+
+  .group { margin-bottom: 30px; }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .badge {
+    font-size: 11.5px;
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  .chiplinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: 100%;
+  }
+  .chiplinks a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    max-width: 100%;
+    word-break: break-word;
+  }
+  .chiplinks a .arrow {
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--sub);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>令和8年熊本地震 公式情報リンク集</h1>
+  <div class="updated">最終更新：2026年7月29日</div>
+
+  <div class="notice">
+    公式情報への入口をまとめたページです。避難所・断水・停電などの最新状況は、必ず各リンク先でご確認ください。
+  </div>
+
+  <div class="warn">
+    <div class="warn-title">気象庁の注意喚起</div>
+    <p>今後1週間程度は最大震度7程度の地震に注意。揺れの強かった地域は少しの雨でも土砂災害に警戒（気象庁）</p>
+    <a href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 関連情報ページを見る ↗</a>
+  </div>
+
+  <h2 class="section">市町村別の公式情報</h2>
+  <div class="section-desc">お住まいの地域をタップしてください</div>
+
+  <div class="group" id="kumamoto-pref">
+    <div class="group-head"><h3 style="margin:0;font-size:15.5px;">熊本県</h3></div>
+    <div class="chiplinks">
+      <a href="https://www.pref.kumamoto.jp/soshiki/1/274517.html" target="_blank" rel="noopener">令和8年熊本地震 特設ページ<span class="arrow">↗</span></a>
+      <a href="https://portal.bousai.pref.kumamoto.jp" target="_blank" rel="noopener">防災情報くまもと<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <div class="group" id="uki">
+    <div class="group-head">
+      <h3 style="margin:0;font-size:15.5px;">宇城市</h3>
+      <span class="badge">震度7（豊野町）</span>
+    </div>
+    <div class="chiplinks">
+      <a href="https://www.city.uki.kumamoto.jp/kurashi/bosaiinfo/bosaisaigai" target="_blank" rel="noopener">防災・災害情報<span class="arrow">↗</span></a>
+      <a href="https://www.uki-bosai.jp/buki43/portal/html/home.html" target="_blank" rel="noopener">防災ポータル<span class="arrow">↗</span></a>
+      <a href="https://www.uki-bosai.jp/buki43/portal/html/emergency.html" target="_blank" rel="noopener">緊急情報一覧<span class="arrow">↗</span></a>
+      <a href="https://www.city.uki.kumamoto.jp/kurashi/bosaiinfo/bosaisaigai/hinanjyo" target="_blank" rel="noopener">避難所情報<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <div class="group" id="hikawa">
+    <div class="group-head">
+      <h3 style="margin:0;font-size:15.5px;">氷川町</h3>
+      <span class="badge">震度7（島地）</span>
+    </div>
+    <div class="chiplinks">
+      <a href="https://www.town.hikawa.kumamoto.jp/" target="_blank" rel="noopener">氷川町公式サイト<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <div class="group" id="yatsushiro">
+    <div class="group-head">
+      <h3 style="margin:0;font-size:15.5px;">八代市</h3>
+      <span class="badge">震度6弱・断水報告あり</span>
+    </div>
+    <div class="chiplinks">
+      <a href="https://www.city.yatsushiro.lg.jp/" target="_blank" rel="noopener">八代市公式サイト<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <div class="group" id="misato">
+    <div class="group-head">
+      <h3 style="margin:0;font-size:15.5px;">美里町</h3>
+      <span class="badge">震度6弱</span>
+    </div>
+    <div class="chiplinks">
+      <a href="https://www.town.kumamoto-misato.lg.jp/index.html" target="_blank" rel="noopener">美里町公式サイト<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <div class="group" id="kumamoto-city">
+    <div class="group-head"><h3 style="margin:0;font-size:15.5px;">熊本市</h3></div>
+    <div class="chiplinks">
+      <a href="https://city-kumamoto.my.salesforce-sites.com/" target="_blank" rel="noopener">熊本市防災情報ポータル<span class="arrow">↗</span></a>
+    </div>
+  </div>
+
+  <h2 class="section" id="lifeline">ライフライン</h2>
+  <div class="section-desc">停電・鉄道・道路情報</div>
+  <div class="chiplinks">
+    <a href="https://www.kyuden.co.jp/td_teiden/kyushu.html" target="_blank" rel="noopener">九州電力送配電 停電情報<span class="arrow">↗</span></a>
+    <a href="https://www.jrkyushu.co.jp/trains/info/kuma.html" target="_blank" rel="noopener">JR九州 運行情報<span class="arrow">↗</span></a>
+    <a href="https://www.w-nexco.co.jp/" target="_blank" rel="noopener">NEXCO西日本 交通情報<span class="arrow">↗</span></a>
+  </div>
+
+  <footer>
+    本ページは日本代表W杯ガイド（個人運営）が公式情報への入口として整理したものです。給水所・避難所などの最新の運用状況は、必ず上記の各公式発表をご確認ください。
+  </footer>
+
+</div>
+</body>
+</html>
