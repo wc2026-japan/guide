@@ -33,120 +33,128 @@
     -webkit-font-smoothing: antialiased;
     font-weight: 500;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 60px; overflow-x: hidden; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 26px 18px 60px; }
 
   h1 {
-    font-size: 23px;
+    font-size: 21px;
     font-weight: 700;
-    margin: 0 0 6px;
+    margin: 0 0 4px;
     letter-spacing: 0.01em;
-    position: relative;
-    padding-left: 14px;
-    border-left: 5px solid var(--accent);
   }
   .updated {
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--sub);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .notice {
     background: var(--accent-soft);
-    border-radius: 14px;
-    padding: 14px 16px;
-    font-size: 13.5px;
-    color: var(--text);
-    margin-bottom: 16px;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    margin-bottom: 12px;
   }
 
   .warn {
     background: var(--warn-bg);
     border: 1px solid var(--warn-line);
-    border-radius: 14px;
-    padding: 16px 16px;
-    margin-bottom: 26px;
+    border-radius: 10px;
+    padding: 14px 14px;
+    margin-bottom: 24px;
   }
   .warn-title {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--warn-text);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
-  .warn p { font-size: 13.5px; margin: 0 0 8px; }
+  .warn p { font-size: 13px; margin: 0 0 7px; }
   .warn a {
     color: var(--warn-text);
     font-weight: 700;
-    font-size: 13.5px;
+    font-size: 13px;
     text-decoration: none;
     border-bottom: 1px solid var(--warn-line);
   }
 
   h2.section {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    margin: 0 0 4px;
-    scroll-margin-top: 14px;
-  }
-  .section-desc {
-    font-size: 12.5px;
     color: var(--sub);
-    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+    text-transform: none;
   }
 
-  .group {
-    margin-bottom: 18px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 16px 16px 14px;
-    background: #FFFFFF;
+  /* accordion */
+  details {
+    border-bottom: 1px solid var(--line);
   }
-  .group-head {
+  details:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  summary {
+    list-style: none;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 2px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .row {
+    display: flex;
+    align-items: center;
     gap: 9px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
   }
-  .badge {
-    font-size: 11.5px;
+  summary .badge {
+    font-size: 11px;
     background: var(--warn-bg);
     color: var(--warn-text);
-    padding: 2px 10px;
+    padding: 2px 9px;
     border-radius: 999px;
     font-weight: 700;
   }
-
-  .chiplinks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    width: 100%;
-  }
-  .chiplinks a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--text);
-    background: var(--chip-bg);
-    border: 1px solid var(--line);
-    padding: 10px 14px;
-    border-radius: 12px;
-    text-decoration: none;
-    max-width: 100%;
-    word-break: break-word;
-  }
-  .chiplinks a .arrow {
+  summary .chevron {
     color: var(--accent);
     font-size: 13px;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  details[open] summary .chevron {
+    transform: rotate(90deg);
   }
 
+  .panel {
+    padding: 0 2px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .panel a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--chip-bg);
+    border-radius: 9px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .panel a .arrow { color: var(--accent); flex-shrink: 0; }
+
   footer {
-    margin-top: 36px;
-    padding-top: 18px;
+    margin-top: 30px;
+    padding-top: 16px;
     border-top: 1px solid var(--line);
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--sub);
   }
 </style>
@@ -167,93 +175,114 @@
     <a href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 関連情報ページを見る ↗</a>
   </div>
 
-  <h2 class="section">市町村別の公式情報</h2>
-  <div class="section-desc">お住まいの地域をタップしてください</div>
+  <h2 class="section">地域をタップして開く</h2>
 
-  <div class="group" id="kumamoto-pref">
-    <div class="group-head"><h3 style="margin:0;font-size:15.5px;">熊本県</h3></div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">熊本県</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.pref.kumamoto.jp/soshiki/1/274517.html" target="_blank" rel="noopener">令和8年熊本地震 特設ページ<span class="arrow">↗</span></a>
       <a href="https://portal.bousai.pref.kumamoto.jp" target="_blank" rel="noopener">防災情報くまもと<span class="arrow">↗</span></a>
       <a href="https://x.com/Bousai_Kumamoto" target="_blank" rel="noopener">公式X（避難情報配信）<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group" id="uki">
-    <div class="group-head">
-      <h3 style="margin:0;font-size:15.5px;">宇城市</h3>
-      <span class="badge">震度7（豊野町）</span>
-    </div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">宇城市 <span class="badge">震度7（豊野町）</span></span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.city.uki.kumamoto.jp/kurashi/bosaiinfo/bosaisaigai" target="_blank" rel="noopener">防災・災害情報<span class="arrow">↗</span></a>
       <a href="https://www.uki-bosai.jp/buki43/portal/html/home.html" target="_blank" rel="noopener">防災ポータル<span class="arrow">↗</span></a>
       <a href="https://www.uki-bosai.jp/buki43/portal/html/emergency.html" target="_blank" rel="noopener">緊急情報一覧<span class="arrow">↗</span></a>
       <a href="https://www.city.uki.kumamoto.jp/kurashi/bosaiinfo/bosaisaigai/hinanjyo" target="_blank" rel="noopener">避難所情報<span class="arrow">↗</span></a>
       <a href="https://x.com/uki_bousai" target="_blank" rel="noopener">公式X（防災）<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group" id="hikawa">
-    <div class="group-head">
-      <h3 style="margin:0;font-size:15.5px;">氷川町</h3>
-      <span class="badge">震度7（島地）</span>
-    </div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">氷川町 <span class="badge">震度7（島地）</span></span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.town.hikawa.kumamoto.jp/" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.town.hikawa.kumamoto.jp/kinkyu.html" target="_blank" rel="noopener">緊急情報一覧<span class="arrow">↗</span></a>
       <a href="https://www.town.hikawa.kumamoto.jp/bousai/default.html" target="_blank" rel="noopener">防災サイト<span class="arrow">↗</span></a>
       <a href="https://page.line.me/429qdyyx" target="_blank" rel="noopener">公式LINE<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group" id="yatsushiro">
-    <div class="group-head">
-      <h3 style="margin:0;font-size:15.5px;">八代市</h3>
-      <span class="badge">震度6弱・断水報告あり</span>
-    </div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">八代市 <span class="badge">震度6弱・断水報告あり</span></span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.city.yatsushiro.lg.jp/" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.city.yatsushiro.lg.jp/kinkyu.html" target="_blank" rel="noopener">緊急情報一覧<span class="arrow">↗</span></a>
       <a href="https://www.city.yatsushiro.lg.jp/bousai/default.html" target="_blank" rel="noopener">防災サイト<span class="arrow">↗</span></a>
       <a href="https://x.com/yatsushiro0801" target="_blank" rel="noopener">公式X<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group" id="misato">
-    <div class="group-head">
-      <h3 style="margin:0;font-size:15.5px;">美里町</h3>
-      <span class="badge">震度6弱</span>
-    </div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">美里町 <span class="badge">震度6弱</span></span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.town.kumamoto-misato.lg.jp/index.html" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
       <a href="https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/2131.html" target="_blank" rel="noopener">防災関連情報<span class="arrow">↗</span></a>
       <a href="https://page.line.me/qpm9748k" target="_blank" rel="noopener">公式LINE<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group" id="kumamoto-city">
-    <div class="group-head"><h3 style="margin:0;font-size:15.5px;">熊本市</h3></div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">熊本市</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.city.kumamoto.jp/list04828.html" target="_blank" rel="noopener">令和8年熊本地震 特設ページ<span class="arrow">↗</span></a>
+      <a href="https://www.city.kumamoto.jp/bousai/default.html" target="_blank" rel="noopener">緊急情報一覧<span class="arrow">↗</span></a>
       <a href="https://city-kumamoto.my.salesforce-sites.com/" target="_blank" rel="noopener">防災情報ポータル<span class="arrow">↗</span></a>
       <a href="https://x.com/Bousai_Kumamoto" target="_blank" rel="noopener">公式X（避難情報配信）<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <h2 class="section" id="lifeline">ライフライン</h2>
-  <div class="section-desc">停電・鉄道・道路情報</div>
-  <div class="group">
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">ライフライン（停電・鉄道・道路）</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.kyuden.co.jp/td_teiden/kyushu.html" target="_blank" rel="noopener">九州電力送配電 停電情報<span class="arrow">↗</span></a>
       <a href="https://www.jrkyushu.co.jp/trains/info/kuma.html" target="_blank" rel="noopener">JR九州 運行情報<span class="arrow">↗</span></a>
       <a href="https://www.w-nexco.co.jp/" target="_blank" rel="noopener">NEXCO西日本 交通情報<span class="arrow">↗</span></a>
     </div>
-  </div>
+  </details>
 
-  <div class="group">
-    <div class="group-head"><h3 style="margin:0;font-size:15.5px;">災害用無料Wi-Fi</h3></div>
-    <div class="chiplinks">
+  <details>
+    <summary>
+      <span class="row">災害用無料Wi-Fi</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="panel">
       <a href="https://www.soumu.go.jp/menu_seisaku/ictseisaku/public_wi-fi/freewifi_00000japan.html" target="_blank" rel="noopener">総務省「00000JAPAN」について<span class="arrow">↗</span></a>
+      <div style="background:var(--chip-bg);border-radius:9px;padding:12px 14px;font-size:13px;line-height:1.85;">
+        <strong>接続方法</strong><br>
+        ①「設定」→「Wi-Fi」をON<br>
+        ②ネットワーク一覧から「00000JAPAN」を選択<br>
+        ③Wi-Fiの下に表示されればつながっています<br><br>
+        <span style="color:var(--warn-text);font-weight:700;">⚠ 注意</span><br>
+        暗号化されていない回線です。ネットバンキングなど、ID・パスワードを入力するサービスの利用はできるだけ控えてください。安否確認・情報収集のみに使うのが安全です。
+      </div>
     </div>
-  </div>
+  </details>
 
   <footer>
     本ページはサムライウォッチ（個人運営）が公式情報への入口として整理したものです。給水所・避難所などの最新の運用状況は、必ず上記の各公式発表をご確認ください。
