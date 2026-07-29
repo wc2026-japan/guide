@@ -22,6 +22,9 @@
     --line: #DCE3F0;
     --accent: #0B3D91;
     --accent-soft: #EAF1FB;
+    --green-soft: #E8F6EC;
+    --amber-soft: #FFF6DD;
+    --amber-line: #E9CE84;
     --warn-bg: #FDECEC;
     --warn-line: #F3B8B8;
     --warn-text: #BC002D;
@@ -104,6 +107,9 @@
   details.plain {
     background: #FFFFFF;
     border: 1px solid var(--line);
+  }
+  details.green {
+    background: var(--green-soft);
   }
   summary {
     list-style: none;
@@ -244,6 +250,13 @@
     公式情報への入口をまとめたページです。避難所・断水・停電などの最新状況は、必ず各リンク先でご確認ください。
   </div>
 
+  <div style="background:var(--amber-soft);border:1px solid var(--amber-line);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
+    <div style="font-size:12px;font-weight:700;color:#8a6d1d;margin-bottom:6px;">📌 今日の重要更新（7月30日）</div>
+    <div style="font-size:13.5px;line-height:1.8;">
+      熊本市が7月30日の応急給水所の開設情報を発表しています。詳細は<a href="https://x.com/kumamotocity_" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">熊本市公式X（@kumamotocity_）</a>でご確認ください。
+    </div>
+  </div>
+
   <div class="warn">
     <div class="warn-title">気象庁の注意喚起</div>
     <p>今後1週間程度は最大震度7程度の地震に注意。揺れの強かった地域は少しの雨でも土砂災害に警戒（気象庁）</p>
@@ -343,24 +356,25 @@
     </div>
   </details>
 
-  <details class="plain">
+  <details class="green">
     <summary>
       <span class="row">支援したい方へ</span>
       <span class="chevron">▶</span>
     </summary>
     <div class="panel">
+      <a href="https://www.pref.kumamoto.jp/soshiki/27/274572.html" target="_blank" rel="noopener">熊本県 義援金の受付について（公式）<span class="arrow">↗</span></a>
       <a href="https://www.fukushi-kumamoto.or.jp/kvc/" target="_blank" rel="noopener">熊本県災害ボランティア情報（県社協）<span class="arrow">↗</span></a>
       <a href="https://donation.yahoo.co.jp/promo/20260728.html" target="_blank" rel="noopener">Yahoo!ネット募金 緊急支援募金 特設ページ<span class="arrow">↗</span></a>
       <div style="background:var(--warn-bg);border-radius:9px;padding:12px 14px;font-size:13px;line-height:1.85;margin-top:10px;">
         <span style="color:var(--warn-text);font-weight:700;">⚠ 支援の前に確認を</span><br>
         ・Yahoo!ネット募金は、被災地支援に取り組む複数の団体（NPO等）への寄付をまとめた民間プラットフォームです（自治体・日本赤十字社の公式義援金窓口とは別です）<br>
-        ・自治体・日赤の義援金口座は、開設され次第このページに追記します。案内前の振込先には十分ご注意ください<br>
+        ・熊本県の義援金口座が開設されました（受付期間：2026年7月29日〜10月30日予定）。振込先は必ず上記の公式ページでご確認ください<br>
         ・現地は救助活動が優先です。自治体や公式団体が受け入れ体制を発表するまで、個人での現地入り・物資の送付はお控えください
       </div>
     </div>
   </details>
 
-  <details class="plain">
+  <details class="green">
     <summary>
       <span class="row">民間企業の支援</span>
       <span class="chevron">▶</span>
