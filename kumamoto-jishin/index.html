@@ -93,7 +93,13 @@
     margin-bottom: 12px;
   }
 
-  .group { margin-bottom: 30px; }
+  .group {
+    margin-bottom: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 16px 14px;
+    background: #FFFFFF;
+  }
   .group-head {
     display: flex;
     align-items: baseline;
@@ -191,7 +197,8 @@
       <span class="badge">震度7（島地）</span>
     </div>
     <div class="chiplinks">
-      <a href="https://www.town.hikawa.kumamoto.jp/" target="_blank" rel="noopener">氷川町公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.town.hikawa.kumamoto.jp/" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.town.hikawa.kumamoto.jp/bousai/default.html" target="_blank" rel="noopener">防災サイト<span class="arrow">↗</span></a>
     </div>
   </div>
 
@@ -201,7 +208,8 @@
       <span class="badge">震度6弱・断水報告あり</span>
     </div>
     <div class="chiplinks">
-      <a href="https://www.city.yatsushiro.lg.jp/" target="_blank" rel="noopener">八代市公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.city.yatsushiro.lg.jp/" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.city.yatsushiro.lg.jp/bousai/default.html" target="_blank" rel="noopener">防災サイト<span class="arrow">↗</span></a>
     </div>
   </div>
 
@@ -211,23 +219,27 @@
       <span class="badge">震度6弱</span>
     </div>
     <div class="chiplinks">
-      <a href="https://www.town.kumamoto-misato.lg.jp/index.html" target="_blank" rel="noopener">美里町公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.town.kumamoto-misato.lg.jp/index.html" target="_blank" rel="noopener">公式サイト<span class="arrow">↗</span></a>
+      <a href="https://www.town.kumamoto-misato.lg.jp/kurashi_tetsuzuki/anzen_anshin/3/2131.html" target="_blank" rel="noopener">防災関連情報<span class="arrow">↗</span></a>
     </div>
   </div>
 
   <div class="group" id="kumamoto-city">
     <div class="group-head"><h3 style="margin:0;font-size:15.5px;">熊本市</h3></div>
     <div class="chiplinks">
-      <a href="https://city-kumamoto.my.salesforce-sites.com/" target="_blank" rel="noopener">熊本市防災情報ポータル<span class="arrow">↗</span></a>
+      <a href="https://www.city.kumamoto.jp/list04828.html" target="_blank" rel="noopener">令和8年熊本地震 特設ページ<span class="arrow">↗</span></a>
+      <a href="https://city-kumamoto.my.salesforce-sites.com/" target="_blank" rel="noopener">防災情報ポータル<span class="arrow">↗</span></a>
     </div>
   </div>
 
   <h2 class="section" id="lifeline">ライフライン</h2>
   <div class="section-desc">停電・鉄道・道路情報</div>
-  <div class="chiplinks">
-    <a href="https://www.kyuden.co.jp/td_teiden/kyushu.html" target="_blank" rel="noopener">九州電力送配電 停電情報<span class="arrow">↗</span></a>
-    <a href="https://www.jrkyushu.co.jp/trains/info/kuma.html" target="_blank" rel="noopener">JR九州 運行情報<span class="arrow">↗</span></a>
-    <a href="https://www.w-nexco.co.jp/" target="_blank" rel="noopener">NEXCO西日本 交通情報<span class="arrow">↗</span></a>
+  <div class="group">
+    <div class="chiplinks">
+      <a href="https://www.kyuden.co.jp/td_teiden/kyushu.html" target="_blank" rel="noopener">九州電力送配電 停電情報<span class="arrow">↗</span></a>
+      <a href="https://www.jrkyushu.co.jp/trains/info/kuma.html" target="_blank" rel="noopener">JR九州 運行情報<span class="arrow">↗</span></a>
+      <a href="https://www.w-nexco.co.jp/" target="_blank" rel="noopener">NEXCO西日本 交通情報<span class="arrow">↗</span></a>
+    </div>
   </div>
 
   <footer>
