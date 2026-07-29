@@ -111,6 +111,32 @@
   details.green {
     background: var(--green-soft);
   }
+  /* jump shortcuts (CSS-only, no JS) */
+  details:target {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  details:target .panel {
+    display: flex !important;
+  }
+  details:not([open]):target summary ~ .panel {
+    display: flex;
+  }
+  .quicklinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .quicklinks a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 8px 14px;
+    text-decoration: none;
+  }
   summary {
     list-style: none;
     display: flex;
@@ -253,7 +279,7 @@
   <div style="background:var(--amber-soft);border:1px solid var(--amber-line);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
     <div style="font-size:12px;font-weight:700;color:#8a6d1d;margin-bottom:6px;">📌 今日の重要更新（7月30日）</div>
     <div style="font-size:13.5px;line-height:1.8;">
-      熊本市が7月30日の応急給水所の開設情報を発表しています。詳細は<a href="https://www.kumamoto-waterworks.jp/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">熊本市上下水道局</a>でご確認ください。
+      熊本市上下水道局が断水・給水所情報を災害対応モードで随時更新しています。最新の給水所情報は<a href="https://www.kumamoto-waterworks.jp/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">こちら</a>でご確認ください。
     </div>
   </div>
 
@@ -261,6 +287,13 @@
     <div class="warn-title">気象庁の注意喚起</div>
     <p>今後1週間程度は最大震度7程度の地震に注意。揺れの強かった地域は少しの雨でも土砂災害に警戒（気象庁）</p>
     <a href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 関連情報ページを見る ↗</a>
+  </div>
+
+  <div class="quicklinks">
+    <a href="#jump-power">⚡ 停電・電力</a>
+    <a href="#jump-company">📶 通信・充電</a>
+    <a href="#jump-wifi">📡 無料Wi-Fi</a>
+    <a href="#jump-support">🤝 支援したい</a>
   </div>
 
   <h2 class="section">地域をタップして開く</h2>
@@ -344,7 +377,7 @@
     </div>
   </details>
 
-  <details>
+  <details id="jump-power">
     <summary>
       <span class="row">ライフライン（停電・鉄道・道路）</span>
       <span class="chevron">▶</span>
@@ -356,7 +389,7 @@
     </div>
   </details>
 
-  <details class="green">
+  <details class="green" id="jump-support">
     <summary>
       <span class="row">支援したい方へ</span>
       <span class="chevron">▶</span>
@@ -374,7 +407,7 @@
     </div>
   </details>
 
-  <details class="green">
+  <details class="green" id="jump-company">
     <summary>
       <span class="row">民間企業の支援</span>
       <span class="chevron">▶</span>
@@ -395,7 +428,7 @@
     </div>
   </details>
 
-  <details class="plain">
+  <details class="plain" id="jump-wifi">
     <summary>
       <span class="row">災害用無料Wi-Fi</span>
       <span class="chevron">▶</span>
