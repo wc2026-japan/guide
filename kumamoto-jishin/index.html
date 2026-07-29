@@ -134,10 +134,9 @@
   }
 
   .panel {
-    padding: 0 12px 14px;
+    padding: 2px 14px 12px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
     background: #FFFFFF;
   }
   .panel a {
@@ -145,13 +144,15 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 10px 12px;
-    background: var(--chip-bg);
-    border-radius: 9px;
+    padding: 12px 2px;
+    border-top: 1px solid var(--line);
     color: var(--text);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
+  }
+  .panel a:first-child {
+    border-top: none;
   }
   .panel a .arrow { color: var(--accent); flex-shrink: 0; }
 
