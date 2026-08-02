@@ -122,6 +122,47 @@
   details:not([open]):target summary ~ .panel {
     display: flex;
   }
+  .searchbox {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .searchbox-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.5;
+  }
+  .searchbox input[type="search"] {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14.5px;
+    padding: 12px 14px 12px 38px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--chip-bg);
+    color: var(--text);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .searchbox input[type="search"]::placeholder {
+    color: var(--sub);
+  }
+  .searchbox input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  .search-noresult {
+    display: none;
+    font-size: 13.5px;
+    color: var(--sub);
+    padding: 10px 2px 20px;
+  }
+  .search-hidden {
+    display: none !important;
+  }
+
   .quicklinks {
     display: flex;
     flex-wrap: wrap;
@@ -270,26 +311,33 @@
 <div class="wrap">
 
   <h1>令和8年熊本地震 公式情報リンク集</h1>
-  <div class="updated">最終更新：2026年8月1日</div>
+  <div class="updated">最終更新：2026年8月2日</div>
 
   <div class="notice">
     公式情報への入口をまとめたページです。避難所・断水・停電などの最新状況は、必ず各リンク先でご確認ください。
   </div>
 
   <div style="background:var(--amber-soft);border:1px solid var(--amber-line);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
-    <div style="font-size:12px;font-weight:700;color:#8a6d1d;margin-bottom:6px;">📌 今日の重要更新（7月31日）</div>
+    <div style="font-size:12px;font-weight:700;color:#8a6d1d;margin-bottom:6px;">📌 今日の重要更新（8月2日）</div>
     <div style="font-size:13.5px;line-height:1.8;">
-      日本赤十字社が本日から「令和8年熊本地震災害義援金」の受付を開始しました。あわせて、り災証明書の申請受付も各自治体で始まっています。詳細は<a href="#jump-support" style="color:var(--accent);font-weight:700;">支援したい方へ</a>と<a href="#jump-risai" style="color:var(--accent);font-weight:700;">り災証明書・生活再建</a>をご確認ください。
+      国と熊本県が「ホテル等避難（2次避難）」の受け入れを開始します。8月3日から避難所でチラシ配布・申請フォームでの受付開始予定（73施設・最大2,200人分）。あわせて、氷川町・宇城市で仮設住宅の建設が8月3日から始まります（入居は9月以降）。詳細が分かり次第、リンクを追加します。
     </div>
   </div>
 
   <div class="warn">
     <div class="warn-title">気象庁の注意喚起</div>
     <p>今後1週間程度は最大震度7程度の地震に注意。揺れの強かった地域は少しの雨でも土砂災害に警戒（気象庁）</p>
+    <p style="margin-top:-4px;">連日の猛暑（熊本38℃予想）が続いています。避難所・片付け作業中の熱中症にも十分ご注意ください。</p>
     <a href="https://www.jma.go.jp/jma/menu/20260728_kumamoto_jishin.html" target="_blank" rel="noopener">気象庁 関連情報ページを見る ↗</a>
   </div>
 
-  <div class="quicklinks">
+  <div class="searchbox">
+    <span class="searchbox-icon">🔍</span>
+    <input type="search" id="siteSearch" placeholder="キーワードで検索（例: 断水、義援金、宇城市）" autocomplete="off">
+  </div>
+  <div id="searchNoResult" class="search-noresult">該当する項目が見つかりませんでした</div>
+
+  <div class="quicklinks" id="quicklinks">
     <a href="#jump-power">⚡ 停電・電力</a>
     <a href="#jump-anpi">👪 安否確認</a>
     <a href="#jump-company">📶 通信・充電</a>
@@ -450,7 +498,8 @@
       <a href="https://kumamoto-shien.jp/risai" target="_blank" rel="noopener">り災証明書ガイド（くまもと被災者支援ナビ）<span class="arrow">↗</span></a>
       <a href="https://digital-gov.note.jp/n/ne4f237bf506b" target="_blank" rel="noopener">マイナポータルでのオンライン申請方法（デジタル庁）<span class="arrow">↗</span></a>
       <div style="background:var(--chip-bg);border-radius:9px;padding:12px 14px;font-size:13px;line-height:1.85;">
-        り災証明書は被災者生活再建支援金・税や公共料金の減免などの申請に必要な書類です。マイナンバーカードがあればマイナポータルからオンライン申請できる自治体もあります（熊本市・八代市・宇土市・美里町・氷川町など）。窓口受付も各自治体で順次始まっています。
+        り災証明書は被災者生活再建支援金・税や公共料金の減免などの申請に必要な書類です。マイナンバーカードがあればマイナポータルからオンライン申請できる自治体もあります（熊本市・八代市・宇土市・美里町・氷川町など）。窓口受付も各自治体で順次始まっています。<br><br>
+        <strong>⚠ 片付ける前に必ず被害箇所の写真を撮っておいてください。</strong>片付け後だと被害の程度が証明できなくなる場合があります（建物の外観4方向＋被害箇所のアップ写真が目安）。
       </div>
       <a href="https://www.japan-csa.org/blog/202607disaster3" target="_blank" rel="noopener">日本カーシェアリング協会（無料レンタカー貸出）<span class="arrow">↗</span></a>
       <div style="background:var(--chip-bg);border-radius:9px;padding:12px 14px;font-size:13px;line-height:1.85;">
@@ -659,5 +708,49 @@
   </div>
 </div>
 
+<script>
+  (function () {
+    var input = document.getElementById('siteSearch');
+    var noResult = document.getElementById('searchNoResult');
+    var quicklinks = document.getElementById('quicklinks');
+    if (!input) return;
+
+    var allDetails = Array.prototype.slice.call(document.querySelectorAll('.wrap > details'));
+    var sectionHeadings = Array.prototype.slice.call(document.querySelectorAll('.wrap > h2.section'));
+
+    // remember which items were open before searching, to restore on clear
+    var wasOpen = allDetails.map(function (d) { return d.hasAttribute('open'); });
+
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var isSearching = q.length > 0;
+      var anyMatch = false;
+
+      if (quicklinks) quicklinks.classList.toggle('search-hidden', isSearching);
+      sectionHeadings.forEach(function (h) {
+        h.classList.toggle('search-hidden', isSearching);
+      });
+
+      allDetails.forEach(function (d, i) {
+        if (!isSearching) {
+          d.classList.remove('search-hidden');
+          if (wasOpen[i]) { d.setAttribute('open', ''); } else { d.removeAttribute('open'); }
+          return;
+        }
+        var text = d.textContent.toLowerCase();
+        var match = text.indexOf(q) !== -1;
+        d.classList.toggle('search-hidden', !match);
+        if (match) {
+          anyMatch = true;
+          d.setAttribute('open', '');
+        } else {
+          d.removeAttribute('open');
+        }
+      });
+
+      noResult.style.display = (isSearching && !anyMatch) ? 'block' : 'none';
+    });
+  })();
+</script>
 </body>
 </html>
