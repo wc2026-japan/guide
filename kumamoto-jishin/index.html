@@ -337,6 +337,7 @@
   </div>
   <div id="searchNoResult" class="search-noresult">該当する項目が見つかりませんでした</div>
 
+  <h2 class="section" id="quicklinksTitle">お困りごとから探す</h2>
   <div class="quicklinks" id="quicklinks">
     <a href="#jump-power">⚡ 停電・電力</a>
     <a href="#jump-anpi">👪 安否確認</a>
@@ -727,6 +728,8 @@
       var anyMatch = false;
 
       if (quicklinks) quicklinks.classList.toggle('search-hidden', isSearching);
+      var qlTitle = document.getElementById('quicklinksTitle');
+      if (qlTitle) qlTitle.classList.toggle('search-hidden', isSearching);
       sectionHeadings.forEach(function (h) {
         h.classList.toggle('search-hidden', isSearching);
       });
